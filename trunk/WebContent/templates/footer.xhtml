@@ -157,6 +157,107 @@
 					</div>
 				</article>
 			</footer>
+			<h:outputScript library="js" name="ui.js"/>
+				
+				<h:outputScript library="js" name="utilities.js"/>
+				<h:outputScript library="js" name="init.js"/>
+			<script type="text/javascript">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-2314484-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+					var ga = document.createElement('script');
+					ga.type = 'text/javascript';
+					ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+			<h:outputScript library="js" name="jq.js"/>
+		<h:outputScript library="js" name="jquery.lightbox.min.js"/>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+
+					$.lightbox().overlay.options.style.opacity = 0.8;
+					$.extend($.lightbox().options, {
+						emergefrom : "top",
+						moveDuration : 1000,
+						resizeDuration : 1000
+					});
+					$(".lightbox").lightbox({
+						modal : 0,
+						autoresize : 1
+					});
+				});
+			</script>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+
+					var number = 3;
+					// Change this to whatever amount of posts per page you want to show
+					var offset = 0;
+					var ajaxurl = "http://learnlakenona.com/wp-admin/admin-ajax.php";
+					var page_number = 2;
+					var busy = false;
+
+					if (jQuery('.showmore').length) {// limited only loading when the page has this selector ".showmore"
+						jQuery('.showmore').live('click', function(e) {
+
+							busy = true;
+							jQuery('.showmore').html('SHOW MORE');
+
+							jQuery.post(ajaxurl, {
+								action : 'blog_loading',
+								off : offset + number,
+								paged : page_number,
+								post_number : number,
+								query_string : ''
+							}, function(data) {
+								if (data == "") {
+									jQuery('.showmore').html('No more posts!').delay(1000).fadeOut();
+									jQuery('#blog-main>section').css('margin-bottom', '275px');
+								} else {
+									offset = offset + number;
+									jQuery('.empty-div').append(data);
+									busy = false;
+									page_number += 1;
+									//Cufon.replace('.myfont', { fontFamily: 'AvenirRomanBold', hover: true});
+
+								}
+							});
+						});
+					}
+
+				});
+		</script>
+		<div id="1393056748640" class="jquery-lightbox-overlay" style="position: fixed; top: 0px; left: 0px; opacity: 0.6; display: none; z-index: 6999;"></div>
+		<div class="jquery-lightbox-move" style="position: absolute; z-index: 7000; top: -999px; left: -999px;">
+			<div class="jquery-lightbox jquery-lightbox-mode-image">
+				<div class="jquery-lightbox-border-top-left"></div>
+				<div class="jquery-lightbox-border-top-middle"></div>
+				<div class="jquery-lightbox-border-top-right"></div>
+				<a class="jquery-lightbox-button-close" href="http://learnlakenona.com/#close"><span>Close</span></a>
+				<div class="jquery-lightbox-navigator">
+					<a class="jquery-lightbox-button-left" href="http://learnlakenona.com/#"><span>Previous</span></a>
+					<a class="jquery-lightbox-button-right" href="http://learnlakenona.com/#"><span>Next</span></a>
+				</div>
+				<div class="jquery-lightbox-buttons">
+					<div class="jquery-lightbox-buttons-init"></div>
+					<a class="jquery-lightbox-button-left" href="http://learnlakenona.com/#"><span>Previous</span></a>
+					<a class="jquery-lightbox-button-max" href="http://learnlakenona.com/#"><span>Maximize</span></a>
+					<div class="jquery-lightbox-buttons-custom"></div>
+					<a class="jquery-lightbox-button-right" href="http://learnlakenona.com/#"><span>Next</span></a>
+					<div class="jquery-lightbox-buttons-end"></div>
+				</div>
+				<div class="jquery-lightbox-background"></div>
+				<div class="jquery-lightbox-html"></div>
+				<div class="jquery-lightbox-border-bottom-left"></div>
+				<div class="jquery-lightbox-border-bottom-middle"></div>
+				<div class="jquery-lightbox-border-bottom-right"></div>
+			</div>
+		</div>
 			
       </ui:composition>	
   </body>
