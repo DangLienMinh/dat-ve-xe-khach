@@ -1,11 +1,348 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"   
-   xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
    <body>
-      <ui:composition> 
-         <h1>Default Content</h1>
+      <ui:composition>
+      <div id="shell" class="">
+			<div id="staticImage" style="display: block;" class=""></div>
+			<!-- Page start -->
+			<section id="main" class="">
+				<div id="fb-root" class="fb-reset">
+					<!-- Left  botton -->
+					<div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+						<div>
+
+						</div>
+					</div>
+					<div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+						<div>
+
+						</div>
+					</div>
+				</div>
+				<script>
+					$(document).ready(function(){
+						$("#menu-item-1017").hover(function(){
+							$("#community").removeClass("an").addClass("drop-down");
+							$("#live").removeClass("drop-down").addClass("an");
+							$("#commerce").removeClass("drop-down").addClass("an");
+							$("#medical-city").removeClass("drop-down").addClass("an");
+						  });
+						  $("#menu-item-1015").hover(function(){
+							$("#live").removeClass("an").addClass("drop-down");
+							$("#community").removeClass("drop-down").addClass("an");
+							$("#commerce").removeClass("drop-down").addClass("an");
+							$("#medical-city").removeClass("drop-down").addClass("an");
+						  });
+						  $("#menu-item-2661").hover(function(){
+							$("#commerce").removeClass("an").addClass("drop-down");
+							$("#live").removeClass("drop-down").addClass("an");
+							$("#community").removeClass("drop-down").addClass("an");
+							$("#medical-city").removeClass("drop-down").addClass("an");
+						  });
+						  $("#menu-item-1015").hover(function(){
+							$("#medical-city").removeClass("an").addClass("drop-down");
+							$("#live").removeClass("drop-down").addClass("an");
+							$("#community").removeClass("drop-down").addClass("an");
+							$("#commerce").removeClass("drop-down").addClass("an");
+						  });
+					});
+				</script>
+				<!-- End of left botton -->
+				<div class="hanging-video" style="display: block; top: 115px; opacity: 1;">
+					<h:graphicImage styleClass="the-video" library="image" name="video-screen.png" />
+					<a href="https://www.youtube.com/watch?v=4c0fMrVl5u8" class="lightbox" rel="">play</a>
+				</div>
+				<section id="home-slides">
+					<!-- Section to be discussed -->
+				</section>
+				</section>
+		
+         <div id="shelf">
+					<div id="range">
+						<div id="magnify-glass" class="ui-draggable" style="left: 438px;"></div>
+					</div>
+					<div id="prev-arrow"></div>
+					<div id="next-arrow"></div>
+					<div id="shelf-back"></div>
+					<div id="shelf-front"></div>
+					<div id="snapContainer" style="width: 995px; height: 10px; position: absolute; top: 0px; left: 70px; background-color: transparent; z-index: 1; background-position: initial initial; background-repeat: initial initial;">
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: -3px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: 145px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: 290px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: 435px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: 580px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: 725px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+						<span class="snap ui-droppable" style="width: 122px; height: 121px; display: block; position: absolute; top: -60px; left: 870px; background-color: transparent; background-position: initial initial; background-repeat: initial initial;"> </span>
+					</div>
+		</div>
+				<section id="home-main">
+					<section class="left-side">
+						<h3>Tiêu đề bên trái</h3>
+						<div class="fb-icon-home">
+							
+							<h:graphicImage library="image" name="fb-icon-home.png" />
+						</div>
+						<div class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/kent.uit?ref=tn_tnmn" data-width="419" data-height="695" data-show-faces="false" data-stream="true" data-show-border="false" data-header="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=133816266821126&amp;header=false&amp;height=695&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkent.uit%3Fref%3Dtn_tnmn&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=false&amp;stream=true&amp;width=419">
+							<span style="vertical-align: bottom; width: 419px; height: 695px;"> <iframe name="f1ccc2e034" width="419px" height="695px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like_box Facebook Social Plugin" src="like_box.htm" class="" style="border: none; visibility: visible; width: 419px; height: 695px;"></iframe> </span>
+						</div>
+					</section>
+					<section class="right-side">
+						<article class="nona-map">
+							<h3>Bản đồ</h3>
+							
+							<h:graphicImage library="image" name="nona-map-new.png" />
+							<a href="http://learnlakenona.com/community/map/">Hiển thị</a>
+						</article>
+						<article class="nona-pdf">
+							<h4>Chỗ này cho 1 cái slide tin chạy...</h4>
+							<a href="http://learnlakenona.com/#" id="book_flip_left" style="display: block;"> Left Arrow </a>
+							<a href="http://learnlakenona.com/#" id="book_flip_right" style="display: none;"> Right Arrow </a>
+							<div id="nona_books">
+								<ul style="margin-left: -627px;">
+									<li class="">
+										<a href="http://www.joomag.com/magazine/lake-nona-overview-edition-1/0697855001381868048" target="_blank"> <h:graphicImage library="image" name="Nona-Book-new-region-2.png"/></a>
+									</li>
+									<li class="">
+										<a href="#" target="_blank"> <h:graphicImage library="image" name="book_cover_hometv1.png"/></a>
+									</li>
+									<li class="">
+										<a href="http://learnlakenona.com/wp-content/uploads/2011/11/lp_book.pdf" target="_blank"> <h:graphicImage library="image" name="lp_book.png"/></a>
+									</li>
+									<li class="curIndex">
+										<a href="http://learnlakenona.com/wp-content/uploads/2011/11/lake_nona_101.pdf" target="_blank"> <h:graphicImage library="image" name="lake_nona_101.png" /></a>
+									</li>
+								</ul>
+							</div>
+							<div class="controls disabled" style="width: 92px;">
+								<ul>
+								</ul>
+							</div>
+						</article>
+					</section>
+				</section>
+				<section class="nona-wise-blog">
+					<h2>Tiêu đề chỗ này nè</h2>
+					
+					<h:graphicImage styleClass="pencil" library="image" name="pencil.png"/>
+					<article>
+						<time datetime="07-February-2014" pubdate="">
+							07 February 2014
+						</time>
+						<h3><a href="#">Tiêu đề 1 </a></h3>
+						<p>
+							Hiển thị nội dung tóm tắt hoặc những dòng đầu của mục tin...
+						</p>
+					</article>
+					<article>
+						<time datetime="27-January-2014" pubdate="">
+							27 January 2014
+						</time>
+						<h3><a href="#">Tiêu đề 2... </a></h3>
+						<p>
+							Hiển thị nội dung tóm tắt hoặc những dòng đầu của mục tin...
+						</p>
+					</article>
+					<article>
+						<time datetime="25-November-2013" pubdate="">
+							25 November 2013
+						</time>
+						<h3><a href="#">Tiêu đề 3... </a></h3>
+						<p>
+							Hiển thị nội dung tóm tắt hoặc những dòng đầu của mục tin...
+						</p>
+					</article>
+				</section>
+				<section id="timeline">
+					<h2 class="indent">Chỗ này là dòng timeline....</h2>
+					<div>
+						<ul style="width: 3760px; left: 0px;">
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>October </span>2012
+								</time>
+								<p class="">
+									Nemours Children's Hospital opens its state-of-the-art hospital at Lake Nona.
+								</p>
+								<h:graphicImage library="image" name="nem-timeline.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>October </span>2011
+								</time>
+								<p>
+									Lake Nona opens its newest neighborhood, Laureate Park.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="LP-timeline-image.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>August </span>2010
+								</time>
+								<p class="">
+									UCF opens its Medical Education Building and Burnett Biomedical Research Building at Lake Nona.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="UCF-Fire.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>May </span>2009
+								</time>
+								<p>
+									Sanford-Burnham Medical Research Institute opens at Lake Nona.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="4.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>January </span>2008
+								</time>
+								<p>
+									Nemours announces Lake Nona as the location for its new children’s hospital in Orlando.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="5.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>October </span>2007
+								</time>
+								<p>
+									Construction commences on both the UCF Health Sciences Campus and the Burnham Institute’s campus at Lake Nona.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="6.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>March </span>2006
+								</time>
+								<p>
+									The Department of Veterans Affairs announces Lake Nona as the location for its Orlando VA Medical Center.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="7.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>August </span>2006
+								</time>
+								<p>
+									Burnham Institute for Medical Research announces its decision to locate an east coast research facility at Lake Nona. The Tavistock Group donates $...
+								</p>
+								<h:graphicImage library="image" name="8.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>October </span>2005
+								</time>
+								<p>
+									UCF announces plans for a 50-acre Health Sciences Campus at Lake Nona which will include a College of Medicine.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="9.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>April </span>2004
+								</time>
+								<p>
+									Development begins at the VillageWalk and Waters Edge neighborhoods.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="10.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>March </span>2004
+								</time>
+								<p>
+									Lake Nona Golf &amp; Country Club hosts inaugural Tavistock Cup.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="11.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>March </span>2000
+								</time>
+								<p>
+									NLP Community School receives the Urban Land Institute’s Award of Excellence for public/private partnerships.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="12.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>August </span>1999
+								</time>
+								<p>
+									Northlake Park Community School and YMCA is complete.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="13.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>May </span>1998
+								</time>
+								<p>
+									Development begins for Lake Nona’s second neighborhood, NorthLake Park.
+									<br/>
+								</p>
+								<h:graphicImage library="image" name="14.jpg"/>
+								
+							</li>
+							<li class="odd">
+								<time datetime="1997-08">
+									<span>September </span>1996
+								</time>
+								<p>
+									Tavistock Group purchases the Lake Nona Development.
+								</p>
+								<h:graphicImage library="image" name="15.jpg"/>
+								
+							</li>
+							<li class="even">
+								<time datetime="1997-08">
+									<span>January </span>1986
+								</time>
+								<p>
+									Lake Nona Golf &amp; Country Club opens.
+								</p>
+								<h:graphicImage library="image" name="16.jpg"/>
+								
+							</li>
+						</ul>
+					</div>
+					<div id="timeline-controls">
+						<span>dot-1</span>
+						<span>dot-2</span>
+						<span class="">dot-3</span>
+						<a id="timeline-left" href="#" style="display: block;" class="">Move Left</a>
+						<a id="timeline-right" href="#">Move Right</a>
+					</div>
+				</section>
+			</div>
+				<!-- End of timeline -->
       </ui:composition>	
    </body>
 </html>

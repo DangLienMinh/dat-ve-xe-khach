@@ -20,13 +20,13 @@
 		<h:outputStylesheet library="css" name="styles.css" />
 		<h:outputScript library="script" name="l10n.js"/>
    </h:head>
-   <h:body> 
+   <h:body id = "home-page" styleClass="home blog new"> 
          <ui:insert name="header" >
              <ui:include src="/templates/header.xhtml" />
          </ui:insert> 
       <br/>
          <ui:insert name="content" >
-           
+           <ui:include src="/templates/contents.xhtml" />
          </ui:insert>    
       <br/>
          <ui:insert name="footer" >
