@@ -1,0 +1,458 @@
+@charset "UTF-8";
+/* =================== Stylesheet Info =================== */
+
+/*  --------------------------------------------
+* @package Push.
+* @author Lead Developer by Regi Ellis ( rellis@pushhere.com )
+* @author Web Developer by Matt Ma. ( mma@pushhere.com )
+* http://www.pushhere.com
+    --------------------------------------------  */
+    
+/* ================= End Stylesheet Info ================= */
+
+/* ================= Stylesheet Start Now ================ */
+
+/* **************** GLOBAL CSS RESET ***************** Based on Eric Meyer Reset v1.6.1*/
+html   {margin:0;padding:0;border:0;font-size: 100%;}
+body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, dialog, details, figcaption, figure, footer, header, hgroup, nav, section, summary, time, mark, audio, video
+       { margin: 0; padding: 0; border: 0; outline: 0; font-weight:inherit; font-style:inherit; font-family:inherit; font-size: 100%; vertical-align: baseline; background: transparent; }
+body   { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; content: none; }
+a img  { border:none;}
+/* remember to define focus styles! */
+:focus { outline:0;}
+/* remember to highlight inserts somehow! */
+ins    { background-color: rgb(255,255,153); color: rgb(0,0,0); text-decoration:none; }
+mark   { background-color: rgb(255,255,153); color: rgb(0,0,0); font-style: italic; font-weight: bold; }
+del    { text-decoration:line-through; }
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+/* tables still need 'cellspacing="0"' in the markup */
+table  { border-collapse:collapse; border-spacing:0;}
+caption, th, td { text-align:left;font-weight:normal;float:none !important; }
+table, th, td { vertical-align:middle; }
+input, select { vertical-align: middle; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog { display: block; }
+
+/*
+@font-face {
+ font-family: "fontname"; 
+ src: url("../_fonts/fontname.otf");
+} */
+
+/* **************** TYPOGRAPHY LAYOUT ***************** */
+html   { font-size:100.01%; overflow-y: scroll; overflow-x: hidden;} /* Always force a scrollbar in non-IE */
+body   { *font-size:small; font-size:62.5%; margin:0; padding:0; font-family:arial, helvetica, sans-serif; color:rgb(0,0,0); background:rgb(255,255,255);}
+html, body  { height: 100%; }
+/*Opera Fix for Footer Position Stick */
+body:before { content:""; float:left; height:100%; margin-top:-32767px; width:0;}
+
+/* According to Many website study Best Ratio:
+ line height (px) / body copy font size (px) = 1.48
+ line length (px) / line height (px) = 27.8
+ space between paragraphs (px) / line height (px) = 0.754
+ general ranges characters per line is between 75 and 85 characters
+ headings is a range between 18 and 29 pixels.
+*/
+
+/* ====== HEADER ELEMENTS ====== */ /* Best Ratio: Heading font size / Body copy font size = 1.96 */
+h1     { font-size:2.6em;}
+h2     { font-size:2.4em;}
+h3     { font-size:2.1em;}
+h4     { font-size:1.9em;}
+h5     { font-size:1.7em;}
+h6     { font-size:1.5em;}
+h1, h2 { font-weight:700; line-height:1; color:rgb(35, 35, 35); }
+h3, h4, h5, h6 { font-weight:300; line-height:1; color:rgb(102,102,102); }
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+
+/* ====== ELEMENTS ====== */
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+img         {display:block; font-size:0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+em, dfn     {font-style:italic;}
+strong, th, dfn {font-weight:bold;}
+small       { font-size: 85%; }
+td          { vertical-align: top; }
+sup, sub    { font-size:1em; line-height:0; position:relative;}
+sup         { top: -0.5em; }
+sub         { bottom: -0.25em; }
+ol li, ul li{list-style:none;} 
+/*ol        { list-style: decimal; }
+  ul        { list-style: disc; }*/
+ 
+/* ====== LINK ELEMENTS ====== */
+a, a:active { text-decoration:none; color:rgb(166,166,166); outline:none; font-weight:300; display: block;} /* ==CHANGE FOR PROJECT NEED== */
+a:hover     { color:rgb(0,0,0); outline: none; text-decoration: none; -webkit-transition: color 0.5s linear; -moz-transition-property: color; -moz-transition-duration: 0.5s; -moz-transition-timing: linear; -o-transition-property: color; -o-transition-duration: 0.5s; -o-transition-timing: linear; }
+a:link { -webkit-tap-highlight-color: rgb(255,94,153); } /* webkit-tap-highlight-color */
+
+/* ====== HIGHLIGHT ELEMENTS ====== */
+/* Selection declarations have to be separate. Current Color : hot pink! */
+::-moz-selection { background: rgb(255,94,153); color: rgb(255,255,255); text-shadow: none; }
+::selection { background: rgb(45,134,164); color: rgb(255,255,255); text-shadow: none; }
+
+/* ====== MAIN ELEMENTS ====== */ /* Most popular fontsize for body is 13px by Smashing Mag */
+ p
+,fieldset 
+,table
+,li, li a
+,dt, dd   { line-height:1.7em; font-size:1.4em; color:rgb(102,102,102); font-weight:300; } /* ==CHANGE FOR PROJECT NEED== */
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p a, li a {font-size: 1em;}
+
+pre       { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 15px;}
+code      { color: rgb(11,140,143);}
+pre, code, tt, kbd, samp { font:1em 'andale mono', 'lucida console', monospace, sans-serif; line-height:1.5;}
+address   { font-style:italic;}
+blockquote{ margin:1.5em; color:rgb(102,102,102); font-style:italic;}
+
+/* ====== FORM ELEMENTS ====== */
+fieldset  { padding:0 1.5em 1.5em 1.5em; margin:0 0 1.5em 0; }
+legend    { font-weight:bold; font-size:1.3em;}
+select, input, textarea, button { font:99% sans-serif; }
+select    { background-color:rgb(255,255,255); border-width:1px; border-style:solid;}
+textarea  { overflow: auto; } /* IE-remove-textarea-scrollbars */
+
+ input[type=text]
+,input[type=password]
+,textarea { background-color:rgb(255,255,255);}
+
+ input[type=text]:focus
+,input[type=password]:focus
+,textarea:focus { border-color:rgb(204,204,204);}
+
+/* Align checkboxes, radios, text inputs with their label */
+input[type="radio"]    { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }  /* Hand cursor on clickable input elements */
+button, input, select, textarea { margin: 0; } /* Webkit browsers add a 2px margin outside the chrome of form elements */
+button {  width: auto; overflow: visible; }    /* Make buttons play nice in IE: */
+
+/* Colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, 
+textarea:invalid {  border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+/* **************** TEMPLATE ***************** */
+/* ====== Page Head, Body, and Foot ====== */
+.main       { display:table-cell;*display:block;width:auto;}
+ .content
+,.main      { *zoom:1;}
+ .content:after 
+,.main:after{ clear:both;display:block;visibility:hidden;overflow:hidden;height:0 !important;line-height:0;content:" x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";}
+.container  { margin:0 auto;width:960px;_text-align:left;} /* wraps other template elems to set width */ /* Same like OOCSS .page class */
+.liquid     { width:auto;margin:0;} /* "old school" and "liquid" extend page to allow for different page widths */
+/* ====== Columns ====== */
+.left       { float:left;_margin-right:-3px;} /* After define the left or right, it has to add w160 to give a width. */
+.right      { float:right;_margin-left:-3px;} /* Give left and right absolute width, then the main will take whatever left, liquid */
+/* extend columns to allow for common column widths */
+.w160       { width:160px;}
+.w180       { width:180px;}
+.w240       { width:240px;}
+.w300       { width:300px;}
+
+
+/* **************** GRID SYSTEM ***************** */
+/* ====== Setup the fluid grid ====== */
+/* .showgrid   { background:url(../_images/_default/grid.png);} */
+ .line:after 
+,.last:after{ clear:both;display:block;visibility:hidden;overflow:hidden;height:0 !important;line-height:0;content:" x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";}
+.line       { *zoom:1;}
+.unit       { float:left;}
+.size1of1   { float:none;}
+.size1of2   { width:50%;}
+.size1of3   { width:33.33333%;}
+.size2of3   { width:66.66666%;}
+.size1of4   { width:25%;}
+.size3of4   { width:75%;}
+.size1of5   { width:20%;}
+.size2of5   { width:40%;}
+.size3of5   { width:60%;}
+.size4of5   { width:80%;}
+.last       { display:table-cell;float:none;width:auto;*display:block;*zoom:1;_position:relative;_left:-3px;_margin-right:-3px;}
+
+/* ====== Advance Grid system:  Selector could be any block element ====== */
+/* Styling children CSS3. target the first element, then sibling selector. Make equal width. */
+/*
+  li:first-child:nth-last-child(1) { width: 100%; }
+
+  li:first-child:nth-last-child(2),
+  li:first-child:nth-last-child(2) ~ li { width: 50%; }
+
+  li:first-child:nth-last-child(3),
+  li:first-child:nth-last-child(3) ~ li { width: 33.3333%; }
+
+  li:first-child:nth-last-child(4),
+  li:first-child:nth-last-child(4) ~ li { width: 25%; }
+*/
+
+/* **************** UNIVERSAL CLASS ***************** */
+/* Clear Floated Elements /* http://sonspring.com/journal/clearing-floats */
+.clear   { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+/* http://perishablepress.com/press/2009/12/06/new-clearfix-hack */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/* Use this to create a horizontal ruler across a column. */
+hr       { background: rgb(221,221,221); color: rgb(221,221,221); clear: both; float: none; width: 100%; height: .1em; margin: 0 0 1.45em; border: none; }
+hr.space { background: rgb(255,255,255); color: rgb(255,255,255); visibility: hidden; }
+
+.indent  { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.indentEl{ position:absolute; top:-10000em; left:-10000em;}
+.small   { font-size: .8em; line-height: 1.875em;}
+.large   { font-size: 1.2em; line-height: 2.5em; }
+
+/* Surround uppercase words and abbreviations with this class. Based on [http://twistedintellect.com/] */
+.caps    { font-variant:small-caps; letter-spacing:1px; text-transform: lowercase; line-height:1%; font-weight:bold; padding:0 2px; }
+
+.firstEl { margin-left:0; padding-left:0;}
+.lastEl  { margin-right:0; padding-right:0;}
+.topEl   { margin-top:0; padding-top:0;}
+.bottomEl{ margin-bottom:0; padding-bottom:0;}
+
+.Safari input { outline: none; }
+.Safari textarea, 
+.Chrome textarea { resize: none; } /* remove the scrollbar */
+
+.rel     { position: relative; }
+.abs     { position: absolute; top: 0; left: 0; }
+
+.hidden    { display: none; visibility: hidden; } /* Hide for both screenreaders and browsers */
+.invisible { visibility: hidden; } /* Hide visually and from screenreaders, but maintain layout */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; } /* Hide only visually, but 4 screenreaders */
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+@font-face {
+    font-family: 'AvenirRomanItalic';
+    src: url('../fonts/avenir_lt_55_oblique-webfont.eot');
+    src: url('../fonts/avenir_lt_55_oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/avenir_lt_55_oblique-webfont.woff') format('woff'),
+         url('../fonts/avenir_lt_55_oblique-webfont.ttf') format('truetype'),
+         url('../fonts/avenir_lt_55_oblique-webfont.svg#AvenirLT55RomanItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'AvenirRomanRegular';
+    src: url('../fonts/avenir_lt_55_roman-webfont.eot');
+    src: url('../fonts/avenir_lt_55_roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/avenir_lt_55_roman-webfont.woff') format('woff'),
+         url('../fonts/avenir_lt_55_roman-webfont.ttf') format('truetype'),
+         url('../fonts/avenir_lt_55_roman-webfont.svg#AvenirLT55RomanRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AvenirRomanBold';
+    src: url('../fonts/avenir_lt_85_heavy-webfont.eot');
+    src: url('../fonts/avenir_lt_85_heavy-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/avenir_lt_85_heavy-webfont.woff') format('woff'),
+         url('../fonts/avenir_lt_85_heavy-webfont.ttf') format('truetype'),
+         url('../fonts/avenir_lt_85_heavy-webfont.svg#AvenirLT55RomanBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'AvenirRomanBoldItalic';
+    src: url('../fonts/avenir_lt_86_heavy_oblique-webfont.eot');
+    src: url('../fonts/avenir_lt_86_heavy_oblique-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/avenir_lt_86_heavy_oblique-webfont.woff') format('woff'),
+         url('../fonts/avenir_lt_86_heavy_oblique-webfont.ttf') format('truetype'),
+         url('../fonts/avenir_lt_86_heavy_oblique-webfont.svg#AvenirLT55RomanBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: "Shark"; 
+    src: url('../fonts/SharkintheWaterBold.ttf');
+}
+@font-face {
+    font-family: "AvenirBook"; 
+    src: url('../fonts/Avenir_LT_45_Book.ttf');
+}
+
+/* only google and safari will read those css code */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* Special Template First letter browser correction */
+    #main .wide-main article p:first-child:first-letter {
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+}
+
+
+/* **************** PLUGIN SYSTEM ***************** */
+/* ====== Breadcrumb Style ====== */
+/* //turn it on when needed
+.breadcrumb li{ display: inline;}
+.breadcrumb li:after{ content: "\25B8"; display: inline-block; padding: 0 6px 0 10px;}
+.breadcrumb li:last-child:after{content: "";}
+.breadcrumb a {color: #2c4460 !important;}
+*/
+/* Markup: <ul class="breadcrumb"><li><a href="#">Top Level Title</a></li><li>Current Page Title</li></ul>*/
+
+/*------------------------
+---------------- SLider
+------------------------*/
+#home-page #shell #staticImage {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  display: none;
+  background: url("#{resource['image/skip_still.jpg']}") no-repeat 50% 0;
+}
+
+/* You might want to change these options for the main container */
+.slideshow, .slideshow li {
+	min-height: 180px;
+	width: 270px;
+}
+/* images container - This is the most important container - Don't change important properties */
+.slideshow {
+	list-style: none !important;
+	/*float: left; */
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	position: relative !important;
+}
+/* each slider item - Nothing to change here */
+.slideshow li {
+	display: none;
+	float: left;
+	margin: 0;
+	position: absolute;
+	width: 100%;
+}
+/* Don't edit this part */
+.slideshow li.current {
+	display: block;
+	z-index: 2 !important;
+}
+/* Don't edit this part */
+.slideshow li.next {
+	display: block;
+	z-index: 1 !important;
+}
+
+div.hanging-video{
+  display: none;
+  float: right;
+  z-index: 99;
+  position: relative;
+  margin-top: -110px;
+  width: 204px;
+  height: 321px;
+  background: url("#{resource['image/video-bg.png']}") no-repeat 0 20px;
+}
+/* line 2151, sass/main.sass */
+div.hanging-video .the-video {
+  position: absolute;
+  top: 192px;
+  right: 18px;
+  border: 5px solid #dddddd;
+}
+/* line 2157, sass/main.sass */
+div.hanging-video a {
+  position: absolute;
+  width: 52px;
+  height: 50px;
+  top: 213px;
+  left: 72px;
+  text-indent: -9999px;
+  background: url("#{resource['image/play-btn.png']}") no-repeat 0 0;
+}
+/* line 2166, sass/main.sass */
+div.hanging-video a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;
+}
+/* line 2169, sass/main.sass */
+div.hanging-video a.view-all-videos {
+  font-size: 13px;
+  font-family: "AvenirRomanRegular", arial, helvetica, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #f25334;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 299px;
+  left: 0px;
+  text-indent: 0;
+  background: none;
+}
+/* line 2184, sass/main.sass */
+div.hanging-video a.view-all-videos:hover {
+  color: #666666;
+}
+
+
+body {
+  background: #f8f7f1;
+}
+
+
+
+
+/* Don't edit this part - prevents inline lists from being hidden */
+.slideshow li ul li {
+	display: block !important;
+	position: relative !important;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #shell .page-content.generic .page-main form select {
+         font-family: arial,helvetica,sans-serif;
+    }
+    .form-left .wpcf7-form-control-wrap,
+    .form-right .wpcf7-form-control-wrap {
+         display: block;
+         width: 233px;
+         height: 28px;
+    }
+    .wpcf7-form-control-wrap input{
+        width: 233px;
+        height: 28px;
+        display: block;
+        line-height: 25px !important;
+    }
+    .wpcf7-checkbox .wpcf7-list-item {
+        position: relative;
+        display: block;
+        width: auto;
+        min-height: 25px;
+        height: auto;
+    }
+    
+    .wpcf7-checkbox .wpcf7-list-item input {
+        position: absolute;
+        top: 1px;
+        left: 0;
+    }
+    .wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
+        position: absolute;
+        left: 20px;
+        top: 1px;
+        display: block;
+        width: auto;
+        height: auto;
+    }
+}
