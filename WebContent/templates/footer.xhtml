@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	 <body>
       <ui:composition> 
      
@@ -24,8 +25,8 @@
 					</ul>
 					<h:form id="searchform">
 
-						<h:inputText title="test" label="test"></h:inputText>
-						<h:commandButton value="search" id="searchsubmit" styleClass="indent"></h:commandButton>
+						<h:inputText pt:placeholder="Search"></h:inputText>
+						<button type="submit" value="search" id="searchsubmit" class="indent" name="submit" ></button>
 					</h:form>
 
 					<!-- <form method="get" id="searchform" action="http://learnlakenona.com/">
