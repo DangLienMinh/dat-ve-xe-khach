@@ -331,7 +331,7 @@ hr.space { background: rgb(255,255,255); color: rgb(255,255,255); visibility: hi
   height: 53px;
   text-indent: -9999px;
   margin: 0 auto;
-  background: url("#{resource['image/nona-on-facebook.png']}") no-repeat 0 0;
+  background: url("#{resource['image/nona-on-facebook1.png']}") no-repeat 0 0;
   padding-bottom: 15px;
   margin: 0 auto 15px;
 }
@@ -363,7 +363,7 @@ hr.space { background: rgb(255,255,255); color: rgb(255,255,255); visibility: hi
   height: 53px;
   text-indent: -9999px;
   margin: 0 auto;
-  background: url("#{resource['image/explore-map-new.png']}") no-repeat 70px 0;
+  background: url("#{resource['image/explore-map-new1.png']}") no-repeat 70px 0;
   margin: 0 auto 15px;
 }
 /* line 2244, sass/main.sass */
