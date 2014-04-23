@@ -1,0 +1,21 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.TaiKhoan" table="TaiKhoan">
+      <id name="TenDN" type="String" column="TenDN">
+      </id>
+      <property name="MatKhau" column="MatKhau" type="String"/>
+      <many-to-one name="MaPQ" column="MaPQ" 
+       class="model.PhanQuyen" not-null="true"/>
+   </class>
+
+   <class name="model.PhanQuyen" table="PhanQuyen">
+      <id name="MaPQ" type="int" column="MaPQ">
+      </id>
+      <property name="Quyen" column="Quyen" type="String"/>
+   </class>
+
+</hibernate-mapping>

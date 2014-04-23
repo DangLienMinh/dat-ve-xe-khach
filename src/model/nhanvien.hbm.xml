@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.NhanVien" table="NhanVien">
+      <id name="MaNV" type="String" column="MaNV">
+      </id>
+      <property name="CMND" column="CMND" type="String"/>
+      <property name="DiaChi" column="DiaChi" type="String"/>
+      <property name="Email" column="Email" type="String"/>
+      <property name="DienThoai" column="DienThoai" type="String"/>
+      <property name="NgaySinh" column="NgaySinh" type="Date"/>
+      <many-to-one name="TenDN" column="TenDN" 
+       class="model.TaiKhoan" not-null="true"/>
+   </class>
+
+   <class name="model.TaiKhoan" table="TaiKhoan">
+      <id name="TenDN" type="String" column="TenDN">
+      </id>
+      <property name="MatKhau" column="MatKhau" type="String"/>
+   </class>
+
+</hibernate-mapping>
