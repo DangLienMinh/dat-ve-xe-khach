@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.TinTuc" table="TinTuc">
+      <id name="MaTT" type="String" column="MaTT">
+      </id>
+      <property name="TieuDe" column="TieuDe" type="String"/>
+      <property name="NoiDung" column="NoiDung" type="String"/>
+      <property name="HinhAnh" column="HinhAnh" type="String"/>
+      <property name="NgayDang" column="NgayDang" type="Date"/>
+      <property name="TomTat" column="TomTat" type="String"/>
+      <many-to-one name="MaLTT" column="MaLTT" 
+       class="model.LoaiTinTuc" not-null="true"/>
+   </class>
+
+   <class name="model.LoaiTinTuc" table="LoaiTinTuc">
+      <id name="MaLTT" type="String" column="MaLTT">
+      </id>
+      <property name="TenLTT" column="TenLTT" type="String"/>
+   </class>
+
+</hibernate-mapping>

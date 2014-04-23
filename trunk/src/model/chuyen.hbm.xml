@@ -1,0 +1,50 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.Chuyen" table="Chuyen">
+      <id name="MaChuyen" type="String" column="MaChuyen">
+      </id>
+      <property name="TenChuyen" column="TenChuyen" type="String"/>
+      <property name="GioDi" column="GioDi" type="String"/>
+      <property name="GioDen" column="GioDen" type="String"/>
+      <property name="SoGheTrong" column="SoGheTrong" type="int"/>
+      <many-to-one name="MaTX" column="MaTX" 
+       class="model.TaiXe" not-null="true"/>
+       <many-to-one name="BienSo" column="BienSo" 
+       class="model.Xe" not-null="true"/>
+       <many-to-one name="MaTuyen" column="MaTuyen" 
+       class="model.Tuyen" not-null="true"/>
+       
+   </class>
+
+   <class name='model.Xe' table='Xe'>
+	   <id name='BienSo' type='int' column='BienSo' >
+	   </id>
+	   <property name="LoaiXe" column="LoaiXe" type="String"/>
+	   <property name="SoGhe" column="SoGhe" type="int"/>
+   </class>
+   
+   <class name='model.TaiXe' table='TaiXe'>
+	   <id name='MaTX' type='String' column='MaTX' >
+	   </id>
+	   <property name="HoTen" column="HoTen" type="String"/>
+	   <property name="CMND" column="CMND" type="String"/>
+	   <property name="DiaChi" column="DiaChi" type="String"/>
+	   <property name="Email" column="Email" type="String"/>
+	   <property name="DienThoai" column="DienThoai" type="String"/>
+	   <property name="NgaySinh" column="NgaySinh" type="Date"/>
+ 	</class>
+ 	
+ 	 <class name='model.Tuyen' table='Tuyen'>
+	   <id name='MaTuyen' type='String' column='MaTuyen' >
+	   </id>
+	   <property name="TenTuyen" column="TenTuyen" type="String"/>
+	   <property name="BenDau" column="BenDau" type="String"/>
+	   <property name="BenCuoi" column="BenCuoi" type="String"/>
+	   <property name="BangGia" column="BangGia" type="int"/>
+	   <property name="TongThoiGian" column="TongThoiGian" type="float"/>
+ 	</class>
+</hibernate-mapping>

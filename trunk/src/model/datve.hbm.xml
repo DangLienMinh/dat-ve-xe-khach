@@ -1,0 +1,32 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.DatVe" table="DatVe">
+      <id name="MaDV" type="String" column="MaDV">
+      </id>
+      <set name="model.Ghe" cascade="save-update" table="Ghe">
+         <key column="MaDV"/>
+         <many-to-many column="MaGhe" class="model.Ghe"/>
+      </set>
+      <property name="NgayGD" column="NgayGD" type="Date"/>
+      <property name="TongTien" column="TongTien" type="int"/>
+      <property name="NgayDi" column="NgayDi" type="Date"/>
+      <property name="HoTen" column="HoTen" type="String"/>
+      <property name="DiaChi" column="DiaChi" type="String"/>
+      <property name="Email" column="Email" type="String"/>
+      <property name="DienThoai" column="DienThoai" type="String"/>
+      <property name="HinhThucThanhToan" column="HinhThucThanhToan" type="int"/>
+      <many-to-one name="MaChuyen" column="MaChuyen" 
+       class="model.Chuyen" not-null="true"/>
+   </class>
+
+   <class name="model.Ghe" table="Ghe">
+      <id name="MaGhe" type="String" column="MaGhe">
+      </id>
+      <property name="TenGhe" column="TenGhe" type="String"/>
+   </class>
+
+</hibernate-mapping>
