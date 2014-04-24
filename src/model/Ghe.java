@@ -1,8 +1,11 @@
 package model;
 
+import java.util.*;
+
 public class Ghe {
 	 private String MaGhe;
 	 private String TenGhe; 
+	 private Set<DatVe> DatVe = new HashSet<DatVe>(0);
 	 
 	 public Ghe(){}
 	 
@@ -25,5 +28,13 @@ public class Ghe {
 
 	public void setTenGhe(String tenGhe) {
 		TenGhe = tenGhe;
+	}
+
+	public Set<DatVe> getDatVe() {
+		return DatVe;
+	}
+
+	public void setDatVe(Set<DatVe> datVe) {
+		DatVe = datVe;
 	}
 }

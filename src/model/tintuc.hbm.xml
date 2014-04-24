@@ -12,7 +12,7 @@
       <property name="HinhAnh" column="HinhAnh" type="String"/>
       <property name="NgayDang" column="NgayDang" type="Date"/>
       <property name="TomTat" column="TomTat" type="String"/>
-      <many-to-one name="MaLTT" column="MaLTT" 
+      <many-to-one name="MaLTT" column="MaLTT"  fetch="select"
        class="model.LoaiTinTuc" not-null="true"/>
    </class>
 

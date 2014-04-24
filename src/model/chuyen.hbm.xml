@@ -5,12 +5,12 @@
 
 <hibernate-mapping>
    <class name="model.Chuyen" table="Chuyen">
-      <id name="MaChuyen" type="String" column="MaChuyen">
+      <id name="MaChuyen" column="MaChuyen">
       </id>
-      <property name="TenChuyen" column="TenChuyen" type="String"/>
-      <property name="GioDi" column="GioDi" type="String"/>
-      <property name="GioDen" column="GioDen" type="String"/>
-      <property name="SoGheTrong" column="SoGheTrong" type="int"/>
+      <property name="TenChuyen" column="TenChuyen"/>
+      <property name="GioDi" column="GioDi"/>
+      <property name="GioDen" column="GioDen"/>
+      <property name="SoGheTrong" column="SoGheTrong"/>
       <many-to-one name="MaTX" column="MaTX" 
        class="model.TaiXe" not-null="true"/>
        <many-to-one name="BienSo" column="BienSo" 
@@ -21,30 +21,30 @@
    </class>
 
    <class name='model.Xe' table='Xe'>
-	   <id name='BienSo' type='int' column='BienSo' >
+	   <id name='BienSo' column='BienSo' >
 	   </id>
-	   <property name="LoaiXe" column="LoaiXe" type="String"/>
-	   <property name="SoGhe" column="SoGhe" type="int"/>
+	   <property name="LoaiXe" column="LoaiXe"/>
+	   <property name="SoGhe" column="SoGhe"/>
    </class>
    
    <class name='model.TaiXe' table='TaiXe'>
-	   <id name='MaTX' type='String' column='MaTX' >
+	   <id name='MaTX' column='MaTX' >
 	   </id>
-	   <property name="HoTen" column="HoTen" type="String"/>
-	   <property name="CMND" column="CMND" type="String"/>
-	   <property name="DiaChi" column="DiaChi" type="String"/>
-	   <property name="Email" column="Email" type="String"/>
-	   <property name="DienThoai" column="DienThoai" type="String"/>
-	   <property name="NgaySinh" column="NgaySinh" type="Date"/>
+	   <property name="HoTen" column="HoTen"/>
+	   <property name="CMND" column="CMND"/>
+	   <property name="DiaChi" column="DiaChi"/>
+	   <property name="Email" column="Email"/>
+	   <property name="DienThoai" column="DienThoai"/>
+	   <property name="NgaySinh" column="NgaySinh"/>
  	</class>
  	
  	 <class name='model.Tuyen' table='Tuyen'>
-	   <id name='MaTuyen' type='String' column='MaTuyen' >
+	   <id name='MaTuyen' column='MaTuyen' >
 	   </id>
-	   <property name="TenTuyen" column="TenTuyen" type="String"/>
-	   <property name="BenDau" column="BenDau" type="String"/>
-	   <property name="BenCuoi" column="BenCuoi" type="String"/>
-	   <property name="BangGia" column="BangGia" type="int"/>
-	   <property name="TongThoiGian" column="TongThoiGian" type="float"/>
+	   <property name="TenTuyen" column="TenTuyen"/>
+	   <property name="BenDau" column="BenDau"/>
+	   <property name="BenCuoi" column="BenCuoi"/>
+	   <property name="BangGia" column="BangGia"/>
+	   <property name="TongThoiGian" column="TongThoiGian"/>
  	</class>
 </hibernate-mapping>

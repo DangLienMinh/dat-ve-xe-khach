@@ -13,7 +13,7 @@ public class DatVe {
 	 private String Email;  
 	 private String DienThoai;  
      private int HinhThucThanhToan;  
-     private Set<String> Ghe;
+     private Set<Ghe> Ghe;
 	 
 	 public DatVe(){}
 	 
@@ -111,11 +111,11 @@ public class DatVe {
 		HinhThucThanhToan = hinhThucThanhToan;
 	}
 
-	public Set<String> getGhe() {
+	public Set<Ghe> getGhe() {
 		return Ghe;
 	}
 
-	public void setGhe(Set<String> ghe) {
+	public void setGhe(Set<Ghe> ghe) {
 		Ghe = ghe;
 	}
 	

@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.Ghe" table="Ghe">
+      <id name="MaGhe" type="String" column="MaGhe">
+      </id>
+       <property name="TenGhe" column="TenGhe" type="String"/>
+      <set name="DatVe" table="ChiTietDV" inverse="false" lazy="true" fetch="select" cascade="all">
+         <key column="MaGhe" not-null="true"/>
+         <many-to-many column="MaDV"  entity-name="model.DatVe"/>
+      </set>
+     
+   </class>
+</hibernate-mapping>

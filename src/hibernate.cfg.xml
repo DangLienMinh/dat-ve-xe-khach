@@ -14,9 +14,9 @@
         <property name="hibernate.connection.username">BT_TH3</property>
         <property name="hibernate.connection.password">Minh11520232</property>
         <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
-
         <property name="show_sql">true</property>
-       
-
+        
+    	<mapping resource="model/chuyen.hbm.xml" />
+    	
     </session-factory>
 </hibernate-configuration>
