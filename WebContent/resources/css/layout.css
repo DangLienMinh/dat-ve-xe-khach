@@ -73,6 +73,7 @@
 /* line 54, sass/layout.sass */
 #shell {
   padding-top: 360px;
+  height: 600px;
 }
 
 /* Lightbox Cover */
