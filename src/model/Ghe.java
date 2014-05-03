@@ -1,24 +1,22 @@
 package model;
 
-import java.util.*;
-
 public class Ghe {
-	 private String MaGhe;
+	 private int MaGhe;
 	 private String TenGhe; 
-	 private Set<DatVe> DatVe = new HashSet<DatVe>(0);
+	 private LoaiXe MaLoaiXe;
 	 
 	 public Ghe(){}
 	 
-	 public Ghe(String MaGhe,String TenGhe){
+	 public Ghe(int MaGhe,String TenGhe){
 		 this.MaGhe=MaGhe;
 		 this.TenGhe=TenGhe;
 	 }
 
-	public String getMaGhe() {
+	public int getMaGhe() {
 		return MaGhe;
 	}
 
-	public void setMaGhe(String maGhe) {
+	public void setMaGhe(int maGhe) {
 		MaGhe = maGhe;
 	}
 
@@ -30,11 +28,11 @@ public class Ghe {
 		TenGhe = tenGhe;
 	}
 
-	public Set<DatVe> getDatVe() {
-		return DatVe;
+	public LoaiXe getMaLoaiXe() {
+		return MaLoaiXe;
 	}
 
-	public void setDatVe(Set<DatVe> datVe) {
-		DatVe = datVe;
+	public void setMaLoaiXe(LoaiXe maLoaiXe) {
+		MaLoaiXe = maLoaiXe;
 	}
 }

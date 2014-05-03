@@ -17,36 +17,41 @@
       <table>
        <tr>
         <td><h:outputLabel for='name' value='Name:' /></td>
-        <td><p:inputText id='name' value='#{taiXeMBean.hoTen}'/></td>
+        <td><p:inputText id='name' value='#{taiXeMBean.taiXe.ho}'/></td>
        </tr>
        <tr>
         <td><h:outputLabel for='diaChi' value='Dia chi' /></td>
-        <td><p:inputText id='diaChi' value='#{taiXeMBean.diaChi}'/> </td>
+        <td><p:inputText id='diaChi' value='#{taiXeMBean.taiXe.diaChi}'/> </td>
        </tr>
        <tr>
         <td><h:outputLabel for='email' value='email' /></td>
-        <td><p:inputText id='email' value='#{taiXeMBean.email}'/> </td>
+        <td><p:inputText id='email' value='#{taiXeMBean.taiXe.email}'/> </td>
        </tr>
        <tr>
         <td><h:outputLabel for='dienThoai' value='Dien thoai' /></td>
-        <td><p:inputText id='dienThoai' value='#{taiXeMBean.dienThoai}'/> </td>
+        <td><p:inputText id='dienThoai' value='#{taiXeMBean.taiXe.dienThoai}'/> </td>
        </tr>
        <tr>
         <td><h:outputLabel for='cmnd' value='CMND' /></td>
-        <td><p:inputText id='cmnd' value='#{taiXeMBean.CMND}'/> </td>
+        <td><p:inputText id='cmnd' value='#{taiXeMBean.taiXe.CMND}'/> </td>
        </tr>
        <tr>
         <td><h:outputLabel for='maTX' value='Tai xe' /></td>
-        <td><p:inputText id='maTX' value='#{taiXeMBean.maTX}'/> </td>
+        <td><p:inputText id='maTX' value='#{taiXeMBean.taiXe.maTX}'/> </td>
        </tr>
        <tr>
         <td><h:outputLabel for='NgaySinh' value='Ngay sinh' /></td>
-        <td><p:calendar id='NgaySinh' value='#{taiXeMBean.ngaySinh}'/></td>
+        <td><p:calendar id='NgaySinh' value='#{taiXeMBean.taiXe.ngaySinh}'/></td>
        </tr>
           <tr>
         <td><p:commandButton id='submit' value='Save' action='#{taiXeMBean.themTaiXe}' ajax='false'/></td>
+        <td><p:commandButton id='update' value='Update' action='#{taiXeMBean.suaTaiXe}' ajax='false'/></td>
+         <td><p:commandButton id='delete' value='delete' action='#{taiXeMBean.xoaTaiXe}' ajax='false'/></td>
+         <td><p:commandButton id='list' value='danh sach' action='#{taiXeMBean.danhSachTaiXe}' ajax='false'/></td>
         <td><p:commandButton id='reset' value='Reset' action='#{taiXeMBean.reset}' ajax='false'/></td>
+        
        </tr>
+       
       </table>
      </h:form>
 </body>

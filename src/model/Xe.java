@@ -1,32 +1,32 @@
 package model;
 
 public class Xe {
-	   private int BienSo;
-	   private String LoaiXe; 
+	   private String BienSo;
+	   private LoaiXe MaLoaiXe; 
 	   private int SoGhe;   
 
 	   public Xe() {}
 	   
-	   public Xe(int BienSo,String LoaiXe, int SoGhe) {
+	   public Xe(String BienSo,LoaiXe MaLoaiXe, int SoGhe) {
 		   this.BienSo=BienSo;
-		   this.LoaiXe=LoaiXe;
+		   this.MaLoaiXe=MaLoaiXe;
 		   this.SoGhe=SoGhe;
 	   }
 
-		public int getBienSo() {
+		public String getBienSo() {
 			return BienSo;
 		}
 	
-		public void setBienSo(int bienSo) {
+		public void setBienSo(String bienSo) {
 			BienSo = bienSo;
 		}
 	
-		public String getLoaiXe() {
-			return LoaiXe;
+		public LoaiXe getLoaiXe() {
+			return MaLoaiXe;
 		}
 	
-		public void setLoaiXe(String loaiXe) {
-			LoaiXe = loaiXe;
+		public void setLoaiXe(LoaiXe loaiXe) {
+			MaLoaiXe = loaiXe;
 		}
 	
 		public int getSoGhe() {

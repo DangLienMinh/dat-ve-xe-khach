@@ -9,4 +9,19 @@
   <managed-bean-class>controller.TaiXeManagedBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+  <managed-bean>
+  <managed-bean-name>taiKhoanMBean</managed-bean-name>
+  <managed-bean-class>controller.TaiKhoanManagedBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+  <managed-bean>
+  <managed-bean-name>phanQuyenMBean</managed-bean-name>
+  <managed-bean-class>controller.PhanQuyenManagedBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+  <managed-bean>
+  <managed-bean-name>nhanVienMBean</managed-bean-name>
+  <managed-bean-class>controller.NhanVienManagedBean</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
 </faces-config>

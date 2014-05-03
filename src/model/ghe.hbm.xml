@@ -5,13 +5,23 @@
 
 <hibernate-mapping>
    <class name="model.Ghe" table="Ghe">
-      <id name="MaGhe" type="String" column="MaGhe">
+      <id name="MaGhe" column="MaGhe">
+       <generator class="increment"/>
       </id>
-       <property name="TenGhe" column="TenGhe" type="String"/>
-      <set name="DatVe" table="ChiTietDV" inverse="false" lazy="true" fetch="select" cascade="all">
+       <property name="TenGhe" column="TenGhe"/>
+       <many-to-one name="MaLoaiXe" column="MaLoaiXe"  cascade="all"
+       class="model.LoaiXe" not-null="true"/> 
+      <set name="DatVe" table="ChiTietHoaDon" inverse="false" lazy="true" fetch="select" cascade="all">
          <key column="MaGhe" not-null="true"/>
-         <many-to-many column="MaDV"  entity-name="model.DatVe"/>
+         <many-to-many column="MaHD"  entity-name="model.HoaDon"/>
       </set>
      
+   </class>
+   <class name="model.LoaiXe" table="LoaiXe">
+      <id name="MaLoaiXe" column="MaLoaiXe">
+      <generator class="increment"/>
+      </id>
+      <property name="TenLoaiXe" column="TenLoaiXe"/>
+       <property name="GiuongNam" column="GiuongNam"/>
    </class>
 </hibernate-mapping>
