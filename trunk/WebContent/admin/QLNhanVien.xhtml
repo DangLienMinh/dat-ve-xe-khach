@@ -1,0 +1,177 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe">  
+	            <p:menuitem value="Quản lí tuyến xe"/>  
+	            <p:menuitem value="Quản lí chuyến xe"/>  
+	        </p:submenu>  
+	        <p:menuitem value="Quản lí xe"/>  
+	        <p:menuitem value="Quản lí tài xế"/> 
+	        <p:menuitem value="Báo cáo thống kê"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản"/> 
+	    </p:tieredMenu>  
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	     <p:dataTable  var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{nhanVienMBean.filteredDanhSach}">   
+	     
+		  
+	        <f:facet name="header">  
+	            Danh sách nhân viên
+	        </f:facet>  
+	  
+	        <p:column headerText="Mã NV" style="font-size:14px!important;"  filterBy="maNV">  
+	            <h:outputText  value="#{ds.maNV}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Họ" style="font-size:14px!important;" filterBy="ho">  
+	            <h:outputText value="#{ds.ho}" />  
+	        </p:column>  
+	         <p:column headerText="Tên" style="font-size:14px!important;" filterBy="ten">  
+	            <h:outputText value="#{ds.ten}" />  
+	        </p:column>  
+	        <p:column headerText="CMND" style="font-size:14px!important;" filterBy="CMND">  
+	            <h:outputText value="#{ds.CMND}" />  
+	        </p:column>  
+	        <p:column headerText="Địa chỉ" style="font-size:14px!important;" filterBy="diaChi">  
+	            <h:outputText value="#{ds.diaChi}" />  
+	        </p:column>  
+	        <p:column headerText="Email" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.email}" />  
+	        </p:column>  
+	        <p:column headerText="Điện thoại" style="font-size:14px!important;" filterBy="dienThoai">  
+	            <h:outputText value="#{ds.dienThoai}" />  
+	        </p:column>
+	         <p:column headerText="Ngày sinh" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.ngaySinh}" >
+	            	<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+	            </h:outputText>  
+	        </p:column>
+	        
+	       
+	  		<p:column style="font-size:14px!important;">
+	  		<p:commandButton  icon="ui-icon-close" action='#{nhanVienMBean.xoaNhanVien(ds)}'></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{nhanVienMBean.capNhat(ds,ds.maPQ)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(nhanVienMBean.danhSach)} nhân viên.  
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+		 <p:separator/>
+		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab id="tba1" title="Thêm mới nhân viên">
+	            <h:panelGrid columns="2" >
+				   <h:outputLabel value='Phân quyền' />
+				   <p:selectOneMenu value="#{nhanVienMBean.phanQuyen.maPQ}">
+				   		<f:selectItems value="#{phanQuyenMBean.selectOneItemPQ}" />
+				   	</p:selectOneMenu>
+				   	
+				   	
+			       <h:outputLabel value='Họ' />
+			       <p:inputText value='#{nhanVienMBean.nhanVien.ho}'/>
+			   
+			       <h:outputLabel value='Tên' />
+			       <p:inputText value='#{nhanVienMBean.nhanVien.ten}'/>
+			  
+			       <h:outputLabel value='Chứng minh nhân dân' />
+			       <p:inputText value='#{nhanVienMBean.nhanVien.CMND}'/>
+			   
+			       <h:outputLabel value='Điện thoại' />
+			       <p:inputText value='#{nhanVienMBean.nhanVien.dienThoai}'/>
+			    
+			       <h:outputLabel value='Địa chỉ' />
+			       <p:inputText value='#{nhanVienMBean.nhanVien.diaChi}'/>
+			    
+			       <h:outputLabel value='Email' />
+			   	   <p:inputText value='#{nhanVienMBean.nhanVien.email}'/>
+			    
+			   	   <h:outputLabel value='Tên đăng nhập' />
+			       <p:inputText value='#{nhanVienMBean.nhanVien.tenDN}'/>
+			  
+			       <h:outputLabel value='Mật khẩu' />
+			       <p:password value='#{nhanVienMBean.nhanVien.matKhau}' feedback="true"/>
+			       
+			       
+			   
+			       <h:outputLabel value="Ngày sinh: " />
+			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
+
+			       <p:commandButton id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}'/>
+				   <p:commandButton id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' ajax='false'/>
+	            </h:panelGrid>  
+	           
+	        </p:tab>  
+	  
+	         <p:tab id="tba2" title="Sửa nhân viên" >  
+	            <h:panelGrid columns="2"  id="grid1">  
+	               <h:outputLabel value='Mã nhân viên' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.maNV}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       
+			    <h:outputLabel value='Phân quyền' />
+				   <p:selectOneMenu value="#{nhanVienMBean.selectedPhanQuyen.maPQ}">
+				   		<f:selectItems value="#{phanQuyenMBean.selectOneItemPQ}" />
+				   	</p:selectOneMenu>
+			       
+			       <h:outputLabel value='Họ' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.ho}'/>
+			   
+			       <h:outputLabel value='Tên' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.ten}'/>
+			  
+			       <h:outputLabel value='Chứng minh nhân dân' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.CMND}'/>
+			   
+			       <h:outputLabel value='Điện thoại' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.dienThoai}'/>
+			    
+			       <h:outputLabel value='Địa chỉ' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.diaChi}'/>
+			    
+			       <h:outputLabel value='Email' />
+			   	   <p:inputText value='#{nhanVienMBean.selectedNV.email}'/>
+			    
+			   	   <h:outputLabel value='Tên đăng nhập' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.tenDN}'/>
+			  
+			       <h:outputLabel value='Mật khẩu' />
+			       <p:inputText value='#{nhanVienMBean.selectedNV.matKhau}'/>
+			   
+			       <h:outputLabel value="Ngày sinh: " />
+			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
+				   <p:commandButton id='Update' value='Sửa' action='#{nhanVienMBean.suaNhanVien}' ajax='false'/>
+	            </h:panelGrid>  
+	        </p:tab>   
+    	</p:tabView>  
+		
+     </h:form> 
+     </div>
+     
+</body>
+</html>
+

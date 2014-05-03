@@ -1,10 +1,12 @@
 package model;
 
+import java.util.Date;
+
 public class Chuyen {
-	   private String MaChuyen;
+	   private int MaChuyen;
 	   private String TenChuyen;   
-	   private String GioDi;  
-	   private String GioDen;  
+	   private Date GioDi;  
+	   private Date GioDen;  
 	   private int SoGheTrong;  
 	   private TaiXe MaTX;  
 	   private Xe BienSo;
@@ -12,22 +14,22 @@ public class Chuyen {
 	   
 	   public Chuyen() {}
 	   
-	   public Chuyen(String MaChuyen,String TenChuyen, String GioDi, String GioDen,int SoGheTrong,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
+	   public Chuyen(int MaChuyen,String TenChuyen, Date GioDi, Date GioDen,int SoGheTrong,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
 		   this.MaChuyen=MaChuyen;
 		   this.TenChuyen=TenChuyen;
-		   this.GioDi=GioDi;
-		   this.GioDen=GioDen;
+		   this.setGioDi(GioDi);
+		   this.setGioDen(GioDen);
 		   this.SoGheTrong=SoGheTrong;
 		   this.MaTX=MaTX;
 		   this.BienSo=BienSo;
 		   this.MaTuyen=MaTuyen;
 	   }
 
-		public String getMaChuyen() {
+		public int getMaChuyen() {
 			return MaChuyen;
 		}
 	
-		public void setMaChuyen(String maChuyen) {
+		public void setMaChuyen(int maChuyen) {
 			MaChuyen = maChuyen;
 		}
 	
@@ -37,23 +39,7 @@ public class Chuyen {
 	
 		public void setTenChuyen(String tenChuyen) {
 			TenChuyen = tenChuyen;
-		}
-	
-		public String getGioDi() {
-			return GioDi;
-		}
-	
-		public void setGioDi(String gioDi) {
-			GioDi = gioDi;
-		}
-	
-		public String getGioDen() {
-			return GioDen;
-		}
-	
-		public void setGioDen(String gioDen) {
-			GioDen = gioDen;
-		}
+		}	
 	
 		public int getSoGheTrong() {
 			return SoGheTrong;
@@ -85,6 +71,22 @@ public class Chuyen {
 	
 		public void setMaTuyen(Tuyen maTuyen) {
 			MaTuyen = maTuyen;
+		}
+
+		public Date getGioDi() {
+			return GioDi;
+		}
+
+		public void setGioDi(Date gioDi) {
+			GioDi = gioDi;
+		}
+
+		public Date getGioDen() {
+			return GioDen;
+		}
+
+		public void setGioDen(Date gioDen) {
+			GioDen = gioDen;
 		}
 
 }

@@ -1,29 +1,27 @@
 package model;
 
 public class Tuyen {
-	   private String MaTuyen;
+	   private int MaTuyen;
 	   private String TenTuyen;   
 	   private String BenDau;  
 	   private String BenCuoi;  
-	   private int BangGia;  
-	   private float TongThoiGian;  
+	   private int Gia;  
 
 	   public Tuyen() {}
 	   
-	   public Tuyen(String MaTuyen,String TenTuyen, String BenDau, String BenCuoi,int BangGia,float TongThoiGian) {
+	   public Tuyen(int MaTuyen,String TenTuyen, String BenDau, String BenCuoi,int Gia) {
 		   this.MaTuyen=MaTuyen;
 		   this.TenTuyen=TenTuyen;
 		   this.BenDau=BenDau;
 		   this.BenCuoi=BenCuoi;
-		   this.BangGia=BangGia;
-		   this.TongThoiGian=TongThoiGian;
+		   this.Gia=Gia;
 	   }
 
-		public String getMaTuyen() {
+		public int getMaTuyen() {
 			return MaTuyen;
 		}
 	
-		public void setMaTuyen(String maTuyen) {
+		public void setMaTuyen(int maTuyen) {
 			MaTuyen = maTuyen;
 		}
 	
@@ -52,18 +50,11 @@ public class Tuyen {
 		}
 	
 		public int getBangGia() {
-			return BangGia;
+			return Gia;
 		}
 	
-		public void setBangGia(int bangGia) {
-			BangGia = bangGia;
+		public void setBangGia(int gia) {
+			Gia = gia;
 		}
 	
-		public float getTongThoiGian() {
-			return TongThoiGian;
-		}
-	
-		public void setTongThoiGian(float tongThoiGian) {
-			TongThoiGian = tongThoiGian;
-		}
 }

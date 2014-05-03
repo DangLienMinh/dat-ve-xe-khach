@@ -26,7 +26,10 @@ public class PhanQuyen {
 		public void setQuyen(String quyen) {
 			Quyen = quyen;
 		}
-
-		
+		@Override
+		public String toString(){
+			return Integer.toString(MaPQ);
+			
+		}
 }
 

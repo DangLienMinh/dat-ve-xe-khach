@@ -1,21 +1,21 @@
 package model;
 
 public class LoaiTinTuc {
-	 private String MaLTT;
+	 private int MaLTT;
 	 private String TenLTT; 
 	 
 	 public LoaiTinTuc(){}
 	 
-	 public LoaiTinTuc(String MaLTT,String TenLTT){
+	 public LoaiTinTuc(int MaLTT,String TenLTT){
 		 this.MaLTT=MaLTT;
 		 this.TenLTT=TenLTT;
 	 }
 
-	public String getMaLTT() {
+	public int getMaLTT() {
 		return MaLTT;
 	}
 
-	public void setMaLTT(String maLTT) {
+	public void setMaLTT(int maLTT) {
 		MaLTT = maLTT;
 	}
 

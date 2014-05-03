@@ -4,22 +4,27 @@
 'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
 
 <hibernate-mapping>
-   <class name="model.NhanVien" table="NhanVien">
-      <id name="MaNV" type="String" column="MaNV">
+   <class name="model.NhanVien" table="NhanVien"  dynamic-update="true">
+      <id name="MaNV" column="MaNV">
+      <generator class="increment"></generator>
       </id>
-      <property name="CMND" column="CMND" type="String"/>
-      <property name="DiaChi" column="DiaChi" type="String"/>
-      <property name="Email" column="Email" type="String"/>
-      <property name="DienThoai" column="DienThoai" type="String"/>
-      <property name="NgaySinh" column="NgaySinh" type="Date"/>
-      <many-to-one name="TenDN" column="TenDN" 
-       class="model.TaiKhoan" not-null="true"/>
+      <property name="Ho" column="Ho"/>
+      <property name="Ten" column="Ten"/>
+      <property name="CMND" column="CMND"/>
+      <property name="DiaChi" column="DiaChi"/>
+      <property name="Email" column="Email"/>
+      <property name="DienThoai" column="DienThoai"/>
+      <property name="NgaySinh" column="NgaySinh"/>
+      <property name="MatKhau" column="MatKhau"/>
+      <property name="TenDN" column="TenDN"/>
+      <many-to-one name="MaPQ" column="MaPQ" 
+       class="model.PhanQuyen" not-null="true"/>
    </class>
 
-   <class name="model.TaiKhoan" table="TaiKhoan">
-      <id name="TenDN" type="String" column="TenDN">
+   <class name="model.PhanQuyen" table="PhanQuyen"  dynamic-update="true">
+      <id name="MaPQ" column="MaPQ">
+      <generator class="increment"/>
       </id>
-      <property name="MatKhau" column="MatKhau" type="String"/>
+      <property name="Quyen" column="Quyen"/>
    </class>
-
 </hibernate-mapping>

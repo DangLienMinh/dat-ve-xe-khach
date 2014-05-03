@@ -2,7 +2,7 @@ package model;
 import java.util.Date;
 
 public class TinTuc {
-	   private String MaTT;
+	   private int MaTT;
 	   private TinTuc MaLTT; 
 	   private String TieuDe;   
 	   private String NoiDung;  
@@ -12,7 +12,7 @@ public class TinTuc {
 
 	   public TinTuc() {}
 	   
-	   public TinTuc(String MaTT,TinTuc MaLTT, String TieuDe, String NoiDung,String HinhAnh,Date NgayDang,String TomTat) {
+	   public TinTuc(int MaTT,TinTuc MaLTT, String TieuDe, String NoiDung,String HinhAnh,Date NgayDang,String TomTat) {
 		   this.TomTat=TomTat;
 		   this.MaLTT=MaLTT;
 		   this.TieuDe=TieuDe;
@@ -22,11 +22,11 @@ public class TinTuc {
 		   this.TomTat=TomTat;
 	   }
 
-		public String getMaTT() {
+		public int getMaTT() {
 			return MaTT;
 		}
 	
-		public void setMaTT(String maTT) {
+		public void setMaTT(int maTT) {
 			MaTT = maTT;
 		}
 	

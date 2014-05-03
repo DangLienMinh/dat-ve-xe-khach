@@ -3,6 +3,18 @@ body {
   background: #f8f7f1;
 }
 
+.menuTrai{
+	float: left;
+}
+
+.noiDung{
+	margin-left:250px;!important;
+}
+
+.binhThuong{
+	clear:both;
+}
+
 #home-page #shell #staticImage {
   position: absolute;
   z-index: 1;

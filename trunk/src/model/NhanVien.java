@@ -3,42 +3,42 @@ package model;
 import java.util.Date;
 
 public class NhanVien {
-	   private String MaNV;
-	   private TaiKhoan TenDN; 
+	   private int MaNV;
+	   private String TenDN; 
+	   private String Ho;
+	   private String Ten;
 	   private String CMND;
 	   private String DiaChi;  
 	   private String Email;  
 	   private String DienThoai;  
 	   private Date NgaySinh;  
+	   private String MatKhau; 
+	   private PhanQuyen MaPQ;
 	   
 	   public NhanVien() {}
 	   
-	   public NhanVien(String MaNV,TaiKhoan TenDN,String CMND,String DiaChi,String Email,String DienThoai,Date NgaySinh) {
+	   public NhanVien(int MaNV,String Ho,String Ten,String TenDN,String MatKhau,String CMND,String DiaChi,String Email,String DienThoai,Date NgaySinh,PhanQuyen MaPQ) {
 		   this.MaNV=MaNV;
-		   this.TenDN=TenDN;
+		   this.setTenDN(TenDN);
+		   this.setMatKhau(MatKhau);
 		   this.CMND=CMND;
 		   this.DiaChi=DiaChi;
 		   this.Email=Email;
 		   this.DienThoai=DienThoai;
 		   this.NgaySinh=NgaySinh;
+		   this.Ho=Ho;
+		   this.Ten=Ten;
+		   this.MaPQ=MaPQ;
+		   
 	   }
 
-		public String getMaNV() {
+		public int getMaNV() {
 			return MaNV;
 		}
 	
-		public void setMaNV(String maNV) {
+		public void setMaNV(int maNV) {
 			MaNV = maNV;
 		}
-	
-		public TaiKhoan getTenDN() {
-			return TenDN;
-		}
-	
-		public void setTenDN(TaiKhoan tenDN) {
-			TenDN = tenDN;
-		}
-	
 		public String getCMND() {
 			return CMND;
 		}
@@ -77,6 +77,46 @@ public class NhanVien {
 	
 		public void setNgaySinh(Date ngaySinh) {
 			NgaySinh = ngaySinh;
+		}
+
+		public String getHo() {
+			return Ho;
+		}
+
+		public void setHo(String ho) {
+			Ho = ho;
+		}
+
+		public String getTen() {
+			return Ten;
+		}
+
+		public void setTen(String ten) {
+			Ten = ten;
+		}
+
+		public String getTenDN() {
+			return TenDN;
+		}
+
+		public void setTenDN(String tenDN) {
+			TenDN = tenDN;
+		}
+
+		public String getMatKhau() {
+			return MatKhau;
+		}
+
+		public void setMatKhau(String matKhau) {
+			MatKhau = matKhau;
+		}
+
+		public PhanQuyen getMaPQ() {
+			return MaPQ;
+		}
+
+		public void setMaPQ(PhanQuyen maPQ) {
+			MaPQ = maPQ;
 		}
 
 	

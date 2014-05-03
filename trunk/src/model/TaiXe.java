@@ -2,8 +2,9 @@ package model;
 import java.util.Date;
 
 	public class TaiXe {
-	   private String MaTX;
-	   private String HoTen; 
+	   private int MaTX;
+	   private String Ho;
+	   private String Ten; 
 	   private String CMND;   
 	   private String DiaChi;  
 	   private String Email;  
@@ -11,27 +12,28 @@ import java.util.Date;
 	   private Date NgaySinh;  
 
 	   public TaiXe() {}
-	   public TaiXe(String MaTX,String HoTen, String CMND, String DiaChi,String Email,String DienThoai,Date NgaySinh) {
+	   public TaiXe(int MaTX,String Ho,String Ten, String CMND, String DiaChi,String Email,String DienThoai,Date NgaySinh) {
 		   this.MaTX=MaTX;
-		   this.HoTen=HoTen;
+		   this.Ho=Ho;
+		   this.setTen(Ten);
 		   this.CMND=CMND;
 		   this.DiaChi=DiaChi;
 		   this.Email=Email;
 		   this.DienThoai=DienThoai;
 		   this.NgaySinh=NgaySinh;
 	   }
-		public String getMaTX() {
+		public int getMaTX() {
 			return MaTX;
 		}
 
-		public void setMaTX(String maTX) {
+		public void setMaTX(int maTX) {
 			MaTX = maTX;
 		}
-		public String getHoTen() {
-			return HoTen;
+		public String getHo() {
+			return Ho;
 		}
-		public void setHoTen(String hoTen) {
-			HoTen = hoTen;
+		public void setHo(String ho) {
+			Ho = ho;
 		}
 		public String getCMND() {
 			return CMND;
@@ -63,4 +65,11 @@ import java.util.Date;
 		public void setNgaySinh(Date ngaySinh) {
 			NgaySinh = ngaySinh;
 		}
+		public String getTen() {
+			return Ten;
+		}
+		public void setTen(String ten) {
+			Ten = ten;
+		}
+		
 }

@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.HoaDon" table="HoaDon">
+      <id name="MaHD" column="MaDV">
+       <generator class="increment"></generator>
+     </id>
+      <property name="NgayGD" column="NgayGD"/>
+      <property name="NgayNhanVe" column="NgayNhanVe"/>
+      <property name="TongTien" column="TongTien"/>
+      <property name="NgayDi" column="NgayDi"/>
+      <property name="Ho" column="Ho"/>
+      <property name="Ten" column="Ten"/>
+      <property name="CMND" column="CMND"/>
+      <property name="DiaChi" column="DiaChi"/>
+      <property name="Email" column="Email"/>
+      <property name="DienThoai" column="DienThoai"/>
+      <property name="HinhThucThanhToan" column="HinhThucThanhToan"/>
+      <set name="Ghe"   table="ChiTietHoaDon" inverse="true" lazy="true" fetch="select">
+         <key column="MaHD" not-null="true"/>
+         <many-to-many column="MaGhe" class="model.Ghe"/>
+      </set>
+      
+      <many-to-one name="MaChuyen" column="MaChuyen" 
+       class="model.Chuyen" not-null="true"/>
+   </class>
+</hibernate-mapping>

@@ -6,6 +6,7 @@
 <hibernate-mapping>
    <class name="model.Chuyen" table="Chuyen">
       <id name="MaChuyen" column="MaChuyen">
+       <generator class="increment"></generator>
       </id>
       <property name="TenChuyen" column="TenChuyen"/>
       <property name="GioDi" column="GioDi"/>
@@ -23,14 +24,17 @@
    <class name='model.Xe' table='Xe'>
 	   <id name='BienSo' column='BienSo' >
 	   </id>
-	   <property name="LoaiXe" column="LoaiXe"/>
+	   <many-to-one name="MaLoaiXe" column="MaLoaiXe" 
+       class="model.LoaiXe" not-null="true"/>
 	   <property name="SoGhe" column="SoGhe"/>
    </class>
    
    <class name='model.TaiXe' table='TaiXe'>
 	   <id name='MaTX' column='MaTX' >
+	   <generator class="increment"></generator>
 	   </id>
-	   <property name="HoTen" column="HoTen"/>
+	   <property name="Ho" column="Ho"/>
+	   <property name="Ten" column="Ten"/>
 	   <property name="CMND" column="CMND"/>
 	   <property name="DiaChi" column="DiaChi"/>
 	   <property name="Email" column="Email"/>
@@ -45,6 +49,13 @@
 	   <property name="BenDau" column="BenDau"/>
 	   <property name="BenCuoi" column="BenCuoi"/>
 	   <property name="BangGia" column="BangGia"/>
-	   <property name="TongThoiGian" column="TongThoiGian"/>
+ 	</class>
+ 	
+ 	 <class name='model.LoaiXe' table='Tuyen'>
+	   <id name='MaLoaiXe' column='MaLoaiXe' >
+	   <generator class="increment"></generator>
+	   </id>
+	   <property name="TenLoaiXe" column="TenLoaiXe"/>
+	   <property name="GiuongNam" column="GiuongNam"/>
  	</class>
 </hibernate-mapping>

@@ -1,0 +1,34 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+     >
+
+ <h:head>
+ <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <h:form>
+      <table>
+       <tr>
+        <td><h:outputLabel for='name' value='ten dn:' /></td>
+        <td><p:inputText id='name' value='#{nhanVienMBean.nhanVien.tenDN}'/></td>
+       </tr>
+       
+       <tr>
+        <td><h:outputLabel for='pass' value='mat khau' /></td>
+        <td><p:inputText id='pass' value='#{nhanVienMBean.nhanVien.matKhau}'/> </td>
+       </tr>
+        <tr>
+        <td><p:commandButton id='submit' value='dag nhap' action='#{nhanVienMBean.dangNhap}' ajax='false'/></td>
+       </tr>
+       
+      </table>
+     </h:form>
+</body>
+</html>

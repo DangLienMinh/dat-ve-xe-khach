@@ -5,21 +5,23 @@
 
 <hibernate-mapping>
    <class name="model.TinTuc" table="TinTuc">
-      <id name="MaTT" type="String" column="MaTT">
+      <id name="MaTT" column="MaTT">
+      <generator class="increment"></generator>
       </id>
-      <property name="TieuDe" column="TieuDe" type="String"/>
-      <property name="NoiDung" column="NoiDung" type="String"/>
-      <property name="HinhAnh" column="HinhAnh" type="String"/>
-      <property name="NgayDang" column="NgayDang" type="Date"/>
-      <property name="TomTat" column="TomTat" type="String"/>
+      <property name="TieuDe" column="TieuDe"/>
+      <property name="NoiDung" column="NoiDung"/>
+      <property name="HinhAnh" column="HinhAnh"/>
+      <property name="NgayDang" column="NgayDang"/>
+      <property name="TomTat" column="TomTat"/>
       <many-to-one name="MaLTT" column="MaLTT"  fetch="select"
        class="model.LoaiTinTuc" not-null="true"/>
    </class>
 
    <class name="model.LoaiTinTuc" table="LoaiTinTuc">
-      <id name="MaLTT" type="String" column="MaLTT">
+      <id name="MaLTT" column="MaLTT">
+      <generator class="increment"></generator>
       </id>
-      <property name="TenLTT" column="TenLTT" type="String"/>
+      <property name="TenLTT" column="TenLTT"/>
    </class>
 
 </hibernate-mapping>
