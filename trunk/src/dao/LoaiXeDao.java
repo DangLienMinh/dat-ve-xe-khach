@@ -1,21 +1,22 @@
 package dao;
 
+import hibernateUtil.HibernateUtil;
+
 import java.util.List;
 
-import hibernateUtil.HibernateUtil;
+import model.LoaiXe;
 import model.PhanQuyen;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class PhanQuyenDao {
+public class LoaiXeDao {
 
-
-	public List<PhanQuyen> selectItems(){
-		List<PhanQuyen> list=null;
+	public List<LoaiXe> selectItems(){
+		List<LoaiXe> list=null;
 		Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String sql="From PhanQuyen";
+        String sql="From LoaiXe";
         try {
         	trns=session.beginTransaction();
         	list = session.createQuery(sql).list();

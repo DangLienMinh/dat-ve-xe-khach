@@ -4,26 +4,21 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.util.Iterator;
 import java.util.List;
-
 import hibernateUtil.HibernateUtil;
 import oracle.jdbc.OracleTypes;
-
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
-
 import model.NhanVien;
 import model.PhanQuyen;
-import model.TaiXe;
+
 
 public class NhanVienDao {
-	private NhanVien x;
 
 	public NhanVien layThongTin(NhanVien temp){
-		
 		NhanVien nhanVien=new NhanVien();
 		nhanVien.setMaNV(temp.getMaNV());
 		nhanVien.setCMND(temp.getCMND());
@@ -98,7 +93,7 @@ public class NhanVienDao {
 		 	    st.execute();
 		 	   returnResult = st.getInt(3);
 			} catch (Exception e) {
-				System.out.print("dkm");
+				System.out.print("Không tìm thấy tên đăng nhập trên");
 			}
 		   
 		    
@@ -115,43 +110,31 @@ public class NhanVienDao {
 			Query query = session.createQuery("from NhanVien where TenDN = :tendn and MatKhau = :matkhau");
 			query.setParameter("tendn", nhanVien.getTenDN());
 			query.setParameter("matkhau", nhanVien.getMatKhau());
-			
 		      try{
 		    	 List list = query.list();
 		    	 for (Iterator iterator1 = list.iterator(); iterator1.hasNext();){
 		        	 NhanVien x = (NhanVien) iterator1.next(); 
-		        	   
 		        	 return x.getHo()+" "+x.getTen();
 		         }    
 		         
 		      }catch (Exception e) {
-		    	  System.out.print("dkm");
+		    	  System.out.print(e.toString());
 		      }finally {
 		    	 session.flush();
 		         session.close(); 
 		      }
-		      return "sge";
+		      return "Lỗi";
 	 	}
 	 	
 	 	public PhanQuyen layPQ(int maPQ){
-	 		PhanQuyen pq = null;
-	 		Transaction trns = null;
-		    Session session = HibernateUtil.getSessionFactory().openSession();
-		    try {
-		        trns = session.beginTransaction();
-		        pq=(PhanQuyen) session.load(PhanQuyen.class, maPQ);
-		        
-		        session.getTransaction().commit();
-		    } catch (RuntimeException e) {
-		        if (trns != null) {
-		            trns.rollback();
-		        }
-		        e.printStackTrace();
-		    } finally {
-		        session.flush();
-		        session.close();
-		    }
-	 		return pq;
+	 		Session session = HibernateUtil.getSessionFactory().openSession();
+		    String hql = "from PhanQuyen  where MaPQ = :mapq";
+		    List result = session.createQuery(hql)
+		    .setParameter("mapq", maPQ)
+		    .list();
+	 		//you should return list of LoaiXe object from this method, so need to create one
+	 		PhanQuyen x=(PhanQuyen) result.get(0);
+	 		return x; //return the list we created
 	 	}
 	 	
 	 	public List<NhanVien> danhSachNV(){
@@ -161,7 +144,6 @@ public class NhanVienDao {
 	 		Criteria cri=session.createCriteria(NhanVien.class);
 	 		x=cri.list();
 	 		return x;
-	 		
 	 	}
 	 	
 	 	public void xoaNhanVien(NhanVien nhanVien) {

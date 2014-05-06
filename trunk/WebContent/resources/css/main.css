@@ -5,11 +5,14 @@ body {
 
 .menuTrai{
 	float: left;
+	width:17%;
 }
 
 .noiDung{
-	margin-left:250px;!important;
+	float:right;
+	width:83%;
 }
+
 
 .binhThuong{
 	clear:both;

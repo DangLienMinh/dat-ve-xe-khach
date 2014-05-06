@@ -1,0 +1,113 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí thông tin Xe</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe">  
+	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
+	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
+	        </p:submenu>  
+	        <p:menuitem value="Quản lí xe" outcome="QLXe"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
+	        <p:menuitem value="Báo cáo thống kê"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản"/> 
+	    </p:tieredMenu>  
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="2" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}">   
+	     
+		  
+	        <f:facet name="header">  
+	            Danh sách Xe
+	        </f:facet>  
+	  
+	        <p:column headerText="Biển số xe" style="font-size:14px!important;"  filterBy="bienSo">  
+	            <h:outputText  value="#{ds.bienSo}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Số ghế" style="font-size:14px!important;" filterBy="soGhe">  
+	            <h:outputText value="#{ds.soGhe}" />  
+	        </p:column>  
+	        
+	        
+	        
+	       
+	  		<p:column style="font-size:14px!important;">
+	  		<p:commandButton icon="ui-icon-close" action='#{xeMBean.xoaXe(ds)}'></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{xeMBean.capNhat(ds,ds.maLoaiXe)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(xeMBean.danhSach)} xe.
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+		 <p:separator/>
+		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab id="tba1" title="Thêm mới xe">
+	            <h:panelGrid columns="2" >
+				   
+				   	
+			       <h:outputLabel value='Biển số' />
+			       <p:inputText value='#{xeMBean.xe.bienSo}'/>
+			   
+			       <h:outputLabel value='Loại xe' />
+				   <p:selectOneMenu value="#{xeMBean.loaiXe.maLoaiXe}">
+				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
+				   	</p:selectOneMenu>
+				   	
+				   <h:outputLabel value='Số ghế' />
+			       <p:inputText value='#{xeMBean.xe.soGhe}'/>
+
+			       <p:commandButton id='Insert' value='Thêm' action='#{xeMBean.themXe}'/>
+				   <p:commandButton id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
+				   </h:panelGrid>  
+				    </p:tab>
+				   <p:tab id="tba2" title="Cập nhật xe" >  
+	            <h:panelGrid columns="2"  id="grid1">  
+	               <h:outputLabel value='Biển số' />
+			       <p:inputText value='#{xeMBean.selectedXe.bienSo}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       
+			       <h:outputLabel value='Loại xe' />
+				   <p:selectOneMenu value="#{xeMBean.selectedLoaiXe.maLoaiXe}">
+				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
+				   	</p:selectOneMenu>
+				   	
+				   <h:outputLabel value='Số ghế' />
+			       <p:inputText value='#{xeMBean.selectedXe.soGhe}'/>
+			    
+			       
+			       
+				   <p:commandButton id='Update' value='Cập nhật' action='#{xeMBean.suaXe}' ajax='false'/>
+				   
+	            </h:panelGrid>  
+	        </p:tab>  
+    	</p:tabView>  
+     </h:form> 
+     </div>
+</body>
+</html>
+

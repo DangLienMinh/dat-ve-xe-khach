@@ -1,34 +1,29 @@
 package dao;
 
-import java.util.Iterator;
-import java.util.List;
 import hibernateUtil.HibernateUtil;
-import model.TaiXe;
+
+import java.util.List;
+import model.Tuyen;
+
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class TaiXeDao {
-	
-	private TaiXe x;
-
-	public TaiXe layThongTin(TaiXe temp){
-		TaiXe taiXe=new TaiXe();
-		taiXe.setHo(temp.getHo());
-		taiXe.setTen(temp.getTen());
-		taiXe.setDiaChi(temp.getDiaChi());
-		taiXe.setCMND(temp.getCMND());
-		taiXe.setDienThoai(temp.getDienThoai());
-		taiXe.setEmail(temp.getEmail());
-		taiXe.setNgaySinh(temp.getNgaySinh());
-		taiXe.setMaTX(temp.getMaTX());
-		return taiXe;
+public class TuyenDao {
+	private Tuyen x;
+	public Tuyen layThongTin(Tuyen temp){
+		Tuyen tuyen=new Tuyen();
+		tuyen.setGia(temp.getGia());
+		tuyen.setBenCuoi(temp.getBenCuoi());
+		tuyen.setBenDau(temp.getBenDau());
+		tuyen.setTenTuyen(temp.getTenTuyen());
+		tuyen.setMaTuyen(temp.getMaTuyen());
+		return tuyen;
 	}
 	
-	public void themTaiXe(TaiXe taiXe) {
-		x = new TaiXe();
-		x=layThongTin(taiXe);
+	public void themTuyen(Tuyen tuyen) {
+		x = new Tuyen();
+		x=layThongTin(tuyen);
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -46,9 +41,9 @@ public class TaiXeDao {
         }
     }
 	
-	 public void suaTaiXe(TaiXe taiXe) { 
-		 x = new TaiXe();
-		 x=layThongTin(taiXe);
+	 public void suaTuyen(Tuyen tuyen) { 
+		 x = new Tuyen();
+		 x=layThongTin(tuyen);
 	    Transaction trns = null;
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
@@ -66,14 +61,14 @@ public class TaiXeDao {
 	    }
 	}
 	
-	public void xoaTaiXe(TaiXe taiXe) {
-		 x = new TaiXe();
-		 x=layThongTin(taiXe);
+	public void xoaTuyen(Tuyen tuyen) {
+		 x = new Tuyen();
+		 x=layThongTin(tuyen);
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            //TaiXe cust = (TaiXe) session.load(TaiXe.class, new String(maTX));
+            //Tuyen cust = (Tuyen) session.load(Tuyen.class, new String(maTX));
             session.delete(x);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -87,29 +82,27 @@ public class TaiXeDao {
         }
     }
 	
-	public List<TaiXe> danhSachTX(){
- 		List<TaiXe> x;
+	public List<Tuyen> danhSachTX(){
+ 		List<Tuyen> x;
  		Session session = HibernateUtil.getSessionFactory().openSession();
  		session.beginTransaction();
- 		Criteria cri=session.createCriteria(TaiXe.class);
+ 		Criteria cri=session.createCriteria(Tuyen.class);
  		x=cri.list();
  		return x;
  	}
 	
-	public void reset(TaiXe taiXe) {
-		taiXe.setHo(" ");
-		taiXe.setTen(" ");
-		taiXe.setCMND(" ");
-		taiXe.setDiaChi(" ");
-		taiXe.setDienThoai(" ");
-		taiXe.setEmail(" ");
+	public void reset(Tuyen tuyen) {
+		tuyen.setGia(0);
+		tuyen.setBenCuoi(" ");
+		tuyen.setBenDau(" ");
+		tuyen.setTenTuyen(" ");
 	}
 	
-	public List<TaiXe> selectItems(){
-		List<TaiXe> list=null;
+	public List<Tuyen> selectItems(){
+		List<Tuyen> list=null;
 		Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String sql="From TaiXe";
+        String sql="From Tuyen";
         try {
         	trns=session.beginTransaction();
         	list = session.createQuery(sql).list();
@@ -125,6 +118,17 @@ public class TaiXeDao {
             session.close();
         }
 		return list;
+	}
+
+	public String tenTuyen(int maTuyen) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from Tuyen  where MaTuyen = :matuyen";
+	    List result = session.createQuery(hql)
+	    .setParameter("matuyen", maTuyen)
+	    .list();
+ 		//you should return list of LoaiXe object from this method, so need to create one
+ 		Tuyen x=(Tuyen) result.get(0);
+ 		return x.getBenCuoi()+" - "+x.getBenCuoi(); //return the list we created
 	}
 
 }

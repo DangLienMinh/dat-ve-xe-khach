@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Chuyen {
 	   private int MaChuyen;
-	   private String TenChuyen;   
+	   private int KhuyenMai;   
 	   private Date GioDi;  
 	   private Date GioDen;  
 	   private int SoGheTrong;  
@@ -14,9 +14,9 @@ public class Chuyen {
 	   
 	   public Chuyen() {}
 	   
-	   public Chuyen(int MaChuyen,String TenChuyen, Date GioDi, Date GioDen,int SoGheTrong,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
+	   public Chuyen(int MaChuyen,int KhuyenMai, Date GioDi, Date GioDen,int SoGheTrong,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
 		   this.MaChuyen=MaChuyen;
-		   this.TenChuyen=TenChuyen;
+		   this.setKhuyenMai(KhuyenMai);
 		   this.setGioDi(GioDi);
 		   this.setGioDen(GioDen);
 		   this.SoGheTrong=SoGheTrong;
@@ -33,13 +33,7 @@ public class Chuyen {
 			MaChuyen = maChuyen;
 		}
 	
-		public String getTenChuyen() {
-			return TenChuyen;
-		}
-	
-		public void setTenChuyen(String tenChuyen) {
-			TenChuyen = tenChuyen;
-		}	
+		
 	
 		public int getSoGheTrong() {
 			return SoGheTrong;
@@ -87,6 +81,14 @@ public class Chuyen {
 
 		public void setGioDen(Date gioDen) {
 			GioDen = gioDen;
+		}
+
+		public int getKhuyenMai() {
+			return KhuyenMai;
+		}
+
+		public void setKhuyenMai(int khuyenMai) {
+			KhuyenMai = khuyenMai;
 		}
 
 }

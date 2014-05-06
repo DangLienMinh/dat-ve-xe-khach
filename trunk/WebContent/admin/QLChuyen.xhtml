@@ -1,0 +1,160 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí danh sách chuyến</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe">  
+	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
+	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
+	        </p:submenu>  
+	        <p:menuitem value="Quản lí xe" outcome="QLXe"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
+	        <p:menuitem value="Báo cáo thống kê"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản"/> 
+	    </p:tieredMenu>  
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	     <p:dataTable  var="ds" value="#{chuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{chuyenMBean.filteredDanhSach}">   
+	     
+		  
+	        <f:facet name="header">  
+	            Danh sách chuyến
+	        </f:facet>  
+	  
+	        <p:column headerText="Mã Chuyến" style="font-size:14px!important;"  filterBy="maChuyen">  
+	            <h:outputText  value="#{ds.maChuyen}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Tuyến" style="font-size:14px!important;"  filterBy="maChuyen">  
+	            <h:outputText  value="#{tuyenMBean.tenTuyen(ds.maTuyen)}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Giờ đi" style="font-size:14px!important;"> 
+	           <h:outputText  value="#{ds.gioDi}"/>     
+	        </p:column>
+	        
+	        <p:column headerText="Giờ đến" style="font-size:14px!important;"> 
+	         	<h:outputText  value="#{ds.gioDen}"/>
+	        </p:column>
+	        
+	        <p:column headerText="Khuyến mãi" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.khuyenMai}" />  
+	        </p:column>  
+	         
+	        
+	        
+	       
+	  		<p:column style="font-size:14px!important;">
+	  		<p:commandButton  icon="ui-icon-close" action='#{chuyenMBean.xoaChuyen(ds)}'></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{chuyenMBean.capNhat(ds,ds.maTX,ds.bienSo,ds.maTuyen)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(chuyenMBean.danhSach)} chuyến.  
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+		 <p:separator/>
+		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab id="tba1" title="Thêm mới chuyến">
+	            <h:panelGrid columns="2" >
+				   <h:outputLabel value='Tuyến' />
+				   <p:selectOneMenu value="#{chuyenMBean.tuyen.maTuyen}">
+				   		<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
+				   	</p:selectOneMenu>
+				   	
+				   	<h:outputLabel value='Tài xế' />
+				   <p:selectOneMenu value="#{chuyenMBean.taiXe.maTX}">
+				   		<f:selectItems value="#{taiXeMBean.selectOneItemTX}" />
+				   	</p:selectOneMenu>
+				   	
+				   	<h:outputLabel value='Xe' />
+				   <p:selectOneMenu value="#{chuyenMBean.xe.bienSo}">
+				   		<f:selectItems value="#{xeMBean.selectOneItemXe}" />
+				   	</p:selectOneMenu>
+				   	
+				   	
+			       
+			   
+			       <h:outputLabel value='Khuyến mãi' />
+			       <p:inputText value='#{chuyenMBean.chuyen.khuyenMai}'/>
+			  
+			       <h:outputLabel value="Giờ đi: " />
+			       <p:calendar value="#{chuyenMBean.chuyen.gioDi}"  showOn="button"  pattern="dd/MM/yyyy HH" />
+			       
+			       <h:outputLabel value="Giờ đến: " />
+			       <p:calendar value="#{chuyenMBean.chuyen.gioDen}"  showOn="button"  pattern="dd/MM/yyyy HH" />
+
+			       <p:commandButton id='Insert' value='Thêm' action='#{chuyenMBean.themChuyen}'/>
+				   <p:commandButton id='Reset' value='Đặt lại' action='#{chuyenMBean.reset}' ajax='false'/>
+	            </h:panelGrid>  
+	           
+	        </p:tab>  
+	  
+	         <p:tab id="tba2" title="Cập nhật thông tin chuyến" >  
+	            <h:panelGrid columns="2"  id="grid1">  
+	               <h:outputLabel value='Mã chuyến' />
+			       <p:inputText value='#{chuyenMBean.selectedChuyen.maChuyen}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       
+			     <h:outputLabel value='Tuyến' />
+				   <p:selectOneMenu value="#{chuyenMBean.selectedTuyen.maTuyen}">
+				   		<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
+				   	</p:selectOneMenu>
+				   	
+				   	<h:outputLabel value='Tài xế' />
+				   <p:selectOneMenu value="#{chuyenMBean.selectedTaiXe.maTX}">
+				   		<f:selectItems value="#{taiXeMBean.selectOneItemTX}" />
+				   	</p:selectOneMenu>
+				   	
+				   	<h:outputLabel value='Xe' />
+				   <p:selectOneMenu value="#{chuyenMBean.selectedXe.bienSo}">
+				   		<f:selectItems value="#{xeMBean.selectOneItemXe}" />
+				   	</p:selectOneMenu>
+				   	
+				   	
+			       <h:outputLabel value='Số ghế trống' />
+			       <p:inputText value='#{chuyenMBean.selectedChuyen.soGheTrong}'/>
+			   
+			       <h:outputLabel value='Khuyến mãi' />
+			       <p:inputText value='#{chuyenMBean.selectedChuyen.khuyenMai}'/>
+			  
+			       <h:outputLabel value="Giờ đi: " />
+			       <p:calendar value="#{chuyenMBean.selectedChuyen.gioDi}"  showOn="button"  pattern="dd/MM/yyyy HH" />
+			       
+			       <h:outputLabel value="Giờ đến: " />
+			       <p:calendar value="#{chuyenMBean.selectedChuyen.gioDen}"  showOn="button"  pattern="dd/MM/yyyy HH" />
+			       
+				   <p:commandButton id='Update' value='Cập nhật' action='#{chuyenMBean.suaChuyen}' ajax='false'/>
+	            </h:panelGrid>  
+	        </p:tab>   
+    	</p:tabView>  
+		
+     </h:form> 
+     </div>
+     
+</body>
+</html>
+

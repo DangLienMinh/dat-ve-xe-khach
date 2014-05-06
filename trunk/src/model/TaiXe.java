@@ -72,4 +72,10 @@ import java.util.Date;
 			Ten = ten;
 		}
 		
+		@Override
+		public String toString(){
+			return Integer.toString(MaTX);
+			
+		}
+		
 }

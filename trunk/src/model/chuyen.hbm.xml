@@ -8,9 +8,9 @@
       <id name="MaChuyen" column="MaChuyen">
        <generator class="increment"></generator>
       </id>
-      <property name="TenChuyen" column="TenChuyen"/>
       <property name="GioDi" column="GioDi"/>
       <property name="GioDen" column="GioDen"/>
+      <property name="KhuyenMai" column="KhuyenMai"/>
       <property name="SoGheTrong" column="SoGheTrong"/>
       <many-to-one name="MaTX" column="MaTX" 
        class="model.TaiXe" not-null="true"/>
@@ -21,7 +21,7 @@
        
    </class>
 
-   <class name='model.Xe' table='Xe'>
+   <class name='model.Xe' table='Xe' dynamic-update="true">
 	   <id name='BienSo' column='BienSo' >
 	   </id>
 	   <many-to-one name="MaLoaiXe" column="MaLoaiXe" 
@@ -44,14 +44,15 @@
  	
  	 <class name='model.Tuyen' table='Tuyen'>
 	   <id name='MaTuyen' column='MaTuyen' >
+	   <generator class="increment"></generator>
 	   </id>
 	   <property name="TenTuyen" column="TenTuyen"/>
 	   <property name="BenDau" column="BenDau"/>
 	   <property name="BenCuoi" column="BenCuoi"/>
-	   <property name="BangGia" column="BangGia"/>
+	   <property name="Gia" column="Gia"/>
  	</class>
  	
- 	 <class name='model.LoaiXe' table='Tuyen'>
+ 	 <class name='model.LoaiXe' table='LoaiXe' dynamic-update="true">
 	   <id name='MaLoaiXe' column='MaLoaiXe' >
 	   <generator class="increment"></generator>
 	   </id>

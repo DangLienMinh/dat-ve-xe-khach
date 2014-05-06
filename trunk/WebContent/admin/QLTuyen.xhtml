@@ -1,0 +1,131 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí thông tin Tuyến</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe">  
+	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
+	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
+	        </p:submenu>  
+	        <p:menuitem value="Quản lí xe" outcome="QLXe"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
+	        <p:menuitem value="Báo cáo thống kê"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản"/> 
+	    </p:tieredMenu>  
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	     <p:dataTable var="ds" value="#{tuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{tuyenMBean.filteredDanhSach}">   
+	     
+		  
+	        <f:facet name="header">  
+	            Danh sách các tuyến xe
+	        </f:facet>  
+	  
+	        <p:column headerText="Mã Tuyến" style="font-size:14px!important;"  filterBy="maTuyen">  
+	            <h:outputText  value="#{ds.maTuyen}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Tên tuyến" style="font-size:14px!important;" filterBy="tenTuyen">  
+	            <h:outputText value="#{ds.tenTuyen}" />  
+	        </p:column>  
+	         <p:column headerText="Bến đầu" style="font-size:14px!important;" filterBy="benDau">  
+	            <h:outputText value="#{ds.benDau}" />  
+	        </p:column>  
+	        <p:column headerText="Bến cuối" style="font-size:14px!important;" filterBy="benCuoi">  
+	            <h:outputText value="#{ds.benCuoi}" />  
+	        </p:column>  
+	        <p:column headerText="Giá vé" style="font-size:14px!important;" filterBy="gia">  
+	            <h:outputText value="#{ds.gia}" />  
+	        </p:column>  
+	        
+	        
+	       
+	  		<p:column style="font-size:14px!important;">
+	  		<p:commandButton  icon="ui-icon-close" action='#{tuyenMBean.xoaTuyen(ds)}'></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{tuyenMBean.capNhat(ds)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(tuyenMBean.danhSach)} tuyến.  
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+		 <p:separator/>
+		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab id="tba1" title="Thêm mới tuyến">
+	            <h:panelGrid columns="2" >
+				   
+				   	
+			       <h:outputLabel value='Tên tuyến' />
+			       <p:inputText value='#{tuyenMBean.tuyen.tenTuyen}'/>
+			   
+			       <h:outputLabel value='Bến đầu' />
+			       <p:inputText value='#{tuyenMBean.tuyen.benDau}'/>
+			  
+			       <h:outputLabel value='Bến cuối' />
+			       <p:inputText value='#{tuyenMBean.tuyen.benCuoi}'/>
+			   
+			       <h:outputLabel value='Giá vé' />
+			       <p:inputText value='#{tuyenMBean.tuyen.gia}'/>
+			    
+			
+
+			       <p:commandButton id='Insert' value='Thêm tuyến' action='#{tuyenMBean.themTuyen}'/>
+				   <p:commandButton id='Reset' value='Đặt lại' action='#{tuyenMBean.reset}' ajax='false'/>
+	            </h:panelGrid>  
+	           
+	        </p:tab>  
+	  
+	         <p:tab id="tba2" title="Cập nhật tuyến xe" >  
+	            <h:panelGrid columns="2"  id="grid1">  
+	               <h:outputLabel value='Mã tuyến' />
+			       <p:inputText value='#{tuyenMBean.selectedTuyen.maTuyen}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       
+			    
+			       
+			       <h:outputLabel value='Tên tuyến' />
+			       <p:inputText value='#{tuyenMBean.selectedTuyen.tenTuyen}'/>
+			   
+			       <h:outputLabel value='Bến đầu' />
+			       <p:inputText value='#{tuyenMBean.selectedTuyen.benDau}'/>
+			  
+			       <h:outputLabel value='Bến cuối' />
+			       <p:inputText value='#{tuyenMBean.selectedTuyen.benCuoi}'/>
+			   
+			       <h:outputLabel value='Giá vé' />
+			       <p:inputText value='#{tuyenMBean.selectedTuyen.gia}'/>
+			    
+				   <p:commandButton id='Update' value='Cập nhật' action='#{tuyenMBean.suaTuyen}' ajax='false'/>
+	            </h:panelGrid>  
+	        </p:tab>   
+    	</p:tabView>  
+		
+     </h:form> 
+     </div>
+     
+</body>
+</html>
+

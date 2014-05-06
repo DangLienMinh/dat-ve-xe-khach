@@ -6,7 +6,7 @@
      >
 
  <h:head>
- <title>Quản lí danh sách nhân viên</title>
+ <title>Quản lí thông tin tài xế</title>
  <h:outputStylesheet library="css" name="main.css" />
  <h:outputScript library="js" name="tabview.js"/>
 <style>
@@ -21,11 +21,11 @@
 	     <p:tieredMenu style="width:200px">  
 	     <p:menuitem value="Futabus Travel"/>
 	        <p:submenu label="Quản lí tuyến-chuyến xe">  
-	            <p:menuitem value="Quản lí tuyến xe"/>  
-	            <p:menuitem value="Quản lí chuyến xe"/>  
+	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
+	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
 	        </p:submenu>  
-	        <p:menuitem value="Quản lí xe"/>  
-	        <p:menuitem value="Quản lí tài xế"/> 
+	        <p:menuitem value="Quản lí xe" outcome="QLXe"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
 	        <p:menuitem value="Báo cáo thống kê"/>  
 	        <p:separator/>   
 	        <p:menuitem value="Thông tin tài khoản"/> 
@@ -37,15 +37,15 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{nhanVienMBean.filteredDanhSach}">   
+	     <p:dataTable  var="ds" value="#{taiXeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{taiXeMBean.filteredDanhSach}">   
 	     
 		  
 	        <f:facet name="header">  
-	            Danh sách nhân viên
+	            Danh sách tài xế
 	        </f:facet>  
 	  
-	        <p:column headerText="Mã NV" style="font-size:14px!important;"  filterBy="maNV">  
-	            <h:outputText  value="#{ds.maNV}"/>  
+	        <p:column headerText="Mã Tài xế" style="font-size:14px!important;"  filterBy="maTX">  
+	            <h:outputText  value="#{ds.maTX}"/>  
 	        </p:column>  
 	        
 	        <p:column headerText="Họ" style="font-size:14px!important;" filterBy="ho">  
@@ -74,97 +74,80 @@
 	        
 	       
 	  		<p:column style="font-size:14px!important;">
-	  		<p:commandButton  icon="ui-icon-close" action='#{nhanVienMBean.xoaNhanVien(ds)}'></p:commandButton>
-	  		<p:commandButton icon="ui-icon-gear" action='#{nhanVienMBean.capNhat(ds,ds.maPQ)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		<p:commandButton  icon="ui-icon-close" action='#{taiXeMBean.xoaTaiXe(ds)}'></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{taiXeMBean.capNhat(ds)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
 	  		</p:column>
 
 	        <f:facet name="footer">  
-	           Tổng cộng có #{fn:length(nhanVienMBean.danhSach)} nhân viên.  
+	           Tổng cộng có #{fn:length(taiXeMBean.danhSach)} tài xế.  
 	        </f:facet>  
 	  
     	 </p:dataTable>  
 		 <p:separator/>
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
-	        <p:tab id="tba1" title="Thêm mới nhân viên">
+	        <p:tab id="tba1" title="Thêm mới tài xế">
 	            <h:panelGrid columns="2" >
-				   <h:outputLabel value='Phân quyền' />
-				   <p:selectOneMenu value="#{nhanVienMBean.phanQuyen.maPQ}">
-				   		<f:selectItems value="#{phanQuyenMBean.selectOneItemPQ}" />
-				   	</p:selectOneMenu>
-				   	
+				   
 				   	
 			       <h:outputLabel value='Họ' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.ho}'/>
+			       <p:inputText value='#{taiXeMBean.taiXe.ho}'/>
 			   
 			       <h:outputLabel value='Tên' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.ten}'/>
+			       <p:inputText value='#{taiXeMBean.taiXe.ten}'/>
 			  
 			       <h:outputLabel value='Chứng minh nhân dân' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.CMND}'/>
+			       <p:inputText value='#{taiXeMBean.taiXe.CMND}'/>
 			   
 			       <h:outputLabel value='Điện thoại' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.dienThoai}'/>
+			       <p:inputText value='#{taiXeMBean.taiXe.dienThoai}'/>
 			    
 			       <h:outputLabel value='Địa chỉ' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.diaChi}'/>
+			       <p:inputText value='#{taiXeMBean.taiXe.diaChi}'/>
 			    
 			       <h:outputLabel value='Email' />
-			   	   <p:inputText value='#{nhanVienMBean.nhanVien.email}'/>
+			   	   <p:inputText value='#{taiXeMBean.taiXe.email}'/>
 			    
-			   	   <h:outputLabel value='Tên đăng nhập' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.tenDN}'/>
-			  
-			       <h:outputLabel value='Mật khẩu' />
-			       <p:password value='#{nhanVienMBean.nhanVien.matKhau}' feedback="true"/>
-			       
-			       
+			   	   
 			   
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
+			       <p:calendar value="#{taiXeMBean.taiXe.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
 
-			       <p:commandButton id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}'/>
-				   <p:commandButton id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' ajax='false'/>
+			       <p:commandButton id='Insert' value='Thêm' action='#{taiXeMBean.themTaiXe}'/>
+				   <p:commandButton id='Reset' value='Đặt lại' action='#{taiXeMBean.reset}' ajax='false'/>
 	            </h:panelGrid>  
 	           
 	        </p:tab>  
 	  
-	         <p:tab id="tba2" title="Cập nhật thông tin nhân viên" >  
+	         <p:tab id="tba2" title="Cập nhật tài xế" >  
 	            <h:panelGrid columns="2"  id="grid1">  
-	               <h:outputLabel value='Mã nhân viên' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.maNV}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+	               <h:outputLabel value='Mã tài xế' />
+			       <p:inputText value='#{taiXeMBean.selectedTX.maTX}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
 			       
-			    <h:outputLabel value='Phân quyền' />
-				   <p:selectOneMenu value="#{nhanVienMBean.selectedPhanQuyen.maPQ}">
-				   		<f:selectItems value="#{phanQuyenMBean.selectOneItemPQ}" />
-				   	</p:selectOneMenu>
+			    
 			       
 			       <h:outputLabel value='Họ' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.ho}'/>
+			       <p:inputText value='#{taiXeMBean.selectedTX.ho}'/>
 			   
 			       <h:outputLabel value='Tên' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.ten}'/>
+			       <p:inputText value='#{taiXeMBean.selectedTX.ten}'/>
 			  
 			       <h:outputLabel value='Chứng minh nhân dân' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.CMND}'/>
+			       <p:inputText value='#{taiXeMBean.selectedTX.CMND}'/>
 			   
 			       <h:outputLabel value='Điện thoại' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.dienThoai}'/>
+			       <p:inputText value='#{taiXeMBean.selectedTX.dienThoai}'/>
 			    
 			       <h:outputLabel value='Địa chỉ' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.diaChi}'/>
+			       <p:inputText value='#{taiXeMBean.selectedTX.diaChi}'/>
 			    
 			       <h:outputLabel value='Email' />
-			   	   <p:inputText value='#{nhanVienMBean.selectedNV.email}'/>
+			   	   <p:inputText value='#{taiXeMBean.selectedTX.email}'/>
 			    
-			   	   <h:outputLabel value='Tên đăng nhập' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.tenDN}'/>
-			  
-			       <h:outputLabel value='Mật khẩu' />
-			       <p:inputText value='#{nhanVienMBean.selectedNV.matKhau}'/>
+			   	  
 			   
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
-				   <p:commandButton id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' ajax='false'/>
+			       <p:calendar value="#{taiXeMBean.selectedTX.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
+				   <p:commandButton id='Update' value='Cập nhật' action='#{taiXeMBean.suaTaiXe}' ajax='false'/>
 	            </h:panelGrid>  
 	        </p:tab>   
     	</p:tabView>  
