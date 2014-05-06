@@ -11,12 +11,7 @@ public class LoaiXe {
 		this.TenLoaiXe=TenLoaiXe;
 		this.GiuongNam=GiuongNam;
 	}
-	public int getMaLoaiXe() {
-		return MaLoaiXe;
-	}
-	public void setMaLoaiXe(int maLoaiXe) {
-		MaLoaiXe = maLoaiXe;
-	}
+
 	public String getTenLoaiXe() {
 		return TenLoaiXe;
 	}
@@ -28,5 +23,20 @@ public class LoaiXe {
 	}
 	public void setGiuongNam(int giuongNam) {
 		GiuongNam = giuongNam;
+	}
+	@Override
+	public String toString(){
+		return Integer.toString(MaLoaiXe);
+		
+	}
+	public int getMaLoaiXe() {
+		
+			return MaLoaiXe;
+		
+		
+		
+	}
+	public void setMaLoaiXe(int maLoaiXe) {
+		MaLoaiXe = maLoaiXe;
 	}
 }

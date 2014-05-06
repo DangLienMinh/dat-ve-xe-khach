@@ -49,12 +49,18 @@ public class Tuyen {
 			BenCuoi = benCuoi;
 		}
 	
-		public int getBangGia() {
+		public int getGia() {
 			return Gia;
 		}
 	
-		public void setBangGia(int gia) {
+		public void setGia(int gia) {
 			Gia = gia;
+		}
+		
+		@Override
+		public String toString(){
+			return Integer.toString(MaTuyen);
+			
 		}
 	
 }

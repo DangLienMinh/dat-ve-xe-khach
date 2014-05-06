@@ -19,5 +19,6 @@
         
     	
     	<mapping resource="model/nhanvien.hbm.xml"/>
+    	<mapping resource="model/chuyen.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

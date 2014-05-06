@@ -1,29 +1,32 @@
 package controller;
 
-import java.util.Date;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 
 import model.TaiXe;
 import dao.TaiXeDao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import model.TaiXe;
-import hibernateUtil.HibernateUtil;
 @ManagedBean(name= "taiXeMBean")
 @SessionScoped
 public class TaiXeManagedBean {
 	
 	private TaiXe taiXe=new TaiXe();
 	private TaiXeDao taiXeDao=new TaiXeDao();
+	private List<SelectItem> selectOneItemTX;
+	//Trả về danh sách nhân viên trên giao diện xhtml
+	private List<TaiXe> DanhSach;
+	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
+	private List<TaiXe> filteredDanhSach;  
+	//đối tượng nhân viên được chọn để cập nhật thông tin
+	private TaiXe selectedTX=new TaiXe();
 	
 	public TaiXeManagedBean(){
+		DanhSach = new ArrayList<TaiXe>();
+		DanhSach = taiXeDao.danhSachTX();
 	}
 	public TaiXe getTaiXe() {
 		return taiXe;
@@ -37,48 +40,59 @@ public class TaiXeManagedBean {
 	public void setTaiXeDao(TaiXeDao taiXeDao) {
 		this.taiXeDao = taiXeDao;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((taiXe == null) ? 0 : taiXe.hashCode());
-		return result;
+	
+	public List<TaiXe> getDanhSach() {
+		return DanhSach;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TaiXeManagedBean other = (TaiXeManagedBean) obj;
-		if (taiXe == null) {
-			if (other.taiXe != null)
-				return false;
-		} else if (!taiXe.equals(other.taiXe))
-			return false;
-		return true;
+	public void setDanhSach(List<TaiXe> danhSach) {
+		DanhSach = danhSach;
+	}
+	public List<TaiXe> getFilteredDanhSach() {
+		return filteredDanhSach;
+	}
+	public void setFilteredDanhSach(List<TaiXe> filteredDanhSach) {
+		this.filteredDanhSach = filteredDanhSach;
+	}
+	public TaiXe getSelectedTX() {
+		return selectedTX;
+	}
+	public void setSelectedTX(TaiXe selectedTX) {
+		this.selectedTX = selectedTX;
 	}
 	
-	public void themTaiXe(){
+	public String themTaiXe(){
 		taiXeDao.themTaiXe(taiXe);
+		return "QLTaiXe?faces-redirect=true";
 	}
 	
-	public void xoaTaiXe(){
-		taiXeDao.xoaTaiXe(taiXe);
+	public String suaTaiXe(){
+		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		taiXeDao.suaTaiXe(selectedTX);
+		return "QLTaiXe?faces-redirect=true";
 	}
 	
-	public void suaTaiXe(){
-		taiXeDao.suaTaiXe(taiXe);
+	public String xoaTaiXe(TaiXe x){
+		taiXeDao.xoaTaiXe(x);
+		return "QLTaiXe?faces-redirect=true";
 	}
 	
-//	public void danhSachTaiXe(){
-//		taiXeDao.listEmployees();
-//	}
+	//reset các ô input
+	public void reset(){
+		taiXeDao.reset(taiXe);
+	}
 	
-
-	public void reset() {
-		taiXeDao.xoaTaiXe(taiXe);
+	//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+	public void capNhat(TaiXe x){
+		selectedTX=x;
+	}	
+	
+	public List<SelectItem> getSelectOneItemTX() {
+		this.selectOneItemTX=new ArrayList<SelectItem>();
+		List<TaiXe> txs=taiXeDao.selectItems();
+		for(TaiXe x:txs){
+			SelectItem selectItem=new SelectItem(x.getMaTX(),x.getHo()+x.getTen());
+			this.selectOneItemTX.add(selectItem);
+		}
+		return selectOneItemTX;
 	}
 }

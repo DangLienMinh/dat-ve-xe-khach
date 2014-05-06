@@ -1,7 +1,7 @@
 package model;
 
-public class Xe {
-	   private String BienSo;
+public class Xe{
+	private String BienSo;
 	   private LoaiXe MaLoaiXe; 
 	   private int SoGhe;   
 
@@ -9,7 +9,7 @@ public class Xe {
 	   
 	   public Xe(String BienSo,LoaiXe MaLoaiXe, int SoGhe) {
 		   this.BienSo=BienSo;
-		   this.MaLoaiXe=MaLoaiXe;
+		   this.setMaLoaiXe(MaLoaiXe);
 		   this.SoGhe=SoGhe;
 	   }
 
@@ -21,13 +21,7 @@ public class Xe {
 			BienSo = bienSo;
 		}
 	
-		public LoaiXe getLoaiXe() {
-			return MaLoaiXe;
-		}
-	
-		public void setLoaiXe(LoaiXe loaiXe) {
-			MaLoaiXe = loaiXe;
-		}
+		
 	
 		public int getSoGhe() {
 			return SoGhe;
@@ -35,6 +29,20 @@ public class Xe {
 	
 		public void setSoGhe(int soGhe) {
 			SoGhe = soGhe;
+		}
+
+		public LoaiXe getMaLoaiXe() {
+			return MaLoaiXe;
+		}
+
+		public void setMaLoaiXe(LoaiXe maLoaiXe) {
+			MaLoaiXe = maLoaiXe;
+		}
+		
+		@Override
+		public String toString(){
+			return BienSo;
+			
 		}
 }
 
