@@ -23,32 +23,23 @@
 					</div>
 				</div>
 				<script>
-					$(document).ready(function(){
-						$("#menu-item-1017").hover(function(){
-							$("#community").removeClass("an").addClass("drop-down");
-							$("#live").removeClass("drop-down").addClass("an");
-							$("#commerce").removeClass("drop-down").addClass("an");
-							$("#medical-city").removeClass("drop-down").addClass("an");
-						  });
-						  $("#menu-item-1015").hover(function(){
-							$("#live").removeClass("an").addClass("drop-down");
-							$("#community").removeClass("drop-down").addClass("an");
-							$("#commerce").removeClass("drop-down").addClass("an");
-							$("#medical-city").removeClass("drop-down").addClass("an");
-						  });
-						  $("#menu-item-2661").hover(function(){
-							$("#commerce").removeClass("an").addClass("drop-down");
-							$("#live").removeClass("drop-down").addClass("an");
-							$("#community").removeClass("drop-down").addClass("an");
-							$("#medical-city").removeClass("drop-down").addClass("an");
-						  });
-						  $("#menu-item-1015").hover(function(){
-							$("#medical-city").removeClass("an").addClass("drop-down");
-							$("#live").removeClass("drop-down").addClass("an");
-							$("#community").removeClass("drop-down").addClass("an");
-							$("#commerce").removeClass("drop-down").addClass("an");
-						  });
-					});
+				$(document).ready(function(){
+					$("#trangChu").hover(function(){
+						$("#gioiThieu").removeClass("drop-down").addClass("an");
+						$("#tinTuc").removeClass("drop-down").addClass("an");
+					  });
+
+					$("#menu-item-1017").hover(function(){
+						$("#tinTuc").removeClass("an").addClass("drop-down");
+						$("#gioiThieu").removeClass("drop-down").addClass("an");
+					  });
+					  
+					 
+					  $("#menu-item-1015").hover(function(){
+						$("#gioiThieu").removeClass("an").addClass("drop-down");
+						$("#tinTuc").removeClass("drop-down").addClass("an");
+					  });
+				});
 				</script>
 				<!-- End of left botton -->
 				<div class="hanging-video" style="display: block; top: 115px; opacity: 1;">

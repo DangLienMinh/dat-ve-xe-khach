@@ -799,14 +799,7 @@ footer #searchform button:hover {
   -o-box-shadow: #efefef 1px 1px 3px;
   box-shadow: #efefef 1px 1px 3px;
 }
-/* line 588, sass/layout.sass */
-.page-content .page-main {
-  width: 655px;
-  height: auto;
-  margin-top: 15px;
-  float: left;
-  border-right: 1px solid #efefef;
-}
+
 /* line 595, sass/layout.sass */
 .page-content .page-main header {
   margin: 0 30px 30px;

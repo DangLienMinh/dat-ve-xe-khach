@@ -24,4 +24,11 @@
   <managed-bean-class>controller.NhanVienManagedBean</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <render-kit>
+    <renderer>
+        <component-family>org.primefaces.component</component-family>
+        <renderer-type>org.primefaces.component.FileUploadRenderer</renderer-type>
+        <renderer-class>filters.MyFileUploadRenderer</renderer-class>
+    </renderer>
+</render-kit>
 </faces-config>

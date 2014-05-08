@@ -1,4 +1,8 @@
-
+.border_none tr,.border_none td{
+		border-style: none !important;
+		width:100%;
+}
+    
 body {
   background: #f8f7f1;
 }
@@ -93,16 +97,19 @@ body {
 
 /* line 82, sass/main.sass */
 .page-template-interior-php section.page-main {
-  margin: 0 0 0 60px;
+  margin: 0 0 60px 60px;
   padding-top: 40px;
   padding-bottom: 40px;
-  width: 536px;
+  
 }
 /* line 84, sass/main.sass */
 .page-template-interior-php section.page-main div {
   margin: 0;
   margin-right: 30px;
   padding-bottom: 15px;
+}
+.duongVien{
+	border-bottom: 1px dotted #828282!important;
 }
 /* line 88, sass/main.sass */
 .page-template-interior-php section.page-main div h5 {
@@ -121,7 +128,7 @@ body {
 }
 /* line 95, sass/main.sass */
 .page-template-interior-php section.page-main article {
-  border-bottom: 1px dotted #828282;
+  border-bottom: 1px dotted #828282!important;
   padding: 40px 0;
   position: relative;
   width: auto;
@@ -131,6 +138,11 @@ body {
   margin-right: 30px;
   margin-left: 0;
 }
+
+
+
+
+
 /* line 106, sass/main.sass */
 .page-template-interior-php section.page-main article:nth-child(2) {
   border-top: 1px dotted #828282;
@@ -138,7 +150,7 @@ body {
 /* line 109, sass/main.sass */
 .page-template-interior-php section.page-main article:last-child {
   border-bottom: 0;
-  margin-bottom: 80px;
+ 
 }
 /* line 113, sass/main.sass */
 .page-template-interior-php section.page-main article img {
@@ -169,6 +181,12 @@ body {
   margin-bottom: 20px;
   font-style: italic;
   line-height: 1.5em;
+}
+.page-template-interior-php section.page-main article h7 {
+  font-family: times, "Times New Roman", Georgia, Serif;
+  position:absolute;
+  top:10px;
+  font-size:15px;
 }
 /* line 131, sass/main.sass */
 .page-template-interior-php section.page-main article .learnmore {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p='http://primefaces.org/ui'
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<body>
+	<ui:composition>
+		<div id="shell" style="background: url('#{resource['image/Live-Background.jpg']}') 50% 0 no-repeat;">
+			<section id="main">  <!-- Page starts here -->
+    			<ul class="breadcrumb">
+     				<li><a href="/datVeXe/index.xhtml">Trang chủ</a></li>
+					<li><a href="#">Tin tức</a></li>
+				</ul>
+    			<section class="page-content">
+        			<section class="page-main">
+        				<div id="noiDungTT">
+	        				<p:outputLabel value="#{dangTinTucMBean.selectedTinTuc.tieuDe}" styleClass="tieuDe"/> 
+							<h:graphicImage value="#{dangTinTucMBean.selectedTinTuc.hinhAnh}" width="125" height="145" styleClass="hinhAnh"></h:graphicImage>
+							<h:outputText value="#{dangTinTucMBean.selectedTinTuc.noiDung}" styleClass="noiDung" escape="false"/>
+        				</div>
+		    			
+					
+  
+   
+        			</section>
+        			 
+    				</section>
+ 				</section>  <!-- Page ends here -->
+		</div>
+	</ui:composition>
+</body>
+</html>
