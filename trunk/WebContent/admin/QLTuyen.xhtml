@@ -28,7 +28,7 @@
 	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
 	        <p:menuitem value="Báo cáo thống kê"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản"/> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH"/> 
 	    </p:tieredMenu>  
      </h:form> 
      </div>
@@ -75,25 +75,27 @@
     	 </p:dataTable>  
 		 <p:separator/>
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+		  
 	        <p:tab id="tba1" title="Thêm mới tuyến">
-	            <h:panelGrid columns="2" >
-				   
-				   	
+	       
+	            <h:panelGrid columns="2">
+				
 			       <h:outputLabel value='Tên tuyến' />
-			       <p:inputText value='#{tuyenMBean.tuyen.tenTuyen}'/>
+			       <p:inputText value='#{tuyenMBean.tuyen.tenTuyen}' required="true" label="Tên tuyến"/>
 			   
 			       <h:outputLabel value='Bến đầu' />
-			       <p:inputText value='#{tuyenMBean.tuyen.benDau}'/>
+			       <p:inputText value='#{tuyenMBean.tuyen.benDau}' required="true" label="Bến đầu"/>
 			  
 			       <h:outputLabel value='Bến cuối' />
-			       <p:inputText value='#{tuyenMBean.tuyen.benCuoi}'/>
+			       <p:inputText value='#{tuyenMBean.tuyen.benCuoi}' required="true" label="Bến cuối"/>
 			   
 			       <h:outputLabel value='Giá vé' />
-			       <p:inputText value='#{tuyenMBean.tuyen.gia}'/>
+			       <p:inputText value='#{tuyenMBean.tuyen.gia}' id="gia"/>
+			
 			    
 			
 
-			       <p:commandButton id='Insert' value='Thêm tuyến' action='#{tuyenMBean.themTuyen}'/>
+			       <p:commandButton id='Insert' value='Thêm tuyến' action='#{tuyenMBean.themTuyen}' update="tba1"/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{tuyenMBean.reset}' ajax='false'/>
 	            </h:panelGrid>  
 	           

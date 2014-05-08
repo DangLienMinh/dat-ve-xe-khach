@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p='http://primefaces.org/ui'
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<body>
+	<ui:composition>
+		<div id="shell" style="background: url('#{resource['image/Live-Background.jpg']}') 50% 0 no-repeat;">
+			<section id="main">  <!-- Page starts here -->
+    			<ul class="breadcrumb">
+     				<li><a href="/datVeXe/index.xhtml">Trang chủ</a></li>
+					<li><a href="#">Tin tức</a></li>
+				</ul>
+    			<section class="page-content">
+        			<section class="page-main">
+     					<div class="duongVien">
+             				<h5></h5>
+          					<p></p>
+          					<p>Trong lĩnh vực vận tải hành khách Công ty mở rộng hoạt động vận tải chất lượng cao phục vụ cho nhu cầu đi lại của người dân từ khu vực miền Trung từ Huế, Đà Nẵng đến hầu hết các tỉnh thuộc khu vực Đồng bằng sông Cửu Long. Với hình ảnh chiếc xe 45 chỗ màu cam hiện đại, tiện nghi cùng với màu áo xanh lá cây đậm của đội ngũ lái xe Phương Trang đã tỏa đi hầu hết các nẻo đường cả nước từ Huế trở vào cuối miền Đất Nước. Lượng xe của Phương Trang Corporation ngày càng phát triển và được đầu tư đúng mức. Đến nay, công ty đã có trên 200 xe khách 45 chỗ thương hiệu Huyndai dòng cao cấp nhất dành cho các tuyến cố định:<br/>
+								TP.HCM ↔ Đà Lạt, TP. HCM ↔ Cần Thơ, TP.HCM ↔ Vĩnh Long, TP.HCM ↔ Cà Mau, TP.HCM ↔ Rạch Giá, TP.HCM ↔ Long Xuyên, TP.HCM ↔ Châu Đốc, TP.HCM ↔ Mũi Né, TP.HCM ↔ Nha Trang, TP.HCM ↔ Qui Nhơn, TP.HCM ↔ Đà Nẵng, Đà Lạt ↔ Nha Trang, Đà Lạt ↔ Đà Nẵng, Đà Lạt ↔ Cần Thơ.</p>
+							<p></p>
+      					</div>
+      					<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="8" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder">
+      					
+      						<article>
+      							<h7>Ngày đăng:  <p:outputLabel value="#{ds.ngayDang}">
+      								<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+      							</p:outputLabel></h7>
+      							<h5><p:outputLabel value="#{ds.tieuDe}"></p:outputLabel></h5>
+	                			<p><p:outputLabel value="#{ds.tomTat}"></p:outputLabel></p>
+	                			 <p:commandButton value="Chi tiết" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
+	                			<h:graphicImage value="#{ds.hinhAnh}"></h:graphicImage>
+          					</article>
+					    </p:dataList>   
+   
+        			</section>
+        			 
+    				</section>
+ 				</section>  <!-- Page ends here -->
+		</div>
+	</ui:composition>
+</body>
+</html>

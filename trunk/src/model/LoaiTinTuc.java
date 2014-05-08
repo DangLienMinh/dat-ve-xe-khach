@@ -1,7 +1,13 @@
 package model;
 
-public class LoaiTinTuc {
-	 private int MaLTT;
+import java.io.Serializable;
+
+public class LoaiTinTuc implements Serializable{
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int MaLTT;
 	 private String TenLTT; 
 	 
 	 public LoaiTinTuc(){}
@@ -25,5 +31,9 @@ public class LoaiTinTuc {
 
 	public void setTenLTT(String tenLTT) {
 		TenLTT = tenLTT;
+	}
+	@Override
+	public String toString(){
+		return Integer.toString(MaLTT);
 	}
 }

@@ -28,7 +28,7 @@
 	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
 	        <p:menuitem value="Báo cáo thống kê"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản"/> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH"/> 
 	    </p:tieredMenu>  
      </h:form> 
      </div>
@@ -37,7 +37,7 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="2" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}">   
+	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}">   
 	     
 		  
 	        <f:facet name="header">  
@@ -67,10 +67,10 @@
     	 </p:dataTable>  
 		 <p:separator/>
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
-	        <p:tab id="tba1" title="Thêm mới xe">
+	        <p:tab id="tba1" title="Thêm mới xe">	     
+
 	            <h:panelGrid columns="2" >
-				   
-				   	
+
 			       <h:outputLabel value='Biển số' />
 			       <p:inputText value='#{xeMBean.xe.bienSo}'/>
 			   
@@ -80,14 +80,15 @@
 				   	</p:selectOneMenu>
 				   	
 				   <h:outputLabel value='Số ghế' />
-			       <p:inputText value='#{xeMBean.xe.soGhe}'/>
-
-			       <p:commandButton id='Insert' value='Thêm' action='#{xeMBean.themXe}'/>
+				   <p:spinner 
+    				value="#{xeMBean.xe.soGhe}" min="1" max="99"/>
+			       
+			       <p:commandButton id='Insert' value='Thêm' action='#{xeMBean.themXe}' update="tba1"/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
 				   </h:panelGrid>  
-				    </p:tab>
-				   <p:tab id="tba2" title="Cập nhật xe" >  
-	            <h:panelGrid columns="2"  id="grid1">  
+			</p:tab>
+			<p:tab id="tba2" title="Cập nhật xe" >  
+	           	 <h:panelGrid columns="2"  id="grid1">  
 	               <h:outputLabel value='Biển số' />
 			       <p:inputText value='#{xeMBean.selectedXe.bienSo}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
 			       
@@ -97,11 +98,10 @@
 				   	</p:selectOneMenu>
 				   	
 				   <h:outputLabel value='Số ghế' />
-			       <p:inputText value='#{xeMBean.selectedXe.soGhe}'/>
-			    
-			       
-			       
-				   <p:commandButton id='Update' value='Cập nhật' action='#{xeMBean.suaXe}' ajax='false'/>
+				   <p:spinner 
+    				value="#{xeMBean.selectedXe.soGhe}" min="1" max="99"/>
+
+				   <p:commandButton id='Update' value='Cập nhật' action='#{xeMBean.suaXe}'/>
 				   
 	            </h:panelGrid>  
 	        </p:tab>  

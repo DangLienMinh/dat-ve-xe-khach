@@ -1,27 +1,33 @@
 package model;
+import java.io.Serializable;
 import java.util.Date;
 
-public class TinTuc {
-	   private int MaTT;
-	   private TinTuc MaLTT; 
+public class TinTuc implements Serializable{
+	   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int MaTT;
+	   private LoaiTinTuc MaLTT; 
 	   private String TieuDe;   
-	   private String NoiDung;  
 	   private String HinhAnh;  
 	   private Date NgayDang;  
 	   private String TomTat;  
+	   private String NoiDung;
 
 	   public TinTuc() {}
 	   
-	   public TinTuc(int MaTT,TinTuc MaLTT, String TieuDe, String NoiDung,String HinhAnh,Date NgayDang,String TomTat) {
-		   this.TomTat=TomTat;
-		   this.MaLTT=MaLTT;
-		   this.TieuDe=TieuDe;
-		   this.NoiDung=NoiDung;
-		   this.HinhAnh=HinhAnh;
-		   this.NgayDang=NgayDang;
-		   this.TomTat=TomTat;
-	   }
-
+	   public TinTuc(int maTT, LoaiTinTuc maLTT, String tieuDe, String hinhAnh,
+				Date ngayDang, String tomTat, String noiDung) {
+			MaTT = maTT;
+			MaLTT = maLTT;
+			TieuDe = tieuDe;
+			HinhAnh = hinhAnh;
+			NgayDang = ngayDang;
+			TomTat = tomTat;
+			NoiDung = noiDung;
+		}
+	   	  
 		public int getMaTT() {
 			return MaTT;
 		}
@@ -30,11 +36,11 @@ public class TinTuc {
 			MaTT = maTT;
 		}
 	
-		public TinTuc getMaLTT() {
+		public LoaiTinTuc getMaLTT() {
 			return MaLTT;
 		}
 	
-		public void setMaLTT(TinTuc maLTT) {
+		public void setMaLTT(LoaiTinTuc maLTT) {
 			MaLTT = maLTT;
 		}
 	
@@ -46,13 +52,6 @@ public class TinTuc {
 			TieuDe = tieuDe;
 		}
 	
-		public String getNoiDung() {
-			return NoiDung;
-		}
-	
-		public void setNoiDung(String noiDung) {
-			NoiDung = noiDung;
-		}
 	
 		public String getHinhAnh() {
 			return HinhAnh;
@@ -76,6 +75,16 @@ public class TinTuc {
 	
 		public void setTomTat(String tomTat) {
 			TomTat = tomTat;
+		}
+
+
+		public String getNoiDung() {
+			return NoiDung;
+		}
+
+
+		public void setNoiDung(String noiDung) {
+			NoiDung = noiDung;
 		}
 		
 }
