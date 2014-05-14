@@ -1,0 +1,77 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+     >
+
+ <h:head>
+ <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
+</style>
+ <h:outputStylesheet library="css" name="custom.css" />
+ </h:head>
+ <body>
+     <h:form>
+     <p:panel header="Thông tin khách hàng">
+     <h:panelGrid columns="2">
+     		<h:outputLabel value='Ho ' />
+	      <p:inputText value="#{hoaDonMBean.hoaDon.ho}"/> 
+	      <h:outputLabel value='Ten' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.ten}"/> 
+	      <h:outputLabel value='So dien thoai' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.dienThoai}"/>
+	      <h:outputLabel value='Email' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.email}"/>
+	      <h:outputLabel value='CMND' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.CMND}"/>
+	      <h:outputLabel value='Dia chi' />
+	     	<p:inputText  value="#{hoaDonMBean.hoaDon.diaChi}"/>
+     </h:panelGrid>
+	</p:panel>      
+	<p:panel header="Hình thức giao dịch">
+		    <p:outputPanel id="customPanel">
+			    <p:selectOneRadio id="customRadio" value="#{hoaDonMBean.option}" layout="custom">
+			        <f:selectItem itemLabel="Thanh toán trực tiếp" itemValue="1" />
+			        <f:selectItem itemLabel="Thanh toán online" itemValue="2" />
+			    </p:selectOneRadio>
+			 
+			    <h:panelGrid columns="2">
+			        <p:radioButton id="opt1" for="customRadio" itemIndex="0"/>
+			        <h:outputLabel for="opt1" value="Thanh toán trực tiếp" />
+			         
+			        <p:radioButton id="opt2" for="customRadio" itemIndex="1"/>
+			        <h:outputLabel for="opt2" value="Thanh toán online" />
+			        
+			    </h:panelGrid>
+	    </p:outputPanel>
+	</p:panel>   	
+	<p:panel header="Các điều kiện vận chuyển">
+			<ol class="o_list">
+				<li>Vì lợi ích của khách hàng và công ty, khách hàng nên mang theo CMND khi sử dụng dịch vụ.</li>
+				<li>Khách hàng có mặt tại điểm đón khách của Hoàng Long theo hướng dẫn của nhân viên bán vé trước giờ xe chạy ít nhất 30 phút để làm thủ tục</li>
+				<li>Khách hàng không được hút thuốc trên xe.</li>
+				<li>Khách hàng không mang theo những hàng hóa nguy hiểm, động vật tươi sống, quý hiếm, hàng bị cấm lưu thông như vũ khí, các chất dễ cháy nổ, những thứ có mùi độc hại lên xe.</li>
+				<li>Khách hàng không mang theo những hàng hóa cấm trong danh mục quy định hàng cấm của nước Cộng Hoà Xã Hội Chủ Nghĩa Việt Nam.</li>
+				<li>Vé chỉ có giá trị theo chuyến ngày và giờ ghi trên vé.</li>
+				<li>Khách hàng có quyền hủy, thay đổi chuyến đi trước 24 giờ xe dự kiến xuất bến và bị trừ 10% phí dịch vụ (Với vé tết có quy định riêng). Khách hàng mang theo vé này tới văn phòng đại diện bất kỳ của Hoàng Long để được hướng dẫn thủ tục hủy vé. <b>Trong 24h trước giờ xe dự kiến xuất bến vé không được hủy, thay đổi thông tin chuyến.</b></li>
+				<li>Khách hàng không được hủy, thay đổi thông tin khi mất vé này, khách hàng vẫn có thể đi xe nếu còn nhớ mã vé và mang theo CMND.</li>
+				<li>Nếu vì điều kiện bất khả kháng (Thiên tai, tắc đường…) Công ty được quyền hủy hoặc thay đổi lịch và giờ chạy. Công ty có trách nhiệm thông báo trước mà không chịu bất cứ trách nhiệm nào.</li>
+				<li>Mỗi hành khách được mang theo 20kg hành lý. Nếu vượt quá mức quy định thì phải đóng thêm phụ phí là 5000đ/kg. Các thiết bị máy móc,ti vi, máy tính cồng kềnh, xe máy... trong danh mục quy định hàng hóa của Công ty, không được tính là hành lý mang theo.</li>
+				<li>Trong trường hợp khách hàng cho rằng nhân viên của công ty có những hành vi thiếu lịch sự hoặc sai quy chế, chúng tôi luôn tiếp nhận ý kiến của khách hàng theo số điện thoại, email, thư tay ở phần thông tin liên lạc.</li>
+				<br/>
+				<b><u>THÔNG TIN LIÊN LẠC</u></b>
+					<ol>
+						<li>Đường dây nóng: 0313.920.920 - 0903.448.577 - 0913.240.504</li>
+						<li>Email: info@hoanglongasia.com</li>
+						<li>Địa chỉ: Phòng Điều hành trung tâm, Công ty TNHH vận tải Hoàng Long, 05 Phạm Ngũ Lão, Q.Ngô Quyền, Hải Phòng.</li>
+						<li>Đặt vé trực tuyến: http://www.hoanglongasia.com</li>
+					</ol>				
+			</ol>
+		<p:commandButton action="#{hoaDonMBean.datve}" value="Xác nhận đặt vé"></p:commandButton>
+	</p:panel>
+</h:form>
+</body>
+</html>

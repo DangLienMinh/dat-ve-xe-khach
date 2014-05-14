@@ -4,3 +4,11 @@ font-size: 1.6em;
 margin-bottom: 20px;
 position: relative;
 }
+
+.o_list li{
+	padding-bottom:5px;
+}
+
+.style_none li{
+	list-style: none;
+}

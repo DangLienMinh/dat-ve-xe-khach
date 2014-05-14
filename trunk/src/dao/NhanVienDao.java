@@ -18,6 +18,7 @@ import model.PhanQuyen;
 
 public class NhanVienDao {
 
+	//tra ve thong tin doi tuong nhan vien 
 	public NhanVien layThongTin(NhanVien temp){
 		NhanVien nhanVien=new NhanVien();
 		nhanVien.setMaNV(temp.getMaNV());
@@ -33,6 +34,7 @@ public class NhanVienDao {
 		return nhanVien;
 	}
 	
+	//them 1 doi tuong nhan vien
 	public void themNhanVien(NhanVien nhanVien,PhanQuyen phanQuyen) {
 		NhanVien x = new NhanVien();
 		x=layThongTin(nhanVien);  
@@ -55,7 +57,7 @@ public class NhanVienDao {
         }
     }
 	
-	 
+	 //sua 1 doi tuong nhan vien
 	 public void suaNhanVien(NhanVien nhanVien,PhanQuyen phanQuyen) {
 			NhanVien x = new NhanVien();
 			x=layThongTin(nhanVien);  
@@ -78,6 +80,7 @@ public class NhanVienDao {
 		    }
 		}
 	 
+	 //dang nhap 
 	 public int dangNhap(NhanVien nhanVien){
 			int returnResult = -1;
 			Connection conn;
@@ -106,6 +109,7 @@ public class NhanVienDao {
 			}
 		}
 	 
+	 //lay he ten nhan vien
 	 	public String layHoTen(NhanVien nhanVien){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 			Query query = session.createQuery("from NhanVien where TenDN = :tendn and MatKhau = :matkhau");
@@ -127,17 +131,19 @@ public class NhanVienDao {
 		      return "Lỗi";
 	 	}
 	 	
+	 	//tra ve doi tuong phan quyen dua vao maPQ ??????????????????????????????????????????
 	 	public PhanQuyen layPQ(int maPQ){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from PhanQuyen  where MaPQ = :mapq";
 		    List result = session.createQuery(hql)
 		    .setParameter("mapq", maPQ)
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+		  //tra ve 1 doi tuong PhanQuyen => lay phan tu dau tien cua result list
 	 		PhanQuyen x=(PhanQuyen) result.get(0);
 	 		return x; //return the list we created
 	 	}
 	 	
+	 	//tra ve danh sahc nhan vien
 	 	public List<NhanVien> danhSachNV(){
 	 		List<NhanVien> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -147,6 +153,7 @@ public class NhanVienDao {
 	 		return x;
 	 	}
 	 	
+	 	//xoa nhan vien
 	 	public void xoaNhanVien(NhanVien nhanVien) {
 	        Transaction trns = null;
 	        Session session = HibernateUtil.getSessionFactory().openSession();

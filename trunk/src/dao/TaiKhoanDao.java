@@ -11,23 +11,24 @@ import org.hibernate.Transaction;
 
 public class TaiKhoanDao {
 	
+	//tra ve doi tuong nhan vien theo ten dang nhap
 	public NhanVien ttCaNhan(String tendn){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from NhanVien  where TenDN = :tendn";
 	    List result = session.createQuery(hql)
 	    .setParameter("tendn", tendn)
 	    .list();
- 		//you should return list of LoaiXe object from this method, so need to create one
+	    //tra ve 1 doi tuong NhanVien => lay phan tu dau tien cua result list
 	    NhanVien x=(NhanVien) result.get(0);
- 		return x; //return the list we created
+ 		return x;
  	}
 	
+	//sua thong tin tai khoan nhan vien
 	 public void suaTaiKhoan(NhanVien nhanVien) {
 		    Transaction trns = null;
 		    Session session = HibernateUtil.getSessionFactory().openSession();
 		    try {
 		        trns = session.beginTransaction();
-//		        NhanVien nv=(NhanVien) session.load(NhanVien.class, nhanVien.getMaNV());
 		        String hql = "from NhanVien  where MaNV = :manv";
 			    List result = session.createQuery(hql)
 			    .setParameter("manv", nhanVien.getMaNV())
@@ -55,17 +56,17 @@ public class TaiKhoanDao {
 		    }
 		}
 
+	 //sua mat khau dua vao nhan vien
 	public void suaMatKhau(NhanVien nhanVien, String matKhauMoi) {
 		Transaction trns = null;
 	    Session session = HibernateUtil.getSessionFactory().openSession();
 	    try {
 	        trns = session.beginTransaction();
-//	        NhanVien nv=(NhanVien) session.load(NhanVien.class, nhanVien.getMaNV());
 	        String hql = "from NhanVien  where MaNV = :manv";
 		    List result = session.createQuery(hql)
 		    .setParameter("manv", nhanVien.getMaNV())
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+		  //tra ve 1 doi tuong NhanVien => lay phan tu dau tien cua result list
 		    NhanVien nv=(NhanVien) result.get(0);
             
             nv.setMatKhau(matKhauMoi);

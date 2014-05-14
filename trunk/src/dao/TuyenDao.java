@@ -15,6 +15,8 @@ import org.hibernate.criterion.Projections;
 
 public class TuyenDao {
 	private Tuyen x;
+	
+	//lay thong tin tuyen theo 1 doi tuong tuyen
 	public Tuyen layThongTin(Tuyen temp){
 		Tuyen tuyen=new Tuyen();
 		tuyen.setGia(temp.getGia());
@@ -25,6 +27,7 @@ public class TuyenDao {
 		return tuyen;
 	}
 	
+	//them tuyen
 	public void themTuyen(Tuyen tuyen) {
 		x = new Tuyen();
 		x=layThongTin(tuyen);
@@ -45,6 +48,7 @@ public class TuyenDao {
         }
     }
 	
+	//sua tuyen
 	 public void suaTuyen(Tuyen tuyen) { 
 		 x = new Tuyen();
 		 x=layThongTin(tuyen);
@@ -65,6 +69,7 @@ public class TuyenDao {
 	    }
 	}
 	
+	 //xoa tuyen
 	public void xoaTuyen(Tuyen tuyen) {
 		 x = new Tuyen();
 		 x=layThongTin(tuyen);
@@ -86,6 +91,7 @@ public class TuyenDao {
         }
     }
 	
+	//tra ve danh sach tueyn
 	public List<Tuyen> danhSachTuyen(){
  		List<Tuyen> x;
  		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -95,17 +101,7 @@ public class TuyenDao {
  		return x;
  	}
 	
-//	public List<String> danhSachBenDau(){
-// 		List<String> x=new ArrayList<String>();;
-// 		Session session = HibernateUtil.getSessionFactory().openSession();
-// 		session.beginTransaction();
-// 		Criteria cri=session.createCriteria(Tuyen.class);
-// 		cri.setProjection(Projections.distinct(Projections.property("BenDau")));
-// 		cri.addOrder(Order.asc("BenDau"));
-// 		x=cri.list();
-// 		return x;
-// 	}
-	
+	//xoa text box 
 	public void reset(Tuyen tuyen) {
 		tuyen.setGia(0);
 		tuyen.setBenCuoi(" ");
@@ -113,6 +109,7 @@ public class TuyenDao {
 		tuyen.setTenTuyen(" ");
 	}
 	
+	//tra ve mot combo box chon tuyen tren giao dien chuyen
 	public List<Tuyen> selectItems(){
 		List<Tuyen> list=null;
 		Transaction trns = null;
@@ -135,15 +132,16 @@ public class TuyenDao {
 		return list;
 	}
 
+	//lat ten tuyen theo ma tuyen
 	public String tenTuyen(int maTuyen) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from Tuyen  where MaTuyen = :matuyen";
 	    List result = session.createQuery(hql)
 	    .setParameter("matuyen", maTuyen)
 	    .list();
- 		//you should return list of LoaiXe object from this method, so need to create one
+	  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
  		Tuyen x=(Tuyen) result.get(0);
- 		return x.getBenCuoi()+" - "+x.getBenCuoi(); //return the list we created
+ 		return x.getBenCuoi()+" - "+x.getBenCuoi();
 	}
 
 }

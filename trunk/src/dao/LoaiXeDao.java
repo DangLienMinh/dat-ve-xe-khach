@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 
 public class LoaiXeDao {
 
+	//combobox loai xe
 	public List<LoaiXe> selectItems(){
 		List<LoaiXe> list=null;
 		Transaction trns = null;

@@ -23,12 +23,8 @@ import model.Xe;
 @ManagedBean(name= "hoaDonMBean")
 @SessionScoped
 public class HoaDonManagedBean {
-	
-
-	
 	private Date currentDate;
 	private Date maxDate;
-	
 	private Tuyen tuyen=new Tuyen();
 	private Chuyen chuyen=new Chuyen();
 	private ChuyenDao chuyenDao=new ChuyenDao();
@@ -83,16 +79,12 @@ public class HoaDonManagedBean {
 	public String datVe(Chuyen ds){
 		chuyen=ds;
 		Xe x=chuyen.getBienSo();
-		xe=xeDao.layXeTheoChuyen(x.getBienSo());
-		LoaiXe x1=xe.getMaLoaiXe();
-		loaiXe=xeDao.layLXTheoXe(x1.getMaLoaiXe());
+		xe=xeDao.layXeTheoBienSo(x.getBienSo());
+		LoaiXe malx=xe.getMaLoaiXe();
+		loaiXe=xeDao.layLX(malx.getMaLoaiXe());
 		
 		if(loaiXe.getMaLoaiXe()==1){
-//			String []ttNgoi=new String[20];
-//			for (int i = 0; i < ttNgoi.length; i++) {
-//				ttNgoi[i]="true";
-//			}
-			List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen());
+			List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
 			String []ttNgoi=new String[45];
 			for(Ghe ghe:ttGhe){
 				ttNgoi[ghe.getMaGhe()-1]="true";
@@ -101,6 +93,12 @@ public class HoaDonManagedBean {
 			return "gheNgoi";
 		}
 		else{
+			List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
+			String []ttNam=new String[40];
+			for(Ghe ghe:ttGhe){
+				ttNam[ghe.getMaGhe()-1]="true";
+			}
+			gheMB.setTtNam(ttNam);
 			return "giuongNam";
 		}	
 	}
@@ -114,7 +112,8 @@ public class HoaDonManagedBean {
 		Tuyen tuyen=new Tuyen();
 		tuyen=chuyen.getMaTuyen();
 		hoaDon.setTongTien(chuyenDao.tienVe(tuyen.getMaTuyen()));
-		hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+		int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+		hoaDon.setMaHD(mahd);
 		return "kqDatVe.xhtml";
 	}
 	

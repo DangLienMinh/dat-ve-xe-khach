@@ -13,13 +13,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class XeDao {
+	
+	//tra ve thong tin doi tuong xe
 	public Xe layThongTin(Xe temp){
 		Xe xe=new Xe();
 		xe.setBienSo(temp.getBienSo());
-
 		return xe;
 	}
 	
+	//them mot doi tuong xe
 	public void themXe(Xe xe,LoaiXe loaiXe) {
 		Xe x = new Xe();
 		x=layThongTin(xe);  
@@ -42,7 +44,7 @@ public class XeDao {
         }
     }
 	
-	 
+	//sua mot doi tuong xe 
 	 public void suaXe(Xe xe,LoaiXe loaiXe) {
 			Xe x = new Xe();
 			x=layThongTin(xe);  
@@ -65,6 +67,7 @@ public class XeDao {
 		    }
 		}
 	 	
+	 //lay thong tin loai xe theo maLoaiXe
 	 	public LoaiXe layLX(int maLoaiXe){		
 		    Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from LoaiXe  where MaLoaiXe = :maLoaiXe";
@@ -76,28 +79,20 @@ public class XeDao {
 	 		return x; //return the list we created
 	 	}
 	 	
-	 	public LoaiXe layLXTheoXe(int maLoaiXe) {
-	 		Session session = HibernateUtil.getSessionFactory().openSession();
-		    String hql = "from LoaiXe  where MaLoaiXe = :maLoaiXe";
-		    List result = session.createQuery(hql)
-		    .setParameter("maLoaiXe",maLoaiXe)
-		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
-		    LoaiXe x=(LoaiXe) result.get(0);
-	 		return x; //return the list we created
-		}
 	 	
-	 	public Xe layXeTheoChuyen(String bienSo){
+	 	//Tra ve doi tuong xe theo BienSo xe
+	 	public Xe layXeTheoBienSo(String bienSo){
 		    Session session = HibernateUtil.getSessionFactory().openSession();
-		    String hql = "from Xe  where BienSo = :maLoaiXe";
+		    String hql = "from Xe  where BienSo = :bienso";
 		    List result = session.createQuery(hql)
-		    .setParameter("maLoaiXe", bienSo)
+		    .setParameter("bienso", bienSo)
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+	 		//tra ve 1 doi tuong xe => lay phan tu dau tien cua result list
 	 		Xe x=(Xe) result.get(0);
-	 		return x; //return the list we created
+	 		return x; 
 	 	}
 	 	
+	 	//tra ve tat ca cac xe trong csdl
 	 	public List<Xe> danhSachXe(){
 	 		List<Xe> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -108,6 +103,7 @@ public class XeDao {
 	 		
 	 	}
 	 	
+	 	//xoa mot doi tuong xe
 	 	public void xoaXe(Xe xe) {
 	        Transaction trns = null;
 	        Session session = HibernateUtil.getSessionFactory().openSession();
@@ -128,10 +124,12 @@ public class XeDao {
 	    }
 
 	 
+	 	//xoa tat ca chu
 	 public void reset(Xe xe) {
 		 xe.setBienSo(" ");
 	 }
 	 
+	 //combobox xe luc chon chuyen xe
 	 public List<Xe> selectItems(){
 			List<Xe> list=null;
 			Transaction trns = null;
