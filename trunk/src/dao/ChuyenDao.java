@@ -18,7 +18,6 @@ public class ChuyenDao {
 		Chuyen chuyen=new Chuyen();
 		chuyen.setGioDi(temp.getGioDi());
 		chuyen.setGioDen(temp.getGioDen());
-		chuyen.setSoGheTrong(temp.getSoGheTrong());
 		chuyen.setMaChuyen(temp.getMaChuyen());
 		chuyen.setKhuyenMai(temp.getKhuyenMai());
 		return chuyen;

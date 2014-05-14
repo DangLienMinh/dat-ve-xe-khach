@@ -14,15 +14,30 @@
  </h:head>
  <body>
      <h:form>
-      <h:outputLabel value='Loại xe' />
-		<p:selectOneMenu value="#{hoaDonMBean.tuyen.maTuyen}">
-			<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
-		</p:selectOneMenu>
-		<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}"></p:calendar>
-		 <td><p:commandButton id='submit' value='hien thi' action='#{hoaDonMBean.hienThiChuyen}' update="test"/></td>
-		 
+      <p:panel header="Tìm thông tin chuyến xe">
+      <p:graphicImage library="image" name="hoanglong-bus.png" style="margin-left:400px;"></p:graphicImage>
+      	<h:panelGrid columns="1">
+      		<h:outputLabel value='Tuyến xe' />
+			<p:selectOneMenu value="#{hoaDonMBean.tuyen.maTuyen}">
+				<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
+			</p:selectOneMenu>
+			<h:outputLabel value='Ngày đi' />
+			<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}"></p:calendar>
+      		
+      	</h:panelGrid>
+      	
+      	<p:dialog  widgetVar="dlg2" >
+		   <IFRAME src="http://www.informatik.uni-leipzig.de/~duc/amlich/JavaScript/current_month.html"  name="CurentMonth" width="188" height="228" >
+			</IFRAME>
+		</p:dialog>
+	      <h:panelGrid columns="2">
+	     	 <p:commandButton id='submit' value='Tìm chuyến' action='#{hoaDonMBean.hienThiChuyen}' update="test"/>
+			<h:outputLabel style="margin-left:70px;">Để xem lịch âm dương cho chính xác ngày đi <p:commandLink style="margin-right:20px;" onclick="dlg2.show();"><h:outputText value="Nhấn vào đây" /></p:commandLink></h:outputLabel>
+	      </h:panelGrid>
+		
+	   </p:panel>
 		 <p:dataTable  var="ds" value="#{hoaDonMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" id="test">   
-	     
+	    
 		  
 	        <f:facet name="header">  
 	            Danh sách chuyến
@@ -48,10 +63,6 @@
 	            <h:outputText value="#{ds.khuyenMai}" />  
 	        </p:column>  
 	        
-	        <p:column headerText="Chỗ trống" style="font-size:14px!important;">  
-	            <h:outputText value="#{ds.soGheTrong}" />  
-	        </p:column>  
-	        
 	        <p:column headerText="Giá vé" style="font-size:14px!important;">  
 	            <h:outputText value="#{hoaDonMBean.dsTuyen.gia}" >
 	            	<f:convertNumber groupingUsed="true"  />
@@ -65,5 +76,6 @@
     	 
 	
      </h:form>
+     
 </body>
 </html>
