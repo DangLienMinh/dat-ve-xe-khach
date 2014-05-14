@@ -7,19 +7,17 @@ public class Chuyen {
 	   private int KhuyenMai;   
 	   private Date GioDi;  
 	   private Date GioDen;  
-	   private int SoGheTrong;  
 	   private TaiXe MaTX;  
 	   private Xe BienSo;
 	   private Tuyen MaTuyen;
 	   
 	   public Chuyen() {}
 	   
-	   public Chuyen(int MaChuyen,int KhuyenMai, Date GioDi, Date GioDen,int SoGheTrong,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
+	   public Chuyen(int MaChuyen,int KhuyenMai, Date GioDi, Date GioDen,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
 		   this.MaChuyen=MaChuyen;
 		   this.setKhuyenMai(KhuyenMai);
 		   this.setGioDi(GioDi);
 		   this.setGioDen(GioDen);
-		   this.SoGheTrong=SoGheTrong;
 		   this.MaTX=MaTX;
 		   this.BienSo=BienSo;
 		   this.MaTuyen=MaTuyen;
@@ -32,16 +30,7 @@ public class Chuyen {
 		public void setMaChuyen(int maChuyen) {
 			MaChuyen = maChuyen;
 		}
-	
-		
-	
-		public int getSoGheTrong() {
-			return SoGheTrong;
-		}
-	
-		public void setSoGheTrong(int soGheTrong) {
-			SoGheTrong = soGheTrong;
-		}
+
 	
 		public TaiXe getMaTX() {
 			return MaTX;

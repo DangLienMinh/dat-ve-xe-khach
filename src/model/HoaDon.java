@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class HoaDon {
@@ -16,8 +17,12 @@ public class HoaDon {
 	 private String DienThoai;  
      private String HinhThucTT;  
      private Ghe MaGhe;
-	 
-	 public HoaDon(){}
+     
+	 public HoaDon(){
+		 Calendar cal =Calendar.getInstance();
+		 cal.add(Calendar.DATE, 1);
+		 NgayGD=cal.getTime();
+	 }
 	 
 	 public HoaDon(int MaHD,Date NgayGD,Date NgayNhanVe,int TongTien,Chuyen MaChuyen,String Ho,String Ten,String CMND,String DiaChi,String Email,String DienThoai,String HinhThucThanhToan,Ghe maGhe){
 		 this.MaHD=MaHD;
