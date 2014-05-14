@@ -1,0 +1,69 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+     >
+
+ <h:head>
+ <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <h:form>
+      <h:outputLabel value='Loại xe' />
+		<p:selectOneMenu value="#{hoaDonMBean.tuyen.maTuyen}">
+			<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
+		</p:selectOneMenu>
+		<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}"></p:calendar>
+		 <td><p:commandButton id='submit' value='hien thi' action='#{hoaDonMBean.hienThiChuyen}' update="test"/></td>
+		 
+		 <p:dataTable  var="ds" value="#{hoaDonMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" id="test">   
+	     
+		  
+	        <f:facet name="header">  
+	            Danh sách chuyến
+	        </f:facet>  
+	  
+	        <p:column headerText="Mã Chuyến" style="font-size:14px!important;">  
+	            <h:outputText  value="#{ds.maChuyen}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Tuyến" style="font-size:14px!important;">  
+	            <h:outputText  value="#{tuyenMBean.tenTuyen(ds.maTuyen)}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Giờ đi" style="font-size:14px!important;"> 
+	           <h:outputText  value="#{ds.gioDi}"/>     
+	        </p:column>
+	        
+	        <p:column headerText="Giờ đến" style="font-size:14px!important;"> 
+	         	<h:outputText  value="#{ds.gioDen}"/>
+	        </p:column>
+	        
+	        <p:column headerText="Khuyến mãi" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.khuyenMai}" />  
+	        </p:column>  
+	        
+	        <p:column headerText="Chỗ trống" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.soGheTrong}" />  
+	        </p:column>  
+	        
+	        <p:column headerText="Giá vé" style="font-size:14px!important;">  
+	            <h:outputText value="#{hoaDonMBean.dsTuyen.gia}" >
+	            	<f:convertNumber groupingUsed="true"  />
+	            </h:outputText>  
+	        </p:column>  
+	  		<p:column style="font-size:14px!important;">
+	  		<p:commandButton  value="Chọn chuyến" action='#{hoaDonMBean.datVe(ds)}'></p:commandButton>
+	  		</p:column>
+    	 </p:dataTable>  
+    	 
+    	 
+	
+     </h:form>
+</body>
+</html>

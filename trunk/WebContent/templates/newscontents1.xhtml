@@ -22,19 +22,20 @@
 								TP.HCM ↔ Đà Lạt, TP. HCM ↔ Cần Thơ, TP.HCM ↔ Vĩnh Long, TP.HCM ↔ Cà Mau, TP.HCM ↔ Rạch Giá, TP.HCM ↔ Long Xuyên, TP.HCM ↔ Châu Đốc, TP.HCM ↔ Mũi Né, TP.HCM ↔ Nha Trang, TP.HCM ↔ Qui Nhơn, TP.HCM ↔ Đà Nẵng, Đà Lạt ↔ Nha Trang, Đà Lạt ↔ Đà Nẵng, Đà Lạt ↔ Cần Thơ.</p>
 							<p></p>
       					</div>
-      					<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="8" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder">
-      					
-      						<article>
-      							<h7>Ngày đăng:  <p:outputLabel value="#{ds.ngayDang}">
-      								<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
-      							</p:outputLabel></h7>
-      							<h5><p:outputLabel value="#{ds.tieuDe}"></p:outputLabel></h5>
-	                			<p><p:outputLabel value="#{ds.tomTat}"></p:outputLabel></p>
-	                			 <p:commandButton value="Chi tiết" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
-	                			<h:graphicImage value="#{ds.hinhAnh}"></h:graphicImage>
-          					</article>
-					    </p:dataList>   
-   
+      					<h:form>
+	      					<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="8" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder">
+	      					
+	      						<article>
+	      							<h7>Ngày đăng:  <p:outputLabel value="#{ds.ngayDang}">
+	      								<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+	      							</p:outputLabel></h7>
+	      							<h5><p:outputLabel value="#{ds.tieuDe}"></p:outputLabel></h5>
+		                			<p><p:outputLabel value="#{ds.tomTat}"></p:outputLabel></p>
+		                			 <p:commandButton value="Chi tiết" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
+		                			<h:graphicImage value="#{ds.hinhAnh}"></h:graphicImage>
+	          					</article>
+						    </p:dataList>   
+   						</h:form>
         			</section>
         			 
     				</section>

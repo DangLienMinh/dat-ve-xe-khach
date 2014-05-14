@@ -1,0 +1,58 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+     >
+
+ <h:head>
+ <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <h:form>
+     <p:outputLabel value="#{hoaDonMBean.gheMB.selectedGhe}"></p:outputLabel>
+     <p:panelGrid columns="2">
+     		<h:outputLabel value='Ho ' />
+	      <p:inputText value="#{hoaDonMBean.hoaDon.ho}"/> 
+	      <h:outputLabel value='Ten' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.ten}"/> 
+	      <h:outputLabel value='So dien thoai' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.dienThoai}"/>
+	      <h:outputLabel value='Email' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.email}"/>
+	      <h:outputLabel value='CMND' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.CMND}"/>
+	      <h:outputLabel value='Dia chi' />
+	     	<p:inputText  value="#{hoaDonMBean.hoaDon.diaChi}"/>
+     </p:panelGrid>
+	      
+	      
+	    <p:outputPanel id="customPanel">
+		    <p:selectOneRadio id="customRadio" value="#{hoaDonMBean.option}" layout="custom">
+		        <f:selectItem itemLabel="Thanh toán trực tiếp" itemValue="1" />
+		        <f:selectItem itemLabel="Thanh toán online" itemValue="2" />
+		    </p:selectOneRadio>
+		 
+		    <h:panelGrid columns="2">
+		        <p:radioButton id="opt1" for="customRadio" itemIndex="0"/>
+		        <h:outputLabel for="opt1" value="Thanh toán trực tiếp" />
+		         
+		        <p:radioButton id="opt2" for="customRadio" itemIndex="1"/>
+		        <h:outputLabel for="opt2" value="Thanh toán online" />
+		        
+		    </h:panelGrid>
+    </p:outputPanel>
+		
+
+		  
+		  
+		  
+		  <p:commandButton action="#{hoaDonMBean.datve}"></p:commandButton>
+	  </h:form>
+	  
+</body>
+</html>

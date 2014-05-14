@@ -26,7 +26,7 @@
 	   </id>
 	   <many-to-one name="MaLoaiXe" column="MaLoaiXe" 
        class="model.LoaiXe" not-null="true"/>
-	   <property name="SoGhe" column="SoGhe"/>
+	   
    </class>
    
    <class name='model.TaiXe' table='TaiXe'>
@@ -58,5 +58,6 @@
 	   </id>
 	   <property name="TenLoaiXe" column="TenLoaiXe"/>
 	   <property name="GiuongNam" column="GiuongNam"/>
+	   <property name="SoGhe" column="SoGhe"/>
  	</class>
 </hibernate-mapping>

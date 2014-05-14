@@ -37,7 +37,7 @@ public class ChuyenManagedBean {
 
 	public ChuyenManagedBean(){
 		DanhSach = new ArrayList<Chuyen>();
-		DanhSach = chuyenDao.danhSachNV();
+		DanhSach = chuyenDao.danhSachChuyen();
 	}
 	public Chuyen getChuyen() {
 		return chuyen;
