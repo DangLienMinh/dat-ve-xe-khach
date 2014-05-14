@@ -8,6 +8,7 @@ import javax.faces.event.ActionEvent;
 public class GheManagedBean {
 	//tinh trang
 	private String []ttNgoi=new String[45];
+	private String []ttNam=new String[40];
 	private String selectedGhe;
 //	//dai dien ghe
 //	private int []gheNgoi=new int[45];
@@ -47,5 +48,13 @@ public class GheManagedBean {
 
 	public void setSelectedGhe(String selectedGhe) {
 		this.selectedGhe = selectedGhe;
+	}
+
+	public String [] getTtNam() {
+		return ttNam;
+	}
+
+	public void setTtNam(String [] ttNam) {
+		this.ttNam = ttNam;
 	}
 }

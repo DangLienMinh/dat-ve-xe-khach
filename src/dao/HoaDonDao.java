@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 public class HoaDonDao {
 	private HoaDon x;
 	
+	//lay thong tin mot hoa don 
 	public HoaDon layThongTin(HoaDon temp){
 		HoaDon hoaDon=new HoaDon();
 		hoaDon.setHo(temp.getHo());
@@ -28,7 +29,8 @@ public class HoaDonDao {
 		return hoaDon;
 	}
 	
-	public void themHoaDon(HoaDon hoaDon,Chuyen chuyenTemp,String gheTemp) {
+	//them mot hoa don
+	public int themHoaDon(HoaDon hoaDon,Chuyen chuyenTemp,String gheTemp) {
 		x = new HoaDon();
 		x=layThongTin(hoaDon);
         Transaction trns = null;
@@ -41,14 +43,16 @@ public class HoaDonDao {
             x.setMaChuyen(chuyen);
             session.save(x);
             session.getTransaction().commit();
+           
+            
         } catch (RuntimeException e) {
             if (trns != null) {
                 trns.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
+        } 
+        session.flush();
+        session.close();
+        return x.getMaHD();
     }
 }

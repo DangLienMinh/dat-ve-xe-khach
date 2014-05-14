@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 public class PhanQuyenDao {
 
 
+	//tra ve combo box phan quyen
 	public List<PhanQuyen> selectItems(){
 		List<PhanQuyen> list=null;
 		Transaction trns = null;

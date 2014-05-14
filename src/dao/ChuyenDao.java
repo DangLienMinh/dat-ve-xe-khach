@@ -13,6 +13,7 @@ import org.hibernate.Transaction;
 
 public class ChuyenDao {
 
+	//tra ve thong tin chuyebn
 	public Chuyen layThongTin(Chuyen temp){
 		Chuyen chuyen=new Chuyen();
 		chuyen.setGioDi(temp.getGioDi());
@@ -23,6 +24,7 @@ public class ChuyenDao {
 		return chuyen;
 	}
 	
+	//them 1 chuyen
 	public void themChuyen(Chuyen chuyen,TaiXe taiXe,Tuyen tuyen,Xe xe) {
 		Chuyen result = new Chuyen();
 		result=layThongTin(chuyen);  
@@ -49,7 +51,7 @@ public class ChuyenDao {
         }
     }
 	
-	 
+	 //sua thong tin chuyen
 	 public void suaChuyen(Chuyen chuyen,TaiXe taiXe,Tuyen tuyen,Xe xe) {
 		 	Chuyen result = new Chuyen();
 			result=layThongTin(chuyen);  
@@ -77,7 +79,7 @@ public class ChuyenDao {
 		}
 	 
 	
-	 	
+	 	//lay thong tin tai xe dua vao matx???????????????????
 	 	public TaiXe layTX(int maTX){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from TaiXe  where MaTX = :matx";
@@ -89,41 +91,44 @@ public class ChuyenDao {
 	 		return x; //return the list we created
 	 	}
 	 	
+	 	//lay thong tin tuyen dua vao ma tuyen?>>>>>>>>>>>>???????
 	 	public Tuyen layTuyen(int maTuyen){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from Tuyen  where MaTuyen = :matuyen";
 		    List result = session.createQuery(hql)
 		    .setParameter("matuyen", maTuyen)
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+		  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
 		    Tuyen x=(Tuyen) result.get(0);
 	 		return x; //return the list we created
 	 	}
 	 	
+	 	//lay thong tin tien ve dua vao matuyen????????????
 	 	public int tienVe(int maTuyen){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from Tuyen  where MaTuyen = :matuyen";
 		    List result = session.createQuery(hql)
 		    .setParameter("matuyen", maTuyen)
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+		  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
 		    Tuyen x=(Tuyen) result.get(0);
-	 		return x.getGia(); //return the list we created
+	 		return x.getGia(); 
 	 	}
 	 	
 	 	
-	 	
+	 	//lay xe dua vao bien so xe ??????????????????????????
 	 	public Xe layBienSo(String bienSo){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from Xe  where BienSo = :bs";
 		    List result = session.createQuery(hql)
 		    .setParameter("bs", bienSo)
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+		  //tra ve 1 doi tuong Xe => lay phan tu dau tien cua result list
 		    Xe x=(Xe) result.get(0);
 	 		return x; //return the list we created
 	 	}
 	 	
+	 	//tra ve danh sach chuyen
 	 	public List<Chuyen> danhSachChuyen(){
 	 		List<Chuyen> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -134,6 +139,7 @@ public class ChuyenDao {
 	 		
 	 	}
 	 	
+	 	//xoa mot chuyebn
 	 	public void xoaChuyen(Chuyen chuyen) {
 	        Transaction trns = null;
 	        Session session = HibernateUtil.getSessionFactory().openSession();
@@ -153,19 +159,14 @@ public class ChuyenDao {
 	        }
 	    }
 	 	
+	 	//ds chon chuyen
 	 	public List<Chuyen> dsChonChuyen(Tuyen tuyen) {
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from Chuyen  where MaTuyen = :matuyen";
 		    List result = session.createQuery(hql)
 		    .setParameter("matuyen", tuyen)
 		    .list();
-//		    //lay gia ve,diem di,diemden cua tuyen
-//		    String hql1 = "from Tuyen  where MaTuyen = :matuyen";
-//		    List result1 = session.createQuery(hql)
-//		    .setParameter("matuyen", tuyen.getMaTuyen())
-//		    .list();
-//		    Tuyen x=(Tuyen) result1.get(0);
-	 		return result; //return the list we created
+	 		return result; 
 	    }
 
 	 

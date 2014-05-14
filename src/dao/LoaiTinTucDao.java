@@ -16,6 +16,7 @@ public class LoaiTinTucDao implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//combobox loai tin tuc
 	public List<LoaiTinTuc> selectItems(){
 		List<LoaiTinTuc> list=null;
 		Transaction trns = null;

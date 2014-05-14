@@ -13,6 +13,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 public class TinTucDao implements Serializable {
 	/**
@@ -20,7 +21,7 @@ public class TinTucDao implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-
+	//lay thong tin mot doi tuong tin tuc
 	public TinTuc layThongTin(TinTuc temp){
 		TinTuc tinTuc=new TinTuc();
 		tinTuc.setTomTat(temp.getTomTat());
@@ -31,6 +32,7 @@ public class TinTucDao implements Serializable {
 		return tinTuc;
 	}
 	
+	//them 1 doi tuong tin tuc
 	public void themTinTuc(TinTuc tinTuc,LoaiTinTuc loaiTinTuc) {
 		TinTuc x = new TinTuc();
 		x=layThongTin(tinTuc);  
@@ -53,7 +55,7 @@ public class TinTucDao implements Serializable {
         }
     }
 	
-	 
+	 //sua mot doi tuong tin tuc
 	 public void suaTinTuc(TinTuc tinTuc,LoaiTinTuc loaiTinTuc) {
 			TinTuc x = new TinTuc();
 			x=layThongTin(tinTuc);  
@@ -78,41 +80,44 @@ public class TinTucDao implements Serializable {
 		    }
 		}
 	 	
+	 //lay loai tin tuc theo maltt
 	 	public LoaiTinTuc layLTT(int maLoaiTinTuc){		
 		   Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from LoaiTinTuc  where MaLTT = :maLoaiTinTuc";
 		    List result = session.createQuery(hql)
 		    .setParameter("maLoaiTinTuc", maLoaiTinTuc)
 		    .list();
-	 		//you should return list of LoaiTinTuc object from this method, so need to create one
+		//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
 	 		LoaiTinTuc x=(LoaiTinTuc) result.get(0);
-	 		return x; //return the list we created
+	 		return x; 
 	 	}
 	 	
+	 	//load danh sach tin tuc
 	 	public List<TinTuc> danhSachTinTuc(){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 	 		List<TinTuc> x;
 	 		session.beginTransaction();
 	 		Criteria cri=session.createCriteria(TinTuc.class);
+	 		cri.addOrder(Order.desc("NgayDang"));
 	 		x=cri.list();
-
 	 		return x;
 	 	}
 	 	
+	 	//Chi tiet mot tin tuc
 	 	public TinTuc loadData(int maTT){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from TinTuc  where MaTT = :matt";
 		    List result = session.createQuery(hql)
 		    .setParameter("matt", maTT)
 		    .list();
-	 		//you should return list of LoaiXe object from this method, so need to create one
+	 		//tra ve 1 doi tuong TinTuc => lay phan tu dau tien cua result list
 		    TinTuc x=(TinTuc)result.get(0);
 		    return x;
 	 	}
 	 	
 	 	
 	 	
-	 	
+	 	//xoa tin tuc
 	 	public void xoaTinTuc(TinTuc tinTuc) {
 	 		TinTuc x=new TinTuc();
 	        Transaction trns = null;
@@ -133,7 +138,7 @@ public class TinTucDao implements Serializable {
 	        }
 	    }
 
-	 
+	 //lam trong tat ca cac textbox 
 	 public void reset(TinTuc tinTuc) {
 		 tinTuc.setNoiDung(" ");
 		 tinTuc.setTieuDe(" ");
