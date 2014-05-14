@@ -1,0 +1,166 @@
+package controller;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+
+import dao.ChuyenDao;
+import dao.GheDao;
+import dao.HoaDonDao;
+import dao.TuyenDao;
+import dao.XeDao;
+import model.Chuyen;
+import model.Ghe;
+import model.HoaDon;
+import model.LoaiXe;
+import model.Tuyen;
+import model.Xe;
+@ManagedBean(name= "hoaDonMBean")
+@SessionScoped
+public class HoaDonManagedBean {
+	
+
+	
+	private Date currentDate;
+	private Date maxDate;
+	
+	private Tuyen tuyen=new Tuyen();
+	private Chuyen chuyen=new Chuyen();
+	private ChuyenDao chuyenDao=new ChuyenDao();
+	private List<Chuyen> danhSach;
+	private Tuyen dsTuyen=new Tuyen();
+	private HoaDon hoaDon=new HoaDon();
+	private String option;
+	private Xe xe=new Xe();
+	private LoaiXe loaiXe=new LoaiXe();
+	private XeDao xeDao=new XeDao();
+	@ManagedProperty(value="#{gheMBean}")
+	private GheManagedBean gheMB;
+	private GheDao gheDao=new GheDao();
+
+	private HoaDonDao hoaDonDao=new HoaDonDao();
+
+	public Date getMaxDate() {
+		Calendar cal = Calendar.getInstance(); 
+		cal.add(Calendar.MONTH, 1);
+	    return cal.getTime();
+	}
+	public Date getCurrentDate() {
+		Calendar cal = Calendar.getInstance(); 
+		cal.add(Calendar.DATE, 1);
+	    return cal.getTime();
+	}
+	
+	public void hienThiChuyen(){
+		danhSach=chuyenDao.dsChonChuyen(tuyen);
+		dsTuyen=chuyenDao.layTuyen(tuyen.getMaTuyen());
+		
+	}
+	public Tuyen getTuyen() {
+		return tuyen;
+	}
+	public void setTuyen(Tuyen tuyen) {
+		this.tuyen = tuyen;
+	}
+	public List<Chuyen> getDanhSach() {
+		return danhSach;
+	}
+	public void setDanhSach(List<Chuyen> danhSach) {
+		this.danhSach = danhSach;
+	}
+	public Tuyen getDsTuyen() {
+		return dsTuyen;
+	}
+	public void setDsTuyen(Tuyen dsTuyen) {
+		this.dsTuyen = dsTuyen;
+	}
+	
+	public String datVe(Chuyen ds){
+		chuyen=ds;
+		Xe x=chuyen.getBienSo();
+		xe=xeDao.layXeTheoChuyen(x.getBienSo());
+		LoaiXe x1=xe.getMaLoaiXe();
+		loaiXe=xeDao.layLXTheoXe(x1.getMaLoaiXe());
+		
+		if(loaiXe.getMaLoaiXe()==1){
+//			String []ttNgoi=new String[20];
+//			for (int i = 0; i < ttNgoi.length; i++) {
+//				ttNgoi[i]="true";
+//			}
+			List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen());
+			String []ttNgoi=new String[45];
+			for(Ghe ghe:ttGhe){
+				ttNgoi[ghe.getMaGhe()-1]="true";
+			}
+			gheMB.setTtNgoi(ttNgoi);
+			return "gheNgoi";
+		}
+		else{
+			return "giuongNam";
+		}	
+	}
+	
+	public String datve(){
+		if(option.equalsIgnoreCase("1")){
+			hoaDon.setHinhThucTT("Trực tiếp");
+		}else{
+			hoaDon.setHinhThucTT("Chuyển khoản");
+		}
+		Tuyen tuyen=new Tuyen();
+		tuyen=chuyen.getMaTuyen();
+		hoaDon.setTongTien(chuyenDao.tienVe(tuyen.getMaTuyen()));
+		hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+		return "kqDatVe.xhtml";
+	}
+	
+	public HoaDon getHoaDon() {
+		return hoaDon;
+	}
+	public void setHoaDon(HoaDon hoaDon) {
+		this.hoaDon = hoaDon;
+	}
+	public Chuyen getChuyen() {
+		return chuyen;
+	}
+	public void setChuyen(Chuyen chuyen) {
+		this.chuyen = chuyen;
+	}
+	public String getOption() {
+		return option;
+	}
+	public void setOption(String option) {
+		this.option = option;
+	}
+	public LoaiXe getLoaiXe() {
+		return loaiXe;
+	}
+	public void setLoaiXe(LoaiXe loaiXe) {
+		this.loaiXe = loaiXe;
+	}
+	public Xe getXe() {
+		return xe;
+	}
+	public void setXe(Xe xe) {
+		this.xe = xe;
+	}
+	public GheManagedBean getGheMB() {
+		return gheMB;
+	}
+	public void setGheMB(GheManagedBean gheMB) {
+		this.gheMB = gheMB;
+	}
+	public GheDao getGheDao() {
+		return gheDao;
+	}
+	public void setGheDao(GheDao gheDao) {
+		this.gheDao = gheDao;
+	}
+	
+	
+	
+}

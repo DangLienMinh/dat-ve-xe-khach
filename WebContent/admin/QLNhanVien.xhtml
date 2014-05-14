@@ -120,7 +120,7 @@
 			       
 			   
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
+			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}" id="popupButtonCal"  pattern="dd/MM/yyyy" navigator="true" showButtonPanel="true" />
 
 			       <p:commandButton id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}'/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' ajax='false'/>

@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.Set;
 
 public class HoaDon {
 	 private int MaHD;
@@ -15,11 +14,12 @@ public class HoaDon {
 	 private String DiaChi;  
 	 private String Email;  
 	 private String DienThoai;  
-     private String HinhThucThanhToan;  
+     private String HinhThucTT;  
+     private Ghe MaGhe;
 	 
 	 public HoaDon(){}
 	 
-	 public HoaDon(int MaHD,Date NgayGD,Date NgayNhanVe,int TongTien,Chuyen MaChuyen,String Ho,String Ten,String CMND,String DiaChi,String Email,String DienThoai,String HinhThucThanhToan){
+	 public HoaDon(int MaHD,Date NgayGD,Date NgayNhanVe,int TongTien,Chuyen MaChuyen,String Ho,String Ten,String CMND,String DiaChi,String Email,String DienThoai,String HinhThucThanhToan,Ghe maGhe){
 		 this.MaHD=MaHD;
 		 this.NgayGD=NgayGD;
 		 this.TongTien=TongTien;
@@ -31,7 +31,8 @@ public class HoaDon {
 		 this.DiaChi=DiaChi;
 		 this.Email=Email;
 		 this.DienThoai=DienThoai;
-		 this.HinhThucThanhToan=HinhThucThanhToan;
+		 this.HinhThucTT=HinhThucThanhToan;
+		 this.setMaGhe(maGhe);
 	 }
 
 	public int getMaHD() {
@@ -122,11 +123,21 @@ public class HoaDon {
 		DienThoai = dienThoai;
 	}
 
-	public String getHinhThucThanhToan() {
-		return HinhThucThanhToan;
+	public String getHinhThucTT() {
+		return HinhThucTT;
 	}
 
-	public void setHinhThucThanhToan(String hinhThucThanhToan) {
-		HinhThucThanhToan = hinhThucThanhToan;
+	public void setHinhThucTT(String hinhThucThanhToan) {
+		HinhThucTT = hinhThucThanhToan;
 	}
+
+	public Ghe getMaGhe() {
+		return MaGhe;
+	}
+
+	public void setMaGhe(Ghe maGhe) {
+		MaGhe = maGhe;
+	}
+
+	
 }

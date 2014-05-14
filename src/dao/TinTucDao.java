@@ -5,10 +5,12 @@ import hibernateUtil.HibernateUtil;
 import java.io.Serializable;
 import java.util.List;
 
+import model.Ghe;
 import model.LoaiTinTuc;
 import model.TinTuc;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -17,7 +19,7 @@ public class TinTucDao implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 
 	public TinTuc layThongTin(TinTuc temp){
 		TinTuc tinTuc=new TinTuc();
@@ -56,6 +58,7 @@ public class TinTucDao implements Serializable {
 			TinTuc x = new TinTuc();
 			x=layThongTin(tinTuc);  
 			x.setMaTT(tinTuc.getMaTT());
+			
 		    Transaction trns = null;
 		    Session session = HibernateUtil.getSessionFactory().openSession();
 		    try {
@@ -76,7 +79,7 @@ public class TinTucDao implements Serializable {
 		}
 	 	
 	 	public LoaiTinTuc layLTT(int maLoaiTinTuc){		
-		    Session session = HibernateUtil.getSessionFactory().openSession();
+		   Session session = HibernateUtil.getSessionFactory().openSession();
 		    String hql = "from LoaiTinTuc  where MaLTT = :maLoaiTinTuc";
 		    List result = session.createQuery(hql)
 		    .setParameter("maLoaiTinTuc", maLoaiTinTuc)
@@ -87,20 +90,36 @@ public class TinTucDao implements Serializable {
 	 	}
 	 	
 	 	public List<TinTuc> danhSachTinTuc(){
-	 		List<TinTuc> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
+	 		List<TinTuc> x;
 	 		session.beginTransaction();
 	 		Criteria cri=session.createCriteria(TinTuc.class);
 	 		x=cri.list();
+
 	 		return x;
 	 	}
 	 	
+	 	public TinTuc loadData(int maTT){
+	 		Session session = HibernateUtil.getSessionFactory().openSession();
+		    String hql = "from TinTuc  where MaTT = :matt";
+		    List result = session.createQuery(hql)
+		    .setParameter("matt", maTT)
+		    .list();
+	 		//you should return list of LoaiXe object from this method, so need to create one
+		    TinTuc x=(TinTuc)result.get(0);
+		    return x;
+	 	}
+	 	
+	 	
+	 	
+	 	
 	 	public void xoaTinTuc(TinTuc tinTuc) {
+	 		TinTuc x=new TinTuc();
 	        Transaction trns = null;
-	        Session session = HibernateUtil.getSessionFactory().openSession();
+	       Session session = HibernateUtil.getSessionFactory().openSession();
 	        try {
 	            trns = session.beginTransaction();
-	            TinTuc x = (TinTuc) session.load(TinTuc.class, tinTuc.getMaTT());
+	            x = (TinTuc) session.load(TinTuc.class, tinTuc.getMaTT());
 	            session.delete(x);
 	            session.getTransaction().commit();
 	        } catch (RuntimeException e) {

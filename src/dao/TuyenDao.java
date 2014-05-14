@@ -2,12 +2,16 @@ package dao;
 
 import hibernateUtil.HibernateUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import model.Tuyen;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 
 public class TuyenDao {
 	private Tuyen x;
@@ -82,7 +86,7 @@ public class TuyenDao {
         }
     }
 	
-	public List<Tuyen> danhSachTX(){
+	public List<Tuyen> danhSachTuyen(){
  		List<Tuyen> x;
  		Session session = HibernateUtil.getSessionFactory().openSession();
  		session.beginTransaction();
@@ -90,6 +94,17 @@ public class TuyenDao {
  		x=cri.list();
  		return x;
  	}
+	
+//	public List<String> danhSachBenDau(){
+// 		List<String> x=new ArrayList<String>();;
+// 		Session session = HibernateUtil.getSessionFactory().openSession();
+// 		session.beginTransaction();
+// 		Criteria cri=session.createCriteria(Tuyen.class);
+// 		cri.setProjection(Projections.distinct(Projections.property("BenDau")));
+// 		cri.addOrder(Order.asc("BenDau"));
+// 		x=cri.list();
+// 		return x;
+// 	}
 	
 	public void reset(Tuyen tuyen) {
 		tuyen.setGia(0);

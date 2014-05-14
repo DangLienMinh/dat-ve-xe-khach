@@ -3,8 +3,11 @@ package dao;
 import hibernateUtil.HibernateUtil;
 
 import java.util.List;
+
+import model.Chuyen;
 import model.Xe;
 import model.LoaiXe;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,7 +16,7 @@ public class XeDao {
 	public Xe layThongTin(Xe temp){
 		Xe xe=new Xe();
 		xe.setBienSo(temp.getBienSo());
-		xe.setSoGhe(temp.getSoGhe());
+
 		return xe;
 	}
 	
@@ -73,6 +76,28 @@ public class XeDao {
 	 		return x; //return the list we created
 	 	}
 	 	
+	 	public LoaiXe layLXTheoXe(int maLoaiXe) {
+	 		Session session = HibernateUtil.getSessionFactory().openSession();
+		    String hql = "from LoaiXe  where MaLoaiXe = :maLoaiXe";
+		    List result = session.createQuery(hql)
+		    .setParameter("maLoaiXe",maLoaiXe)
+		    .list();
+	 		//you should return list of LoaiXe object from this method, so need to create one
+		    LoaiXe x=(LoaiXe) result.get(0);
+	 		return x; //return the list we created
+		}
+	 	
+	 	public Xe layXeTheoChuyen(String bienSo){
+		    Session session = HibernateUtil.getSessionFactory().openSession();
+		    String hql = "from Xe  where BienSo = :maLoaiXe";
+		    List result = session.createQuery(hql)
+		    .setParameter("maLoaiXe", bienSo)
+		    .list();
+	 		//you should return list of LoaiXe object from this method, so need to create one
+	 		Xe x=(Xe) result.get(0);
+	 		return x; //return the list we created
+	 	}
+	 	
 	 	public List<Xe> danhSachXe(){
 	 		List<Xe> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -104,7 +129,6 @@ public class XeDao {
 
 	 
 	 public void reset(Xe xe) {
-		 xe.setSoGhe(0);
 		 xe.setBienSo(" ");
 	 }
 	 
@@ -129,4 +153,6 @@ public class XeDao {
 	        }
 			return list;
 		}
+
+	
 }

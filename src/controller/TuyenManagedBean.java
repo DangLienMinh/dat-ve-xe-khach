@@ -22,10 +22,12 @@ public class TuyenManagedBean {
 	private List<Tuyen> filteredDanhSach;  
 	//đối tượng nhân viên được chọn để cập nhật thông tin
 	private Tuyen selectedTuyen=new Tuyen();
+
 	
 	public TuyenManagedBean(){
 		DanhSach = new ArrayList<Tuyen>();
-		DanhSach = tuyenDao.danhSachTX();
+		DanhSach = tuyenDao.danhSachTuyen();
+		
 	}
 	public Tuyen getTuyen() {
 		return tuyen;
@@ -99,4 +101,6 @@ public class TuyenManagedBean {
 		int ma=Integer.parseInt(maTuyen);
 		return tuyenDao.tenTuyen(ma);
 	}
+	
+
 }
