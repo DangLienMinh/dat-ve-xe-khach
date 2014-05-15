@@ -4,11 +4,8 @@ import hibernateUtil.HibernateUtil;
 
 import java.io.Serializable;
 import java.util.List;
-
-import model.Ghe;
 import model.LoaiTinTuc;
 import model.TinTuc;
-
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -137,6 +134,16 @@ public class TinTucDao implements Serializable {
 	            session.close();
 	        }
 	    }
+	 	
+	 	//danh sach tin tuc lien quan
+	 	public List<TinTuc> danhSachTinLienQuan(){
+	 		Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createSQLQuery(
+					"SELECT * FROM ( SELECT * FROM TinTuc ORDER BY DBMS_RANDOM.RANDOM) WHERE rownum <6")
+					.addEntity(TinTuc.class);
+			List result=query.list();
+		    return result;
+	 	}
 
 	 //lam trong tat ca cac textbox 
 	 public void reset(TinTuc tinTuc) {

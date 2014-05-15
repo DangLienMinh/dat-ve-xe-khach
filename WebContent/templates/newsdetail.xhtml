@@ -20,14 +20,25 @@
 							<h:graphicImage value="#{dangTinTucMBean.selectedTinTuc.hinhAnh}" width="125" height="145" styleClass="hinhAnh"></h:graphicImage>
 							<h:outputText value="#{dangTinTucMBean.selectedTinTuc.noiDung}" styleClass="noiDung" escape="false"/>
         				</div>
-		    			
-					
-  
-   
         			</section>
+        			<h2>TIN CÙNG CHUYÊN MỤC</h2> 
+
+        				<p:dataList value="#{dangTinTucMBean.danhSachLienQuan}" var="tt" styleClass="datalist-noborder">
+
+					    		<p:commandLink action="#{dangTinTucMBean.hienThiTin(tt)}" style="font-weight:bold;font-size:15px!important;">
+					    			<h:outputText value="#{tt.tieuDe}" />
+					    			<p:outputLabel value="#{tt.ngayDang}" style="font-weight:normal;">
+					    				<f:convertDateTime pattern="(dd/MM/yyyy)"></f:convertDateTime>
+					    			</p:outputLabel>
+					    		</p:commandLink>
+					    	
+						</p:dataList>
+
+        				
+        			
         			 
-    				</section>
- 				</section>  <!-- Page ends here -->
+    			</section>
+ 			</section>  <!-- Page ends here -->
 		</div>
 	</ui:composition>
 </body>
