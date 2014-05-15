@@ -1,11 +1,11 @@
 package dao;
 
+import java.util.List;
+
 import hibernateUtil.HibernateUtil;
 import model.Chuyen;
 import model.Ghe;
 import model.HoaDon;
-
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -55,4 +55,16 @@ public class HoaDonDao {
         session.close();
         return x.getMaHD();
     }
+	
+	 //lay hoa don thweo MaHD
+ 	public HoaDon layHD(int maHD){		
+	   Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from HoaDon  where MaHD = :maHD";
+	    List result = session.createQuery(hql)
+	    .setParameter("maHD", maHD)
+	    .list();
+	//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+	    HoaDon x=(HoaDon) result.get(0);
+ 		return x; 
+ 	}
 }
