@@ -21,17 +21,20 @@ public class DangTinTucManagedBean implements Serializable {
 
 		private TinTucDao tinTucDao=new TinTucDao();
 
-		//Trả về danh sách nhân viên trên giao diện xhtml
+		//Trve danh sach tin tuc tren giao dien news
 		private List<TinTuc> DanhSach;
 
-		//đối tượng nhân viên được chọn để cập nhật thông tin
+		//doi tuong tin tuc duoc chon
 		private TinTuc selectedTinTuc=new TinTuc();
-
+		
+		//Trve danh sach tin tuc lien quan tren giao dien news
+		private List<TinTuc> DanhSachLienQuan;
 
 
 		public DangTinTucManagedBean(){
 			DanhSach = new ArrayList<TinTuc>();
 			DanhSach = tinTucDao.danhSachTinTuc();
+			
 		}
 		
 		
@@ -72,7 +75,22 @@ public class DangTinTucManagedBean implements Serializable {
 		
 		public String hienThiTin(TinTuc x){
 			selectedTinTuc=x;
+			DanhSachLienQuan = new ArrayList<TinTuc>();
+			DanhSachLienQuan = tinTucDao.danhSachTinLienQuan();
 			return "newsContent?faces-redirect=true";
+		}
+
+
+
+		public List<TinTuc> getDanhSachLienQuan() {
+			
+			return DanhSachLienQuan;
+		}
+
+
+
+		public void setDanhSachLienQuan(List<TinTuc> danhSachLienQuan) {
+			DanhSachLienQuan = danhSachLienQuan;
 		}
 		
 

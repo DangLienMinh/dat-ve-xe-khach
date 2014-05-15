@@ -12,3 +12,7 @@ position: relative;
 .style_none li{
 	list-style: none;
 }
+
+.datalist-noborder .ui-widget-content {
+border: none;
+}
