@@ -6,6 +6,9 @@ import hibernateUtil.HibernateUtil;
 import model.Chuyen;
 import model.Ghe;
 import model.HoaDon;
+import model.TinTuc;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -56,15 +59,34 @@ public class HoaDonDao {
         return x.getMaHD();
     }
 	
+	//cap nhat ngay dat ve
+	public void capNhatNgayNhanVe(HoaDon x){
+		Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        trns=session.beginTransaction();
+		Query query = session.createSQLQuery(
+			"update HoaDon set NgayNhanVe = :ngayNhanVe where MaHD = :mahd")
+				.setParameter("ngayNhanVe", x.getNgayNhanVe())
+				.setParameter("mahd", x.getMaHD());
+		query.executeUpdate();
+		trns.commit();
+ 	}
+	
 	 //lay hoa don thweo MaHD
  	public HoaDon layHD(int maHD){		
-	   Session session = HibernateUtil.getSessionFactory().openSession();
-	    String hql = "from HoaDon  where MaHD = :maHD";
-	    List result = session.createQuery(hql)
-	    .setParameter("maHD", maHD)
-	    .list();
-	//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
-	    HoaDon x=(HoaDon) result.get(0);
- 		return x; 
+ 		Session session = HibernateUtil.getSessionFactory().openSession();
+ 		HoaDon hd = (HoaDon)session.get(HoaDon.class,maHD); 
+ 		if(hd!=null){
+		    String hql = "from HoaDon  where MaHD = :maHD";
+		    List result = session.createQuery(hql)
+		    .setParameter("maHD", maHD)
+		    .list();
+		//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+		    HoaDon x=(HoaDon) result.get(0);
+	 		return x; 
+ 		}
+ 		else{
+ 			return (new HoaDon());
+ 		}
  	}
 }

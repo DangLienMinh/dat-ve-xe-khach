@@ -63,13 +63,13 @@ public class TuyenManagedBean {
 	
 	public String themTuyen(){
 		tuyenDao.themTuyen(tuyen);
-		return "QLTuyen??faces-redirect=true";
+		return "QLTuyen?faces-redirect=true";
 	}
 	
 	public String suaTuyen(){
 		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
 		tuyenDao.suaTuyen(selectedTuyen);
-		return "QLTuyen??faces-redirect=true";
+		return "QLTuyen?faces-redirect=true";
 	}
 	
 	public String xoaTuyen(Tuyen x){

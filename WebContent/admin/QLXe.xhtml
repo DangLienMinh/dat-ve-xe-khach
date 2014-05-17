@@ -47,11 +47,7 @@
 	        <p:column headerText="Biển số xe" style="font-size:14px!important;"  filterBy="bienSo">  
 	            <h:outputText  value="#{ds.bienSo}"/>  
 	        </p:column>  
-	        
-	        <p:column headerText="Số ghế" style="font-size:14px!important;" filterBy="soGhe">  
-	            <h:outputText value="#{ds.soGhe}" />  
-	        </p:column>  
-	        
+	       
 	        
 	        
 	       
@@ -78,10 +74,7 @@
 				   <p:selectOneMenu value="#{xeMBean.loaiXe.maLoaiXe}">
 				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
 				   	</p:selectOneMenu>
-				   	
-				   <h:outputLabel value='Số ghế' />
-				   <p:spinner 
-    				value="#{xeMBean.xe.soGhe}" min="1" max="99"/>
+				   
 			       
 			       <p:commandButton id='Insert' value='Thêm' action='#{xeMBean.themXe}' update="tba1"/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
@@ -97,10 +90,7 @@
 				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
 				   	</p:selectOneMenu>
 				   	
-				   <h:outputLabel value='Số ghế' />
-				   <p:spinner 
-    				value="#{xeMBean.selectedXe.soGhe}" min="1" max="99"/>
-
+				   
 				   <p:commandButton id='Update' value='Cập nhật' action='#{xeMBean.suaXe}'/>
 				   
 	            </h:panelGrid>  
