@@ -2,33 +2,73 @@
      xmlns:h='http://java.sun.com/jsf/html'
       xmlns:f='http://java.sun.com/jsf/core'
       xmlns:p="http://primefaces.org/ui"
-     >
-
+>
  <h:head>
- <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+ <title>Đăng nhập</title>
 <style>
 .ui-widget, .ui-widget .ui-widget {
      font-size: 90% !important;
 }
+body {
+	font-family: tahoma, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	color: #333333;
+	background-color: #ededed;
+	background: url("#{resource['image/5.png']}") 500% repeat;
+}
+#logo {
+	width: 320px;
+	height: 120px;
+	margin: 50px 508px;
+}
+#login {
+	background-color: #ffffff;
+	width: 320px;
+	height: 270px;
+	margin-left: 518px;
+	margin-right: 518px;
+	border-color: #c9c9c9;
+	border-width: 1px;
+	border-style: outset;
+	line-height: 50px;
+}
+.row {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
 </style>
  </h:head>
  <body>
-     <h:form>
-      <table>
-       <tr>
-        <td><h:outputLabel for='name' value='ten dn:' /></td>
-        <td><p:inputText id='name' value='#{nhanVienMBean.nhanVien.tenDN}'/></td>
-       </tr>
-       
-       <tr>
-        <td><h:outputLabel for='pass' value='mat khau' /></td>
-        <td><p:inputText id='pass' value='#{nhanVienMBean.nhanVien.matKhau}'/> </td>
-       </tr>
-        <tr>
-        <td><p:commandButton id='submit' value='dag nhap' action='#{nhanVienMBean.dangNhap}' ajax='false'/></td>
-       </tr>
-       
-      </table>
+     <h:form id='loginform'>
+     	<div id='logo'>
+     		<h:graphicImage library="image" name="futalogo.png" />
+     	</div>
+	     <div id='login'>
+	     	<div class='row'>
+		        <h:outputLabel for='name' value='Tài khoản: ' />
+		        <p:inputText id='name' value='#{nhanVienMBean.nhanVien.tenDN}'/>
+	       	</div>
+	       	<div class='row'>
+		        <h:outputLabel for='pass' value='Mật khẩu: ' />
+		        <p:password id='pass' value='#{nhanVienMBean.nhanVien.matKhau}' feedback='true'/>
+		    </div>
+		    <div class='row'>
+		    	<p:commandLink id="ajax" style="margin-right:20px; text-decoration: none;">
+        			<h:outputText value="Quên mật khẩu?" />
+    			</p:commandLink>
+		    </div>
+		    <div class='row'>
+		    	<div>
+		    	<p:selectBooleanCheckbox />
+		    	<h:outputText value="	Duy trì đăng nhập" />
+		    	</div>
+		    	<div>
+		    	<p:commandButton id='submit' value='Đăng nhập' action='#{nhanVienMBean.dangNhap}' ajax='false'/>
+		    	</div>
+		    </div>
+	      </div> 
      </h:form>
 </body>
 </html>
