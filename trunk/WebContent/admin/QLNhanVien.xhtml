@@ -37,7 +37,10 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{nhanVienMBean.filteredDanhSach}">   
+	     
+	     <p:dataTable var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" 
+	     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+	     filteredValue="#{nhanVienMBean.filteredDanhSach}">   
 	     
 		  
 	        <f:facet name="header">  
@@ -54,9 +57,7 @@
 	         <p:column headerText="Tên" style="font-size:14px!important;" filterBy="ten">  
 	            <h:outputText value="#{ds.ten}" />  
 	        </p:column>  
-	        <p:column headerText="CMND" style="font-size:14px!important;" filterBy="CMND">  
-	            <h:outputText value="#{ds.CMND}" />  
-	        </p:column>  
+	        
 	        <p:column headerText="Địa chỉ" style="font-size:14px!important;" filterBy="diaChi">  
 	            <h:outputText value="#{ds.diaChi}" />  
 	        </p:column>  
@@ -74,8 +75,15 @@
 	        
 	       
 	  		<p:column style="font-size:14px!important;">
-	  		<p:commandButton  icon="ui-icon-close" action='#{nhanVienMBean.xoaNhanVien(ds)}'></p:commandButton>
+	  		<p:commandButton  icon="ui-icon-close" action='#{nhanVienMBean.xoaNhanVien(ds)}'>
+	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá nhân viên?" icon="ui-icon-alert" />
+	  		</p:commandButton>
+	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
+	    	</p:confirmDialog>
 	  		<p:commandButton icon="ui-icon-gear" action='#{nhanVienMBean.capNhat(ds,ds.maPQ)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		
 	  		</p:column>
 
 	        <f:facet name="footer">  
@@ -164,7 +172,10 @@
 			   
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
-				   <p:commandButton id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' ajax='false'/>
+				   <p:commandButton id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' ajax='false'>
+				   		<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn lưu thông tin đã sửa?" icon="ui-icon-alert" />
+				   </p:commandButton>
+				 
 	            </h:panelGrid>  
 	        </p:tab>   
     	</p:tabView>  

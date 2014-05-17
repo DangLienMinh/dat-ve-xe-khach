@@ -2,6 +2,7 @@
      xmlns:h='http://java.sun.com/jsf/html'
       xmlns:f='http://java.sun.com/jsf/core'
       xmlns:p='http://primefaces.org/ui'
+      xmlns:pe="http://primefaces.org/ui/extensions"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
      >
 
@@ -48,16 +49,23 @@
 	            <h:outputText  value="#{ds.maChuyen}"/>  
 	        </p:column>  
 	        
-	        <p:column headerText="Tuyến" style="font-size:14px!important;"  filterBy="maChuyen">  
+	        <p:column headerText="Tuyến" style="font-size:14px!important;"  filterBy="maTuyen">  
 	            <h:outputText  value="#{tuyenMBean.tenTuyen(ds.maTuyen)}"/>  
 	        </p:column>  
 	        
 	        <p:column headerText="Giờ đi" style="font-size:14px!important;"> 
-	           <h:outputText  value="#{ds.gioDi}"/>     
+	        <h:outputFormat value="{0, date, HH:mm}">
+			    <f:param value="#{ds.gioDi}" />
+			</h:outputFormat>
+	          
+	
+	        
 	        </p:column>
 	        
 	        <p:column headerText="Giờ đến" style="font-size:14px!important;"> 
-	         	<h:outputText  value="#{ds.gioDen}"/>
+	         	<h:outputFormat value="{0, date, HH:mm}">
+			    <f:param value="#{ds.gioDen}" />
+				</h:outputFormat>
 	        </p:column>
 	        
 	        <p:column headerText="Khuyến mãi" style="font-size:14px!important;">  
@@ -95,19 +103,22 @@
 				   <p:selectOneMenu value="#{chuyenMBean.xe.bienSo}">
 				   		<f:selectItems value="#{xeMBean.selectOneItemXe}" />
 				   	</p:selectOneMenu>
-				   	
-				   	
-			       
 			   
 			       <h:outputLabel value='Khuyến mãi' />
 			       <p:inputText value='#{chuyenMBean.chuyen.khuyenMai}'/>
 			  
-			       <h:outputLabel value="Giờ đi: " />
-			       <p:calendar value="#{chuyenMBean.chuyen.gioDi}"  showOn="button"  pattern="dd/MM/yyyy HH" />
 			       
-			       <h:outputLabel value="Giờ đến: " />
-			       <p:calendar value="#{chuyenMBean.chuyen.gioDen}"  showOn="button"  pattern="dd/MM/yyyy HH" />
 
+					
+					    <h:outputText value="Start time"/>
+					    <pe:timePicker value="#{chuyenMBean.chuyen.gioDi}" mode="popup" widgetVar="startTimeWidget"/>
+					    
+					   
+					    
+					    <h:outputText value="End time"/>
+					    <pe:timePicker value="#{chuyenMBean.chuyen.gioDen}" mode="popup"  widgetVar="endTimeWidget"/>
+					
+            
 			       <p:commandButton id='Insert' value='Thêm' action='#{chuyenMBean.themChuyen}'/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{chuyenMBean.reset}' ajax='false'/>
 	            </h:panelGrid>  
@@ -134,18 +145,20 @@
 				   		<f:selectItems value="#{xeMBean.selectOneItemXe}" />
 				   	</p:selectOneMenu>
 				   	
-				   	
-			       <h:outputLabel value='Số ghế trống' />
-			       <p:inputText value='#{chuyenMBean.selectedChuyen.soGheTrong}'/>
+				  
 			   
 			       <h:outputLabel value='Khuyến mãi' />
 			       <p:inputText value='#{chuyenMBean.selectedChuyen.khuyenMai}'/>
-			  
-			       <h:outputLabel value="Giờ đi: " />
-			       <p:calendar value="#{chuyenMBean.selectedChuyen.gioDi}"  showOn="button"  pattern="dd/MM/yyyy HH" />
 			       
-			       <h:outputLabel value="Giờ đến: " />
-			       <p:calendar value="#{chuyenMBean.selectedChuyen.gioDen}"  showOn="button"  pattern="dd/MM/yyyy HH" />
+			        <h:outputText value="Start time"/>
+					<pe:timePicker value="#{chuyenMBean.selectedChuyen.gioDi}" mode="popup" widgetVar="startTimeWidget"/>
+					    
+					   
+					    
+					<h:outputText value="End time"/>
+					<pe:timePicker value="#{chuyenMBean.selectedChuyen.gioDen}" mode="popup"  widgetVar="endTimeWidget"/>
+			  
+			      
 			       
 				   <p:commandButton id='Update' value='Cập nhật' action='#{chuyenMBean.suaChuyen}' ajax='false'/>
 	            </h:panelGrid>  

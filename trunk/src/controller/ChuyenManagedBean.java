@@ -1,9 +1,14 @@
 package controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 import model.Chuyen;
 import model.TaiXe;
 import model.Tuyen;
@@ -25,6 +30,8 @@ public class ChuyenManagedBean {
 	private TaiXe taiXe=new TaiXe();
 	private TaiXeDao taiXeDao=new TaiXeDao();
 
+	 
+	 
 	private List<Chuyen> DanhSach;
 	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
 	private List<Chuyen> filteredDanhSach;  
@@ -35,6 +42,8 @@ public class ChuyenManagedBean {
 	private Tuyen selectedTuyen=new Tuyen();
 	private TaiXe selectedTaiXe=new TaiXe();
 
+
+	
 	public ChuyenManagedBean(){
 		DanhSach = new ArrayList<Chuyen>();
 		DanhSach = chuyenDao.danhSachChuyen();

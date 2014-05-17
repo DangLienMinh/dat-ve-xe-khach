@@ -35,4 +35,9 @@ public class Ghe {
 	public void setMaLoaiXe(LoaiXe maLoaiXe) {
 		MaLoaiXe = maLoaiXe;
 	}
+	@Override
+	public String toString(){
+		return Integer.toString(MaGhe);
+		
+	}
 }

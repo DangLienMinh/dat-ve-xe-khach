@@ -1,5 +1,7 @@
 package controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -38,8 +40,8 @@ public class HoaDonManagedBean {
 	@ManagedProperty(value="#{gheMBean}")
 	private GheManagedBean gheMB;
 	private GheDao gheDao=new GheDao();
-
 	private HoaDonDao hoaDonDao=new HoaDonDao();
+	private int dieuKienLayVe=-10;
 
 	public Date getMaxDate() {
 		Calendar cal = Calendar.getInstance(); 
@@ -76,6 +78,7 @@ public class HoaDonManagedBean {
 		this.dsTuyen = dsTuyen;
 	}
 	
+	//tnh trang ghe ngoi
 	public String datVe(Chuyen ds){
 		chuyen=ds;
 		Xe x=chuyen.getBienSo();
@@ -115,6 +118,39 @@ public class HoaDonManagedBean {
 		int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
 		hoaDon.setMaHD(mahd);
 		return "kqDatVe.xhtml";
+	}
+	
+	public String layVeChinhThuc(){
+		//kiem tra ma hoa don co ton tai hay ko
+		HoaDon x=hoaDonDao.layHD(hoaDon.getMaHD());
+		//neu ton tai
+		if(x.getMaHD()!=0){
+			//kiem tra da in ve chua neu chua in thi ngaynhanve se la null
+			if(x.getNgayNhanVe()==null){
+				Date ngayNhanVe=Calendar.getInstance().getTime();
+				x.setNgayNhanVe(ngayNhanVe);
+				hoaDonDao.capNhatNgayNhanVe(x);
+				hoaDon=x;
+				chuyen=hoaDon.getMaChuyen();
+				xe=chuyen.getBienSo();
+				dieuKienLayVe=1;
+				return "layVe?faces-redirect=true";
+			}
+			//neu da in roi thi bao loi
+			else{
+				hoaDon=x;
+				dieuKienLayVe=0;
+				return "layVe?faces-redirect=true";
+				
+			}
+		}
+		//neu khong ton tai hoa don tren thi bao loi
+		else{
+			dieuKienLayVe=-1;
+			return "layVe?faces-redirect=true";
+		}
+		
+		
 	}
 	
 	public HoaDon getHoaDon() {
@@ -158,6 +194,12 @@ public class HoaDonManagedBean {
 	}
 	public void setGheDao(GheDao gheDao) {
 		this.gheDao = gheDao;
+	}
+	public int getDieuKienLayVe() {
+		return dieuKienLayVe;
+	}
+	public void setDieuKienLayVe(int dieuKienLayVe) {
+		this.dieuKienLayVe = dieuKienLayVe;
 	}
 	
 	
