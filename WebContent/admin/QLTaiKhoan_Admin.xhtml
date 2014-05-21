@@ -1,0 +1,89 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí tài khoản</title>
+  <h:outputStylesheet library="css" name="main.css" />
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+</style>
+ </h:head>
+ <body>
+ <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin"/>  
+	        <p:menuitem value="Quản lí tài khoản" outcome="QLNhanVien"/> 
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin"/> 
+	    </p:tieredMenu>  
+     </h:form> 
+     </div>
+    <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}" immediate="true"></p:commandButton>
+	     <p:separator/>
+		 <p:tabView id="tabView">  
+	        <p:tab id="tba1" title="Thông tin cá nhân">
+	            <h:panelGrid columns="2" >
+	            <h:outputLabel value='Mã nhân viên' />
+			       <p:inputText value='#{taiKhoanMBean.ttCaNhan.maNV}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       
+			       <h:outputLabel value='Họ' />
+			       <p:inputText value='#{taiKhoanMBean.ttCaNhan.ho}'/>
+			   
+			       <h:outputLabel value='Tên' />
+			       <p:inputText value='#{taiKhoanMBean.ttCaNhan.ten}'/>
+			  
+			       <h:outputLabel value='Chứng minh nhân dân' />
+			       <p:inputText value='#{taiKhoanMBean.ttCaNhan.CMND}'/>
+			   
+			       <h:outputLabel value='Điện thoại' />
+			       <p:inputText value='#{taiKhoanMBean.ttCaNhan.dienThoai}'/>
+			    
+			       <h:outputLabel value='Địa chỉ' />
+			       <p:inputText value='#{taiKhoanMBean.ttCaNhan.diaChi}'/>
+			    
+			       <h:outputLabel value='Email' />
+			   	   <p:inputText value='#{taiKhoanMBean.ttCaNhan.email}'/>
+			    
+			       <h:outputLabel value="Ngày sinh: " />
+			       <p:calendar value="#{taiKhoanMBean.ttCaNhan.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
+
+			       <p:commandButton id='Insert' value='Cập nhật thông tin' action='#{taiKhoanMBean.suaTaiKhoan}'/>
+				   
+	            </h:panelGrid>  
+	           
+	        </p:tab>  
+	  
+	         <p:tab id="tba2" title="Thay đổi mật khẩu" >  
+	         	<p:messages id="messages" showDetail="true" autoUpdate="true"/>	
+	            <h:panelGrid columns="2"  id="grid1">
+	            	<h:outputLabel  value="Mật khẩu cũ: *" />
+           		   <p:password  value="#{taiKhoanMBean.matKhau}"  label="Password 1" required="true"/>
+           		     
+	               <h:outputLabel for="pwd1" value="Mật khẩu mới: *" />
+           		   <p:password id="pwd1" value="#{taiKhoanMBean.matKhauMoi}" match="pwd2" label="Mật khẩu mới" required="true"/>
+
+		           <h:outputLabel for="pwd2" value="Nhập lại mật khẩu mới: *" />
+         		   <p:password id="pwd2" value="#{taiKhoanMBean.matKhauMoi}" label="Nhập lại" required="true"/>
+			       
+				   
+	            </h:panelGrid>  
+	            <p:commandButton id='Update' value='Cập nhật mật khẩu' action='#{taiKhoanMBean.suaMatKhau}' update="grid1"/>
+	        </p:tab>   
+    	</p:tabView>  		
+     </h:form> 
+      </div>
+</body>
+</html>
+

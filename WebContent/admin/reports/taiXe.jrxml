@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="taiXe" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba32804d-9b24-4784-b86e-170b642d25f5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
+	<style name="title1" fontName="Times New Roman"/>
+	<queryString>
+		<![CDATA[select * from TaiXe]]>
+	</queryString>
+	<field name="HO" class="java.lang.String"/>
+	<field name="TEN" class="java.lang.String"/>
+	<field name="CMND" class="java.lang.String"/>
+	<field name="NGAYSINH" class="java.sql.Timestamp"/>
+	<field name="DIACHI" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="DIENTHOAI" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="480" y="-13" width="84" height="20" uuid="cf8a6d8a-8161-48aa-b78f-5ebc02091ec0"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="96" y="-3" width="343" height="33" uuid="92ed10d7-5050-458d-a61c-528b17592160"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Công ty vận tải Phương Trang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="95" y="33" width="335" height="15" uuid="e92c16d1-3d97-43a9-809a-1b0974f7d405"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ: 486 - 486A Lê Văn Lương, P. Tân Phong, Q 7, TP Hồ Chí Minh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="-13" width="50" height="20" uuid="a8f2ad5d-41c8-423b-8b8a-f9c5e00492c1"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Ngày in:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="40" y="72" width="430" height="20" uuid="290d9c8a-b820-4a96-ac8b-fd32b66fec3b"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Danh sách tài xế]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="95" y="48" width="221" height="15" uuid="3ed09b40-95d9-49d5-aa10-5215a6431939"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Điện thoại: 0838 386 852- Fax: 0838 386 853]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="08a1e23f-daf5-46c3-aedf-85f23c1c22cd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="110" height="15" uuid="c5563df3-9d2c-4265-b6f2-c9bfdf77d38f"/>
+				<text><![CDATA[Họ tên]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="110" y="20" width="79" height="15" uuid="9b823aaf-c925-4a5c-ba25-650439e81a36"/>
+				<text><![CDATA[CMND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="189" y="19" width="79" height="15" uuid="737be367-dc7f-4482-8df7-dbab1669d392"/>
+				<text><![CDATA[Ngày sinh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="268" y="19" width="152" height="15" uuid="3b019926-f10b-4227-98d2-646e02d578ec"/>
+				<text><![CDATA[Địa chỉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="420" y="19" width="120" height="15" uuid="abf36619-9c4e-4556-9f2d-1f8f25f254a5"/>
+				<text><![CDATA[Điện thoại]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="9d4a58d5-b935-4996-955a-3a4d5a3d95fd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="110" height="15" uuid="0c1159c4-ce3f-4afe-ade5-41268c0696b7"/>
+				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="110" y="1" width="79" height="15" uuid="041e601b-1e79-4ac9-be6a-e9f36a4886b4"/>
+				<textFieldExpression><![CDATA[$F{CMND}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="189" y="0" width="79" height="15" uuid="2981e00a-33a1-40f8-94c8-0954c6c942ce"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYSINH})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="268" y="0" width="152" height="15" uuid="2c623305-dbdb-436a-bb10-765ebe0a84c3"/>
+				<textFieldExpression><![CDATA[$F{DIACHI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="420" y="0" width="120" height="15" uuid="c32c5e8d-f4ea-4272-a1fa-05c02be278d0"/>
+				<textFieldExpression><![CDATA[$F{DIENTHOAI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="47" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f86abe01-5065-40bf-b3c7-3a07e45aa5e2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="title1" x="414" y="3" width="113" height="20" uuid="2bb7caf8-016d-4a93-8330-a60007495223"/>
+				<textFieldExpression><![CDATA["Tổng cộng có "+$V{REPORT_COUNT}+" tài xế"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="414f7580-dc85-44ad-9995-57f0dac7f001"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ec0e17de-68d1-4a12-b69b-7deceb21ea23"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ff638599-9d1b-462a-956d-53cf9f32c201"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

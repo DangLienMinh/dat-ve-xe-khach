@@ -1,0 +1,125 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí tài khoản</title>
+  <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+
+</style>
+ </h:head>
+ <body>
+ <div class="menuTrai">
+     <h:form> 
+	    <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin"/>  
+	        <p:menuitem value="Quản lí tài khoản" outcome="QLNhanVien"/> 
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin"/> 
+	    </p:tieredMenu>  
+     </h:form> 
+     </div>
+    <div class="noiDung">
+     <h:form id="form" enctype="multipart/form-data">
+     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	<p:dataTable var="ds" value="#{tinTucMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{tinTucMBean.filteredDanhSach}">   
+	        <f:facet name="header">  
+	            Danh sách Tin Tức
+	        </f:facet>  
+	  
+	        <p:column headerText="Ngày đăng" style="font-size:14px!important;"  filterBy="ngayDang">  
+	            <h:outputText  value="#{ds.ngayDang}">
+	            	 <f:convertDateTime pattern="dd-MM-yyyy" />
+	            </h:outputText>
+	            
+	        </p:column>  
+	        
+	        <p:column headerText="Tiêu đề" style="font-size:14px!important;" filterBy="tieuDe">  
+	            <h:outputText value="#{ds.tieuDe}" />  
+	        </p:column>  
+	         <p:column headerText="Tóm tắt" style="font-size:14px!important;" filterBy="tomTat">  
+	            <h:outputText value="#{ds.tomTat}" />  
+	        </p:column>  
+	        <p:column headerText="Loại tin tức" style="font-size:14px!important;" filterBy="maLTT">  
+	            <h:outputText value="#{ds.maLTT}" />  
+	        </p:column>  
+
+	  		<p:column style="font-size:14px!important;">
+	  		<p:commandButton  icon="ui-icon-close" action='#{tinTucMBean.xoaTinTuc(ds)}'></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{tinTucMBean.capNhat(ds,ds.maLTT)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(tinTucMBean.danhSach)} tin tức trong hệ thống.  
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+		 <p:separator/>
+		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+		  
+	        <p:tab id="tba1" title="Thêm mới tin tức">
+	       
+	       	  <p:panelGrid columns="1" styleClass="border_none" style="width: 100%!important;">
+		    	<h:outputLabel value="Tiêu đề tin tức: "/>
+					<p:inputText id="keyword" value="#{tinTucMBean.tinTuc.tieuDe}" size="80"> 
+					<p:watermark for="keyword" value="Nhập tiêu đề tin tức" />
+				</p:inputText>
+				<h:outputLabel value='Loại tin tức' />
+				<p:selectOneMenu value="#{tinTucMBean.loaiTinTuc.maLTT}">
+					<f:selectItems value="#{loaiTTMBean.selectOneItemLTT}" />
+				</p:selectOneMenu>
+				<h:outputLabel value="Hình ảnh: "/>
+				 <p:fileUpload  mode="simple"  allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/" value="#{tinTucMBean.file}" />
+				
+				<h:outputLabel value="Nội dung tin tức: "/>
+				<p:editor value="#{tinTucMBean.tinTuc.noiDung}"/>
+				<h:outputLabel value="Tóm tắt: "/>
+				<p:inputTextarea rows="3" cols="80" counter="counter" maxlength="500"     
+		    	counterTemplate="Còn lại {0} từ ." autoResize="false" value="#{tinTucMBean.tinTuc.tomTat}"/>
+				<h:outputText id="counter" />
+				
+				 <p:commandButton value="Lưu tin tức" icon="ui-icon-check" action="#{tinTucMBean.themTinTuc}" ajax="false"/>
+			  </p:panelGrid>    
+	        </p:tab>  
+	  
+	         <p:tab id="tba2" title="Cập nhật tin tức" >  
+	            <p:panelGrid columns="1" styleClass="border_none" style="width: 100%!important;" id="grid1">
+		    	
+				<h:outputLabel value='Loại tin tức' />
+				<p:selectOneMenu value="#{tinTucMBean.selectedLoaiTinTuc.maLTT}">
+					<f:selectItems value="#{loaiTTMBean.selectOneItemLTT}" />
+				</p:selectOneMenu>
+				<h:outputLabel value="Tiêu đề tin tức: "/>
+					<p:inputText id="keyword1" value="#{tinTucMBean.selectedTinTuc.tieuDe}"> 
+					<p:watermark for="keyword1" value="Nhập tiêu đề tin tức" />
+				</p:inputText>
+				<h:outputLabel value="Hình ảnh: "/>
+				<h:graphicImage value="#{tinTucMBean.selectedTinTuc.hinhAnh}" width="125" height="145"></h:graphicImage>
+				<h:outputLabel value="Nội dung tin tức: "/>
+				<p:editor value="#{tinTucMBean.selectedTinTuc.noiDung}"/>
+				<h:outputLabel value="Tóm tắt: "/>
+				<p:inputTextarea rows="3" cols="80" counter="counter1" maxlength="500"     
+		    	counterTemplate="Còn lại {0} từ ." autoResize="false" value="#{tinTucMBean.selectedTinTuc.tomTat}"/>
+				<h:outputText id="counter1" />
+				 <p:commandButton value="Lưu tin tức" icon="ui-icon-check" action='#{tinTucMBean.suaTinTuc}'  ajax='false'/>
+			  </p:panelGrid>     
+	        </p:tab>   
+    	</p:tabView>  
+     </h:form> 
+      </div>
+</body>
+</html>
+
+

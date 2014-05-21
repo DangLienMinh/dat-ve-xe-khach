@@ -1,0 +1,40 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí thông tin Xe</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel"/>
+	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin"/>  
+	        <p:menuitem value="Quản lí tài khoản" outcome="QLNhanVien"/> 
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin"/> 
+	    </p:tieredMenu>  
+ 
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <iframe src="thongKe.xhtml" width="100%" height="100%">
+		</iframe>
+     </h:form> 
+     </div>
+</body>
+</html>
+

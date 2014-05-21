@@ -20,15 +20,11 @@
      <h:form > 
 	     <p:tieredMenu style="width:200px">  
 	     <p:menuitem value="Futabus Travel"/>
-	        <p:submenu label="Quản lí tuyến-chuyến xe">  
-	            <p:menuitem value="Quản lí tuyến xe"/>  
-	            <p:menuitem value="Quản lí chuyến xe"/>  
-	        </p:submenu>  
-	        <p:menuitem value="Quản lí xe"/>  
-	        <p:menuitem value="Quản lí tài xế"/> 
-	        <p:menuitem value="Báo cáo thống kê"/>  
+	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin"/>  
+	        <p:menuitem value="Quản lí tài khoản" outcome="QLNhanVien"/> 
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản"/> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin"/> 
 	    </p:tieredMenu>  
      </h:form> 
      </div>

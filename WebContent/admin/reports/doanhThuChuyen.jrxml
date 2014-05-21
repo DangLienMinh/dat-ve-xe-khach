@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="doa" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13c58cd4-6ccb-48c8-baf2-343edbda1ced">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
+	<style name="title1" fontName="Times New Roman"/>
+	<parameter name="Nam" class="java.lang.String"/>
+	<parameter name="Thang" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select count(MaChuyen) as sove,MaChuyen,sum(TongTien) as doanhThu  
+    from HoaDon where to_char(NgayGD,'yyyy')=$P{Nam} and to_char(NgayGD,'mm')=$P{Thang}
+    group by (to_char(NgayGD,'mm')),MaChuyen]]>
+	</queryString>
+	<field name="SOVE" class="java.math.BigDecimal"/>
+	<field name="MACHUYEN" class="java.math.BigDecimal"/>
+	<field name="DOANHTHU" class="java.math.BigDecimal"/>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{DOANHTHU}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement x="445" y="-13" width="50" height="20" uuid="61b664b5-84dc-4c52-9d35-a3ababfc6921"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Ngày in:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="96" y="-3" width="343" height="33" uuid="d4f126a3-c820-428b-837d-58494db8ef01"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Công ty vận tải Phương Trang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="95" y="33" width="335" height="15" uuid="d0fb8ff0-f65d-4f65-a7dd-8804d03f99d9"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ: 486 - 486A Lê Văn Lương, P. Tân Phong, Q 7, TP Hồ Chí Minh]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="481" y="92" width="59" height="19" uuid="f1337030-e9b9-4fa6-a825-0a688f37bd11"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$P{Thang}+"/"+$P{Nam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="95" y="48" width="221" height="15" uuid="cef3033a-d33c-49ca-af57-d5972ec22761"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Điện thoại: 0838 386 852- Fax: 0838 386 853]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="426" y="91" width="54" height="20" uuid="ed4894ba-f22f-46a0-a02b-965ce068bad2"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tháng: ]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="480" y="-13" width="84" height="20" uuid="9c6632c7-4299-4674-885f-21d495d36212"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="40" y="72" width="430" height="20" uuid="6e0fc78d-17ab-41a2-ab1f-cb83499ba376"/>
+				<textElement textAlignment="Center">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Báo cáo doanh thu bán vé các chuyến]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="ec8ff6c4-b023-42d2-b7db-eef1dc12fbc7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="185" height="15" uuid="ee67bcf7-8f0b-40ff-9e59-73cdb450bebe"/>
+				<text><![CDATA[Chuyến]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="185" y="19" width="185" height="15" uuid="609bad90-3ff6-43ed-8397-131c390ff5bd"/>
+				<text><![CDATA[Số vé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="370" y="19" width="185" height="15" uuid="9764e176-51d8-4dec-b1ca-974060be3a25"/>
+				<text><![CDATA[Doanh thu]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="376e7a6c-7496-480d-a2b8-2520e113b17b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="185" height="15" uuid="3cfb6520-44bc-4c27-8230-9b0b45142c44"/>
+				<textFieldExpression><![CDATA[$F{MACHUYEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="185" y="0" width="185" height="15" uuid="9e0d5648-c40d-4a82-9329-2573d326e4fe"/>
+				<textFieldExpression><![CDATA[$F{SOVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="370" y="0" width="185" height="15" uuid="755e9791-6fd4-4255-9a0e-d814fd60f5ca"/>
+				<textFieldExpression><![CDATA[$F{DOANHTHU}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="78514b40-957e-4819-9303-df82a04958f3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="d61cd422-6be5-4e8c-ab0c-62368e7484e1"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="4d78ee03-2efd-49e9-b003-cc6ae6e29d4d"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ff0ec8cd-03e5-4366-a223-d988827aa9f3"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<staticText>
+				<reportElement x="353" y="0" width="100" height="20" uuid="1e523dbd-4282-4900-a499-adfc2e15511d"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng doanh thu]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="453" y="0" width="100" height="20" uuid="653a524c-91f9-439a-bad9-07bdea46c071"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}+" VND"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

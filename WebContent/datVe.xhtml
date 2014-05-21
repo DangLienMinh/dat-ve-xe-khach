@@ -52,11 +52,17 @@
 	        </p:column>  
 	        
 	        <p:column headerText="Giờ đi" style="font-size:14px!important;"> 
-	           <h:outputText  value="#{ds.gioDi}"/>     
+	              
+	            <h:outputFormat value="{0, date, HH:mm}">
+			    	<f:param  value="#{ds.gioDi}" />
+				</h:outputFormat>
 	        </p:column>
 	        
 	        <p:column headerText="Giờ đến" style="font-size:14px!important;"> 
-	         	<h:outputText  value="#{ds.gioDen}"/>
+	        	<h:outputFormat value="{0, date, HH:mm}">
+			    	<f:param value="#{ds.gioDen}" />
+				</h:outputFormat>
+	         	
 	        </p:column>
 	        
 	        <p:column headerText="Khuyến mãi" style="font-size:14px!important;">  

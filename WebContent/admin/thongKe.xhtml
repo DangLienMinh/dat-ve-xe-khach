@@ -1,20 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+    
+>
+ <h:head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <title>Đăng nhập</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
-</ui:composition>
+</style>
+ </h:head>
+ <body>
+ <f:view>
+     <h:form>
+     	<p:accordionPanel>
+        <p:tab title="Danh sách nhân viên">
+            <p:commandButton value="Hiển thị" action="#{reportMBean.reportNhanVien}" ajax="false"></p:commandButton>
+        </p:tab>
+        <p:tab title="Danh sách tài xế">
+          <p:commandButton value="Hiển thị" action="#{reportMBean.reportTaiXe}" ajax="false"></p:commandButton>
+        </p:tab>
+        <p:tab title="Báo cáo doanh thu năm">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Năm:" />
+                <p:inputText value="#{reportMBean.nam}"></p:inputText>
+                <p:commandButton value="Hiển thị" action="#{reportMBean.doanhThuNam}" ajax="false"></p:commandButton>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Báo cáo doanh thu chuyến">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Năm:" />
+                <p:calendar  pattern="MM/yyyy" navigator="true"  styleClass="tableView" value="#{reportMBean.selectedDate}"  />
+                <p:commandButton value="Hiển thị" action="#{reportMBean.doanhThuChuyen}" ajax="false"></p:commandButton>
+            </h:panelGrid>
+        </p:tab>
+   	 </p:accordionPanel>
+     </h:form>
+     </f:view>
+</body>
 </html>
