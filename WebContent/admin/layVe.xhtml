@@ -46,21 +46,9 @@
 	     </p:panel>
 	      <c:set var="dk"  value="#{hoaDonMBean.dieuKienLayVe}"/>
 			<c:if test="${dk >= 1}">
-				<p:panel header="Thông tin vé" style="text-align:center" id="in">
-		            <h:panelGrid columns="2" style="width:100%" >
-		                
-		 				<h:outputLabel value="Họ tên"></h:outputLabel>
-		                <h:outputText value="#{hoaDonMBean.hoaDon.ho} #{hoaDonMBean.hoaDon.ten}" />
-						 <h:outputLabel value="Số ghế"></h:outputLabel>
-		                <h:outputText value="#{hoaDonMBean.hoaDon.maGhe}" />
-		                <h:outputLabel value="Biển số xe"></h:outputLabel>
-		                <h:outputText value="#{hoaDonMBean.xe.bienSo}" />
-		                
-		            </h:panelGrid>
-		            <p:commandButton value="In vé" icon="ui-icon-print">
-				       <p:printer target="in" />
-				    </p:commandButton>
-		             
+				<p:panel header="Thông tin vé" style="text-align:center">
+				  <iframe src="veReport.xhtml" width="100%" height="70%">
+				  </iframe> 
        			</p:panel>
 			</c:if>
 			<c:if test="${dk == -1}">

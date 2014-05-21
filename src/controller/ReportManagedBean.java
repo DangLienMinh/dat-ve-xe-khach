@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
@@ -22,11 +23,12 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRProperties;
 
 @ManagedBean(name= "reportMBean")
-@ViewScoped 
+@SessionScoped
 public class ReportManagedBean {
 	
 	private String Nam;
 	private Date SelectedDate;
+
 	
 	public String doanhThuNam() throws ClassNotFoundException, SQLException, IOException,JRException
 	{
@@ -87,6 +89,42 @@ public class ReportManagedBean {
 		HashMap map = new HashMap();
 		map.put("Nam", year);
 		map.put("Thang", month);
+		try {
+			JasperRunManager.runReportToPdfStream(reportStream,
+					servletOutputStream,map, connection);
+			FacesContext.getCurrentInstance().responseComplete();
+			connection.close();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		return "";
+	}
+	
+	public String inVe(int maHoaDon) throws ClassNotFoundException, SQLException, IOException,JRException
+	{
+		Connection connection;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse)
+		context.getExternalContext().getResponse();
+		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
+		InputStream reportStream = context.getExternalContext().
+		getResourceAsStream("/admin/reports/veChinhThuc.jasper");
+		response.setContentType("application/pdf"); 
+		
+		ServletOutputStream servletOutputStream = 
+				response.getOutputStream();
+		Class.forName("oracle.jdbc.driver.OracleDriver"); 
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		
+	   
+	    String maHD = Integer.toString(maHoaDon);
+	    
+		
+		HashMap map = new HashMap();
+		map.put("MaHoaDon", maHD);
 		try {
 			JasperRunManager.runReportToPdfStream(reportStream,
 					servletOutputStream,map, connection);

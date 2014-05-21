@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import net.sf.jasperreports.engine.JRException;
 
 import com.paypal.exception.ClientActionRequiredException;
 import com.paypal.exception.HttpErrorException;
@@ -59,8 +62,13 @@ public class HoaDonManagedBean {
 	private Xe xe=new Xe();
 	private LoaiXe loaiXe=new LoaiXe();
 	private XeDao xeDao=new XeDao();
+	
 	@ManagedProperty(value="#{gheMBean}")
 	private GheManagedBean gheMB;
+	
+	@ManagedProperty(value="#{reportMBean}")
+	private ReportManagedBean reportMB;
+	
 	private GheDao gheDao=new GheDao();
 	private HoaDonDao hoaDonDao=new HoaDonDao();
 	private int dieuKienLayVe=-10;
@@ -252,8 +260,10 @@ public class HoaDonManagedBean {
 			dieuKienLayVe=-1;
 			return "layVe?faces-redirect=true";
 		}
-		
-		
+	}
+	
+	public String inVe() throws ClassNotFoundException, SQLException, IOException,JRException{
+		return reportMB.inVe(hoaDon.getMaHD());
 	}
 	
 	public HoaDon getHoaDon() {
@@ -303,6 +313,12 @@ public class HoaDonManagedBean {
 	}
 	public void setDieuKienLayVe(int dieuKienLayVe) {
 		this.dieuKienLayVe = dieuKienLayVe;
+	}
+	public ReportManagedBean getReportMB() {
+		return reportMB;
+	}
+	public void setReportMB(ReportManagedBean reportMB) {
+		this.reportMB = reportMB;
 	}
 	
 	

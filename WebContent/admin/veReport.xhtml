@@ -1,0 +1,32 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+    
+>
+ <h:head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <title>Đăng nhập</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
+
+</style>
+ </h:head>
+ <body>
+ <f:view>
+     <h:form>
+     	 <p:accordionPanel>
+			 <p:tab title="In vé">
+				<h:panelGrid columns="2" cellpadding="10">
+				  <h:outputText value="Mã vé:" />
+				  <p:inputText value="#{hoaDonMBean.hoaDon.maHD}"></p:inputText>
+				  <p:commandButton value="Hiển thị" action="#{hoaDonMBean.inVe}" ajax="false"></p:commandButton>              
+				</h:panelGrid>
+	 </p:tab>	       	            
+		</p:accordionPanel>
+     </h:form>
+     </f:view>
+</body>
+</html>

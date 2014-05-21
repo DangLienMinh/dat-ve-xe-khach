@@ -3,4 +3,5 @@ encoding//WebContent/admin/reports/doanhThuChuyen.jrxml=UTF-8
 encoding//WebContent/admin/reports/doanhThuNam.jrxml=UTF-8
 encoding//WebContent/admin/reports/nhanVien.jrxml=UTF-8
 encoding//WebContent/admin/reports/taiXe.jrxml=UTF-8
+encoding//WebContent/admin/reports/veChinhThuc.jrxml=UTF-8
 encoding//src/controller/TaiXeManagedBean.java=UTF-8
