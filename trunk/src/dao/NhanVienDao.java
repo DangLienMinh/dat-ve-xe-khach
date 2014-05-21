@@ -4,16 +4,20 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.util.Iterator;
 import java.util.List;
+
 import hibernateUtil.HibernateUtil;
 import oracle.jdbc.OracleTypes;
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
+
 import model.NhanVien;
 import model.PhanQuyen;
+import model.TinTuc;
 
 
 public class NhanVienDao {
@@ -128,7 +132,19 @@ public class NhanVienDao {
 		    	 session.flush();
 		         session.close(); 
 		      }
-		      return "Lỗi";
+		      return "";
+	 	}
+	 	
+	 	//lay doi tuong nhan vien dua vao tendn
+	 	public NhanVien layNhanVien(NhanVien nhanVien){
+	 		Session session = HibernateUtil.getSessionFactory().openSession();
+		    String hql = "from NhanVien  where TenDN = :tendn";
+		    List result = session.createQuery(hql)
+		    .setParameter("tendn", nhanVien.getTenDN())
+		    .list();
+	 		//tra ve 1 doi tuong TinTuc => lay phan tu dau tien cua result list
+		    NhanVien x=(NhanVien)result.get(0);
+		    return x;
 	 	}
 	 	
 	 	//tra ve doi tuong phan quyen dua vao maPQ ??????????????????????????????????????????

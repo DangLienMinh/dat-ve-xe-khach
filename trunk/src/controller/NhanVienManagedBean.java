@@ -19,15 +19,15 @@ public class NhanVienManagedBean {
 	private NhanVienDao nhanVienDao=new NhanVienDao();
 	private PhanQuyen phanQuyen=new PhanQuyen();
 	private PhanQuyenDao phanQuyenDao=new PhanQuyenDao();
-	//Họ tên nhân viên đã đăng nhập
+	//ho ten nhan vien da dang nhap
 	private String HoTen;
-	//Trả về danh sách nhân viên trên giao diện xhtml
+	//danh sach table nhan vien tren giao dien xhtml
 	private List<NhanVien> DanhSach;
-	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
+	//danh sach table nhan vien cho viec filter thuoc tinh
 	private List<NhanVien> filteredDanhSach;  
-	//đối tượng nhân viên được chọn để cập nhật thông tin
+	//doi tuong nhan vien duoc chon de cap nhat thong tin
 	private NhanVien selectedNV=new NhanVien();
-	//đối tượng phân quyền được chọn để cập nhật thông tin
+	//doi tuong phan quyen duoc chon de cap nhat thong tin
 	private PhanQuyen selectedPhanQuyen=new PhanQuyen();
 	
 	
@@ -80,7 +80,7 @@ public class NhanVienManagedBean {
 		this.filteredDanhSach = filteredDanhSach;
 	}
 	public String getHoTen() {
-		//lấy thông tin họ tên nhân viên dựa vào session
+		//lay thong tin ho ten dua vao session
 		 HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 	     return  session.getAttribute("user").toString();
 	}
@@ -91,15 +91,23 @@ public class NhanVienManagedBean {
 	public String dangNhap(){
 		int x=nhanVienDao.dangNhap(nhanVien);
 		if(x==1){
-			//lấy họ tên nhân viên
+			//lay ho nhan vien
 		  HoTen=nhanVienDao.layHoTen(nhanVien);
 		  
 		  //lưu họ teen vào session
 		  FacesContext context = FacesContext.getCurrentInstance();
 		  context.getExternalContext().getSessionMap().put("user", HoTen);
 		  context.getExternalContext().getSessionMap().put("tendn", nhanVien.getTenDN());
-		  //chuyển về trang QLNhanVien.xhtml
-		  return "QLNhanVien?faces-redirect=true";
+		  //chuyen trang theo phan quyen
+		  NhanVien nv=nhanVienDao.layNhanVien(nhanVien);
+		  PhanQuyen pq=nv.getMaPQ();
+		  if(pq.getMaPQ()==1){
+			  return "QLNhanVien?faces-redirect=true";
+		  }
+		  else{
+			  return "QLTuyen?faces-redirect=true";
+		  }
+		  
 		}else{
 			FacesContext.getCurrentInstance().addMessage(
                     null,
@@ -111,7 +119,7 @@ public class NhanVienManagedBean {
 	}
 	
 	public String dangXuat() {
-		//xoá biến lưu họ tên nhân viên trong session
+		//xoa vbien luu ho ten trong session
 		  FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	      return "dangNhap?faces-redirect=true";
 	   }
@@ -122,7 +130,7 @@ public class NhanVienManagedBean {
 	}
 	
 	public String suaNhanVien(){
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua nhan vien dua vao doi tuong nhan vien duoc chon
 		nhanVienDao.suaNhanVien(selectedNV,selectedPhanQuyen);
 		return "QLNhanVien?faces-redirect=true";
 	}
@@ -132,12 +140,12 @@ public class NhanVienManagedBean {
 		return "QLNhanVien?faces-redirect=true";
 	}
 	
-	//reset các ô input
+	//reset cac o input
 	public void reset(){
 		nhanVienDao.reset(nhanVien);
 	}
 	
-	//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+	//ham khi bam vao icon rang cua se luu thong tin doi tuong nhan vien duoc chon
 	public void capNhat(NhanVien x,String maPQ){
 		selectedNV=x;
 		int ma=Integer.parseInt(maPQ);

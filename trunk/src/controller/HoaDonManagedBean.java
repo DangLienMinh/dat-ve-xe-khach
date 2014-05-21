@@ -1,15 +1,36 @@
 package controller;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
+import com.paypal.exception.ClientActionRequiredException;
+import com.paypal.exception.HttpErrorException;
+import com.paypal.exception.InvalidCredentialException;
+import com.paypal.exception.InvalidResponseDataException;
+import com.paypal.exception.MissingCredentialException;
+import com.paypal.exception.SSLConfigurationException;
+import com.paypal.sdk.exceptions.OAuthException;
+import com.paypal.svcs.services.AdaptivePaymentsService;
+import com.paypal.svcs.types.ap.PayRequest;
+import com.paypal.svcs.types.ap.PayResponse;
+import com.paypal.svcs.types.ap.Receiver;
+import com.paypal.svcs.types.ap.ReceiverList;
+import com.paypal.svcs.types.common.RequestEnvelope;
 
 import dao.ChuyenDao;
 import dao.GheDao;
@@ -31,6 +52,7 @@ public class HoaDonManagedBean {
 	private Chuyen chuyen=new Chuyen();
 	private ChuyenDao chuyenDao=new ChuyenDao();
 	private List<Chuyen> danhSach;
+	
 	private Tuyen dsTuyen=new Tuyen();
 	private HoaDon hoaDon=new HoaDon();
 	private String option;
@@ -109,15 +131,96 @@ public class HoaDonManagedBean {
 	public String datve(){
 		if(option.equalsIgnoreCase("1")){
 			hoaDon.setHinhThucTT("Trực tiếp");
+			Tuyen tuyen=new Tuyen();
+			tuyen=chuyen.getMaTuyen();
+			hoaDon.setTongTien(chuyenDao.tienVe(tuyen.getMaTuyen()));
+			int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+			hoaDon.setMaHD(mahd);
+			return "kqDatVe.xhtml";
 		}else{
 			hoaDon.setHinhThucTT("Chuyển khoản");
+			Tuyen tuyen=new Tuyen();
+			tuyen=chuyen.getMaTuyen();
+			double tienVe=chuyenDao.tienVe(tuyen.getMaTuyen());
+			thanhToanPaypal(tienVe/20000);
+			
+			
+			hoaDon.setTongTien(chuyenDao.tienVe(tuyen.getMaTuyen()));
+			int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+			hoaDon.setMaHD(mahd);
+			return "";
+			
 		}
-		Tuyen tuyen=new Tuyen();
-		tuyen=chuyen.getMaTuyen();
-		hoaDon.setTongTien(chuyenDao.tienVe(tuyen.getMaTuyen()));
-		int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
-		hoaDon.setMaHD(mahd);
-		return "kqDatVe.xhtml";
+		
+	}
+	
+	public void thanhToanPaypal(double amount){
+		PayRequest payRequest = new PayRequest();
+		  
+		List<Receiver> receivers = new ArrayList<Receiver>();
+		Receiver receiver = new Receiver();
+		receiver.setAmount(amount);
+		receiver.setEmail("merchant@QLXK.com");
+		receivers.add(receiver);
+		ReceiverList receiverList = new ReceiverList(receivers);
+
+		payRequest.setReceiverList(receiverList);
+
+		RequestEnvelope requestEnvelope = new RequestEnvelope("en_US");
+		payRequest.setRequestEnvelope(requestEnvelope); 
+		payRequest.setActionType("PAY");
+		payRequest.setCancelUrl("http://localhost:8080/datVeXe/thongTinDatVe.xhtml");
+		payRequest.setReturnUrl("http://localhost:8080/datVeXe/kqDatVe.xhtml");
+		payRequest.setCurrencyCode("USD");
+		payRequest.setIpnNotificationUrl("http://replaceIpnUrl.com");
+
+		Map<String, String> sdkConfig = new HashMap<String, String>();
+		sdkConfig.put("mode", "sandbox");
+		sdkConfig.put("acct1.UserName", "merchant_api1.QLXK.com");
+		sdkConfig.put("acct1.Password", "1400294553");
+		sdkConfig.put("acct1.Signature","ArX6vf1XJgnyPK3-dxT5Ar.JyJD8Ax59Vl6NMBKeAO3-wYJc127l3g0v");
+		sdkConfig.put("acct1.AppId","APP-80W284485P519543T");
+
+		AdaptivePaymentsService adaptivePaymentsService = new AdaptivePaymentsService(sdkConfig);
+		try {
+			PayResponse payResponse = adaptivePaymentsService.pay(payRequest);
+			
+			String payKey = payResponse.getPayKey();
+			String returnUrl="https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="+payKey;
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+
+		    ec.redirect(returnUrl);
+		} catch (SSLConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidCredentialException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HttpErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidResponseDataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClientActionRequiredException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MissingCredentialException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OAuthException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public String layVeChinhThuc(){
