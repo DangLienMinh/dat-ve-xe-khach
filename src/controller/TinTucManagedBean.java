@@ -11,16 +11,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import org.primefaces.model.UploadedFile;
 
 import model.LoaiTinTuc;
+import model.NhanVien;
+import model.PhanQuyen;
 import model.TinTuc;
 import dao.LoaiTinTucDao;
+import dao.NhanVienDao;
 import dao.TinTucDao;
 
 @ManagedBean(name= "tinTucMBean")
@@ -113,6 +119,17 @@ public class TinTucManagedBean implements Serializable {
 			this.selectedLoaiTinTuc = selectedLoaiTinTuc;
 		}	
 		
+		//kiem tra quyen dn de forward ve dung trang cho nguoi dung
+		public int kiemTraquyenDN(){
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		     NhanVien x= new NhanVien();
+		     x.setTenDN(session.getAttribute("tendn").toString());
+		     NhanVienDao nvDao=new NhanVienDao();
+		     NhanVien nv=nvDao.layNhanVien(x);
+			 PhanQuyen pq=nv.getMaPQ();
+			 return pq.getMaPQ();
+		}
+		
 		public String themTinTuc(){
 			upload();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -124,7 +141,16 @@ public class TinTucManagedBean implements Serializable {
 				e.printStackTrace();
 			}
 			tinTucDao.themTinTuc(tinTuc, loaiTinTuc);
-			return "QLTinTuc?faces-redirect=true";
+			
+			int kt= kiemTraquyenDN();
+			 
+			  if(kt==1){
+				  return "QLTinTuc_Admin?faces-redirect=true";
+			  }
+			  else{
+				  return "QLTinTuc_NVDH?faces-redirect=true";
+			  }
+			
 		}
 		
 		public String suaTinTuc(){
@@ -138,12 +164,28 @@ public class TinTucManagedBean implements Serializable {
 			}
 			//sửa nhân viên dựa vào đối tượng nhân viên được chọn
 			tinTucDao.suaTinTuc(selectedTinTuc,selectedLoaiTinTuc);
-			return "QLTinTuc?faces-redirect=true";
+			
+			int kt= kiemTraquyenDN();
+			 
+			  if(kt==1){
+				  return "QLTinTuc_Admin?faces-redirect=true";
+			  }
+			  else{
+				  return "QLTinTuc_NVDH?faces-redirect=true";
+			  }
 		}
 		
 		public String xoaTinTuc(TinTuc x){
 			tinTucDao.xoaTinTuc(x);
-			return "QLTinTuc?faces-redirect=true";
+			
+			int kt= kiemTraquyenDN();
+			 
+			  if(kt==1){
+				  return "QLTinTuc_Admin?faces-redirect=true";
+			  }
+			  else{
+				  return "QLTinTuc_NVDH?faces-redirect=true";
+			  }
 		}
 		
 		//reset các ô input
