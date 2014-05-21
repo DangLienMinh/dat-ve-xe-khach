@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="veChinhThuc" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="31460d09-b548-4c44-b851-6e6b34256469">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
+	<style name="title1" fontName="Times New Roman"/>
+	<parameter name="MaHoaDon" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select tongtien,bendau,bencuoi,ho,ten,maghe,bienso,to_char(giodi,'HH24:Mi') as gioKhoiHanh,ngayGD as NgayKhoiHanh from hoadon hd,chuyen c,tuyen t where hd.machuyen=c.machuyen and c.matuyen=t.matuyen and mahd=$P{MaHoaDon}]]>
+	</queryString>
+	<field name="BENDAU" class="java.lang.String"/>
+	<field name="BENCUOI" class="java.lang.String"/>
+	<field name="HO" class="java.lang.String"/>
+	<field name="TEN" class="java.lang.String"/>
+	<field name="MAGHE" class="java.math.BigDecimal"/>
+	<field name="BIENSO" class="java.lang.String"/>
+	<field name="TONGTIEN" class="java.math.BigDecimal"/>
+	<field name="GIOKHOIHANH" class="java.lang.String"/>
+	<field name="NGAYKHOIHANH" class="java.sql.Timestamp"/>
+	<title>
+		<band height="329" splitType="Stretch">
+			<staticText>
+				<reportElement style="title1" x="134" y="101" width="131" height="20" forecolor="#09690D" uuid="44a6feca-a128-4de0-b9b9-b9029fcc4d01"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[(Giao cho khách hàng)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="72" y="24" width="289" height="32" forecolor="#09690D" uuid="ee832a41-c9c6-4f4a-850f-ddd69cf52495"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ĐC: 486-486A Lê Văn Lương, P.Tân Phong, Q7, TP.HCM Điện thoại: (08) 3838 9235          Mã số thuế: 0302778189 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="64" y="6" width="307" height="20" forecolor="#09690D" uuid="7bef95db-7516-4931-849e-54a45b29ee20"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CTY CP VẬN TẢI VÀ DỊCH VỤ DU LỊCH PHƯƠNG TRANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="123" y="80" width="157" height="30" forecolor="#FA0905" uuid="b9c837f9-c953-4539-8e07-d2fb74a60679"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VÉ XE KHÁCH ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="0" y="71" width="120" height="32" forecolor="#09690D" uuid="1117a673-083c-4153-995f-f17468f6576d"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mẫu số: 01VE 0B3/001 Ký hiệu: AA/12P]]></text>
+			</staticText>
+			<image>
+				<reportElement style="title1" x="0" y="3" width="60" height="68" uuid="9df615ed-e75d-489e-81ee-9707439c3d5f"/>
+				<imageExpression><![CDATA["E:/eclipseProject/datVeXe/WebContent/resources/image/LogoFuta.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="Detail" x="112" y="134" width="231" height="21" forecolor="#FF0905" uuid="c7c1bbc6-2220-40ee-b154-25c333a5e1aa"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENDAU}+" - "+$F{BENCUOI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="38" y="134" width="70" height="29" forecolor="#09690D" uuid="0a0329ad-66ad-495f-89d3-70c45a0b1f63"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tuyến:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="43" y="178" width="312" height="20" forecolor="#09690D" uuid="d002826a-22e8-4f84-b2f4-de4f8da94525"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Giá vé đã bao gồm thuế GTGT 10% và bảo hiểm hành khách]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="112" y="156" width="231" height="21" forecolor="#FF0905" uuid="57cbc8f2-d7cc-4ac8-8f81-2fd1190f6794"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Giá vé: "+$F{TONGTIEN}+" VND"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="30" y="210" width="333" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="1607c147-65aa-4546-9719-cffad251e9e9"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Họ tên HK: "+$F{HO}+" "+$F{TEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="30" y="235" width="160" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="5e6f161b-ecb0-40b5-b9e2-c8f73f548c1b"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Số ghế: "+$F{MAGHE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="201" y="235" width="160" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="f4bbf554-7ed4-4871-b520-2cb7ce3b1b2d"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Số xe: "+$F{BIENSO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="30" y="261" width="331" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="92a03d51-16d7-4901-85e1-29cf3497fe99"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Xuất bến: "+$F{GIOKHOIHANH}+" Ngày khởi hành "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYKHOIHANH})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="40" y="290" width="120" height="29" forecolor="#09690D" uuid="d531ed84-40bb-4152-a5ef-511a08ab56c0"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nhân viên bán vé:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="161" y="290" width="220" height="29" forecolor="#09690D" uuid="c20ff854-60be-4a50-8798-e91cfeb52a1e"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ngày:........Tháng:........Năm........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="539" y="100" width="131" height="20" forecolor="#09690D" uuid="825ee8dd-7e19-41ab-b13b-8b102a40a733"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[(Phần kiểm soát)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="448" y="177" width="312" height="20" forecolor="#09690D" uuid="a0dda375-e868-4593-ae59-ad58d152a824"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Giá vé đã bao gồm thuế GTGT 10% và bảo hiểm hành khách]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="435" y="234" width="160" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="70e0168d-04ea-410d-acac-bcd3e707eb23"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Số ghế: "+$F{MAGHE}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="405" y="2" width="60" height="68" uuid="d992e65a-606b-4703-bfd5-481c557955ce"/>
+				<imageExpression><![CDATA["E:/eclipseProject/datVeXe/WebContent/resources/image/LogoFuta.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="title1" x="477" y="23" width="289" height="32" forecolor="#09690D" uuid="2f11fa77-84ba-4eba-b386-ed208aa41192"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ĐC: 486-486A Lê Văn Lương, P.Tân Phong, Q7, TP.HCM Điện thoại: (08) 3838 9235          Mã số thuế: 0302778189 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="469" y="5" width="307" height="20" forecolor="#09690D" uuid="28b9bf43-6ee8-47d9-b191-ed50c8afdde0"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CTY CP VẬN TẢI VÀ DỊCH VỤ DU LỊCH PHƯƠNG TRANG]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="606" y="234" width="160" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="e21a40ee-64d7-40af-bef2-1ae4a0c7c5d7"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Số xe: "+$F{BIENSO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="405" y="70" width="120" height="32" forecolor="#09690D" uuid="84be9dbc-cbdb-463b-bd4f-916662bb0df6"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mẫu số: 01VE 0B3/001 Ký hiệu: AA/12P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="443" y="133" width="70" height="29" forecolor="#09690D" uuid="66c9274f-ac34-4ffb-8997-1f4a55e65419"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tuyến:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="435" y="260" width="331" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="4f5366fd-143b-4374-ae98-03ed921793fe"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Xuất bến: "+$F{GIOKHOIHANH}+" Ngày khởi hành "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYKHOIHANH})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="title1" mode="Transparent" x="435" y="209" width="333" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="0e34edf5-74fb-4c26-8609-a4288006716b"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Họ tên HK: "+$F{HO}+" "+$F{TEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="517" y="133" width="231" height="21" forecolor="#FF0905" uuid="2a2be713-e0f7-41e0-a774-8d1f919cd2f3"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENDAU}+" - "+$F{BENCUOI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="566" y="289" width="220" height="29" forecolor="#09690D" uuid="a11dd0c6-9ea5-483d-a353-9003c00555af"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ngày:........Tháng:........Năm........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="445" y="289" width="120" height="29" forecolor="#09690D" uuid="bbd76ff5-6450-4aee-8fee-9b2eb1d2218e"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nhân viên bán vé:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="528" y="79" width="157" height="30" forecolor="#FA0905" uuid="5b987067-ad58-4653-951c-baf405cd67e1"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VÉ XE KHÁCH ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="517" y="155" width="231" height="21" forecolor="#FF0905" uuid="daae2601-6f3d-40d9-8ac2-03e6f3e6d3ae"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Giá vé: "+$F{TONGTIEN}+" VND"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
