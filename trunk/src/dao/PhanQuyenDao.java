@@ -33,4 +33,15 @@ public class PhanQuyenDao {
         }
 		return list;
 	}
+	
+	public PhanQuyen layPQ(int maPQ){
+ 		Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from PhanQuyen  where MaPQ = :mapq";
+	    List result = session.createQuery(hql)
+	    .setParameter("mapq", maPQ)
+	    .list();
+	  //tra ve 1 doi tuong PhanQuyen => lay phan tu dau tien cua result list
+ 		PhanQuyen x=(PhanQuyen) result.get(0);
+ 		return x; //return the list we created
+ 	}
 }

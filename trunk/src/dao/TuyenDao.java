@@ -143,5 +143,29 @@ public class TuyenDao {
  		Tuyen x=(Tuyen) result.get(0);
  		return x.getBenCuoi()+" - "+x.getBenCuoi();
 	}
+	
+	//lay thong tin tuyen dua vao ma tuyen
+ 	public Tuyen layTuyen(int maTuyen){
+ 		Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from Tuyen  where MaTuyen = :matuyen";
+	    List result = session.createQuery(hql)
+	    .setParameter("matuyen", maTuyen)
+	    .list();
+	  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
+	    Tuyen x=(Tuyen) result.get(0);
+ 		return x; //return the list we created
+ 	}
+ 	
+ 	//lay thong tin tien ve dua vao matuyen
+ 	public int tienVe(int maTuyen){
+ 		Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from Tuyen  where MaTuyen = :matuyen";
+	    List result = session.createQuery(hql)
+	    .setParameter("matuyen", maTuyen)
+	    .list();
+	  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
+	    Tuyen x=(Tuyen) result.get(0);
+ 		return x.getGia(); 
+ 	}
 
 }

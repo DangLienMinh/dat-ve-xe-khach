@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 
 public class LoaiXeDao {
 
-	//combobox loai xe
+	//danh sach loai xe
 	public List<LoaiXe> selectItems(){
 		List<LoaiXe> list=null;
 		Transaction trns = null;
@@ -34,4 +34,16 @@ public class LoaiXeDao {
         }
 		return list;
 	}
+	
+	 //lay thong tin loai xe theo maLoaiXe
+ 	public LoaiXe layLX(int maLoaiXe){		
+	    Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from LoaiXe  where MaLoaiXe = :maLoaiXe";
+	    List result = session.createQuery(hql)
+	    .setParameter("maLoaiXe", maLoaiXe)
+	    .list();
+ 		//you should return list of LoaiXe object from this method, so need to create one
+ 		LoaiXe x=(LoaiXe) result.get(0);
+ 		return x; //return the list we created
+ 	}
 }

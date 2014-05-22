@@ -17,11 +17,11 @@ public class TaiXeManagedBean {
 	private TaiXe taiXe=new TaiXe();
 	private TaiXeDao taiXeDao=new TaiXeDao();
 	private List<SelectItem> selectOneItemTX;
-	//Trả về danh sách nhân viên trên giao diện xhtml
+	//Tra ve danh sach tai xe tren giao dien
 	private List<TaiXe> DanhSach;
-	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
+	//danh sach tai xe theo kieu loc thuoc tinh
 	private List<TaiXe> filteredDanhSach;  
-	//đối tượng nhân viên được chọn để cập nhật thông tin
+	//doi tuong tai xe duoc chon
 	private TaiXe selectedTX=new TaiXe();
 	
 	public TaiXeManagedBean(){
@@ -66,7 +66,7 @@ public class TaiXeManagedBean {
 	}
 	
 	public String suaTaiXe(){
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua tai xe dua vao doi tuong tai xe duoc chon
 		taiXeDao.suaTaiXe(selectedTX);
 		return "QLTaiXe?faces-redirect=true";
 	}
@@ -81,11 +81,12 @@ public class TaiXeManagedBean {
 		taiXeDao.reset(taiXe);
 	}
 	
-	//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+	//ham khi bam vao icon gang cua se luu doi tuong nhan vien duoc chon
 	public void capNhat(TaiXe x){
 		selectedTX=x;
 	}	
 	
+	//tra ve danh sach tai xe dung cho combobox tai xe
 	public List<SelectItem> getSelectOneItemTX() {
 		this.selectOneItemTX=new ArrayList<SelectItem>();
 		List<TaiXe> txs=taiXeDao.selectItems();

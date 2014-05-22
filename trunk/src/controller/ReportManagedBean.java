@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -12,15 +11,11 @@ import java.util.HashMap;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRProperties;
 
 @ManagedBean(name= "reportMBean")
 @SessionScoped
@@ -29,7 +24,6 @@ public class ReportManagedBean {
 	private String Nam;
 	private Date SelectedDate;
 
-	
 	public String doanhThuNam() throws ClassNotFoundException, SQLException, IOException,JRException
 	{
 		Connection connection;
@@ -48,9 +42,6 @@ public class ReportManagedBean {
 		HashMap map = new HashMap();
 		map.put("Nam", getNam());
 		try {
-			
-//			JasperRunManager.runReportToPdfStream(reportStream,
-//			servletOutputStream, new HashMap(), connection);
 			JasperRunManager.runReportToPdfStream(reportStream,
 					servletOutputStream,map, connection);
 			FacesContext.getCurrentInstance().responseComplete();
@@ -83,9 +74,7 @@ public class ReportManagedBean {
 	    Calendar cal = Calendar.getInstance();
 	    cal.setTime(this.SelectedDate);
 	    String year = Integer.toString(cal.get(Calendar.YEAR));
-	    String month = formatMonth(cal.get(Calendar.MONTH));
-	    
-		
+	    String month = formatMonth(cal.get(Calendar.MONTH));	    		
 		HashMap map = new HashMap();
 		map.put("Nam", year);
 		map.put("Thang", month);
@@ -178,6 +167,96 @@ public class ReportManagedBean {
 		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		
 		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/taiXe.jasper");
+		response.setContentType("application/pdf"); 
+		
+		ServletOutputStream servletOutputStream = 
+				response.getOutputStream();
+		Class.forName("oracle.jdbc.driver.OracleDriver"); 
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		try {
+			
+			JasperRunManager.runReportToPdfStream(reportStream,
+			servletOutputStream, new HashMap(), connection);
+			FacesContext.getCurrentInstance().responseComplete();
+			connection.close();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		return "";
+	}
+	
+	public String reportXe() throws ClassNotFoundException, SQLException, IOException,JRException
+	{
+		Connection connection;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse)
+		context.getExternalContext().getResponse();
+		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
+		
+		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/xe.jasper");
+		response.setContentType("application/pdf"); 
+		
+		ServletOutputStream servletOutputStream = 
+				response.getOutputStream();
+		Class.forName("oracle.jdbc.driver.OracleDriver"); 
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		try {
+			
+			JasperRunManager.runReportToPdfStream(reportStream,
+			servletOutputStream, new HashMap(), connection);
+			FacesContext.getCurrentInstance().responseComplete();
+			connection.close();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		return "";
+	}
+	
+	public String reportTuyen() throws ClassNotFoundException, SQLException, IOException,JRException
+	{
+		Connection connection;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse)
+		context.getExternalContext().getResponse();
+		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
+		
+		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/tuyen.jasper");
+		response.setContentType("application/pdf"); 
+		
+		ServletOutputStream servletOutputStream = 
+				response.getOutputStream();
+		Class.forName("oracle.jdbc.driver.OracleDriver"); 
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		try {
+			
+			JasperRunManager.runReportToPdfStream(reportStream,
+			servletOutputStream, new HashMap(), connection);
+			FacesContext.getCurrentInstance().responseComplete();
+			connection.close();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		return "";
+	}
+	
+	public String reportChuyen() throws ClassNotFoundException, SQLException, IOException,JRException
+	{
+		Connection connection;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse)
+		context.getExternalContext().getResponse();
+		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
+		
+		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/chuyen.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 

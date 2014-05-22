@@ -16,13 +16,15 @@ public class TuyenManagedBean {
 	private Tuyen tuyen=new Tuyen();
 	private TuyenDao tuyenDao=new TuyenDao();
 	private List<SelectItem> selectOneItemTuyen;
-	//Trả về danh sách nhân viên trên giao diện xhtml
+	
+	//Tra ve danh sach tuyen 
 	private List<Tuyen> DanhSach;
-	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
+	
+	//Tra ve danh sach tuyen kieu loc danh sach
 	private List<Tuyen> filteredDanhSach;  
-	//đối tượng nhân viên được chọn để cập nhật thông tin
+	
+	//đoi tuong tuyen duoc chon de cap nhat thong tin
 	private Tuyen selectedTuyen=new Tuyen();
-
 	
 	public TuyenManagedBean(){
 		DanhSach = new ArrayList<Tuyen>();
@@ -67,7 +69,7 @@ public class TuyenManagedBean {
 	}
 	
 	public String suaTuyen(){
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua tuyen dua vao doi tuong tuyen duoc chon
 		tuyenDao.suaTuyen(selectedTuyen);
 		return "QLTuyen?faces-redirect=true";
 	}
@@ -77,16 +79,17 @@ public class TuyenManagedBean {
 		return "QLTuyen?faces-redirect=true";
 	}
 	
-	//reset các ô input
+	//reset cac o input
 	public void reset(){
 		tuyenDao.reset(tuyen);
 	}
 	
-	//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+	//ham khi bam vao icon gang cua se cap nhat doi tuong tuyen
 	public void capNhat(Tuyen x){
 		selectedTuyen=x;
 	}	
 	
+	//tra ve combobox tuyen tren view
 	public List<SelectItem> getSelectOneItemTuyen() {
 		this.selectOneItemTuyen=new ArrayList<SelectItem>();
 		List<Tuyen> tuyens=tuyenDao.selectItems();
@@ -97,10 +100,9 @@ public class TuyenManagedBean {
 		return selectOneItemTuyen;
 	}
 	
+	//tra ve ten tuyen
 	public String tenTuyen(String maTuyen){
 		int ma=Integer.parseInt(maTuyen);
 		return tuyenDao.tenTuyen(ma);
 	}
-	
-
 }

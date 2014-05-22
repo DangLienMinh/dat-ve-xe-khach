@@ -32,21 +32,24 @@ import dao.TinTucDao;
 @ManagedBean(name= "tinTucMBean")
 @ViewScoped
 public class TinTucManagedBean implements Serializable {
-		/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
+		private static final long serialVersionUID = 1L;
+		
 		private TinTuc tinTuc=new TinTuc();
 		private TinTucDao tinTucDao=new TinTucDao();
 		private LoaiTinTuc loaiTinTuc=new LoaiTinTuc();
 		private LoaiTinTucDao loaiTinTucDao=new LoaiTinTucDao();
-		//Trả về danh sách nhân viên trên giao diện xhtml
+		
+		//Tra ve danh sach tin tuc
 		private List<TinTuc> DanhSach;
-		//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
+		
+		//danh sach tin tuc theo kieu loc thuoc tinh
 		private List<TinTuc> filteredDanhSach;  
-		//đối tượng nhân viên được chọn để cập nhật thông tin
+		
+		//doi tuong tin tuc duoc chon
 		private TinTuc selectedTinTuc=new TinTuc();
-		//đối tượng phân quyền được chọn để cập nhật thông tin
+		
+		//doi tuong loai tin tuc duoc chon
 		private LoaiTinTuc selectedLoaiTinTuc=new LoaiTinTuc();
 		private UploadedFile file;
 
@@ -130,6 +133,7 @@ public class TinTucManagedBean implements Serializable {
 			 return pq.getMaPQ();
 		}
 		
+		//them tin tuc moi
 		public String themTinTuc(){
 			upload();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -143,16 +147,17 @@ public class TinTucManagedBean implements Serializable {
 			tinTucDao.themTinTuc(tinTuc, loaiTinTuc);
 			
 			int kt= kiemTraquyenDN();
-			 
-			  if(kt==1){
+			if(kt==1){
 				  return "QLTinTuc_Admin?faces-redirect=true";
 			  }
-			  else{
+			else{
 				  return "QLTinTuc_NVDH?faces-redirect=true";
-			  }
+			  } 
+			  
 			
 		}
 		
+		//sua tin tuc
 		public String suaTinTuc(){
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date today;
@@ -162,7 +167,7 @@ public class TinTucManagedBean implements Serializable {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+			//sua tin tuc dua vao doi tuong tin tuc+loai tin tuc duoc chon
 			tinTucDao.suaTinTuc(selectedTinTuc,selectedLoaiTinTuc);
 			
 			int kt= kiemTraquyenDN();
@@ -175,6 +180,7 @@ public class TinTucManagedBean implements Serializable {
 			  }
 		}
 		
+		//xoa doi tuong tin tuc
 		public String xoaTinTuc(TinTuc x){
 			tinTucDao.xoaTinTuc(x);
 			
@@ -188,20 +194,19 @@ public class TinTucManagedBean implements Serializable {
 			  }
 		}
 		
-		//reset các ô input
+		//reset cac o input
 		public void reset(){
 			tinTucDao.reset(tinTuc);
 		}
 		
-		//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+		//ham khi bam vao se cap nhat doi tuong tin tuc 
 		public void capNhat(TinTuc x,String maLTT){
 			selectedTinTuc=x;
 			int ma=Integer.parseInt(maLTT);
-			setSelectedLoaiTinTuc(tinTucDao.layLTT(ma));
+			setSelectedLoaiTinTuc(loaiTinTucDao.layLTT(ma));
 		}
 		
-		
-
+		//upload image
 		public void upload() {  
 	        FacesMessage msg = new FacesMessage("Success! ", file.getFileName() + " is uploaded.");  
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -211,9 +216,9 @@ public class TinTucManagedBean implements Serializable {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-
 	    }  
 
+		//copy hinh anh vao thu muc pics
 	    public void copyFile(String fileName, InputStream in) {
 	    	//String destination="E:\\eclipseProject\\datVeXe\\WebContent\\pics\\";
 	    	ExternalContext extContext =
@@ -221,29 +226,23 @@ public class TinTucManagedBean implements Serializable {
 	    	String destination=extContext.getRealPath("//pics//" + fileName);
 	    	tinTuc.setHinhAnh("/pics/"+fileName);
 	           try {
-	             
-	             
 	                // write the inputStream to a FileOutputStream
 	                OutputStream out = new FileOutputStream(new File(destination));
-	             
 	                int read = 0;
 	                byte[] bytes = new byte[1024];
 	             
 	                while ((read = in.read(bytes)) != -1) {
 	                    out.write(bytes, 0, read);
 	                }
-	             
 	                in.close();
 	                out.flush();
 	                out.close();
-	             
 	                System.out.println("New file created!");
 	                } catch (IOException e) {
 	                System.out.println(e.getMessage());
 	                }
 	    }
 
-		
 		public UploadedFile getFile() {
 			return file;
 		}

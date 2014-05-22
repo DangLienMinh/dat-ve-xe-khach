@@ -13,6 +13,7 @@ import javax.faces.model.*;
 @ManagedBean(name= "phanQuyenMBean")
 @SessionScoped
 public class PhanQuyenManagedBean {
+	
 	private  PhanQuyen phanQuyen=new PhanQuyen();
 	private PhanQuyenDao phanQuyenDao=new PhanQuyenDao();
 	private List<SelectItem> selectOneItemPQ;
@@ -30,6 +31,7 @@ public class PhanQuyenManagedBean {
 		this.phanQuyenDao = phanQuyenDao;
 	}
 	
+	//tra ve danh sach phan quyen
 	public List<SelectItem> getSelectOneItemPQ() {
 		this.selectOneItemPQ=new ArrayList<SelectItem>();
 		List<PhanQuyen> phanQuyens=phanQuyenDao.selectItems();

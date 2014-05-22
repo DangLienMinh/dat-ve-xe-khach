@@ -1,14 +1,10 @@
 package controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import model.Chuyen;
 import model.TaiXe;
 import model.Tuyen;
@@ -21,6 +17,7 @@ import dao.XeDao;
 @ManagedBean(name= "chuyenMBean")
 @ViewScoped
 public class ChuyenManagedBean {
+	
 	private Chuyen chuyen=new Chuyen();
 	private ChuyenDao chuyenDao=new ChuyenDao();
 	private Xe xe=new Xe();
@@ -29,20 +26,17 @@ public class ChuyenManagedBean {
 	private TuyenDao tuyenDao=new TuyenDao();
 	private TaiXe taiXe=new TaiXe();
 	private TaiXeDao taiXeDao=new TaiXeDao();
-
-	 
-	 
-	private List<Chuyen> DanhSach;
-	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
-	private List<Chuyen> filteredDanhSach;  
-	//đối tượng nhân viên được chọn để cập nhật thông tin
-	private Chuyen selectedChuyen=new Chuyen();
-	//đối tượng phân quyền được chọn để cập nhật thông tin
 	private Xe selectedXe=new Xe();
+	
+	//Luu thong tin cac doi tuong duoc chon tren view
 	private Tuyen selectedTuyen=new Tuyen();
 	private TaiXe selectedTaiXe=new TaiXe();
-
-
+	private Chuyen selectedChuyen=new Chuyen();
+	 
+	private List<Chuyen> DanhSach;
+	
+	//Tra ve danh sach chuyen theo kieu loc thuoc tinh
+	private List<Chuyen> filteredDanhSach;  
 	
 	public ChuyenManagedBean(){
 		DanhSach = new ArrayList<Chuyen>();
@@ -139,7 +133,7 @@ public class ChuyenManagedBean {
 	}
 	
 	public String suaChuyen(){
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua chuyen dua vao doi tuong chuyen duoc chon
 		chuyenDao.suaChuyen(selectedChuyen, selectedTaiXe, selectedTuyen, selectedXe);
 		return "QLChuyen?faces-redirect=true";
 	}
@@ -149,18 +143,18 @@ public class ChuyenManagedBean {
 		return "QLChuyen?faces-redirect=true";
 	}
 	
-	//reset các ô input
+	//reset cac o input
 	public void reset(){
 		chuyenDao.reset(chuyen);
 	}
 	
-	//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+	//ham khi bam icon gang cua se cap nhat thong tin dua vao doi tuong chuyen duoc chon
 	public void capNhat(Chuyen x,String matx,String bienSo,String maTuyen){
 		selectedChuyen=x;
 		int mt=Integer.parseInt(maTuyen);
 		int tx=Integer.parseInt(matx);
-		this.setSelectedXe(chuyenDao.layBienSo(bienSo));
-		this.setSelectedTuyen(chuyenDao.layTuyen(mt));
-		this.setSelectedTaiXe(chuyenDao.layTX(tx));
+		this.setSelectedXe(xeDao.layXeTheoBienSo(bienSo));
+		this.setSelectedTuyen(tuyenDao.layTuyen(mt));
+		this.setSelectedTaiXe(taiXeDao.layTX(tx));
 	}
 }

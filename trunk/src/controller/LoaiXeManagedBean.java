@@ -11,11 +11,10 @@ import dao.LoaiXeDao;
 @ManagedBean(name= "loaiXeMBean")
 @SessionScoped
 public class LoaiXeManagedBean{
+	
 	private  LoaiXe loaiXe=new LoaiXe();
 	private LoaiXeDao loaiXeDao=new LoaiXeDao();
 	private List<SelectItem> selectOneItemLX;
-	
-	
 
 	public LoaiXe getLoaiXe() {
 		return loaiXe;
@@ -33,6 +32,7 @@ public class LoaiXeManagedBean{
 		this.loaiXeDao = loaiXeDao;
 	}
 
+	//tra ve danh sach loai xe
 	public List<SelectItem> getSelectOneItemLX() {
 		this.selectOneItemLX=new ArrayList<SelectItem>();
 		List<LoaiXe> loaiXes=loaiXeDao.selectItems();

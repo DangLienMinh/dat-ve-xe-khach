@@ -4,10 +4,7 @@ import hibernateUtil.HibernateUtil;
 
 import java.util.Date;
 import java.util.List;
-
 import model.Ghe;
-
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -24,7 +21,7 @@ public class GheDao {
 	    return result;
  	}
 	
-	//thong tin tinh trang ghe ??????????????????????????
+	//thong tin tinh trang ghe 
 	public List<Ghe> tinhTrangGhe(int maChuyen,Date ngayGD){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(
