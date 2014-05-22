@@ -13,6 +13,10 @@
 .ui-widget, .ui-widget .ui-widget {
      font-size: 85% !important;
 }
+.ui-datatable .ui-column-filter{display: none;}
+ .ui-datatable, .ui-datatable-odd {
+            background: #F2F5F9;
+     }
 </style>
  </h:head>
  <body>
@@ -38,12 +42,17 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}">   
+	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}" widgetVar="xe" emptyMessage="Không tìm thấy xe nào">   
 	     
 		  
-	        <f:facet name="header">  
-	            Danh sách Xe
-	        </f:facet>  
+	      	<f:facet name="header">
+		      	 Danh sách Xe
+		        <p:outputPanel style="text-align: right !important;">
+		        	
+	                <h:outputText value="Tìm kiếm:" />
+	                <p:inputText id="globalFilter" onkeyup="PF('xe').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	            </p:outputPanel>
+       	 	</f:facet>
 	  
 	        <p:column headerText="Biển số xe" style="font-size:14px!important;"  filterBy="bienSo">  
 	            <h:outputText  value="#{ds.bienSo}"/>  

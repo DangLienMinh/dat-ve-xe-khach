@@ -14,6 +14,10 @@
 .ui-widget, .ui-widget .ui-widget {
      font-size: 85% !important;
 }
+.ui-datatable .ui-column-filter{display: none;}
+ .ui-datatable, .ui-datatable-odd {
+            background: #F2F5F9;
+     }
 </style>
  </h:head>
  <body>
@@ -39,12 +43,17 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{chuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{chuyenMBean.filteredDanhSach}">   
+	     <p:dataTable  var="ds" value="#{chuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{chuyenMBean.filteredDanhSach}" widgetVar="chuyen" emptyMessage="Không tìm thấy chuyến xe nào">   
 	     
 		  
-	        <f:facet name="header">  
-	            Danh sách chuyến
-	        </f:facet>  
+	       <f:facet name="header">
+		      	 Danh sách chuyến Xe
+		        <p:outputPanel style="text-align: right !important;">
+		        	
+	                <h:outputText value="Tìm kiếm:" />
+	                <p:inputText id="globalFilter" onkeyup="PF('chuyen').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	            </p:outputPanel>
+       	 	</f:facet>
 	  
 	        <p:column headerText="Mã Chuyến" style="font-size:14px!important;"  filterBy="maChuyen">  
 	            <h:outputText  value="#{ds.maChuyen}"/>  
@@ -54,7 +63,7 @@
 	            <h:outputText  value="#{tuyenMBean.tenTuyen(ds.maTuyen)}"/>  
 	        </p:column>  
 	        
-	        <p:column headerText="Giờ đi" style="font-size:14px!important;"> 
+	        <p:column headerText="Giờ đi" style="font-size:14px!important;" filterBy="gioDi"> 
 	        <h:outputFormat value="{0, date, HH:mm}">
 			    <f:param value="#{ds.gioDi}" />
 			</h:outputFormat>
@@ -63,7 +72,7 @@
 	        
 	        </p:column>
 	        
-	        <p:column headerText="Giờ đến" style="font-size:14px!important;"> 
+	        <p:column headerText="Giờ đến" style="font-size:14px!important;" filterBy="gioDen"> 
 	         	<h:outputFormat value="{0, date, HH:mm}">
 			    <f:param value="#{ds.gioDen}" />
 				</h:outputFormat>

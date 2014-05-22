@@ -13,6 +13,10 @@
 .ui-widget, .ui-widget .ui-widget {
      font-size: 85% !important;
 }
+.ui-datatable .ui-column-filter{display: none;}
+ .ui-datatable, .ui-datatable-odd {
+            background: #F2F5F9;
+     }
 </style>
  </h:head>
  <body>
@@ -36,12 +40,17 @@
 	     
 	     <p:dataTable var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" 
 	     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-	     filteredValue="#{nhanVienMBean.filteredDanhSach}">   
+	     filteredValue="#{nhanVienMBean.filteredDanhSach}"  widgetVar="nhanvien" emptyMessage="Không tìm thấy nhân viên nào">   
 	     
 		  
-	        <f:facet name="header">  
-	            Danh sách nhân viên
-	        </f:facet>  
+	        <f:facet name="header">
+		      	 Danh sách Nhân viên
+		        <p:outputPanel style="text-align: right !important;">
+		        	
+	                <h:outputText value="Tìm kiếm:" />
+	                <p:inputText id="globalFilter" onkeyup="PF('nhanvien').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	            </p:outputPanel>
+       	 	</f:facet>  
 	  
 	        <p:column headerText="Mã NV" style="font-size:14px!important;"  filterBy="maNV">  
 	            <h:outputText  value="#{ds.maNV}"/>  
@@ -57,13 +66,13 @@
 	        <p:column headerText="Địa chỉ" style="font-size:14px!important;" filterBy="diaChi">  
 	            <h:outputText value="#{ds.diaChi}" />  
 	        </p:column>  
-	        <p:column headerText="Email" style="font-size:14px!important;">  
+	        <p:column headerText="Email" style="font-size:14px!important;" filterBy="email">  
 	            <h:outputText value="#{ds.email}" />  
 	        </p:column>  
 	        <p:column headerText="Điện thoại" style="font-size:14px!important;" filterBy="dienThoai">  
 	            <h:outputText value="#{ds.dienThoai}" />  
 	        </p:column>
-	         <p:column headerText="Ngày sinh" style="font-size:14px!important;">  
+	         <p:column headerText="Ngày sinh" style="font-size:14px!important;" filterBy="ngaySinh">  
 	            <h:outputText value="#{ds.ngaySinh}" >
 	            	<f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
 	            </h:outputText>  
