@@ -38,4 +38,16 @@ public class LoaiTinTucDao implements Serializable{
         }
 		return list;
 	}
+	
+	//lay loai tin tuc theo maltt
+ 	public LoaiTinTuc layLTT(int maLoaiTinTuc){		
+	   Session session = HibernateUtil.getSessionFactory().openSession();
+	    String hql = "from LoaiTinTuc  where MaLTT = :maLoaiTinTuc";
+	    List result = session.createQuery(hql)
+	    .setParameter("maLoaiTinTuc", maLoaiTinTuc)
+	    .list();
+	//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+ 		LoaiTinTuc x=(LoaiTinTuc) result.get(0);
+ 		return x; 
+ 	}
 }

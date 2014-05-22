@@ -24,6 +24,15 @@
         <p:tab title="Danh sách tài xế">
           <p:commandButton value="Hiển thị" action="#{reportMBean.reportTaiXe}" ajax="false"></p:commandButton>
         </p:tab>
+         <p:tab title="Danh sách xe">
+            <p:commandButton value="Hiển thị" action="#{reportMBean.reportXe}" ajax="false"></p:commandButton>
+        </p:tab>
+         <p:tab title="Danh sách tuyến xe">
+            <p:commandButton value="Hiển thị" action="#{reportMBean.reportTuyen}" ajax="false"></p:commandButton>
+        </p:tab>
+         <p:tab title="Danh sách chuyến xe">
+            <p:commandButton value="Hiển thị" action="#{reportMBean.reportChuyen}" ajax="false"></p:commandButton>
+        </p:tab>
         <p:tab title="Báo cáo doanh thu năm">
             <h:panelGrid columns="2" cellpadding="10">
                 <h:outputText value="Năm:" />

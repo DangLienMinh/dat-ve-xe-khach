@@ -103,15 +103,15 @@
 				<text><![CDATA[Họ tên]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="117" y="19" width="90" height="15" uuid="e7e69e0a-453c-44df-84b8-4defc08e9056"/>
+				<reportElement style="Column header" x="117" y="19" width="73" height="15" uuid="e7e69e0a-453c-44df-84b8-4defc08e9056"/>
 				<text><![CDATA[Ngày sinh]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="207" y="19" width="93" height="15" uuid="f3151753-604e-4991-9817-73137139b5a3"/>
+				<reportElement style="Column header" x="190" y="19" width="60" height="15" uuid="f3151753-604e-4991-9817-73137139b5a3"/>
 				<text><![CDATA[CMND]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="300" y="19" width="164" height="15" uuid="6640e01e-965c-4714-9f9f-d51ebf5f74e7"/>
+				<reportElement style="Column header" x="250" y="19" width="214" height="15" uuid="6640e01e-965c-4714-9f9f-d51ebf5f74e7"/>
 				<text><![CDATA[Địa chỉ]]></text>
 			</staticText>
 			<staticText>
@@ -133,15 +133,15 @@
 				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="117" y="0" width="90" height="15" uuid="655788ed-d65a-4483-bd81-30a0000a2c01"/>
+				<reportElement style="Detail" x="117" y="0" width="73" height="15" uuid="655788ed-d65a-4483-bd81-30a0000a2c01"/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYSINH})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="207" y="0" width="93" height="15" uuid="59d27aac-1cf0-4684-91f4-1e47a7044f89"/>
+				<reportElement style="Detail" x="190" y="0" width="60" height="15" uuid="59d27aac-1cf0-4684-91f4-1e47a7044f89"/>
 				<textFieldExpression><![CDATA[$F{CMND}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="300" y="0" width="164" height="15" uuid="0855e6d9-63b6-4ec2-babc-893380efb22e"/>
+				<reportElement style="Detail" x="250" y="0" width="214" height="15" uuid="0855e6d9-63b6-4ec2-babc-893380efb22e"/>
 				<textFieldExpression><![CDATA[$F{DIACHI}]]></textFieldExpression>
 			</textField>
 			<textField>

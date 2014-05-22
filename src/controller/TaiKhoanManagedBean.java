@@ -44,12 +44,15 @@ public class TaiKhoanManagedBean {
 	}		
 	
 	public String suaTaiKhoan(){
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua nhan vien dua vao doi tuong nhan vien duoc chon
 		taiKhoanDao.suaTaiKhoan(ttCaNhan);
 		
+		//kiem tra quyen dang nhap
 		int kt=kiemTraquyenDN();
 		if(kt==1){
 			return "QLTaiKhoan_Admin?faces-redirect=true";
+		}else if(kt==3){
+			return "QLTaiKhoan_NV?faces-redirect=true";
 		}else{
 			return "QLTaiKhoan_NVDH?faces-redirect=true";
 		}
@@ -60,10 +63,12 @@ public class TaiKhoanManagedBean {
 		if(matKhau.equalsIgnoreCase(ttCaNhan.getMatKhau())){
 			taiKhoanDao.suaMatKhau(ttCaNhan,matKhauMoi);
 		}
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua mat khau nhan vien
 		int kt=kiemTraquyenDN();
 		if(kt==1){
 			return "QLTaiKhoan_Admin?faces-redirect=true";
+		}else if(kt==3){
+			return "QLTaiKhoan_NV?faces-redirect=true";
 		}else{
 			return "QLTaiKhoan_NVDH?faces-redirect=true";
 		}

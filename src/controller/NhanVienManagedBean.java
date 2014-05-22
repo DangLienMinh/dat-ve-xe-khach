@@ -15,23 +15,26 @@ import dao.PhanQuyenDao;
 @ManagedBean(name= "nhanVienMBean")
 @SessionScoped 
 public class NhanVienManagedBean {
+	
 	private NhanVien nhanVien=new NhanVien();
 	private NhanVienDao nhanVienDao=new NhanVienDao();
 	private PhanQuyen phanQuyen=new PhanQuyen();
 	private PhanQuyenDao phanQuyenDao=new PhanQuyenDao();
+	
 	//ho ten nhan vien da dang nhap
 	private String HoTen;
+	
 	//danh sach table nhan vien tren giao dien xhtml
 	private List<NhanVien> DanhSach;
+	
 	//danh sach table nhan vien cho viec filter thuoc tinh
-	private List<NhanVien> filteredDanhSach;  
+	private List<NhanVien> filteredDanhSach; 
+	
 	//doi tuong nhan vien duoc chon de cap nhat thong tin
 	private NhanVien selectedNV=new NhanVien();
 	//doi tuong phan quyen duoc chon de cap nhat thong tin
 	private PhanQuyen selectedPhanQuyen=new PhanQuyen();
-	
-	
-	
+		
 	public NhanVienManagedBean(){
 		DanhSach = new ArrayList<NhanVien>();
 		DanhSach = nhanVienDao.danhSachNV();
@@ -88,6 +91,7 @@ public class NhanVienManagedBean {
 		return DanhSach;
 	}
 
+	//ham dang nhap 
 	public String dangNhap(){
 		int x=nhanVienDao.dangNhap(nhanVien);
 		if(x==1){
@@ -104,8 +108,10 @@ public class NhanVienManagedBean {
 		  if(pq.getMaPQ()==1){
 			  return "QLNhanVien?faces-redirect=true";
 		  }
-		  else{
+		  else if(pq.getMaPQ()==2){
 			  return "QLTuyen?faces-redirect=true";
+		  }else{
+			  return "layVe?faces-redirect=true";
 		  }
 		  
 		}else{
@@ -118,6 +124,7 @@ public class NhanVienManagedBean {
 		}
 	}
 	
+	//ham dang xuat
 	public String dangXuat() {
 		//xoa vbien luu ho ten trong session
 		  FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -149,8 +156,6 @@ public class NhanVienManagedBean {
 	public void capNhat(NhanVien x,String maPQ){
 		selectedNV=x;
 		int ma=Integer.parseInt(maPQ);
-		this.setSelectedPhanQuyen(nhanVienDao.layPQ(ma));
+		this.setSelectedPhanQuyen(phanQuyenDao.layPQ(ma));
 	}
-
-	
 }

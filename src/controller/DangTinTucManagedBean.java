@@ -21,7 +21,7 @@ public class DangTinTucManagedBean implements Serializable {
 
 		private TinTucDao tinTucDao=new TinTucDao();
 
-		//Trve danh sach tin tuc tren giao dien news
+		//Tra ve danh sach tin tuc tren giao dien news
 		private List<TinTuc> DanhSach;
 
 		//doi tuong tin tuc duoc chon
@@ -34,10 +34,7 @@ public class DangTinTucManagedBean implements Serializable {
 		public DangTinTucManagedBean(){
 			DanhSach = new ArrayList<TinTuc>();
 			DanhSach = tinTucDao.danhSachTinTuc();
-			
 		}
-		
-		
 
 		public TinTucDao getTinTucDao() {
 			return tinTucDao;
@@ -46,8 +43,6 @@ public class DangTinTucManagedBean implements Serializable {
 		public void setTinTucDao(TinTucDao tinTucDao) {
 			this.tinTucDao = tinTucDao;
 		}
-
-		
 
 		public List<TinTuc> getDanhSach() {
 			DanhSach = new ArrayList<TinTuc>();
@@ -59,8 +54,6 @@ public class DangTinTucManagedBean implements Serializable {
 			DanhSach = danhSach;
 		}
 
-		
-
 		public TinTuc getSelectedTinTuc() {
 			return selectedTinTuc;
 		}
@@ -68,31 +61,21 @@ public class DangTinTucManagedBean implements Serializable {
 		public void setSelectedTinTuc(TinTuc selectedTinTuc) {
 			this.selectedTinTuc = selectedTinTuc;
 		}
-
 		
-		
-		
-		
-		public String hienThiTin(TinTuc x){
-			selectedTinTuc=x;
-			DanhSachLienQuan = new ArrayList<TinTuc>();
-			DanhSachLienQuan = tinTucDao.danhSachTinLienQuan();
-			return "newsContent?faces-redirect=true";
-		}
-
-
-
 		public List<TinTuc> getDanhSachLienQuan() {
-			
 			return DanhSachLienQuan;
 		}
-
-
 
 		public void setDanhSachLienQuan(List<TinTuc> danhSachLienQuan) {
 			DanhSachLienQuan = danhSachLienQuan;
 		}
-		
 
-			
+		//Hien thi tin tuc dua vao doi tuong tin tuc duoc chon
+		public String hienThiTin(TinTuc x){
+			selectedTinTuc=x;
+			DanhSachLienQuan = new ArrayList<TinTuc>();
+			DanhSachLienQuan = tinTucDao.danhSachTinLienQuan();
+			//Tra ve trang newsContent
+			return "newsContent?faces-redirect=true";
+		}	
 	}

@@ -14,23 +14,29 @@ import model.Xe;
 @ManagedBean(name= "xeMBean")
 @ViewScoped
 public class XeManagedBean {
+	
 	private Xe xe=new Xe();
 	private XeDao xeDao=new XeDao();
 	private LoaiXe loaiXe=new LoaiXe();
 	private LoaiXeDao loaiXeDao=new LoaiXeDao();
 	private List<SelectItem> selectOneItemXe;
-	//Trả về danh sách nhân viên trên giao diện xhtml
+	
+	//Tra ve danh sach xe tren giao dien
 	private List<Xe> DanhSach;
-	//Trả về danh sách nhân viên theo kiểu lọc thuộc tính
+	
+	//Tra ve danh sach xe theo kieu loc thuoc tinh
 	private List<Xe> filteredDanhSach;  
-	//đối tượng nhân viên được chọn để cập nhật thông tin
+	
+	//doi tuong xe duoc chon de cap nhat thong tin
 	private Xe selectedXe=new Xe();
-	//đối tượng phân quyền được chọn để cập nhật thông tin
+	
+	//doi tuong loai xe duoc chon de cap nhat thong tin
 	private LoaiXe selectedLoaiXe=new LoaiXe();
 
 	public XeManagedBean(){
 		DanhSach = new ArrayList<Xe>();
 		DanhSach = xeDao.danhSachXe();
+		//DanhSach = xeDao.selectItems();
 	}
 	
 	public Xe getXe() {
@@ -103,7 +109,7 @@ public class XeManagedBean {
 	}
 	
 	public String suaXe(){
-		//sửa nhân viên dựa vào đối tượng nhân viên được chọn
+		//sua xe dua vao doi tuong xe duoc chon
 		xeDao.suaXe(selectedXe,selectedLoaiXe);
 		return "QLXe?faces-redirect=true";
 	}
@@ -118,13 +124,14 @@ public class XeManagedBean {
 		xeDao.reset(xe);
 	}
 	
-	//hàm khi bấm vào icon găng cưa sẽ lưu thông tin đối tượng nhân viên được chọn
+	//ham khi bam vao icon gang cua se cap nhat doi tuong xe
 	public void capNhat(Xe x,String maLX){
 		selectedXe=x;
 		int ma=Integer.parseInt(maLX);
-		setSelectedLoaiXe(xeDao.layLX(ma));
+		setSelectedLoaiXe(loaiXeDao.layLX(ma));
 	}
 	
+	//tra ve combobox danh  sach xe
 	public List<SelectItem> getSelectOneItemXe() {
 		this.selectOneItemXe=new ArrayList<SelectItem>();
 		List<Xe> xes=xeDao.selectItems();
