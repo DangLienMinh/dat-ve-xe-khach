@@ -47,7 +47,7 @@
 		      	 Danh sách Nhân viên
 		        <p:outputPanel style="text-align: right !important;">
 		        	
-	                <h:outputText value="Tìm kiếm:" />
+	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
 	                <p:inputText id="globalFilter" onkeyup="PF('nhanvien').filter()" style="width:150px" placeholder="Nhập thông tin"/>
 	            </p:outputPanel>
        	 	</f:facet>  
@@ -79,7 +79,7 @@
 	        </p:column>
 	        
 	       
-	  		<p:column style="font-size:14px!important;">
+	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
 	  		<p:commandButton  icon="ui-icon-close" action='#{nhanVienMBean.xoaNhanVien(ds)}'>
 	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá nhân viên?" icon="ui-icon-alert" />
 	  		</p:commandButton>
@@ -178,7 +178,6 @@
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
 				   <p:commandButton id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' ajax='false'>
-				   		<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn lưu thông tin đã sửa?" icon="ui-icon-alert" />
 				   </p:commandButton>
 				 
 	            </h:panelGrid>  

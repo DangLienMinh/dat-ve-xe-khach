@@ -17,7 +17,7 @@
  <body>
  <f:view>
      <h:form>
-     	<p:accordionPanel>
+     	<p:accordionPanel multiple="true"> 
         <p:tab title="Danh sách nhân viên">
             <p:commandButton value="Hiển thị" action="#{reportMBean.reportNhanVien}" ajax="false"></p:commandButton>
         </p:tab>
@@ -33,6 +33,25 @@
          <p:tab title="Danh sách chuyến xe">
             <p:commandButton value="Hiển thị" action="#{reportMBean.reportChuyen}" ajax="false"></p:commandButton>
         </p:tab>
+         <p:tab title="Báo cáo doanh thu tuyến theo năm">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Năm:" />
+                <p:inputText value="#{reportMBean.nam2}"></p:inputText>
+                <p:commandButton value="Hiển thị" action="#{reportMBean.doanhThuTuyen}" ajax="false"></p:commandButton>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Báo cáo doanh thu chuyến theo tuyến">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="Năm:" />
+                <p:inputText value="#{reportMBean.nam1}"></p:inputText>
+                
+                 <h:outputText value="Tuyến:" />
+              	 <p:selectOneMenu value="#{reportMBean.tuyen.maTuyen}">
+				   		<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
+				   	</p:selectOneMenu>
+                <p:commandButton value="Hiển thị" action="#{reportMBean.doanhThuChuyenTheoTuyen}" ajax="false"></p:commandButton>
+            </h:panelGrid>
+        </p:tab>
         <p:tab title="Báo cáo doanh thu năm">
             <h:panelGrid columns="2" cellpadding="10">
                 <h:outputText value="Năm:" />
@@ -40,7 +59,7 @@
                 <p:commandButton value="Hiển thị" action="#{reportMBean.doanhThuNam}" ajax="false"></p:commandButton>
             </h:panelGrid>
         </p:tab>
-        <p:tab title="Báo cáo doanh thu chuyến">
+        <p:tab title="Báo cáo doanh thu tất cả chuyến">
             <h:panelGrid columns="2" cellpadding="10">
                 <h:outputText value="Năm:" />
                 <p:calendar  pattern="MM/yyyy" navigator="true"  styleClass="tableView" value="#{reportMBean.selectedDate}"  />

@@ -3,9 +3,11 @@ package controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
+
 import model.LoaiTinTuc;
 import dao.LoaiTinTucDao;
 
@@ -41,5 +43,11 @@ public class LoaiTinTucManagedBean implements Serializable{
 	}
 	public void setLoaiTTDao(LoaiTinTucDao loaiTTDao) {
 		this.loaiTTDao = loaiTTDao;
+	}
+	
+	//tra ve ten tuyen
+	public String tenLoaiTT(String maLTT){
+		int ma=Integer.parseInt(maLTT);
+		return loaiTTDao.tenLoaiTT(ma);
 	}
 }
