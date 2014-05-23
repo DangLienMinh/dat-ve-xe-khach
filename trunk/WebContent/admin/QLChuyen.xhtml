@@ -17,7 +17,10 @@
 .ui-datatable .ui-column-filter{display: none;}
  .ui-datatable, .ui-datatable-odd {
             background: #F2F5F9;
-     }
+}
+.centeredColumn{
+	text-align:center !important;
+}
 </style>
  </h:head>
  <body>
@@ -50,20 +53,20 @@
 		      	 Danh sách chuyến Xe
 		        <p:outputPanel style="text-align: right !important;">
 		        	
-	                <h:outputText value="Tìm kiếm:" />
+	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
 	                <p:inputText id="globalFilter" onkeyup="PF('chuyen').filter()" style="width:150px" placeholder="Nhập thông tin"/>
 	            </p:outputPanel>
        	 	</f:facet>
 	  
-	        <p:column headerText="Mã Chuyến" style="font-size:14px!important;"  filterBy="maChuyen">  
+	        <p:column headerText="Mã Chuyến" style="font-size:14px!important;"  filterBy="maChuyen" styleClass="centeredColumn">  
 	            <h:outputText  value="#{ds.maChuyen}"/>  
 	        </p:column>  
 	        
-	        <p:column headerText="Tuyến" style="font-size:14px!important;">  
+	        <p:column headerText="Tuyến" style="font-size:14px!important;" styleClass="centeredColumn">  
 	            <h:outputText  value="#{tuyenMBean.tenTuyen(ds.maTuyen)}"/>  
 	        </p:column>  
 	        
-	        <p:column headerText="Giờ đi" style="font-size:14px!important;" filterBy="gioDi"> 
+	        <p:column headerText="Giờ đi" style="font-size:14px!important;" filterBy="gioDi" styleClass="centeredColumn"> 
 	        <h:outputFormat value="{0, date, HH:mm}">
 			    <f:param value="#{ds.gioDi}" />
 			</h:outputFormat>
@@ -72,21 +75,29 @@
 	        
 	        </p:column>
 	        
-	        <p:column headerText="Giờ đến" style="font-size:14px!important;" filterBy="gioDen"> 
+	        <p:column headerText="Giờ đến" style="font-size:14px!important;" filterBy="gioDen" styleClass="centeredColumn"> 
 	         	<h:outputFormat value="{0, date, HH:mm}">
 			    <f:param value="#{ds.gioDen}" />
 				</h:outputFormat>
 	        </p:column>
 	        
-	        <p:column headerText="Khuyến mãi" style="font-size:14px!important;">  
+	        <p:column headerText="Khuyến mãi" style="font-size:14px!important;" styleClass="centeredColumn">  
 	            <h:outputText value="#{ds.khuyenMai}" />  
 	        </p:column>  
 	         
 	        
 	        
 	       
-	  		<p:column style="font-size:14px!important;">
-	  		<p:commandButton  icon="ui-icon-close" action='#{chuyenMBean.xoaChuyen(ds)}'></p:commandButton>
+	  		<p:column style="font-size:14px!important;" headerText="Thao tác" styleClass="centeredColumn">
+	  		<p:commandButton  icon="ui-icon-close" action='#{chuyenMBean.xoaChuyen(ds)}'>
+	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá chuyến?" icon="ui-icon-alert" />
+	  		</p:commandButton>
+	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
+	    	</p:confirmDialog>
+	    	
+	  		
 	  		<p:commandButton icon="ui-icon-gear" action='#{chuyenMBean.capNhat(ds,ds.maTX,ds.bienSo,ds.maTuyen)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
 	  		</p:column>
 

@@ -10,6 +10,18 @@
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
 	<style name="title1" fontName="Times New Roman"/>
+	<subDataset name="Dataset1" uuid="17e1bb53-2d6f-4311-8c31-c08f6ccccf62">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+		<parameter name="Nam" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select sum(tempSoChuyen) as SoChuyen ,Thang,sum(TongTienTemp) as TongTien  from 
+  (select count(distinct MaChuyen) as tempSoChuyen,to_char(NgayGD,'mm') as Thang,sum(TongTien) as TongTienTemp  from HoaDon where to_char(NgayGD,'yyyy')='2014' group by (NgayGD)) 
+  group by Thang]]>
+		</queryString>
+		<field name="SOCHUYEN" class="java.math.BigDecimal"/>
+		<field name="THANG" class="java.lang.String"/>
+		<field name="TONGTIEN" class="java.math.BigDecimal"/>
+	</subDataset>
 	<parameter name="Nam" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select sum(tempSoChuyen) as SoChuyen ,Thang,sum(TongTienTemp) as TongTien  from 
@@ -164,7 +176,9 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="20">
+		<band height="271">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="353" y="0" width="100" height="20" uuid="1e523dbd-4282-4900-a499-adfc2e15511d"/>
 				<box leftPadding="10"/>
@@ -181,6 +195,38 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{total}+" VND"]]></textFieldExpression>
 			</textField>
+			<lineChart>
+				<chart evaluationTime="Report">
+					<reportElement x="30" y="40" width="470" height="231" uuid="32587607-b465-4be1-83f3-307a6c1aed20"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="Dataset1" uuid="9e5599d5-6cf3-4a54-8c86-e5793dd7e838">
+							<datasetParameter name="Nam">
+								<datasetParameterExpression><![CDATA[$P{Nam}]]></datasetParameterExpression>
+							</datasetParameter>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["DOANH THU CHUYẾN TRONG NĂM "+$P{Nam}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{THANG}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TONGTIEN}]]></valueExpression>
+						<labelExpression><![CDATA[TEXT($F{TONGTIEN},"#,##0")]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
 		</band>
 	</summary>
 </jasperReport>

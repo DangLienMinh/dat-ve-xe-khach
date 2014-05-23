@@ -49,7 +49,7 @@
 	      	 Danh sách tài xế
 	        <p:outputPanel style="text-align: right !important;">
 	        	
-                <h:outputText value="Tìm kiếm:" />
+                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
                 <p:inputText id="globalFilter" onkeyup="PF('taiXe').filter()" style="width:150px" placeholder="Nhập thông tin"/>
             </p:outputPanel>
        	 </f:facet>
@@ -83,8 +83,15 @@
 	        </p:column>
 	        
 	       
-	  		<p:column style="font-size:14px!important;">
-	  		<p:commandButton  icon="ui-icon-close" action='#{taiXeMBean.xoaTaiXe(ds)}'></p:commandButton>
+	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
+	  		<p:commandButton  icon="ui-icon-close" action='#{taiXeMBean.xoaTaiXe(ds)}'>
+	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá tài xế?" icon="ui-icon-alert" />
+	  		</p:commandButton>
+	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
+	    	</p:confirmDialog>
+
 	  		<p:commandButton icon="ui-icon-gear" action='#{taiXeMBean.capNhat(ds)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
 	  		</p:column>
 

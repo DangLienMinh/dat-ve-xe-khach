@@ -49,7 +49,7 @@
 		      	 Danh sách Xe
 		        <p:outputPanel style="text-align: right !important;">
 		        	
-	                <h:outputText value="Tìm kiếm:" />
+	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
 	                <p:inputText id="globalFilter" onkeyup="PF('xe').filter()" style="width:150px" placeholder="Nhập thông tin"/>
 	            </p:outputPanel>
        	 	</f:facet>
@@ -58,11 +58,15 @@
 	            <h:outputText  value="#{ds.bienSo}"/>  
 	        </p:column>  
 	       
-	        
-	        
-	       
-	  		<p:column style="font-size:14px!important;">
-	  		<p:commandButton icon="ui-icon-close" action='#{xeMBean.xoaXe(ds)}'></p:commandButton>
+	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
+	  		<p:commandButton icon="ui-icon-close" action='#{xeMBean.xoaXe(ds)}' style="margin-right:50px;">
+	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá xe?" icon="ui-icon-alert" />
+	  		</p:commandButton>
+	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
+	    	</p:confirmDialog>
+	  		
 	  		<p:commandButton icon="ui-icon-gear" action='#{xeMBean.capNhat(ds,ds.maLoaiXe)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
 	  		</p:column>
 

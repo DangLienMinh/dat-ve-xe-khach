@@ -132,7 +132,7 @@ public class TuyenDao {
 		return list;
 	}
 
-	//lat ten tuyen theo ma tuyen
+	//lay ten tuyen theo ma tuyen
 	public String tenTuyen(int maTuyen) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from Tuyen  where MaTuyen = :matuyen";

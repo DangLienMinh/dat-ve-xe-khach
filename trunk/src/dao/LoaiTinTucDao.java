@@ -50,4 +50,16 @@ public class LoaiTinTucDao implements Serializable{
  		LoaiTinTuc x=(LoaiTinTuc) result.get(0);
  		return x; 
  	}
+ 	
+ 	//lay ten loai tin tuc theo ma ltt
+ 		public String tenLoaiTT(int maLtt) {
+ 			Session session = HibernateUtil.getSessionFactory().openSession();
+ 		    String hql = "from LoaiTinTuc  where MaLTT = :maLtt";
+ 		    List result = session.createQuery(hql)
+ 		    .setParameter("maLtt", maLtt)
+ 		    .list();
+ 		  //tra ve 1 doi tuong LoaiTinTuc => lay phan tu dau tien cua result list
+ 		   LoaiTinTuc x=(LoaiTinTuc) result.get(0);
+ 	 		return x.getTenLTT();
+ 		}
 }
