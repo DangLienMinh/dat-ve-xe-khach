@@ -18,7 +18,7 @@
 select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.matuyen   group by T.matuyen,TENTUYEN order by T.matuyen]]>
 		</queryString>
 		<field name="SUM(TONGTIEN)" class="java.math.BigDecimal"/>
-		<field name="MATUYEN" class="java.math.BigDecimal"/>
+		<field name="MATUYEN" class="java.lang.String"/>
 		<field name="TENTUYEN" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="Nam" class="java.lang.String"/>
@@ -27,7 +27,7 @@ select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.mat
 select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.matuyen   group by T.matuyen,TENTUYEN order by T.matuyen]]>
 	</queryString>
 	<field name="SUM(TONGTIEN)" class="java.math.BigDecimal"/>
-	<field name="MATUYEN" class="java.math.BigDecimal"/>
+	<field name="MATUYEN" class="java.lang.String"/>
 	<field name="TENTUYEN" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -167,21 +167,21 @@ select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.mat
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="60" y="0" width="453" height="315" uuid="88570fc8-d1c5-4bad-af76-b80054fe58fb"/>
+					<reportElement x="60" y="0" width="453" height="315" uuid="44564b5e-9b5a-4ea9-9d92-f7fe3fe42f32"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<pieDataset maxCount="20">
 					<dataset>
-						<datasetRun subDataset="report" uuid="243d26be-7473-4872-99ac-cdb880651c80">
+						<datasetRun subDataset="report" uuid="180c2155-592b-40fe-b099-bb89c6495a50">
 							<datasetParameter name="Nam">
 								<datasetParameterExpression><![CDATA[$P{Nam}]]></datasetParameterExpression>
 							</datasetParameter>
 						</datasetRun>
 					</dataset>
 					<keyExpression><![CDATA[$F{TENTUYEN}]]></keyExpression>
-					<valueExpression><![CDATA[$F{MATUYEN}]]></valueExpression>
+					<valueExpression><![CDATA[$F{SUM(TONGTIEN)}]]></valueExpression>
 					<labelExpression><![CDATA[TEXT($F{SUM(TONGTIEN)},"#,##0 VND")]]></labelExpression>
 				</pieDataset>
 				<piePlot>

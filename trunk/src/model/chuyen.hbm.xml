@@ -5,8 +5,9 @@
 
 <hibernate-mapping>
    <class name="model.Chuyen" table="Chuyen">
-      <id name="MaChuyen" column="MaChuyen">
-       <generator class="increment"></generator>
+
+      <id name="MaChuyen"  type="string" column="MaChuyen">
+      <generator class="assigned"/> 
       </id>
       <property name="GioDi" column="GioDi"/>
       <property name="GioDen" column="GioDen"/>
@@ -29,9 +30,9 @@
    </class>
    
    <class name='model.TaiXe' table='TaiXe'>
-	   <id name='MaTX' column='MaTX' >
-	   <generator class="increment"></generator>
-	   </id>
+  		<id name="MaTX"  type="string" column="MaTX">
+      	<generator class="assigned"/> 
+      </id>
 	   <property name="Ho" column="Ho"/>
 	   <property name="Ten" column="Ten"/>
 	   <property name="CMND" column="CMND"/>
@@ -42,9 +43,9 @@
  	</class>
  	
  	 <class name='model.Tuyen' table='Tuyen'>
-	   <id name='MaTuyen' column='MaTuyen' >
-	   <generator class="increment"></generator>
-	   </id>
+ 	 <id name="MaTuyen"  type="string" column="MaTuyen">
+      	<generator class="assigned"/> 
+      </id>
 	   <property name="TenTuyen" column="TenTuyen"/>
 	   <property name="BenDau" column="BenDau"/>
 	   <property name="BenCuoi" column="BenCuoi"/>

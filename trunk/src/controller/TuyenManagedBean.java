@@ -102,7 +102,6 @@ public class TuyenManagedBean {
 	
 	//tra ve ten tuyen
 	public String tenTuyen(String maTuyen){
-		int ma=Integer.parseInt(maTuyen);
-		return tuyenDao.tenTuyen(ma);
+		return tuyenDao.tenTuyen(maTuyen);
 	}
 }

@@ -151,10 +151,8 @@ public class ChuyenManagedBean {
 	//ham khi bam icon gang cua se cap nhat thong tin dua vao doi tuong chuyen duoc chon
 	public void capNhat(Chuyen x,String matx,String bienSo,String maTuyen){
 		selectedChuyen=x;
-		int mt=Integer.parseInt(maTuyen);
-		int tx=Integer.parseInt(matx);
 		this.setSelectedXe(xeDao.layXeTheoBienSo(bienSo));
-		this.setSelectedTuyen(tuyenDao.layTuyen(mt));
-		this.setSelectedTaiXe(taiXeDao.layTX(tx));
+		this.setSelectedTuyen(tuyenDao.layTuyen(maTuyen));
+		this.setSelectedTaiXe(taiXeDao.layTX(matx));
 	}
 }

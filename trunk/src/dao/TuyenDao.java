@@ -31,6 +31,7 @@ public class TuyenDao {
 	public void themTuyen(Tuyen tuyen) {
 		x = new Tuyen();
 		x=layThongTin(tuyen);
+		x.setMaTuyen("");
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -133,7 +134,7 @@ public class TuyenDao {
 	}
 
 	//lay ten tuyen theo ma tuyen
-	public String tenTuyen(int maTuyen) {
+	public String tenTuyen(String maTuyen) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from Tuyen  where MaTuyen = :matuyen";
 	    List result = session.createQuery(hql)
@@ -141,11 +142,11 @@ public class TuyenDao {
 	    .list();
 	  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
  		Tuyen x=(Tuyen) result.get(0);
- 		return x.getBenCuoi()+" - "+x.getBenCuoi();
+ 		return x.getBenDau()+" - "+x.getBenCuoi();
 	}
 	
 	//lay thong tin tuyen dua vao ma tuyen
- 	public Tuyen layTuyen(int maTuyen){
+ 	public Tuyen layTuyen(String maTuyen){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from Tuyen  where MaTuyen = :matuyen";
 	    List result = session.createQuery(hql)
@@ -157,7 +158,7 @@ public class TuyenDao {
  	}
  	
  	//lay thong tin tien ve dua vao matuyen
- 	public int tienVe(int maTuyen){
+ 	public int tienVe(String maTuyen){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from Tuyen  where MaTuyen = :matuyen";
 	    List result = session.createQuery(hql)

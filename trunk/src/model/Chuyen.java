@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class Chuyen {
-	   private int MaChuyen;
+	   private String MaChuyen;
 	   private int KhuyenMai;   
 	   private Date GioDi;  
 	   private Date GioDen;  
@@ -13,7 +13,7 @@ public class Chuyen {
 	   
 	   public Chuyen() {}
 	   
-	   public Chuyen(int MaChuyen,int KhuyenMai, Date GioDi, Date GioDen,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
+	   public Chuyen(String MaChuyen,int KhuyenMai, Date GioDi, Date GioDen,TaiXe MaTX,Xe BienSo,Tuyen MaTuyen) {
 		   this.MaChuyen=MaChuyen;
 		   this.setKhuyenMai(KhuyenMai);
 		   this.setGioDi(GioDi);
@@ -23,11 +23,11 @@ public class Chuyen {
 		   this.MaTuyen=MaTuyen;
 	   }
 
-		public int getMaChuyen() {
+		public String getMaChuyen() {
 			return MaChuyen;
 		}
 	
-		public void setMaChuyen(int maChuyen) {
+		public void setMaChuyen(String maChuyen) {
 			MaChuyen = maChuyen;
 		}
 

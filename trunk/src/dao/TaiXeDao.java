@@ -1,13 +1,9 @@
 package dao;
 
-import java.util.Iterator;
 import java.util.List;
-
 import hibernateUtil.HibernateUtil;
 import model.TaiXe;
-
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -29,10 +25,11 @@ public class TaiXeDao {
 		return taiXe;
 	}
 	
-	//them  1 tai xe
+	//them  1 tai xe 
 	public void themTaiXe(TaiXe taiXe) {
 		x = new TaiXe();
 		x=layThongTin(taiXe);
+		x.setMaTX("");
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -137,7 +134,7 @@ public class TaiXeDao {
 	}
 	
 	//lay thong tin tai xe dua vao matx
- 	public TaiXe layTX(int maTX){
+ 	public TaiXe layTX(String maTX){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from TaiXe  where MaTX = :matx";
 	    List result = session.createQuery(hql)

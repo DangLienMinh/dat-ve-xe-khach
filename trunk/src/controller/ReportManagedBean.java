@@ -154,7 +154,7 @@ public class ReportManagedBean {
 	        		
 		HashMap map = new HashMap();
 		map.put("Nam", getNam1());
-		map.put("Tuyen",Integer.toString(tuyen.getMaTuyen()));
+		map.put("Tuyen",tuyen.getMaTuyen());
 		try {
 			JasperRunManager.runReportToPdfStream(reportStream,
 					servletOutputStream,map, connection);
@@ -169,7 +169,7 @@ public class ReportManagedBean {
 		return "";
 	}
 	
-	public String inVe(int maHoaDon) throws ClassNotFoundException, SQLException, IOException,JRException
+	public String inVe(String maHoaDon) throws ClassNotFoundException, SQLException, IOException,JRException
 	{
 		Connection connection;
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -186,11 +186,11 @@ public class ReportManagedBean {
 		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
 		
 	   
-	    String maHD = Integer.toString(maHoaDon);
+	    
 	    
 		
 		HashMap map = new HashMap();
-		map.put("MaHoaDon", maHD);
+		map.put("MaHoaDon", maHoaDon);
 		try {
 			JasperRunManager.runReportToPdfStream(reportStream,
 					servletOutputStream,map, connection);

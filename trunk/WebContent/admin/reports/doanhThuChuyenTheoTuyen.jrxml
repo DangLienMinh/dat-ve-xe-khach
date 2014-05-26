@@ -20,7 +20,7 @@ where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and ch
 		</queryString>
 		<field name="TONGTIEN" class="java.math.BigDecimal"/>
 		<field name="TENTUYEN" class="java.lang.String"/>
-		<field name="MACHUYEN" class="java.math.BigDecimal"/>
+		<field name="MACHUYEN" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="Nam" class="java.lang.String"/>
 	<parameter name="Tuyen" class="java.lang.String"/>
@@ -29,8 +29,8 @@ where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and ch
 where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and chuyen.matuyen=$P{Tuyen} and chuyen.matuyen=tuyen.matuyen group by hoadon.machuyen,chuyen.matuyen,tentuyen,giodi,gioden]]>
 	</queryString>
 	<field name="TONGTIEN" class="java.math.BigDecimal"/>
-	<field name="MACHUYEN" class="java.math.BigDecimal"/>
-	<field name="MATUYEN" class="java.math.BigDecimal"/>
+	<field name="MACHUYEN" class="java.lang.String"/>
+	<field name="MATUYEN" class="java.lang.String"/>
 	<field name="TENTUYEN" class="java.lang.String"/>
 	<field name="GIODI" class="java.lang.String"/>
 	<field name="GIODEN" class="java.lang.String"/>
@@ -183,14 +183,14 @@ where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and ch
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<barChart>
 				<chart evaluationTime="Report">
-					<reportElement x="-1" y="20" width="554" height="240" uuid="3ef4ce68-c3cc-48c3-9364-52539b1f6efa"/>
+					<reportElement x="-1" y="20" width="554" height="240" uuid="ec1f76ca-f87a-406e-8131-f36863146167"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<categoryDataset>
 					<dataset>
-						<datasetRun subDataset="Dataset1" uuid="bb43e0ee-be11-44bd-84f5-bf3b2e6b2f31">
+						<datasetRun subDataset="Dataset1" uuid="32dd5cef-6aea-4cf0-aa45-b66e16cd6785">
 							<datasetParameter name="Nam">
 								<datasetParameterExpression><![CDATA[$P{Nam}]]></datasetParameterExpression>
 							</datasetParameter>
@@ -203,7 +203,7 @@ where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and ch
 						<seriesExpression><![CDATA["Tuyến xe "+$F{TENTUYEN}]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{MACHUYEN}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{TONGTIEN}]]></valueExpression>
-						<labelExpression><![CDATA[TEXT($F{MACHUYEN},"#")]]></labelExpression>
+						<labelExpression><![CDATA[$F{MACHUYEN}]]></labelExpression>
 					</categorySeries>
 				</categoryDataset>
 				<barPlot>

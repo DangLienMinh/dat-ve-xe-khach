@@ -101,7 +101,7 @@ public class NhanVienManagedBean {
 		  //lưu họ teen vào session
 		  FacesContext context = FacesContext.getCurrentInstance();
 		  context.getExternalContext().getSessionMap().put("user", HoTen);
-		  context.getExternalContext().getSessionMap().put("tendn", nhanVien.getTenDN());
+		  context.getExternalContext().getSessionMap().put("manv", nhanVien.getMaNV());
 		  //chuyen trang theo phan quyen
 		  NhanVien nv=nhanVienDao.layNhanVien(nhanVien);
 		  PhanQuyen pq=nv.getMaPQ();

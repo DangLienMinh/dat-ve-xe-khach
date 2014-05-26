@@ -12,11 +12,11 @@ import org.hibernate.Transaction;
 public class TaiKhoanDao {
 	
 	//tra ve doi tuong nhan vien theo ten dang nhap
-	public NhanVien ttCaNhan(String tendn){
+	public NhanVien ttCaNhan(String manv){
  		Session session = HibernateUtil.getSessionFactory().openSession();
-	    String hql = "from NhanVien  where TenDN = :tendn";
+	    String hql = "from NhanVien  where MaNV = :manv";
 	    List result = session.createQuery(hql)
-	    .setParameter("tendn", tendn)
+	    .setParameter("manv", manv)
 	    .list();
 	    //tra ve 1 doi tuong NhanVien => lay phan tu dau tien cua result list
 	    NhanVien x=(NhanVien) result.get(0);

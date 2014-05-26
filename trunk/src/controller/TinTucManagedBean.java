@@ -126,7 +126,7 @@ public class TinTucManagedBean implements Serializable {
 		public int kiemTraquyenDN(){
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		     NhanVien x= new NhanVien();
-		     x.setTenDN(session.getAttribute("tendn").toString());
+		     x.setMaNV(session.getAttribute("manv").toString());
 		     NhanVienDao nvDao=new NhanVienDao();
 		     NhanVien nv=nvDao.layNhanVien(x);
 			 PhanQuyen pq=nv.getMaPQ();

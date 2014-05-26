@@ -22,7 +22,7 @@ public class GheDao {
  	}
 	
 	//thong tin tinh trang ghe 
-	public List<Ghe> tinhTrangGhe(int maChuyen,Date ngayGD){
+	public List<Ghe> tinhTrangGhe(String maChuyen,Date ngayGD){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(
 				"select * from Ghe where MaGhe in(select MaGhe from HoaDon where MaChuyen= :machuyen and NgayGD= :ngayGD) and MaLoaiXe=(select MaLoaiXe from Xe where BienSo=(select BienSo from Chuyen where MaChuyen= :machuyen))")

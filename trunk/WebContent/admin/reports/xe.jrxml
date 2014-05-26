@@ -11,7 +11,7 @@
 	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
 	<style name="title1" fontName="Times New Roman" fontSize="12"/>
 	<queryString>
-		<![CDATA[select bienso,tenloaixe,soghe from loaixe,xe where xe.maloaixe=loaixe.maloaixe]]>
+		<![CDATA[select bienso,tenloaixe,soghe from loaixe,xe where xe.maloaixe=loaixe.maloaixe order by xe.maloaixe]]>
 	</queryString>
 	<field name="BIENSO" class="java.lang.String"/>
 	<field name="TENLOAIXE" class="java.lang.String"/>
@@ -25,7 +25,7 @@
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Loại xe "+$F{TENLOAIXE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{TENLOAIXE}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>

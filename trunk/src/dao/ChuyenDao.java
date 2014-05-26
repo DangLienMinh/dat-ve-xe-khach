@@ -37,6 +37,7 @@ public class ChuyenDao {
             result.setMaTX(tx);
             result.setMaTuyen(t);
             result.setBienSo(x);
+            result.setMaChuyen("");
             session.save(result);
             session.getTransaction().commit();
         } catch (RuntimeException e) {

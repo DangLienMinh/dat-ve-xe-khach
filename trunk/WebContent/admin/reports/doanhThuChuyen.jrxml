@@ -18,7 +18,7 @@
     group by (to_char(NgayGD,'mm')),MaChuyen]]>
 	</queryString>
 	<field name="SOVE" class="java.math.BigDecimal"/>
-	<field name="MACHUYEN" class="java.math.BigDecimal"/>
+	<field name="MACHUYEN" class="java.lang.String"/>
 	<field name="DOANHTHU" class="java.math.BigDecimal"/>
 	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{DOANHTHU}]]></variableExpression>

@@ -1,7 +1,7 @@
 package model;
 
 public class Tuyen {
-	   private int MaTuyen;
+	   private String MaTuyen;
 	   private String TenTuyen;   
 	   private String BenDau;  
 	   private String BenCuoi;  
@@ -9,7 +9,7 @@ public class Tuyen {
 
 	   public Tuyen() {}
 	   
-	   public Tuyen(int MaTuyen,String TenTuyen, String BenDau, String BenCuoi,int Gia) {
+	   public Tuyen(String MaTuyen,String TenTuyen, String BenDau, String BenCuoi,int Gia) {
 		   this.MaTuyen=MaTuyen;
 		   this.TenTuyen=TenTuyen;
 		   this.BenDau=BenDau;
@@ -17,11 +17,11 @@ public class Tuyen {
 		   this.Gia=Gia;
 	   }
 
-		public int getMaTuyen() {
+		public String getMaTuyen() {
 			return MaTuyen;
 		}
 	
-		public void setMaTuyen(int maTuyen) {
+		public void setMaTuyen(String maTuyen) {
 			MaTuyen = maTuyen;
 		}
 	
@@ -59,7 +59,7 @@ public class Tuyen {
 		
 		@Override
 		public String toString(){
-			return Integer.toString(MaTuyen);
+			return MaTuyen;
 			
 		}
 	

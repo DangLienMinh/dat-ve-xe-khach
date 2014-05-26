@@ -20,8 +20,8 @@ public class TaiKhoanManagedBean {
 	
 	public TaiKhoanManagedBean(){
 		FacesContext context = FacesContext.getCurrentInstance();
-		String tendn=  context.getExternalContext().getSessionMap().get("tendn").toString();
-		setTtCaNhan(taiKhoanDao.ttCaNhan(tendn));
+		String manv=  context.getExternalContext().getSessionMap().get("manv").toString();
+		setTtCaNhan(taiKhoanDao.ttCaNhan(manv));
 	}
 	
 	public NhanVien getTtCaNhan() {
@@ -36,7 +36,7 @@ public class TaiKhoanManagedBean {
 	public int kiemTraquyenDN(){
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 	     NhanVien x= new NhanVien();
-	     x.setTenDN(session.getAttribute("tendn").toString());
+	     x.setMaNV(session.getAttribute("manv").toString());
 	     NhanVienDao nvDao=new NhanVienDao();
 	     NhanVien nv=nvDao.layNhanVien(x);
 		 PhanQuyen pq=nv.getMaPQ();

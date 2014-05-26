@@ -20,7 +20,7 @@
 	<field name="DIACHI" class="java.lang.String"/>
 	<field name="EMAIL" class="java.lang.String"/>
 	<field name="DIENTHOAI" class="java.lang.String"/>
-	<field name="TENDN" class="java.lang.String"/>
+	<field name="MANV" class="java.lang.String"/>
 	<field name="QUYEN" class="java.lang.String"/>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{QUYEN}]]></groupExpression>
@@ -99,24 +99,28 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="117" height="15" uuid="fd1767d6-be03-48db-8f43-b8899d19f9eb"/>
+				<reportElement style="Column header" x="60" y="19" width="120" height="15" uuid="fd1767d6-be03-48db-8f43-b8899d19f9eb"/>
 				<text><![CDATA[Họ tên]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="117" y="19" width="73" height="15" uuid="e7e69e0a-453c-44df-84b8-4defc08e9056"/>
+				<reportElement style="Column header" x="180" y="19" width="70" height="15" uuid="e7e69e0a-453c-44df-84b8-4defc08e9056"/>
 				<text><![CDATA[Ngày sinh]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="190" y="19" width="60" height="15" uuid="f3151753-604e-4991-9817-73137139b5a3"/>
+				<reportElement style="Column header" x="250" y="19" width="66" height="15" uuid="f3151753-604e-4991-9817-73137139b5a3"/>
 				<text><![CDATA[CMND]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="250" y="19" width="214" height="15" uuid="6640e01e-965c-4714-9f9f-d51ebf5f74e7"/>
+				<reportElement style="Column header" x="316" y="19" width="148" height="15" uuid="6640e01e-965c-4714-9f9f-d51ebf5f74e7"/>
 				<text><![CDATA[Địa chỉ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="464" y="20" width="85" height="15" uuid="d7ed028a-a5e3-462f-a084-0e78142bdfb6"/>
 				<text><![CDATA[Điện thoại]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="20" width="60" height="15" uuid="8dc594ce-50bf-4ece-bbce-f741fc7a7918"/>
+				<text><![CDATA[Mã Nv]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -129,24 +133,28 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement style="Detail" x="0" y="0" width="117" height="15" uuid="9dabea62-e63c-41a4-a470-adf84229522a"/>
+				<reportElement style="Detail" x="60" y="0" width="120" height="15" uuid="9dabea62-e63c-41a4-a470-adf84229522a"/>
 				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="117" y="0" width="73" height="15" uuid="655788ed-d65a-4483-bd81-30a0000a2c01"/>
+				<reportElement style="Detail" x="180" y="0" width="70" height="15" uuid="655788ed-d65a-4483-bd81-30a0000a2c01"/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYSINH})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="190" y="0" width="60" height="15" uuid="59d27aac-1cf0-4684-91f4-1e47a7044f89"/>
+				<reportElement style="Detail" x="250" y="0" width="66" height="15" uuid="59d27aac-1cf0-4684-91f4-1e47a7044f89"/>
 				<textFieldExpression><![CDATA[$F{CMND}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="250" y="0" width="214" height="15" uuid="0855e6d9-63b6-4ec2-babc-893380efb22e"/>
+				<reportElement style="Detail" x="316" y="0" width="148" height="15" uuid="0855e6d9-63b6-4ec2-babc-893380efb22e"/>
 				<textFieldExpression><![CDATA[$F{DIACHI}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Detail" x="464" y="1" width="85" height="15" uuid="05d75df8-3da2-41f9-a307-cba8090b731e"/>
 				<textFieldExpression><![CDATA[$F{DIENTHOAI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="60" height="15" uuid="4fd25dbd-c6e1-41cf-be47-4c8616f22a31"/>
+				<textFieldExpression><![CDATA[$F{MANV}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
