@@ -6,7 +6,7 @@
 <hibernate-mapping>
    <class name="model.HoaDon" table="HoaDon">
       <id name="MaHD" column="MaHD">
-       <generator class="increment"></generator>
+       <generator class="assigned"/> 
      </id>
       <property name="NgayGD" column="NgayGD"/>
       <property name="NgayNhanVe" column="NgayNhanVe"/>

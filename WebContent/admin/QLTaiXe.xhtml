@@ -129,7 +129,7 @@
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar value="#{taiXeMBean.taiXe.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
 
-			       <p:commandButton id='Insert' value='Thêm' action='#{taiXeMBean.themTaiXe}'/>
+			       <p:commandButton id='Insert' value='Thêm' action='#{taiXeMBean.themTaiXe}'  ajax='false'/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{taiXeMBean.reset}' ajax='false'/>
 	            </h:panelGrid>  
 	           

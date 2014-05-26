@@ -3,8 +3,7 @@ package model;
 import java.util.Date;
 
 public class NhanVien {
-	   private int MaNV;
-	   private String TenDN; 
+	   private String MaNV;
 	   private String Ho;
 	   private String Ten;
 	   private String CMND;
@@ -17,9 +16,8 @@ public class NhanVien {
 	   
 	   public NhanVien() {}
 	   
-	   public NhanVien(int MaNV,String Ho,String Ten,String TenDN,String MatKhau,String CMND,String DiaChi,String Email,String DienThoai,Date NgaySinh,PhanQuyen MaPQ) {
+	   public NhanVien(String MaNV,String Ho,String Ten,String MatKhau,String CMND,String DiaChi,String Email,String DienThoai,Date NgaySinh,PhanQuyen MaPQ) {
 		   this.MaNV=MaNV;
-		   this.setTenDN(TenDN);
 		   this.setMatKhau(MatKhau);
 		   this.CMND=CMND;
 		   this.DiaChi=DiaChi;
@@ -32,11 +30,11 @@ public class NhanVien {
 		   
 	   }
 
-		public int getMaNV() {
+		public String getMaNV() {
 			return MaNV;
 		}
 	
-		public void setMaNV(int maNV) {
+		public void setMaNV(String maNV) {
 			MaNV = maNV;
 		}
 		public String getCMND() {
@@ -93,14 +91,6 @@ public class NhanVien {
 
 		public void setTen(String ten) {
 			Ten = ten;
-		}
-
-		public String getTenDN() {
-			return TenDN;
-		}
-
-		public void setTenDN(String tenDN) {
-			TenDN = tenDN;
 		}
 
 		public String getMatKhau() {

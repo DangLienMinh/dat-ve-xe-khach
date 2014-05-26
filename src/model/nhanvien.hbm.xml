@@ -5,8 +5,8 @@
 
 <hibernate-mapping>
    <class name="model.NhanVien" table="NhanVien"  dynamic-update="true">
-      <id name="MaNV" column="MaNV">
-      <generator class="increment"></generator>
+      <id name="MaNV"  type="string" column="MaNV">
+      <generator class="assigned"/> 
       </id>
       <property name="Ho" column="Ho"/>
       <property name="Ten" column="Ten"/>
@@ -16,7 +16,6 @@
       <property name="DienThoai" column="DienThoai"/>
       <property name="NgaySinh" column="NgaySinh"/>
       <property name="MatKhau" column="MatKhau"/>
-      <property name="TenDN" column="TenDN"/>
       <many-to-one name="MaPQ" column="MaPQ" 
        class="model.PhanQuyen" not-null="true"/>
    </class>

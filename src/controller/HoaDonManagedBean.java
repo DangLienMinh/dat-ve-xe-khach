@@ -159,7 +159,7 @@ public class HoaDonManagedBean {
 			Tuyen tuyen=new Tuyen();
 			tuyen=chuyen.getMaTuyen();
 			hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
-			int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+			String mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
 			hoaDon.setMaHD(mahd);
 			return "kqDatVe.xhtml";
 		}else{//neu chon hinh thuc chuyen khoan
@@ -173,7 +173,7 @@ public class HoaDonManagedBean {
 			thanhToanPaypal(tienVe/20000);
 			
 			hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
-			int mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+			String mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
 			hoaDon.setMaHD(mahd);
 			return "";
 		}
@@ -253,31 +253,49 @@ public class HoaDonManagedBean {
 	//lay ve chinh thuc
 	public String layVeChinhThuc(){
 		//kiem tra ma hoa don co ton tai hay ko
-		HoaDon x=hoaDonDao.layHD(hoaDon.getMaHD());
-		//neu ton tai
-		if(x.getMaHD()!=0){
-			//kiem tra da in ve chua neu chua in thi ngaynhanve se la null
-			if(x.getNgayNhanVe()==null){
-				Date ngayNhanVe=Calendar.getInstance().getTime();
-				x.setNgayNhanVe(ngayNhanVe);
-				hoaDonDao.capNhatNgayNhanVe(x);
-				hoaDon=x;
-				chuyen=hoaDon.getMaChuyen();
-				xe=chuyen.getBienSo();
-				dieuKienLayVe=1;
-				return "layVe?faces-redirect=true";
-			}
-			//neu da in roi thi bao loi
-			else{
-				hoaDon=x;
-				dieuKienLayVe=0;
-				return "layVe?faces-redirect=true";
-			}
-		}
-		//neu khong ton tai hoa don tren thi bao loi
-		else{
+//		HoaDon x=hoaDonDao.layHD(hoaDon.getMaHD());
+//		//neu ton tai
+//		if(x.getMaHD()!=""){
+//			//kiem tra da in ve chua neu chua in thi ngaynhanve se la null
+//			if(x.getNgayNhanVe()==null){
+//				Date ngayNhanVe=Calendar.getInstance().getTime();
+//				x.setNgayNhanVe(ngayNhanVe);
+//				hoaDonDao.capNhatNgayNhanVe(x);
+//				hoaDon=x;
+//				chuyen=hoaDon.getMaChuyen();
+//				xe=chuyen.getBienSo();
+//				dieuKienLayVe=1;
+//				return "layVe?faces-redirect=true";
+//			}
+//			//neu da in roi thi bao loi
+//			else{
+//				hoaDon=x;
+//				dieuKienLayVe=0;
+//				return "layVe?faces-redirect=true";
+//			}
+//		}
+//		//neu khong ton tai hoa don tren thi bao loi
+//		else{
+//			dieuKienLayVe=-1;
+//			return "layVe?faces-redirect=true";
+//		}
+		int kt=hoaDonDao.capNhatNgayNhanVe(hoaDon);
+		switch(kt){
+		case -1: {
 			dieuKienLayVe=-1;
 			return "layVe?faces-redirect=true";
+		}
+		case 1: {
+			dieuKienLayVe=1;
+			return "layVe?faces-redirect=true";
+		}
+		case 2: {
+			dieuKienLayVe=0;
+			HoaDon x=hoaDonDao.layHD(hoaDon.getMaHD());
+			hoaDon=x;
+			return "layVe?faces-redirect=true";
+		}
+		default: return "";
 		}
 	}
 	

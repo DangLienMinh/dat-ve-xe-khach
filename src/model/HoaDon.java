@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class HoaDon {
-	 private int MaHD;
+	 private String MaHD;
 	 private Date NgayGD; 
 	 private Date NgayNhanVe;
 	 private int TongTien; 
@@ -24,7 +24,7 @@ public class HoaDon {
 		 NgayGD=cal.getTime();
 	 }
 	 
-	 public HoaDon(int MaHD,Date NgayGD,Date NgayNhanVe,int TongTien,Chuyen MaChuyen,String Ho,String Ten,String CMND,String DiaChi,String Email,String DienThoai,String HinhThucThanhToan,Ghe maGhe){
+	 public HoaDon(String MaHD,Date NgayGD,Date NgayNhanVe,int TongTien,Chuyen MaChuyen,String Ho,String Ten,String CMND,String DiaChi,String Email,String DienThoai,String HinhThucThanhToan,Ghe maGhe){
 		 this.MaHD=MaHD;
 		 this.NgayGD=NgayGD;
 		 this.TongTien=TongTien;
@@ -40,11 +40,11 @@ public class HoaDon {
 		 this.setMaGhe(maGhe);
 	 }
 
-	public int getMaHD() {
+	public String getMaHD() {
 		return MaHD;
 	}
 
-	public void setMaHD(int maHD) {
+	public void setMaHD(String maHD) {
 		MaHD = maHD;
 	}
 

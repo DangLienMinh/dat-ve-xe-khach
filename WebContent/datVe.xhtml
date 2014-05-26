@@ -22,7 +22,7 @@
 				<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
 			</p:selectOneMenu>
 			<h:outputLabel value='Ngày đi' />
-			<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}"></p:calendar>
+			<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}" pattern="dd/MM/yyyy"></p:calendar>
       		
       	</h:panelGrid>
       	

@@ -13,7 +13,7 @@
 	<queryString>
 		<![CDATA[select * from tuyen order by bendau]]>
 	</queryString>
-	<field name="MATUYEN" class="java.math.BigDecimal"/>
+	<field name="MATUYEN" class="java.lang.String"/>
 	<field name="TENTUYEN" class="java.lang.String"/>
 	<field name="BENDAU" class="java.lang.String"/>
 	<field name="BENCUOI" class="java.lang.String"/>

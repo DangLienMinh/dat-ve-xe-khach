@@ -33,7 +33,6 @@ public class NhanVienDao {
 		nhanVien.setNgaySinh(temp.getNgaySinh());
 		nhanVien.setHo(temp.getHo());
 		nhanVien.setTen(temp.getTen());
-		nhanVien.setTenDN(temp.getTenDN());
 		nhanVien.setMatKhau(temp.getMatKhau());
 		return nhanVien;
 	}
@@ -41,7 +40,9 @@ public class NhanVienDao {
 	//them 1 doi tuong nhan vien
 	public void themNhanVien(NhanVien nhanVien,PhanQuyen phanQuyen) {
 		NhanVien x = new NhanVien();
-		x=layThongTin(nhanVien);  
+		x=layThongTin(nhanVien);
+		x.setMaNV("");
+		x.setMatKhau("");
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -94,7 +95,7 @@ public class NhanVienDao {
 		    try {
 		    	conn=connectionProvider.getConnection();
 		 	    CallableStatement st = conn.prepareCall("{ call sp_Dangnhap(?, ?, ?) }");
-		 	    st.setString(1, nhanVien.getTenDN());
+		 	    st.setString(1, nhanVien.getMaNV());
 		 	    st.setString(2, nhanVien.getMatKhau());
 		 	    st.registerOutParameter(3, OracleTypes.NUMBER);
 		 	    st.execute();
@@ -116,8 +117,8 @@ public class NhanVienDao {
 	 //lay he ten nhan vien
 	 	public String layHoTen(NhanVien nhanVien){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
-			Query query = session.createQuery("from NhanVien where TenDN = :tendn and MatKhau = :matkhau");
-			query.setParameter("tendn", nhanVien.getTenDN());
+			Query query = session.createQuery("from NhanVien where MaNV = :tendn and MatKhau = :matkhau");
+			query.setParameter("tendn", nhanVien.getMaNV());
 			query.setParameter("matkhau", nhanVien.getMatKhau());
 		      try{
 		    	 List list = query.list();
@@ -138,9 +139,9 @@ public class NhanVienDao {
 	 	//lay doi tuong nhan vien dua vao tendn
 	 	public NhanVien layNhanVien(NhanVien nhanVien){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
-		    String hql = "from NhanVien  where TenDN = :tendn";
+		    String hql = "from NhanVien  where MaNV = :tendn";
 		    List result = session.createQuery(hql)
-		    .setParameter("tendn", nhanVien.getTenDN())
+		    .setParameter("tendn", nhanVien.getMaNV())
 		    .list();
 	 		//tra ve 1 doi tuong TinTuc => lay phan tu dau tien cua result list
 		    NhanVien x=(NhanVien)result.get(0);
@@ -198,6 +199,5 @@ public class NhanVienDao {
 		 nhanVien.setDienThoai(" ");
 		 nhanVien.setEmail(" ");
 		 nhanVien.setMatKhau(" ");
-		 nhanVien.setTenDN(" ");
 	 }
 }

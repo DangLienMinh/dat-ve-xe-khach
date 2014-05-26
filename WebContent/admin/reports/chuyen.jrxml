@@ -11,9 +11,9 @@
 	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
 	<style name="title1" fontName="Times New Roman"/>
 	<queryString>
-		<![CDATA[select machuyen,khuyenmai,ho,ten,bienso,to_char(giodi,'HH24:Mi') as giodi,to_char(gioden,'HH24:Mi') as gioden,bendau,bencuoi from chuyen,tuyen,taixe where chuyen.matuyen=tuyen.matuyen and chuyen.matx=taixe.matx order by bendau]]>
+		<![CDATA[select machuyen,khuyenmai,ho,ten,bienso,to_char(giodi,'HH24:Mi') as giodi,to_char(gioden,'HH24:Mi') as gioden,bendau,bencuoi,chuyen.matuyen,tuyen.tentuyen from chuyen,tuyen,taixe where chuyen.matuyen=tuyen.matuyen and chuyen.matx=taixe.matx order by bencuoi]]>
 	</queryString>
-	<field name="MACHUYEN" class="java.math.BigDecimal"/>
+	<field name="MACHUYEN" class="java.lang.String"/>
 	<field name="BENDAU" class="java.lang.String"/>
 	<field name="BENCUOI" class="java.lang.String"/>
 	<field name="HO" class="java.lang.String"/>
@@ -22,6 +22,25 @@
 	<field name="GIODI" class="java.lang.String"/>
 	<field name="GIODEN" class="java.lang.String"/>
 	<field name="KHUYENMAI" class="java.math.BigDecimal"/>
+	<field name="MATUYEN" class="java.lang.String"/>
+	<field name="TENTUYEN" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{MATUYEN}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="-1" y="13" width="554" height="24" forecolor="#000000" uuid="e501ba61-48f9-42f3-b93d-faf2884c0253"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Tuyến "+$F{TENTUYEN}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -86,16 +105,16 @@
 				<text><![CDATA[Mã chuyến]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="70" y="19" width="113" height="15" uuid="acf0866f-1edb-4600-b524-28b90fb520bb"/>
+				<reportElement style="Column header" x="70" y="19" width="127" height="15" uuid="acf0866f-1edb-4600-b524-28b90fb520bb"/>
 				<text><![CDATA[Bến đầu - Bến cuối]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="183" y="19" width="97" height="15" uuid="7c5d0f3d-637a-44b6-a82c-77b5bffe6a83"/>
-				<text><![CDATA[Họ tên]]></text>
+				<reportElement style="Column header" x="197" y="19" width="83" height="15" uuid="7c5d0f3d-637a-44b6-a82c-77b5bffe6a83"/>
+				<text><![CDATA[Tài xế]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="280" y="19" width="86" height="15" uuid="061d9bc4-0501-4fff-b9a6-b15f94bd32dd"/>
-				<text><![CDATA[Biển số]]></text>
+				<text><![CDATA[Xe]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="366" y="19" width="61" height="15" uuid="0604acd2-2609-40a1-9542-aa692f558fe7"/>
@@ -124,11 +143,11 @@
 				<textFieldExpression><![CDATA[$F{MACHUYEN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="70" y="0" width="113" height="15" uuid="dc3ccd10-ee74-4d64-97e3-ab96bb03e780"/>
+				<reportElement style="Detail" x="70" y="0" width="127" height="15" uuid="dc3ccd10-ee74-4d64-97e3-ab96bb03e780"/>
 				<textFieldExpression><![CDATA[$F{BENDAU}+"-"+$F{BENCUOI}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="183" y="0" width="97" height="15" uuid="67a9816a-7e80-4c9f-b6fd-a9d421de6a2d"/>
+				<reportElement style="Detail" x="197" y="0" width="83" height="15" uuid="67a9816a-7e80-4c9f-b6fd-a9d421de6a2d"/>
 				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
 			</textField>
 			<textField>
