@@ -1,22 +1,21 @@
 package model;
 
 public class Ghe {
-	 private int MaGhe;
+	 private String MaGhe;
 	 private String TenGhe; 
-	 private LoaiXe MaLoaiXe;
 	 
 	 public Ghe(){}
 	 
-	 public Ghe(int MaGhe,String TenGhe){
+	 public Ghe(String MaGhe,String TenGhe){
 		 this.MaGhe=MaGhe;
 		 this.TenGhe=TenGhe;
 	 }
 
-	public int getMaGhe() {
+	public String getMaGhe() {
 		return MaGhe;
 	}
 
-	public void setMaGhe(int maGhe) {
+	public void setMaGhe(String maGhe) {
 		MaGhe = maGhe;
 	}
 
@@ -28,16 +27,10 @@ public class Ghe {
 		TenGhe = tenGhe;
 	}
 
-	public LoaiXe getMaLoaiXe() {
-		return MaLoaiXe;
-	}
-
-	public void setMaLoaiXe(LoaiXe maLoaiXe) {
-		MaLoaiXe = maLoaiXe;
-	}
+	
 	@Override
 	public String toString(){
-		return Integer.toString(MaGhe);
+		return MaGhe;
 		
 	}
 }

@@ -11,21 +11,21 @@ import org.hibernate.Session;
 public class GheDao {
 	
 	//danh sach ghe
-	public List<Ghe> danhSachGhe(int maLoaiXe){
-		Session session = HibernateUtil.getSessionFactory().openSession();
-	    String hql = "from Ghe  where MaLoaiXe = :maLoaiXe";
-	    List result = session.createQuery(hql)
-	    .setParameter("maLoaiXe", maLoaiXe)
-	    .list();
-
-	    return result;
- 	}
+//	public List<Ghe> danhSachGhe(int maLoaiXe){
+//		Session session = HibernateUtil.getSessionFactory().openSession();
+//	    String hql = "from Ghe  where MaLoaiXe = :maLoaiXe";
+//	    List result = session.createQuery(hql)
+//	    .setParameter("maLoaiXe", maLoaiXe)
+//	    .list();
+//
+//	    return result;
+// 	}
 	
 	//thong tin tinh trang ghe 
 	public List<Ghe> tinhTrangGhe(String maChuyen,Date ngayGD){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(
-				"select * from Ghe where MaGhe in(select MaGhe from HoaDon where MaChuyen= :machuyen and NgayGD= :ngayGD) and MaLoaiXe=(select MaLoaiXe from Xe where BienSo=(select BienSo from Chuyen where MaChuyen= :machuyen))")
+				"select * from Ghe where MaGhe in(select MaGhe from HoaDon where MaChuyen= :machuyen and NgayGD= :ngayGD)")
 				.addEntity(Ghe.class)
 				.setParameter("ngayGD", ngayGD)
 				.setParameter("machuyen", maChuyen);

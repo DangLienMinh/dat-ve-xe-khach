@@ -133,7 +133,9 @@ public class HoaDonManagedBean {
 			List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
 			String []ttNgoi=new String[45];
 			for(Ghe ghe:ttGhe){
-				ttNgoi[ghe.getMaGhe()-1]="true";
+				int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
+				ttNgoi[maghe-1]="true";
+				//ttNgoi[ghe.getMaGhe()-1]="true";
 			}
 			gheMB.setTtNgoi(ttNgoi);
 			return "gheNgoi";
@@ -145,13 +147,16 @@ public class HoaDonManagedBean {
 			List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
 			String []ttNam=new String[40];
 			for(Ghe ghe:ttGhe){
-				ttNam[ghe.getMaGhe()-1]="true";
+				int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
+				ttNam[maghe-1]="true";
+				//ttNam[ghe.getMaGhe()-1]="true";
 			}
 			gheMB.setTtNam(ttNam);
 			return "giuongNam";
 		}	
 	}
 	
+	//qua trinh dat ve
 	public String datve(){
 		//neu chon hinh thuc thanh toan truc tiep
 		if(option.equalsIgnoreCase("1")){
