@@ -85,7 +85,7 @@ public class HoaDonDao {
 	 	    st.setInt(8, hoaDon.getTongTien());
 	 	    st.setDate(9, new java.sql.Date(hoaDon.getNgayGD().getTime()));
 	 	   	st.setString(10, hoaDon.getHinhThucTT());
-	 	   	st.setInt(11,Integer.parseInt(gheTemp));
+	 	   	st.setString(11,gheTemp);
 	 	    st.registerOutParameter(13, OracleTypes.NUMBER);
 	 	    st.registerOutParameter(12,OracleTypes.VARCHAR);
 	 	    st.executeUpdate();

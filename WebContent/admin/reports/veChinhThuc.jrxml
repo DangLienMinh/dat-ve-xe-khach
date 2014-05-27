@@ -16,7 +16,7 @@
 	<field name="HO" class="java.lang.String"/>
 	<field name="TEN" class="java.lang.String"/>
 	<field name="HINHTHUCTT" class="java.lang.String"/>
-	<field name="MAGHE" class="java.math.BigDecimal"/>
+	<field name="MAGHE" class="java.lang.String"/>
 	<field name="BIENSO" class="java.lang.String"/>
 	<field name="TONGTIEN" class="java.math.BigDecimal"/>
 	<field name="GIOKHOIHANH" class="java.lang.String"/>

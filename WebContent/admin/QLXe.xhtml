@@ -43,12 +43,9 @@
 	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}" widgetVar="xe" emptyMessage="Không tìm thấy xe nào">   
-	     
-		  
 	      	<f:facet name="header">
 		      	 Danh sách Xe
 		        <p:outputPanel style="text-align: right !important;">
-		        	
 	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
 	                <p:inputText id="globalFilter" onkeyup="PF('xe').filter()" style="width:150px" placeholder="Nhập thông tin"/>
 	            </p:outputPanel>
@@ -59,9 +56,10 @@
 	        </p:column>  
 	       
 	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
-	  		<p:commandButton icon="ui-icon-close" action='#{xeMBean.xoaXe(ds)}' style="margin-right:50px;">
+	  		<p:commandButton icon="ui-icon-close" action='#{xeMBean.xoaXe(ds)}'>
 	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá xe?" icon="ui-icon-alert" />
 	  		</p:commandButton>
+	  		 
 	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
 		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
 		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
@@ -78,18 +76,13 @@
 		 <p:separator/>
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
 	        <p:tab id="tba1" title="Thêm mới xe">	     
-
 	            <h:panelGrid columns="2" >
-
 			       <h:outputLabel value='Biển số' />
 			       <p:inputText value='#{xeMBean.xe.bienSo}'/>
-			   
 			       <h:outputLabel value='Loại xe' />
 				   <p:selectOneMenu value="#{xeMBean.loaiXe.maLoaiXe}">
 				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
 				   	</p:selectOneMenu>
-				   
-			       
 			       <p:commandButton id='Insert' value='Thêm' action='#{xeMBean.themXe}' update="tba1"/>
 				   <p:commandButton id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
 				   </h:panelGrid>  
@@ -98,15 +91,11 @@
 	           	 <h:panelGrid columns="2"  id="grid1">  
 	               <h:outputLabel value='Biển số' />
 			       <p:inputText value='#{xeMBean.selectedXe.bienSo}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
-			       
 			       <h:outputLabel value='Loại xe' />
 				   <p:selectOneMenu value="#{xeMBean.selectedLoaiXe.maLoaiXe}">
 				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
 				   	</p:selectOneMenu>
-				   	
-				   
 				   <p:commandButton id='Update' value='Cập nhật' action='#{xeMBean.suaXe}'/>
-				   
 	            </h:panelGrid>  
 	        </p:tab>  
     	</p:tabView>  

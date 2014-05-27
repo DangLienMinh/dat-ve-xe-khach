@@ -8,8 +8,6 @@
       <id name="MaGhe" column="MaGhe">
       </id>
        <property name="TenGhe" column="TenGhe"/>
-       <many-to-one name="MaLoaiXe" column="MaLoaiXe"
-       class="model.LoaiXe" not-null="true"/> 
    </class>
    
 </hibernate-mapping>
