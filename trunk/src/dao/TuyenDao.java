@@ -96,7 +96,7 @@ public class TuyenDao {
  		List<Tuyen> x;
  		Session session = HibernateUtil.getSessionFactory().openSession();
  		session.beginTransaction();
- 		Criteria cri=session.createCriteria(Tuyen.class);
+ 		Criteria cri=session.createCriteria(Tuyen.class).addOrder(Order.asc("TenTuyen"));
  		x=cri.list();
  		return x;
  	}

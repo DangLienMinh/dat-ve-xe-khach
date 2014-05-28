@@ -1,11 +1,14 @@
 package dao;
 
 import java.util.List;
+
 import hibernateUtil.HibernateUtil;
 import model.TaiXe;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 public class TaiXeDao {
 	
@@ -94,7 +97,7 @@ public class TaiXeDao {
  		List<TaiXe> x;
  		Session session = HibernateUtil.getSessionFactory().openSession();
  		session.beginTransaction();
- 		Criteria cri=session.createCriteria(TaiXe.class);
+ 		Criteria cri=session.createCriteria(TaiXe.class).addOrder(Order.asc("MaTX"));
  		x=cri.list();
  		return x;
  	}

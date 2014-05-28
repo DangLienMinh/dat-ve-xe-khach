@@ -12,6 +12,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 
@@ -154,7 +155,8 @@ public class NhanVienDao {
 	 		List<NhanVien> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 	 		session.beginTransaction();
-	 		Criteria cri=session.createCriteria(NhanVien.class);
+	 		Criteria cri=session.createCriteria(NhanVien.class)
+	 		.addOrder(Order.asc("MaNV"));
 	 		x=cri.list();
 	 		return x;
 	 	}

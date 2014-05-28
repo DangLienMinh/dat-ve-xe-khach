@@ -44,7 +44,7 @@
      <div class="noiDung">
      <h:form id="form">
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
-	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     <p:dataTable  var="ds" value="#{chuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{chuyenMBean.filteredDanhSach}" widgetVar="chuyen" emptyMessage="Không tìm thấy chuyến xe nào">   
 	     
@@ -140,8 +140,8 @@
 					    <pe:timePicker value="#{chuyenMBean.chuyen.gioDen}" mode="popup"  widgetVar="endTimeWidget"/>
 					
             
-			       <p:commandButton id='Insert' value='Thêm' action='#{chuyenMBean.themChuyen}'/>
-				   <p:commandButton id='Reset' value='Đặt lại' action='#{chuyenMBean.reset}' ajax='false'/>
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{chuyenMBean.themChuyen}'/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{chuyenMBean.reset}' ajax='false'/>
 	            </h:panelGrid>  
 	           
 	        </p:tab>  
@@ -181,7 +181,7 @@
 			  
 			      
 			       
-				   <p:commandButton id='Update' value='Cập nhật' action='#{chuyenMBean.suaChuyen}' ajax='false'/>
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{chuyenMBean.suaChuyen}' ajax='false'/>
 	            </h:panelGrid>  
 	        </p:tab>   
     	</p:tabView>  

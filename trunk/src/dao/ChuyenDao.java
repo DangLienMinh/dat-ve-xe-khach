@@ -1,14 +1,18 @@
 package dao;
 
 import hibernateUtil.HibernateUtil;
+
 import java.util.List;
+
 import model.Chuyen;
 import model.TaiXe;
 import model.Tuyen;
 import model.Xe;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 
 public class ChuyenDao {
@@ -83,7 +87,7 @@ public class ChuyenDao {
 	 		List<Chuyen> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 	 		session.beginTransaction();
-	 		Criteria cri=session.createCriteria(Chuyen.class);
+	 		Criteria cri=session.createCriteria(Chuyen.class).addOrder(Order.asc("MaChuyen"));
 	 		x=cri.list();
 	 		return x;
 	 	}

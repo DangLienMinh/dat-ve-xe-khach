@@ -30,7 +30,7 @@
     <div class="noiDung">
     	<h:form>
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
-	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}" immediate="true"></p:commandButton>
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}" immediate="true"></p:commandButton>
 	     </h:form>
 	     <p:separator/>
 		 <p:tabView id="tabView">  
@@ -59,9 +59,9 @@
 			   	   <p:inputText value='#{taiKhoanMBean.ttCaNhan.email}'/>
 			    
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{taiKhoanMBean.ttCaNhan.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
+			       <p:calendar navigator="true" value="#{taiKhoanMBean.ttCaNhan.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
 
-			       <p:commandButton  value='Cập nhật thông tin' action='#{taiKhoanMBean.suaTaiKhoan}'/>
+			       <p:commandButton icon="ui-icon-check" value='Cập nhật thông tin' action='#{taiKhoanMBean.suaTaiKhoan}'/>
 				   
 	            </h:panelGrid>  
 	           </h:form>
@@ -82,7 +82,7 @@
 			       
 				   
 	            </h:panelGrid>  
-	            <p:commandButton id="Update"  value='Cập nhật mật khẩu' action='#{taiKhoanMBean.suaMatKhau}'  update="grid1"/>
+	            <p:commandButton id="Update" icon="ui-icon-check" value='Cập nhật mật khẩu' action='#{taiKhoanMBean.suaMatKhau}'  update="grid1"/>
 	       </h:form>
 	        </p:tab> 
 	         
