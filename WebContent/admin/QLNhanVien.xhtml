@@ -35,12 +35,12 @@
      <div class="noiDung">
      <h:form id="form">
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
-	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     
 	     <p:dataTable var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" 
 	     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-	     filteredValue="#{nhanVienMBean.filteredDanhSach}"  widgetVar="nhanvien" emptyMessage="Không tìm thấy nhân viên nào">   
+	     filteredValue="#{nhanVienMBean.filteredDanhSach}"  widgetVar="nhanvien" emptyMessage="Không tìm thấy nhân viên nào" >   
 	     
 		  
 	        <f:facet name="header">
@@ -99,7 +99,8 @@
 		 <p:separator/>
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
 	        <p:tab id="tba1" title="Thêm mới nhân viên">
-	            <h:panelGrid columns="2" >
+	            <h:panelGrid columns="2">
+	            
 				   <h:outputLabel value='Phân quyền' />
 				   <p:selectOneMenu value="#{nhanVienMBean.phanQuyen.maPQ}">
 				   		<f:selectItems value="#{phanQuyenMBean.selectOneItemPQ}" />
@@ -125,16 +126,17 @@
 			   	   <p:inputText value='#{nhanVienMBean.nhanVien.email}'/>
 
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}" id="popupButtonCal"  pattern="dd/MM/yyyy" navigator="true" showButtonPanel="true" />
+			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}"  id="popupButtonCal"  pattern="dd/MM/yyyy" navigator="true" showButtonPanel="true" />
 
-			       <p:commandButton id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}'/>
-				   <p:commandButton id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' ajax='false'/>
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}'/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' ajax='false'/>
 	            </h:panelGrid>  
 	           
 	        </p:tab>  
 	  
 	         <p:tab id="tba2" title="Cập nhật thông tin nhân viên" >  
 	            <h:panelGrid columns="2"  id="grid1">  
+
 	               <h:outputLabel value='Mã nhân viên' />
 			       <p:inputText value='#{nhanVienMBean.selectedNV.maNV}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
 			       
@@ -165,8 +167,8 @@
 			       <p:inputText value='#{nhanVienMBean.selectedNV.matKhau}'/>
 			   
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
-				   <p:commandButton id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' ajax='false'>
+			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" navigator="true" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}'>
 				   </p:commandButton>
 				 
 	            </h:panelGrid>  

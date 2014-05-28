@@ -40,7 +40,7 @@
      <div class="noiDung">
      <h:form id="form">
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
-	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}" widgetVar="xe" emptyMessage="Không tìm thấy xe nào">   
 	      	<f:facet name="header">
@@ -83,8 +83,8 @@
 				   <p:selectOneMenu value="#{xeMBean.loaiXe.maLoaiXe}">
 				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
 				   	</p:selectOneMenu>
-			       <p:commandButton id='Insert' value='Thêm' action='#{xeMBean.themXe}' update="tba1"/>
-				   <p:commandButton id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{xeMBean.themXe}' update="tba1"/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
 				   </h:panelGrid>  
 			</p:tab>
 			<p:tab id="tba2" title="Cập nhật xe" >  
@@ -95,7 +95,7 @@
 				   <p:selectOneMenu value="#{xeMBean.selectedLoaiXe.maLoaiXe}">
 				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
 				   	</p:selectOneMenu>
-				   <p:commandButton id='Update' value='Cập nhật' action='#{xeMBean.suaXe}'/>
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{xeMBean.suaXe}'/>
 	            </h:panelGrid>  
 	        </p:tab>  
     	</p:tabView>  
