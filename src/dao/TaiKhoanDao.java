@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 
 public class TaiKhoanDao {
 	
-	//tra ve doi tuong nhan vien theo ten dang nhap
+	//tra ve doi tuong nhan vien theo ma nhan vien
 	public NhanVien ttCaNhan(String manv){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from NhanVien  where MaNV = :manv";
@@ -56,7 +56,7 @@ public class TaiKhoanDao {
 		    }
 		}
 
-	 //sua mat khau dua vao nhan vien
+	 //sua mat khau dua vao ma nhan vien
 	public void suaMatKhau(NhanVien nhanVien, String matKhauMoi) {
 		Transaction trns = null;
 	    Session session = HibernateUtil.getSessionFactory().openSession();

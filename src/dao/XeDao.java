@@ -66,19 +66,6 @@ public class XeDao {
 		    }
 		}
 	 	
-//	 //lay thong tin loai xe theo maLoaiXe
-//	 	public LoaiXe layLX(int maLoaiXe){		
-//		    Session session = HibernateUtil.getSessionFactory().openSession();
-//		    String hql = "from LoaiXe  where MaLoaiXe = :maLoaiXe";
-//		    List result = session.createQuery(hql)
-//		    .setParameter("maLoaiXe", maLoaiXe)
-//		    .list();
-//	 		//you should return list of LoaiXe object from this method, so need to create one
-//	 		LoaiXe x=(LoaiXe) result.get(0);
-//	 		return x; //return the list we created
-//	 	}
-	 	
-	 	
 	 	//Tra ve doi tuong xe theo BienSo xe
 	 	public Xe layXeTheoBienSo(String bienSo){
 		    Session session = HibernateUtil.getSessionFactory().openSession();
@@ -91,18 +78,6 @@ public class XeDao {
 	 		return x; 
 	 	}
 	 	
-	 	//lay xe dua vao bien so xe ??????????????????????????
-//	 	public Xe layBienSo(String bienSo){
-//	 		Session session = HibernateUtil.getSessionFactory().openSession();
-//		    String hql = "from Xe  where BienSo = :bs";
-//		    List result = session.createQuery(hql)
-//		    .setParameter("bs", bienSo)
-//		    .list();
-//		  //tra ve 1 doi tuong Xe => lay phan tu dau tien cua result list
-//		    Xe x=(Xe) result.get(0);
-//	 		return x; //return the list we created
-//	 	}
-	 	
 	 	//tra ve tat ca cac xe trong csdl
 	 	public List<Xe> danhSachXe(){
 	 		List<Xe> x;
@@ -111,7 +86,6 @@ public class XeDao {
 	 		Criteria cri=session.createCriteria(Xe.class);
 	 		x=cri.list();
 	 		return x;
-	 		
 	 	}
 	 	
 	 	//xoa mot doi tuong xe

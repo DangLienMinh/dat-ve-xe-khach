@@ -20,9 +20,10 @@ public class LoaiTinTucManagedBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private  LoaiTinTuc loaiTT=new LoaiTinTuc();
 	private LoaiTinTucDao loaiTTDao=new LoaiTinTucDao();
+	
+	//tra ve dnh sach loai tin tuc hien thi tren combobox
 	private List<SelectItem> selectOneItemLTT;
 	
-	//combobox loai tin tuc
 	public List<SelectItem> getSelectOneItemLTT() {
 		this.selectOneItemLTT=new ArrayList<SelectItem>();
 		List<LoaiTinTuc> loaiTTs=loaiTTDao.selectItems();

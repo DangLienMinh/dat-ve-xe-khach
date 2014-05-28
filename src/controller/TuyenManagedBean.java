@@ -15,6 +15,8 @@ import dao.TuyenDao;
 public class TuyenManagedBean {
 	private Tuyen tuyen=new Tuyen();
 	private TuyenDao tuyenDao=new TuyenDao();
+	
+	//danh sach tuyen dung de hien thi trong combobox
 	private List<SelectItem> selectOneItemTuyen;
 	
 	//Tra ve danh sach tuyen 

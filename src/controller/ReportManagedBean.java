@@ -35,6 +35,13 @@ public class ReportManagedBean {
 		
 	private Date SelectedDate;
 	private Tuyen tuyen=new Tuyen();
+	
+	private Connection connectDatabase() throws ClassNotFoundException, SQLException{
+		Connection connection;
+		Class.forName("oracle.jdbc.driver.OracleDriver"); 
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		return connection;
+	}
 
 	public String doanhThuNam() throws ClassNotFoundException, SQLException, IOException,JRException
 	{
@@ -42,15 +49,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		InputStream reportStream = context.getExternalContext().
 		getResourceAsStream("/admin/reports/doanhThuNam.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		HashMap map = new HashMap();
 		map.put("Nam", getNam());
 		try {
@@ -73,15 +78,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		InputStream reportStream = context.getExternalContext().
 		getResourceAsStream("/admin/reports/doanhThuTuyen.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		HashMap map = new HashMap();
 		map.put("Nam", getNam2());
 		try {
@@ -104,15 +107,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		InputStream reportStream = context.getExternalContext().
 		getResourceAsStream("/admin/reports/doanhThuChuyen.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		
 	    Calendar cal = Calendar.getInstance();
 	    cal.setTime(this.SelectedDate);
@@ -141,15 +142,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		InputStream reportStream = context.getExternalContext().
 		getResourceAsStream("/admin/reports/doanhThuChuyenTheoTuyen.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		
 	        		
 		HashMap map = new HashMap();
@@ -175,19 +174,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		InputStream reportStream = context.getExternalContext().
 		getResourceAsStream("/admin/reports/veChinhThuc.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
-		
-	   
-	    
-	    
+		connection=connectDatabase();
 		
 		HashMap map = new HashMap();
 		map.put("MaHoaDon", maHoaDon);
@@ -211,15 +204,12 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
-		
 		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/nhanVien.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		try {
 			
 			JasperRunManager.runReportToPdfStream(reportStream,
@@ -240,16 +230,13 @@ public class ReportManagedBean {
 		Connection connection;
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
-		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
-		
+		context.getExternalContext().getResponse();		
 		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/taiXe.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		try {
 			
 			JasperRunManager.runReportToPdfStream(reportStream,
@@ -271,15 +258,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		
 		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/xe.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		try {
 			
 			JasperRunManager.runReportToPdfStream(reportStream,
@@ -301,15 +286,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		
 		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/tuyen.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		try {
 			
 			JasperRunManager.runReportToPdfStream(reportStream,
@@ -331,15 +314,13 @@ public class ReportManagedBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletResponse response = (HttpServletResponse)
 		context.getExternalContext().getResponse();
-		//response.addHeader("Content-disposition", "attachment; filename=report.pdf");
 		
 		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/chuyen.jasper");
 		response.setContentType("application/pdf"); 
 		
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
-		Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","DatVeXeKhach","Minh11520232");
+		connection=connectDatabase();
 		try {
 			
 			JasperRunManager.runReportToPdfStream(reportStream,
@@ -426,8 +407,4 @@ public class ReportManagedBean {
 	public void setNam2(String nam2) {
 		Nam2 = nam2;
 	}
-
-	
-	
-
 }

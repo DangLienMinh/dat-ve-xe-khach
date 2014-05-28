@@ -21,7 +21,7 @@ public class GheDao {
 //	    return result;
 // 	}
 	
-	//thong tin tinh trang ghe 
+	//thong tin tinh trang ghe (chon ra nhung ghe da co nguoi dat roi)
 	public List<Ghe> tinhTrangGhe(String maChuyen,Date ngayGD){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(

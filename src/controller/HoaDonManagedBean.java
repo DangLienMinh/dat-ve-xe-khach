@@ -119,7 +119,7 @@ public class HoaDonManagedBean {
 	}
 	
 	//tinh trang ghe ngoi
-	public String datVe(Chuyen ds){
+	public String chonGhe(Chuyen ds){
 		chuyen=ds;
 		Xe x=chuyen.getBienSo();
 		xe=xeDao.layXeTheoBienSo(x.getBienSo());
@@ -135,7 +135,6 @@ public class HoaDonManagedBean {
 			for(Ghe ghe:ttGhe){
 				int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
 				ttNgoi[maghe-1]="true";
-				//ttNgoi[ghe.getMaGhe()-1]="true";
 			}
 			gheMB.setTtNgoi(ttNgoi);
 			return "gheNgoi";
@@ -149,7 +148,6 @@ public class HoaDonManagedBean {
 			for(Ghe ghe:ttGhe){
 				int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
 				ttNam[maghe-1]="true";
-				//ttNam[ghe.getMaGhe()-1]="true";
 			}
 			gheMB.setTtNam(ttNam);
 			return "giuongNam";
@@ -174,7 +172,7 @@ public class HoaDonManagedBean {
 			
 			//lay tien ve dua vao ma tuyen
 			double tienVe=tuyenDao.tienVe(tuyen.getMaTuyen());
-			//goi ham paypal
+			//goi ham thanh toan paypal
 			thanhToanPaypal(tienVe/20000);
 			
 			hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
@@ -257,33 +255,6 @@ public class HoaDonManagedBean {
 	
 	//lay ve chinh thuc
 	public String layVeChinhThuc(){
-		//kiem tra ma hoa don co ton tai hay ko
-//		HoaDon x=hoaDonDao.layHD(hoaDon.getMaHD());
-//		//neu ton tai
-//		if(x.getMaHD()!=""){
-//			//kiem tra da in ve chua neu chua in thi ngaynhanve se la null
-//			if(x.getNgayNhanVe()==null){
-//				Date ngayNhanVe=Calendar.getInstance().getTime();
-//				x.setNgayNhanVe(ngayNhanVe);
-//				hoaDonDao.capNhatNgayNhanVe(x);
-//				hoaDon=x;
-//				chuyen=hoaDon.getMaChuyen();
-//				xe=chuyen.getBienSo();
-//				dieuKienLayVe=1;
-//				return "layVe?faces-redirect=true";
-//			}
-//			//neu da in roi thi bao loi
-//			else{
-//				hoaDon=x;
-//				dieuKienLayVe=0;
-//				return "layVe?faces-redirect=true";
-//			}
-//		}
-//		//neu khong ton tai hoa don tren thi bao loi
-//		else{
-//			dieuKienLayVe=-1;
-//			return "layVe?faces-redirect=true";
-//		}
 		int kt=hoaDonDao.capNhatNgayNhanVe(hoaDon);
 		switch(kt){
 		case -1: {

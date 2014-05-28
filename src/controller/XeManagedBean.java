@@ -19,9 +19,11 @@ public class XeManagedBean {
 	private XeDao xeDao=new XeDao();
 	private LoaiXe loaiXe=new LoaiXe();
 	private LoaiXeDao loaiXeDao=new LoaiXeDao();
+	
+	//danh sach xe dung de hien thi trong combobox
 	private List<SelectItem> selectOneItemXe;
 	
-	//Tra ve danh sach xe tren giao dien
+	//Tra ve danh sach xe tren datatable
 	private List<Xe> DanhSach;
 	
 	//Tra ve danh sach xe theo kieu loc thuoc tinh
@@ -36,7 +38,6 @@ public class XeManagedBean {
 	public XeManagedBean(){
 		DanhSach = new ArrayList<Xe>();
 		DanhSach = xeDao.danhSachXe();
-		//DanhSach = xeDao.selectItems();
 	}
 	
 	public Xe getXe() {

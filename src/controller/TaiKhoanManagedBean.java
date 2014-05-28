@@ -13,6 +13,7 @@ import model.PhanQuyen;
 @ManagedBean(name= "taiKhoanMBean")
 @ViewScoped 
 public class TaiKhoanManagedBean {
+	
 	private NhanVien ttCaNhan;
 	private TaiKhoanDao taiKhoanDao=new TaiKhoanDao();
 	private String matKhau;

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+//Kiem tra trang nguoi dung vao co bat buoc dang nhap hay khong
+
 //@WebFilter(filterName = "AuthFilter", urlPatterns = {"/admin/*"})
 @WebFilter("/admin/*")
 public class AuthFilter implements Filter {
@@ -28,11 +30,11 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
          try {
 
-            // check whether session variable is set
+            // Kiem tra bien session co duoc thiet lap hay k
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
             HttpSession ses = req.getSession(false);
-            //  allow user to proccede if url is login.xhtml or user logged in or user is accessing any page in //public folder
+            //  allow user to proccede if url is dangNhap.xhtml or user logged in or user is accessing any page in //public folder
             String reqURI = req.getRequestURI();
             if ( reqURI.indexOf("/admin/dangNhap.xhtml") >= 0 || (ses != null && ses.getAttribute("user") != null)
             		|| reqURI.contains("javax.faces.resource") )

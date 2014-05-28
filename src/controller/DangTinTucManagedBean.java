@@ -75,7 +75,7 @@ public class DangTinTucManagedBean implements Serializable {
 			selectedTinTuc=x;
 			DanhSachLienQuan = new ArrayList<TinTuc>();
 			DanhSachLienQuan = tinTucDao.danhSachTinLienQuan();
-			//Tra ve trang newsContent
+			//Tra ve trang noi dung 1 tin tuc newsContent
 			return "newsContent?faces-redirect=true";
 		}	
 	}

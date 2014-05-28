@@ -16,11 +16,16 @@ public class TaiXeManagedBean {
 	
 	private TaiXe taiXe=new TaiXe();
 	private TaiXeDao taiXeDao=new TaiXeDao();
+	
+	//danh sach tai xe dung de hien thi trong combobox
 	private List<SelectItem> selectOneItemTX;
+	
 	//Tra ve danh sach tai xe tren giao dien
 	private List<TaiXe> DanhSach;
+	
 	//danh sach tai xe theo kieu loc thuoc tinh
 	private List<TaiXe> filteredDanhSach;  
+	
 	//doi tuong tai xe duoc chon
 	private TaiXe selectedTX=new TaiXe();
 	

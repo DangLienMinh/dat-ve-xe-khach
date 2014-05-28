@@ -153,8 +153,6 @@ public class TinTucManagedBean implements Serializable {
 			else{
 				  return "QLTinTuc_NVDH?faces-redirect=true";
 			  } 
-			  
-			
 		}
 		
 		//sua tin tuc

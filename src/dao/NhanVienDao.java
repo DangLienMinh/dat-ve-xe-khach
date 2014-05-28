@@ -41,6 +41,7 @@ public class NhanVienDao {
 	public void themNhanVien(NhanVien nhanVien,PhanQuyen phanQuyen) {
 		NhanVien x = new NhanVien();
 		x=layThongTin(nhanVien);
+		//thiet lap MaNV và MatKhau la null do qua trinh tu tao ma va amt khau trong Stored procedure
 		x.setMaNV("");
 		x.setMatKhau("");
         Transaction trns = null;
@@ -148,19 +149,7 @@ public class NhanVienDao {
 		    return x;
 	 	}
 	 	
-	 	//tra ve doi tuong phan quyen dua vao maPQ 
-//	 	public PhanQuyen layPQ(int maPQ){
-//	 		Session session = HibernateUtil.getSessionFactory().openSession();
-//		    String hql = "from PhanQuyen  where MaPQ = :mapq";
-//		    List result = session.createQuery(hql)
-//		    .setParameter("mapq", maPQ)
-//		    .list();
-//		  //tra ve 1 doi tuong PhanQuyen => lay phan tu dau tien cua result list
-//	 		PhanQuyen x=(PhanQuyen) result.get(0);
-//	 		return x; //return the list we created
-//	 	}
-	 	
-	 	//tra ve danh sahc nhan vien
+	 	//tra ve danh sach nhan vien
 	 	public List<NhanVien> danhSachNV(){
 	 		List<NhanVien> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();

@@ -14,6 +14,8 @@ public class LoaiXeManagedBean{
 	
 	private  LoaiXe loaiXe=new LoaiXe();
 	private LoaiXeDao loaiXeDao=new LoaiXeDao();
+	
+	//tra ve danh sach loai xe hien thi tren combovox
 	private List<SelectItem> selectOneItemLX;
 
 	public LoaiXe getLoaiXe() {
