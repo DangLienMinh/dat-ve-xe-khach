@@ -40,32 +40,6 @@ public class HoaDonDao {
 	
 	//them mot hoa don
 	public String themHoaDon(HoaDon hoaDon,Chuyen chuyenTemp,String gheTemp) {
-//		x = new HoaDon();
-//		x=layThongTin(hoaDon);
-//		 x.setMaHD("");
-//        Transaction trns = null;
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        try {
-//            trns = session.beginTransaction();
-//            Ghe ghe=(Ghe) session.load(Ghe.class, Integer.parseInt(gheTemp));
-//            x.setMaGhe(ghe);
-//           
-//            Chuyen chuyen=(Chuyen) session.load(Chuyen.class, chuyenTemp.getMaChuyen());
-//            x.setMaChuyen(chuyen);
-//            session.save(x);
-//            session.getTransaction().commit();
-//           
-//            
-//        } catch (RuntimeException e) {
-//            if (trns != null) {
-//                trns.rollback();
-//            }
-//            e.printStackTrace();
-//        } 
-//        session.flush();
-//        session.close();
-//        return x.getMaHD();
-		//int returnResult = -1;
 		Connection conn;
 		SessionFactoryImplementor sessionFactoryImplementation = (SessionFactoryImplementor)  HibernateUtil.getSessionFactory();
 	    ConnectionProvider connectionProvider = sessionFactoryImplementation.getConnectionProvider();
@@ -95,21 +69,10 @@ public class HoaDonDao {
 			System.out.print(e.getMessage());
 		}
 	   return MaHD;
-	    
-		
     }
 	
-	//cap nhat ngay dat ve
+	//cap nhat ngay dat ve (qua trinh kahch hang lay  ve)
 	public int capNhatNgayNhanVe(HoaDon x){
-//		Transaction trns = null;
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        trns=session.beginTransaction();
-//		Query query = session.createSQLQuery(
-//			"update HoaDon set NgayNhanVe = :ngayNhanVe where MaHD = :mahd")
-//				.setParameter("ngayNhanVe", x.getNgayNhanVe())
-//				.setParameter("mahd", x.getMaHD());
-//		query.executeUpdate();
-//		trns.commit();
 		int returnResult = -10;
 		Connection conn;
 		SessionFactoryImplementor sessionFactoryImplementation = (SessionFactoryImplementor)  HibernateUtil.getSessionFactory();
@@ -122,8 +85,6 @@ public class HoaDonDao {
 
 	 	   st.executeUpdate();
 	 	   returnResult = st.getInt(2);
-	 	   
-	 	  
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}

@@ -78,7 +78,6 @@ public class TuyenDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            //Tuyen cust = (Tuyen) session.load(Tuyen.class, new String(maTX));
             session.delete(x);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -154,7 +153,7 @@ public class TuyenDao {
 	    .list();
 	  //tra ve 1 doi tuong Tuyen => lay phan tu dau tien cua result list
 	    Tuyen x=(Tuyen) result.get(0);
- 		return x; //return the list we created
+ 		return x;
  	}
  	
  	//lay thong tin tien ve dua vao matuyen

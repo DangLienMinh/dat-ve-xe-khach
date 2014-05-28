@@ -10,7 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 /**
- *Dùng để đánh tiếng việt
+ *Dung de danh tieng viet
  */
 @WebFilter("/SetCharacterEncodingFilter")
 public class SetCharacterEncodingFilter implements Filter {

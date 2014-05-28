@@ -42,8 +42,7 @@ public class LoaiXeDao {
 	    List result = session.createQuery(hql)
 	    .setParameter("maLoaiXe", maLoaiXe)
 	    .list();
- 		//you should return list of LoaiXe object from this method, so need to create one
  		LoaiXe x=(LoaiXe) result.get(0);
- 		return x; //return the list we created
+ 		return x;
  	}
 }

@@ -76,7 +76,6 @@ public class TaiXeDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            //TaiXe cust = (TaiXe) session.load(TaiXe.class, new String(maTX));
             session.delete(x);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -140,9 +139,8 @@ public class TaiXeDao {
 	    List result = session.createQuery(hql)
 	    .setParameter("matx", maTX)
 	    .list();
- 		//you should return list of LoaiXe object from this method, so need to create one
  		TaiXe x=(TaiXe) result.get(0);
- 		return x; //return the list we created
+ 		return x; 
  	}
 
 }

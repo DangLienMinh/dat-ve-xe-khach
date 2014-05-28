@@ -16,6 +16,8 @@ public class PhanQuyenManagedBean {
 	
 	private  PhanQuyen phanQuyen=new PhanQuyen();
 	private PhanQuyenDao phanQuyenDao=new PhanQuyenDao();
+	
+	//TRA VE DANH SACH PHAN QUYEN DE HIEN TREN COMBOBOX
 	private List<SelectItem> selectOneItemPQ;
 	
 	public PhanQuyen getPhanQuyen() {
