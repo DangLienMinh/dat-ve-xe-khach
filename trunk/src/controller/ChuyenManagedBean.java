@@ -144,8 +144,9 @@ public class ChuyenManagedBean {
 	}
 	
 	//reset cac o input
-	public void reset(){
+	public String reset(){
 		chuyenDao.reset(chuyen);
+		return "QLChuyen?faces-redirect=true";
 	}
 	
 	//ham khi bam icon gang cua se cap nhat thong tin dua vao doi tuong chuyen duoc chon

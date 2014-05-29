@@ -121,8 +121,9 @@ public class XeManagedBean {
 	}
 	
 	//reset các ô input
-	public void reset(){
+	public String reset(){
 		xeDao.reset(xe);
+		return "QLXe?faces-redirect=true";
 	}
 	
 	//ham khi bam vao icon gang cua se cap nhat doi tuong xe

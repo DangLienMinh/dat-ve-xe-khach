@@ -82,8 +82,9 @@ public class TaiXeManagedBean {
 	}
 	
 	//reset các ô input
-	public void reset(){
+	public String reset(){
 		taiXeDao.reset(taiXe);
+		return "QLTaiXe?faces-redirect=true";
 	}
 	
 	//ham khi bam vao icon gang cua se luu doi tuong nhan vien duoc chon

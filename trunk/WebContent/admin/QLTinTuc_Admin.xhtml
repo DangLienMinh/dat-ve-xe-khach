@@ -17,22 +17,26 @@
  .ui-datatable, .ui-datatable-odd {
             background: #F2F5F9;
      }
+  .ui-icon{
+  	margin-right: 5px;
+  }     
+
 </style>
  </h:head>
  <body>
  <div class="menuTrai">
-     <h:form> 
-	    <p:tieredMenu style="width:200px">  
-	     <p:menuitem value="Futabus Travel"/>
-	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin"/>  
-	        <p:menuitem value="Quản lí tài khoản" outcome="QLNhanVien"/> 
-	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin"/>  
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel" icon="ui-icon-home" style="font-weight:bold"/>
+	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin" icon="ui-icon-print" />  
+	        <p:menuitem value="Quản lí nhân viên" outcome="QLNhanVien" icon="ui-icon-person"/> 
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin" icon="ui-icon-document"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin"/> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin" icon="ui-icon-info"/> 
 	    </p:tieredMenu>  
      </h:form> 
      </div>
-    <div class="noiDung">
+   <div class="noiDung">
      <h:form id="form" enctype="multipart/form-data">
      <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
@@ -65,7 +69,6 @@
 	        </p:column>  
 
 	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
-	  		
 	  		<p:commandButton  icon="ui-icon-close" action='#{tinTucMBean.xoaTinTuc(ds)}'>
 	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá tin tức?" icon="ui-icon-alert" />
 	  		</p:commandButton>
@@ -89,47 +92,52 @@
 	        <p:tab id="tba1" title="Thêm mới tin tức">
 	       
 	       	  <p:panelGrid columns="1" styleClass="border_none" style="width: 100%!important;">
-		    	<h:outputLabel value="Tiêu đề tin tức: "/>
-					<p:inputText id="keyword" value="#{tinTucMBean.tinTuc.tieuDe}" size="80"> 
+		    	<h:outputLabel value="Tiêu đề tin tức: " style="font-size:20px;"/>
+					<p:inputText id="keyword" value="#{tinTucMBean.tinTuc.tieuDe}" size="90" style="height:30px;font-size:22px!important;"> 
 					<p:watermark for="keyword" value="Nhập tiêu đề tin tức" />
 				</p:inputText>
-				<h:outputLabel value='Loại tin tức' />
+				<h:outputLabel value='Loại tin tức:' style="font-size:20px;"/>
 				<p:selectOneMenu value="#{tinTucMBean.loaiTinTuc.maLTT}">
 					<f:selectItems value="#{loaiTTMBean.selectOneItemLTT}" />
 				</p:selectOneMenu>
-				<h:outputLabel value="Hình ảnh: "/>
+				<h:outputLabel value="Hình ảnh:" style="font-size:20px;"/>
 				 <p:fileUpload  mode="simple"  allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/" value="#{tinTucMBean.file}" />
 				
-				<h:outputLabel value="Nội dung tin tức: "/>
+				<h:outputLabel value="Nội dung tin tức:" style="font-size:20px;"/>
 				<p:editor value="#{tinTucMBean.tinTuc.noiDung}"/>
-				<h:outputLabel value="Tóm tắt: "/>
+				<h:outputLabel value="Tóm tắt:" style="font-size:20px;"/>
 				<p:inputTextarea rows="3" cols="80" counter="counter" maxlength="500"     
 		    	counterTemplate="Còn lại {0} từ ." autoResize="false" value="#{tinTucMBean.tinTuc.tomTat}"/>
 				<h:outputText id="counter" />
 				
-				 <p:commandButton icon="ui-icon-plusthick" value="Lưu tin tức"  action="#{tinTucMBean.themTinTuc}" ajax="false"/>
+				 <p:commandButton icon="ui-icon-plusthick" value="Lưu tin tức" action="#{tinTucMBean.themTinTuc}" ajax="false"/>
 			  </p:panelGrid>    
 	        </p:tab>  
 	  
 	         <p:tab id="tba2" title="Cập nhật tin tức" >  
 	            <p:panelGrid columns="1" styleClass="border_none" style="width: 100%!important;" id="grid1">
 		    	
-				<h:outputLabel value='Loại tin tức' />
+		    	<h:outputLabel value="Tiêu đề tin tức: " style="font-size:20px;"/>
+					<p:inputText id="keyword1" value="#{tinTucMBean.selectedTinTuc.tieuDe}" size="90" style="height:30px;font-size:22px!important;"> 
+					<p:watermark for="keyword1" value="Nhập tiêu đề tin tức" />
+				</p:inputText>
+				
+				<h:outputLabel value='Loại tin tức:' style="font-size:20px;"/>
 				<p:selectOneMenu value="#{tinTucMBean.selectedLoaiTinTuc.maLTT}">
 					<f:selectItems value="#{loaiTTMBean.selectOneItemLTT}" />
 				</p:selectOneMenu>
-				<h:outputLabel value="Tiêu đề tin tức: "/>
-					<p:inputText id="keyword1" value="#{tinTucMBean.selectedTinTuc.tieuDe}"> 
-					<p:watermark for="keyword1" value="Nhập tiêu đề tin tức" />
-				</p:inputText>
-				<h:outputLabel value="Hình ảnh: "/>
+				
+				<h:outputLabel value="Hình ảnh: " style="font-size:20px;"/>
 				<h:graphicImage value="#{tinTucMBean.selectedTinTuc.hinhAnh}" width="125" height="145"></h:graphicImage>
-				<h:outputLabel value="Nội dung tin tức: "/>
+				
+				<h:outputLabel value="Nội dung tin tức: " style="font-size:20px;"/>
 				<p:editor value="#{tinTucMBean.selectedTinTuc.noiDung}"/>
-				<h:outputLabel value="Tóm tắt: "/>
+				
+				<h:outputLabel value="Tóm tắt: " style="font-size:20px;"/>
 				<p:inputTextarea rows="3" cols="80" counter="counter1" maxlength="500"     
 		    	counterTemplate="Còn lại {0} từ ." autoResize="false" value="#{tinTucMBean.selectedTinTuc.tomTat}"/>
 				<h:outputText id="counter1" />
+				 
 				 <p:commandButton icon="ui-icon-check" value="Lưu tin tức"  action='#{tinTucMBean.suaTinTuc}'  ajax='false'/>
 			  </p:panelGrid>     
 	        </p:tab>   

@@ -14,29 +14,32 @@
 .ui-widget, .ui-widget .ui-widget {
      font-size: 85% !important;
 }
+  .ui-icon{
+  	margin-right: 5px;
+  }
 </style>
  </h:head>
  <body>
      <div class="menuTrai">
      <h:form > 
-		     <p:tieredMenu style="width:200px">  
-		     <p:menuitem value="Futabus Travel"/>
-		        <p:menuitem value="Lấy vé trực tiếp" outcome="layVe"/>  
+		    <p:tieredMenu style="width:200px">  
+		     <p:menuitem value="Futabus Travel" icon="ui-icon-home" style="font-weight:bold"/>
+		        <p:menuitem value="Lấy vé trực tiếp" outcome="layVe" icon="ui-icon-bookmark"/>  
 		        <p:separator/>   
-		        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NV"/> 
-		    </p:tieredMenu>  
+		        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NV" icon="ui-icon-info"/> 
+		    </p:tieredMenu>
      </h:form> 
      </div>
      <div class="noiDung">
      <h:form id="form">
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
-	     <p:commandButton value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     
 	     <p:panel header="Nhập thông tin vé">
-	     	 <h:outputLabel value='Mã đặt vé' />
+	     	 <h:outputLabel value='Mã đặt vé:' style="margin-right:5px;"/>
 			 <p:inputText value='#{hoaDonMBean.hoaDon.maHD}'/>
-			 <p:commandButton  value="Kiểm tra" action='#{hoaDonMBean.layVeChinhThuc}'></p:commandButton>
+			 <p:commandButton  value="Kiểm tra" action='#{hoaDonMBean.layVeChinhThuc}' icon="ui-icon-check"></p:commandButton>
 	     </p:panel>
 	      <c:set var="dk"  value="#{hoaDonMBean.dieuKienLayVe}"/>
 			<c:if test="${dk >= 1}">

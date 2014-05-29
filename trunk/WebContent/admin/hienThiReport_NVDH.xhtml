@@ -13,22 +13,27 @@
 .ui-widget, .ui-widget .ui-widget {
      font-size: 85% !important;
 }
+.ui-icon{
+  	margin-right: 5px;
+}     
 </style>
  </h:head>
  <body>
      <div class="menuTrai">
      <h:form > 
 	     <p:tieredMenu style="width:200px">  
-	     <p:menuitem value="Futabus Travel"/>
-	        <p:submenu label="Quản lí tuyến-chuyến xe">  
+	     <p:menuitem value="Futabus Travel" style="font-weight:bold" icon="ui-icon-home"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe" icon="ui-icon-calendar">  
 	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
 	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
 	        </p:submenu>  
-	        <p:menuitem value="Quản lí xe" outcome="QLXe"/>  
-	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
+	        <p:menuitem value="Quản lí xe" outcome="QLXe" icon="ui-icon-key"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe" icon="ui-icon-person"/> 
+	        <p:menuitem value="Đăng tin" outcome="QLTinTuc_NVDH" icon="ui-icon-print"/>  
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_NVDH" icon="ui-icon-document"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH"/> 
-	    </p:tieredMenu> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH" icon="ui-icon-info"/> 
+	    </p:tieredMenu>  
  
      </h:form> 
      </div>

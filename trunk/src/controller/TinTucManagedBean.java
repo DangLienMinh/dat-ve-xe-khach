@@ -181,7 +181,6 @@ public class TinTucManagedBean implements Serializable {
 		//xoa doi tuong tin tuc
 		public String xoaTinTuc(TinTuc x){
 			tinTucDao.xoaTinTuc(x);
-			
 			int kt= kiemTraquyenDN();
 			 
 			  if(kt==1){
@@ -193,8 +192,17 @@ public class TinTucManagedBean implements Serializable {
 		}
 		
 		//reset cac o input
-		public void reset(){
+		public String reset(){
 			tinTucDao.reset(tinTuc);
+			
+			int kt= kiemTraquyenDN();
+			 
+			  if(kt==1){
+				  return "QLTinTuc_Admin?faces-redirect=true";
+			  }
+			  else{
+				  return "QLTinTuc_NVDH?faces-redirect=true";
+			  }
 		}
 		
 		//ham khi bam vao se cap nhat doi tuong tin tuc 
