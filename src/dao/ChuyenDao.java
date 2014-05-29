@@ -126,4 +126,17 @@ public class ChuyenDao {
 		 public void reset(Chuyen chuyen) {
 			 chuyen.setKhuyenMai(0);
 		 }
+		 
+		//lay thong tin tien ve dua vao matuyen
+		 	public int tienKhuyenMai(String maChuyen){
+		 		Session session = HibernateUtil.getSessionFactory().openSession();
+			    String hql = "from Chuyen  where MaChuyen = :machuyen";
+			    List result = session.createQuery(hql)
+			    .setParameter("machuyen", maChuyen)
+			    .list();
+			  //tra ve 1 doi tuong Chuyen => lay phan tu dau tien cua result list
+			    Chuyen x=(Chuyen) result.get(0);
+		 		return x.getKhuyenMai(); 
+		 	}
+		 
 }

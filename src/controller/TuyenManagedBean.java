@@ -82,8 +82,9 @@ public class TuyenManagedBean {
 	}
 	
 	//reset cac o input
-	public void reset(){
+	public String reset(){
 		tuyenDao.reset(tuyen);
+		return "QLTuyen?faces-redirect=true";
 	}
 	
 	//ham khi bam vao icon gang cua se cap nhat doi tuong tuyen

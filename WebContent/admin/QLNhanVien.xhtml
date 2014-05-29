@@ -17,18 +17,21 @@
  .ui-datatable, .ui-datatable-odd {
             background: #F2F5F9;
      }
+  .ui-icon{
+  	margin-right: 5px;
+  }
 </style>
  </h:head>
  <body>
      <div class="menuTrai">
      <h:form > 
 	     <p:tieredMenu style="width:200px">  
-	     <p:menuitem value="Futabus Travel"/>
-	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin"/>  
-	        <p:menuitem value="Quản lí tài khoản" outcome="QLNhanVien"/> 
-	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin"/>  
+	     	<p:menuitem value="Futabus Travel" icon="ui-icon-home" style="font-weight:bold"/>
+	        <p:menuitem value="Đăng tin tức" outcome="QLTinTuc_Admin" icon="ui-icon-print" />  
+	        <p:menuitem value="Quản lí nhân viên" outcome="QLNhanVien" icon="ui-icon-person"/> 
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_Admin" icon="ui-icon-document"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin"/> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_Admin" icon="ui-icon-info"/> 
 	    </p:tieredMenu>  
      </h:form> 
      </div>
@@ -87,7 +90,7 @@
 		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
 		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
 	    	</p:confirmDialog>
-	  		<p:commandButton icon="ui-icon-gear" action='#{nhanVienMBean.capNhat(ds,ds.maPQ)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{nhanVienMBean.capNhat(ds,ds.maPQ)}' onclick="changeTab(1);" update=":tv:tabview2:grid1"></p:commandButton>
 	  		
 	  		</p:column>
 
@@ -96,9 +99,12 @@
 	        </f:facet>  
 	  
     	 </p:dataTable>  
+    	 </h:form>
 		 <p:separator/>
-		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
-	        <p:tab id="tba1" title="Thêm mới nhân viên">
+		 <p:tabView id="tv"  dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab  title="Thêm mới nhân viên">
+	        <h:form id="tabview1">
+	        <p:messages id="msg"/>
 	            <h:panelGrid columns="2">
 	            
 				   <h:outputLabel value='Phân quyền' />
@@ -106,35 +112,40 @@
 				   		<f:selectItems value="#{phanQuyenMBean.selectOneItemPQ}" />
 				   	</p:selectOneMenu>
 				   	
-				   	
 			       <h:outputLabel value='Họ' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.ho}'/>
+			       <p:inputText value='#{nhanVienMBean.nhanVien.ho}' required="true" label="Họ" requiredMessage="Vui lòng nhập họ"/>
 			   
 			       <h:outputLabel value='Tên' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.ten}'/>
+			       <p:inputText value='#{nhanVienMBean.nhanVien.ten}' required="true" label="Tên" requiredMessage="Vui lòng nhập Tên"/>
 			  
 			       <h:outputLabel value='Chứng minh nhân dân' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.CMND}'/>
+			       <p:inputText value='#{nhanVienMBean.nhanVien.CMND}' required="true" label="CMND" requiredMessage="Vui lòng nhập CMND">
+			       		<f:convertNumber integerOnly="true" type="number"/>
+			       </p:inputText>
 			   
 			       <h:outputLabel value='Điện thoại' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.dienThoai}'/>
+			       <p:inputText value='#{nhanVienMBean.nhanVien.dienThoai}' required="true" label="Điện Thoại" requiredMessage="Vui lòng nhập Điện Thoại">
+			       	<f:convertNumber integerOnly="true" type="number"/>
+			       </p:inputText>
 			    
 			       <h:outputLabel value='Địa chỉ' />
-			       <p:inputText value='#{nhanVienMBean.nhanVien.diaChi}'/>
+			       <p:inputText value='#{nhanVienMBean.nhanVien.diaChi}' required="true" label="Địa chỉ" requiredMessage="Vui lòng nhập Địa chỉ"/>
 			    
 			       <h:outputLabel value='Email' />
-			   	   <p:inputText value='#{nhanVienMBean.nhanVien.email}'/>
+			   	   <p:inputText value='#{nhanVienMBean.nhanVien.email}' />
 
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}"  id="popupButtonCal"  pattern="dd/MM/yyyy" navigator="true" showButtonPanel="true" />
 
-			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}'/>
-				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' ajax='false'/>
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}' update=":tv:tabview1"/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' immediate="true">
+				   </p:commandButton>
 	            </h:panelGrid>  
-	           
+	           </h:form>
 	        </p:tab>  
 	  
-	         <p:tab id="tba2" title="Cập nhật thông tin nhân viên" >  
+	         <p:tab title="Cập nhật thông tin nhân viên" >  
+	         <h:form id="tabview2">
 	            <h:panelGrid columns="2"  id="grid1">  
 
 	               <h:outputLabel value='Mã nhân viên' />
@@ -168,14 +179,13 @@
 			   
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" navigator="true" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
-				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}'>
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' >
 				   </p:commandButton>
 				 
-	            </h:panelGrid>  
+	            </h:panelGrid>
+	            </h:form>  
 	        </p:tab>   
     	</p:tabView>  
-		
-     </h:form> 
      </div>
      
 </body>

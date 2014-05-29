@@ -161,7 +161,16 @@ public class HoaDonManagedBean {
 			hoaDon.setHinhThucTT("Trực tiếp");
 			Tuyen tuyen=new Tuyen();
 			tuyen=chuyen.getMaTuyen();
-			hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
+			int khuyenMai=chuyenDao.tienKhuyenMai(chuyen.getMaChuyen());
+			if(khuyenMai!=0){
+				int tienVe=tuyenDao.tienVe(tuyen.getMaTuyen());
+				int tienQuaKhuyenMai=tienVe-((tienVe*khuyenMai)/100);
+				hoaDon.setTongTien(tienQuaKhuyenMai);
+			}
+			else{
+				hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
+			}
+			
 			String mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
 			hoaDon.setMaHD(mahd);
 			return "kqDatVe.xhtml";

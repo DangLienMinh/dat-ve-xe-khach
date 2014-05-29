@@ -148,8 +148,9 @@ public class NhanVienManagedBean {
 	}
 	
 	//reset cac o input
-	public void reset(){
+	public String reset(){
 		nhanVienDao.reset(nhanVien);
+		return "QLNhanVien?faces-redirect=true";
 	}
 	
 	//ham khi bam vao icon rang cua se luu thong tin doi tuong nhan vien duoc chon

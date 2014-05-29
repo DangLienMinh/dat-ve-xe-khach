@@ -17,23 +17,26 @@
  .ui-datatable, .ui-datatable-odd {
             background: #F2F5F9;
      }
+.ui-icon{
+  	margin-right: 5px;
+}     
 </style>
  </h:head>
  <body>
      <div class="menuTrai">
      <h:form > 
 	     <p:tieredMenu style="width:200px">  
-	     <p:menuitem value="Futabus Travel"/>
-	        <p:submenu label="Quản lí tuyến-chuyến xe">  
+	     <p:menuitem value="Futabus Travel" style="font-weight:bold" icon="ui-icon-home"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe" icon="ui-icon-calendar">  
 	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
 	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
 	        </p:submenu>  
-	        <p:menuitem value="Quản lí xe" outcome="QLXe"/>  
-	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe"/> 
-	        <p:menuitem value="Đăng tin" outcome="QLTinTuc_NVDH"/>  
-	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_NVDH"/>  
+	        <p:menuitem value="Quản lí xe" outcome="QLXe" icon="ui-icon-key"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe" icon="ui-icon-person"/> 
+	        <p:menuitem value="Đăng tin" outcome="QLTinTuc_NVDH" icon="ui-icon-print"/>  
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_NVDH" icon="ui-icon-document"/>  
 	        <p:separator/>   
-	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH"/> 
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH" icon="ui-icon-info"/> 
 	    </p:tieredMenu>  
      </h:form> 
      </div>
@@ -43,16 +46,14 @@
 	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     <p:dataTable var="ds" value="#{tuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{tuyenMBean.filteredDanhSach}" widgetVar="tuyen" emptyMessage="Không tìm thấy tuyến xe nào">   
-	     
-		  
+
 	         <f:facet name="header">
 	      	 Danh sách các Tuyến xe
 	        <p:outputPanel style="text-align: right !important;">
-	        	
                 <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
                 <p:inputText id="globalFilter" onkeyup="PF('tuyen').filter()" style="width:150px" placeholder="Nhập thông tin"/>
             </p:outputPanel>
-       	 </f:facet>
+       		 </f:facet>
 	  
 	        <p:column headerText="Mã Tuyến" style="font-size:14px!important;"  filterBy="maTuyen">  
 	            <h:outputText  value="#{ds.maTuyen}"/>  
@@ -61,18 +62,19 @@
 	        <p:column headerText="Tên tuyến" style="font-size:14px!important;" filterBy="tenTuyen">  
 	            <h:outputText value="#{ds.tenTuyen}" />  
 	        </p:column>  
+	        
 	         <p:column headerText="Bến đầu" style="font-size:14px!important;" filterBy="benDau">  
 	            <h:outputText value="#{ds.benDau}" />  
 	        </p:column>  
+	        
 	        <p:column headerText="Bến cuối" style="font-size:14px!important;" filterBy="benCuoi">  
 	            <h:outputText value="#{ds.benCuoi}" />  
 	        </p:column>  
+	        
 	        <p:column headerText="Giá vé" style="font-size:14px!important;" filterBy="gia">  
 	            <h:outputText value="#{ds.gia}" />  
 	        </p:column>  
-	        
-	        
-	       
+
 	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
 	  		<p:commandButton  icon="ui-icon-close" action='#{tuyenMBean.xoaTuyen(ds)}'>
 	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá tuyến?" icon="ui-icon-alert" />
@@ -82,8 +84,7 @@
 		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
 	    	</p:confirmDialog>
 	    	
-	  		
-	  		<p:commandButton icon="ui-icon-gear" action='#{tuyenMBean.capNhat(ds)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{tuyenMBean.capNhat(ds)}' onclick="changeTab(1);" update=":tv:tabview2:grid1"></p:commandButton>
 	  		</p:column>
 
 	        <f:facet name="footer">  
@@ -91,41 +92,40 @@
 	        </f:facet>  
 	  
     	 </p:dataTable>  
+    	  </h:form>
 		 <p:separator/>
-		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
-		  
-	        <p:tab id="tba1" title="Thêm mới tuyến">
-	       
+		 <p:tabView id="tv"  dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab title="Thêm mới tuyến">
+		        <h:form id="tabview1">
+		        <p:messages id="msg"/>
 	            <h:panelGrid columns="2">
 				
 			       <h:outputLabel value='Tên tuyến' />
-			       <p:inputText value='#{tuyenMBean.tuyen.tenTuyen}' />
+			       <p:inputText value='#{tuyenMBean.tuyen.tenTuyen}' required="true" label="Tên tuyến" requiredMessage="Vui lòng nhập tên tuyến"/>
 			   
 			       <h:outputLabel value='Bến đầu' />
-			       <p:inputText value='#{tuyenMBean.tuyen.benDau}' />
+			       <p:inputText value='#{tuyenMBean.tuyen.benDau}' required="true" label="Bến đầu" requiredMessage="Vui lòng nhập bến đầu"/>
 			  
 			       <h:outputLabel value='Bến cuối' />
-			       <p:inputText value='#{tuyenMBean.tuyen.benCuoi}' />
+			       <p:inputText value='#{tuyenMBean.tuyen.benCuoi}' required="true" label="Bến cuối" requiredMessage="Vui lòng nhập bến cuối"/>
 			   
 			       <h:outputLabel value='Giá vé' />
-			       <p:inputText value='#{tuyenMBean.tuyen.gia}' />
+			       <p:inputText value='#{tuyenMBean.tuyen.gia}' required="true" label="Gía" requiredMessage="Vui lòng nhập giá">
+			       	<f:convertNumber integerOnly="true" type="number"/>
+			       </p:inputText>
 			
-			    
-			
-
-			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm tuyến' action='#{tuyenMBean.themTuyen}' update="tba1"/>
-				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{tuyenMBean.reset}' ajax='false'/>
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm tuyến' action='#{tuyenMBean.themTuyen}' update=":tv:tabview1"/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{tuyenMBean.reset}' immediate="true"/>
 	            </h:panelGrid>  
-	           
+	           </h:form>
 	        </p:tab>  
 	  
-	         <p:tab id="tba2" title="Cập nhật tuyến xe" >  
+	         <p:tab  title="Cập nhật tuyến xe" >  
+	         <h:form id="tabview2">
 	            <h:panelGrid columns="2"  id="grid1">  
 	               <h:outputLabel value='Mã tuyến' />
 			       <p:inputText value='#{tuyenMBean.selectedTuyen.maTuyen}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
-			       
-			    
-			       
+
 			       <h:outputLabel value='Tên tuyến' />
 			       <p:inputText value='#{tuyenMBean.selectedTuyen.tenTuyen}'/>
 			   
@@ -138,14 +138,12 @@
 			       <h:outputLabel value='Giá vé' />
 			       <p:inputText value='#{tuyenMBean.selectedTuyen.gia}'/>
 			    
-				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{tuyenMBean.suaTuyen}' ajax='false'/>
-	            </h:panelGrid>  
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{tuyenMBean.suaTuyen}'/>
+	            </h:panelGrid> 
+	             </h:form>   
 	        </p:tab>   
     	</p:tabView>  
-		
-     </h:form> 
      </div>
-     
 </body>
 </html>
 
