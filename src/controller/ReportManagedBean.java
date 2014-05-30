@@ -198,6 +198,36 @@ public class ReportManagedBean {
 		return "";
 	}
 	
+	public String inTTNhanVien(String maNV) throws ClassNotFoundException, SQLException, IOException,JRException
+	{
+		Connection connection;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse)
+		context.getExternalContext().getResponse();
+		InputStream reportStream = context.getExternalContext().
+		getResourceAsStream("/admin/reports/tk_nhanVien.jasper");
+		response.setContentType("application/pdf"); 
+		
+		ServletOutputStream servletOutputStream = 
+				response.getOutputStream();
+		connection=connectDatabase();
+		
+		HashMap map = new HashMap();
+		map.put("Ma", maNV);
+		try {
+			JasperRunManager.runReportToPdfStream(reportStream,
+					servletOutputStream,map, connection);
+			FacesContext.getCurrentInstance().responseComplete();
+			connection.close();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		return "";
+	}
+	
 	public String reportNhanVien() throws ClassNotFoundException, SQLException, IOException,JRException
 	{
 		Connection connection;

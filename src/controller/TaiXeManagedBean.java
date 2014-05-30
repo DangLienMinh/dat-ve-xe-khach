@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -28,6 +29,9 @@ public class TaiXeManagedBean {
 	
 	//doi tuong tai xe duoc chon
 	private TaiXe selectedTX=new TaiXe();
+	
+	//Ngay sinh nhan vien phai nho hon ngay hien tai
+	private Date Today;
 	
 	public TaiXeManagedBean(){
 		DanhSach = new ArrayList<TaiXe>();
@@ -101,5 +105,9 @@ public class TaiXeManagedBean {
 			this.selectOneItemTX.add(selectItem);
 		}
 		return selectOneItemTX;
+	}
+	
+	public Date getToday() {
+		return new Date();
 	}
 }

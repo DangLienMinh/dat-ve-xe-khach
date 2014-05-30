@@ -3,8 +3,12 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
 import model.Chuyen;
 import model.TaiXe;
 import model.Tuyen;
@@ -152,7 +156,12 @@ public class ChuyenManagedBean {
 	//ham khi bam icon gang cua se cap nhat thong tin dua vao doi tuong chuyen duoc chon
 	public void capNhat(Chuyen x,String matx,String bienSo,String maTuyen){
 		selectedChuyen=x;
-		this.setSelectedXe(xeDao.layXeTheoBienSo(bienSo));
+		if(bienSo.equalsIgnoreCase("")){
+			this.selectedXe.setBienSo("");
+		}
+		else{
+			this.setSelectedXe(xeDao.layXeTheoBienSo(bienSo));
+		}
 		this.setSelectedTuyen(tuyenDao.layTuyen(maTuyen));
 		this.setSelectedTaiXe(taiXeDao.layTX(matx));
 	}

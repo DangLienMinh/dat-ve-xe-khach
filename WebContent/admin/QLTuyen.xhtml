@@ -111,7 +111,8 @@
 			   
 			       <h:outputLabel value='Giá vé' />
 			       <p:inputText value='#{tuyenMBean.tuyen.gia}' required="true" label="Gía" requiredMessage="Vui lòng nhập giá">
-			       	<f:convertNumber integerOnly="true" type="number"/>
+			       	<f:convertNumber integerOnly="true" type="number" />
+			       	<f:validateLongRange minimum="0" />
 			       </p:inputText>
 			
 			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm tuyến' action='#{tuyenMBean.themTuyen}' update=":tv:tabview1"/>
@@ -136,7 +137,10 @@
 			       <p:inputText value='#{tuyenMBean.selectedTuyen.benCuoi}'/>
 			   
 			       <h:outputLabel value='Giá vé' />
-			       <p:inputText value='#{tuyenMBean.selectedTuyen.gia}'/>
+			       <p:inputText value='#{tuyenMBean.selectedTuyen.gia}'>
+			       		<f:convertNumber integerOnly="true" type="number" />
+			       		<f:validateLongRange minimum="0" />
+			       </p:inputText>
 			    
 				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{tuyenMBean.suaTuyen}'/>
 	            </h:panelGrid> 
