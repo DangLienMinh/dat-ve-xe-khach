@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tk_nhanVien" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="9fd6ed91-1944-41c2-a476-e5a04254efc1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
+	<style name="title1" fontName="Times New Roman"/>
+	<parameter name="Ma" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from NhanVien nv,PhanQuyen pq where nv.MaPQ=pq.MaPQ and nv.MaNV=$P{Ma}]]>
+	</queryString>
+	<field name="MANV" class="java.lang.String"/>
+	<field name="HO" class="java.lang.String"/>
+	<field name="TEN" class="java.lang.String"/>
+	<field name="MATKHAU" class="java.lang.String"/>
+	<field name="QUYEN" class="java.lang.String"/>
+	<title>
+		<band height="161" splitType="Stretch">
+			<staticText>
+				<reportElement style="title1" x="172" y="2" width="307" height="20" forecolor="#09690D" uuid="85e569ad-3b3c-4800-9816-ff234c04be3f"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CTY CP VẬN TẢI VÀ DỊCH VỤ DU LỊCH PHƯƠNG TRANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="180" y="20" width="289" height="32" forecolor="#09690D" uuid="f76adf97-4dfe-4f1b-8ab5-33752b173124"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ĐC: 486-486A Lê Văn Lương, P.Tân Phong, Q7, TP.HCM Điện thoại: (08) 3838 9235          Mã số thuế: 0302778189 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="214" y="54" width="204" height="30" forecolor="#FA0905" uuid="53d71945-bca9-4548-9b24-ca2f2a51b53b"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phiếu Thông Tin Tài Khoản]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="201" y="90" width="62" height="15" uuid="ff2808ab-ddfe-47f0-a529-d49cd1bcdca9"/>
+				<text><![CDATA[Họ và tên:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="263" y="90" width="171" height="15" uuid="014940f2-46dc-40fe-a9a2-529fd9ec3bbf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="263" y="107" width="171" height="15" uuid="7d2540f2-df29-41b9-8f79-1c5fec79964e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MANV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="201" y="107" width="62" height="15" uuid="967d1e41-ff88-464e-9d8f-3790bcb2b16c"/>
+				<text><![CDATA[User:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="201" y="122" width="62" height="15" uuid="eb54f22a-0d14-456d-99e5-aaf284a0b55d"/>
+				<text><![CDATA[Pass:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="263" y="122" width="171" height="15" uuid="0d6a8664-e4fe-4532-aeb1-1f47ab0971c6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MATKHAU}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="201" y="137" width="62" height="15" uuid="52cd71b9-4992-42f6-bdd8-6189ea9da886"/>
+				<text><![CDATA[Quyền:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="263" y="137" width="171" height="15" uuid="0b1eed53-fa67-4396-a8d9-5ed5fa83c30b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QUYEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

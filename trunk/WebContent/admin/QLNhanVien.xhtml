@@ -21,6 +21,7 @@
   	margin-right: 5px;
   }
 </style>
+
  </h:head>
  <body>
      <div class="menuTrai">
@@ -135,7 +136,7 @@
 			   	   <p:inputText value='#{nhanVienMBean.nhanVien.email}' />
 
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.nhanVien.ngaySinh}"  id="popupButtonCal"  pattern="dd/MM/yyyy" navigator="true" showButtonPanel="true" />
+			       <p:calendar maxdate="#{nhanVienMBean.today}" value="#{nhanVienMBean.nhanVien.ngaySinh}"  id="popupButtonCal"  pattern="dd/MM/yyyy" navigator="true" showButtonPanel="true" />
 
 			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{nhanVienMBean.themNhanVien}' update=":tv:tabview1"/>
 				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{nhanVienMBean.reset}' immediate="true">
@@ -178,13 +179,20 @@
 			       <p:inputText value='#{nhanVienMBean.selectedNV.matKhau}'/>
 			   
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar value="#{nhanVienMBean.selectedNV.ngaySinh}" navigator="true" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
-				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}' >
+			       <p:calendar maxdate="#{nhanVienMBean.today}" value="#{nhanVienMBean.selectedNV.ngaySinh}" navigator="true" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{nhanVienMBean.suaNhanVien}'>
 				   </p:commandButton>
 				 
 	            </h:panelGrid>
 	            </h:form>  
-	        </p:tab>   
+	        </p:tab > 
+	        <p:tab title="In thông tin tài khoản nhân viên">
+	        <h:form>
+	        <p:commandButton icon="ui-icon-arrowrefresh-1-s" value='Đặt lại' action='#{nhanVienMBean.reset}' immediate="true"/>
+	        	 <iframe src="layTTNV.xhtml" width="100%" height="50%">
+				  </iframe> 
+				 </h:form>
+	        </p:tab>  
     	</p:tabView>  
      </div>
      

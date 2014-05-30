@@ -133,7 +133,7 @@
 			   	   <p:inputText value='#{taiXeMBean.taiXe.email}'/>
 
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar navigator="true" value="#{taiXeMBean.taiXe.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
+			       <p:calendar maxdate="#{taiXeMBean.today}" navigator="true" value="#{taiXeMBean.taiXe.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
 
 			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{taiXeMBean.themTaiXe}'  update=":tv:tabview1"/>
 				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{taiXeMBean.reset}' immediate="true"/>
@@ -166,7 +166,7 @@
 			   	   <p:inputText value='#{taiXeMBean.selectedTX.email}'/>
 
 			       <h:outputLabel value="Ngày sinh: " />
-			       <p:calendar navigator="true" value="#{taiXeMBean.selectedTX.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
+			       <p:calendar maxdate="#{taiXeMBean.today}" navigator="true" value="#{taiXeMBean.selectedTX.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
 				  
 				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{taiXeMBean.suaTaiXe}' ajax='false'/>
 	            </h:panelGrid>  

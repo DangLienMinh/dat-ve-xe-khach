@@ -1,12 +1,20 @@
 package controller;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import javax.faces.application.FacesMessage;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import net.sf.jasperreports.engine.JRException;
+import javax.faces.application.FacesMessage;
 import javax.servlet.http.HttpSession;
+
 import model.NhanVien;
 import model.PhanQuyen;
 import dao.NhanVienDao;
@@ -21,6 +29,10 @@ public class NhanVienManagedBean {
 	private PhanQuyen phanQuyen=new PhanQuyen();
 	private PhanQuyenDao phanQuyenDao=new PhanQuyenDao();
 	
+	//inject controller reportMB vao hoa Don
+	@ManagedProperty(value="#{reportMBean}")
+	private ReportManagedBean reportMB;
+	
 	//ho ten nhan vien da dang nhap
 	private String HoTen;
 	
@@ -32,12 +44,17 @@ public class NhanVienManagedBean {
 	
 	//doi tuong nhan vien duoc chon de cap nhat thong tin
 	private NhanVien selectedNV=new NhanVien();
+	
 	//doi tuong phan quyen duoc chon de cap nhat thong tin
 	private PhanQuyen selectedPhanQuyen=new PhanQuyen();
+	
+	//Ngay sinh nhan vien phai nho hon ngay hien tai
+	private Date Today;
 		
 	public NhanVienManagedBean(){
 		DanhSach = new ArrayList<NhanVien>();
 		DanhSach = nhanVienDao.danhSachNV();
+		reportMB=new ReportManagedBean();
 	}
 	
 	public NhanVien getNhanVien() {
@@ -150,13 +167,38 @@ public class NhanVienManagedBean {
 	//reset cac o input
 	public String reset(){
 		nhanVienDao.reset(nhanVien);
+		//tabIndex=0;
 		return "QLNhanVien?faces-redirect=true";
 	}
+	
+	//Nhan nut back trong report thong tin nhan vien
+//		public String back(){
+//			nhanVienDao.reset(nhanVien);
+//			tabIndex=2;
+//			return "QLNhanVien?faces-redirect=true";
+//		}
 	
 	//ham khi bam vao icon rang cua se luu thong tin doi tuong nhan vien duoc chon
 	public void capNhat(NhanVien x,String maPQ){
 		selectedNV=x;
 		int ma=Integer.parseInt(maPQ);
 		this.setSelectedPhanQuyen(phanQuyenDao.layPQ(ma));
+	}
+
+	public Date getToday() {
+		return new Date();
+	}
+	
+	public String inTTNV() throws ClassNotFoundException, SQLException, IOException,JRException{
+		return reportMB.inTTNhanVien(selectedNV.getMaNV());
+		//return reportMB.inVe("V140500006");
+	}
+
+	public ReportManagedBean getReportMB() {
+		return reportMB;
+	}
+
+	public void setReportMB(ReportManagedBean reportMB) {
+		this.reportMB = reportMB;
 	}
 }
