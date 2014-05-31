@@ -1,0 +1,156 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí thông tin văn phòng</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+.ui-datatable .ui-column-filter{display: none;}
+ .ui-datatable, .ui-datatable-odd {
+            background: #F2F5F9;
+     }
+ .ui-panelgrid tr,
+.ui-panelgrid td {
+    border: none;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+	     <p:tieredMenu style="width:200px">  
+	     <p:menuitem value="Futabus Travel" style="font-weight:bold" icon="ui-icon-home"/>
+	        <p:submenu label="Quản lí tuyến-chuyến xe" icon="ui-icon-calendar">  
+	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
+	            <p:menuitem value="Quản lí chuyến xe" outcome="QLChuyen"/>  
+	        </p:submenu>  
+	        <p:menuitem value="Quản lí xe" outcome="QLXe" icon="ui-icon-key"/>  
+	        <p:menuitem value="Quản lí tài xế" outcome="QLTaiXe" icon="ui-icon-person"/> 
+	        <p:menuitem value="Đăng tin" outcome="QLTinTuc_NVDH" icon="ui-icon-print"/>  
+	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_NVDH" icon="ui-icon-document"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Quản lí khu vực" outcome="QLKhuVuc" icon="ui-icon-flag"/>  
+	        <p:menuitem value="Quản lí văn phòng" outcome="QLVanPhong" icon="ui-icon-mail-closed"/>  
+	        <p:separator/>   
+	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH" icon="ui-icon-info"/> 
+	    </p:tieredMenu>    
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	     <p:dataTable  var="ds" value="#{vanPhongMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{vanPhongMBean.filteredDanhSach}" widgetVar="vanPhong" emptyMessage="Không tìm thấy văn phòng nào">   
+	      	<f:facet name="header">
+		      	 Danh sách văn phòng
+		        <p:outputPanel style="text-align: right !important;">
+	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
+	                <p:inputText id="globalFilter" onkeyup="PF('vanPhong').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	            </p:outputPanel>
+       	 	</f:facet>
+	  
+	        <p:column headerText="Mã văn phòng" style="font-size:14px!important;"  filterBy="maVP">  
+	            <h:outputText  value="#{ds.maVP}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Tên văn phòng" style="font-size:14px!important;"  filterBy="tenVP">  
+	            <h:outputText  value="#{ds.tenVP}"/>  
+	        </p:column> 
+	        
+	        <p:column headerText="Địa chỉ" style="font-size:14px!important;" filterBy="diaChi">  
+	            <h:outputText value="#{ds.diaChi}" />  
+	        </p:column>  
+	        
+	        <p:column headerText="Điện thoại" style="font-size:14px!important;" filterBy="dienThoai">  
+	            <h:outputText value="#{ds.dienThoai}" />  
+	        </p:column>
+	       
+	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
+	  		<p:commandButton icon="ui-icon-close" action='#{vanPhongMBean.xoaVanPhong(ds)}'>
+	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá văn phòng?" icon="ui-icon-alert" />
+	  		</p:commandButton>
+	  		 
+	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
+	    	</p:confirmDialog>
+	  		
+	  		<p:commandButton icon="ui-icon-gear" action='#{vanPhongMBean.capNhat(ds,ds.maKV)}' onclick="changeTab(1);" update=":tv:tabview2:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(vanPhongMBean.danhSach)} văn phòng.
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+    	 </h:form>
+		 <p:separator/>
+		 <p:tabView id="tv" dynamic="true" widgetVar="tabPanelWidget">  
+	        <p:tab  title="Thêm mới văn phòng">
+	        <h:form id="tabview1">	 
+	        <p:messages id="msg"/>    
+	            <h:panelGrid columns="2" >
+			       <h:outputLabel value='Tên văn phòng' />
+			       <p:inputText value='#{vanPhongMBean.vanPhong.tenVP}' required="true" label="Tên văn phòng" requiredMessage="Vui lòng nhập tên"/>
+			       
+			       <h:outputLabel value='Điện thoại' />
+			       <p:inputText value='#{vanPhongMBean.vanPhong.dienThoai}' required="true" label="Điện thoại" requiredMessage="Vui lòng nhập điện thoại">
+			       
+			       </p:inputText>
+			    
+			       <h:outputLabel value='Địa chỉ' />
+			       <p:inputText value='#{vanPhongMBean.vanPhong.diaChi}' required="true" label="Địa chỉ" requiredMessage="Vui lòng nhập địa chỉ"/>
+			    
+			       <h:outputLabel value='Khu vực' />
+			       <p:panelGrid columns="2" >
+			        <p:selectOneMenu value="#{vanPhongMBean.khuVuc.maKV}">
+				   		<f:selectItems value="#{khuVucMBean.selectOneItemKV}" />
+				   	</p:selectOneMenu>
+				   	
+				   	<p:button icon="ui-icon-plus" outcome='QLKhuVuc'></p:button>
+			       </p:panelGrid>
+			       
+				  
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{vanPhongMBean.themVanPhong}' update=":tv:tabview1"/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{vanPhongMBean.reset}' immediate="true"/>
+				   </h:panelGrid>  
+				    </h:form>
+			</p:tab>
+			<p:tab id="tba2" title="Cập nhật văn phòng" > 
+			<h:form id="tabview2"> 
+	           	 <h:panelGrid columns="2"  id="grid1">  
+	               <h:outputLabel value='Mã văn phòng' />
+			       <p:inputText value='#{vanPhongMBean.selectedVanPhong.maVP}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			      
+			       <h:outputLabel value='Tên văn phòng' />
+			       <p:inputText value='#{vanPhongMBean.selectedVanPhong.tenVP}'/>
+			       
+			       <h:outputLabel value='Điện thoại' />
+			       <p:inputText value='#{vanPhongMBean.selectedVanPhong.dienThoai}'>
+			       </p:inputText>
+			    
+			       <h:outputLabel value='Địa chỉ' />
+			       <p:inputText value='#{vanPhongMBean.selectedVanPhong.diaChi}'/>
+			    	      
+			       <h:outputLabel value='Khu vực'/>
+				   <p:selectOneMenu value="#{vanPhongMBean.selectedKhuVuc.maKV}">
+				   		<f:selectItems value="#{khuVucMBean.selectOneItemKV}" />
+				   	</p:selectOneMenu>
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{vanPhongMBean.suaVanPhong}'/>
+	            </h:panelGrid>  
+	           </h:form>  
+	        </p:tab>  
+    	</p:tabView>  
+     </div>
+</body>
+</html>
+

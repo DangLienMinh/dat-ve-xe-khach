@@ -6,7 +6,7 @@
      >
 
  <h:head>
- <title>Quản lí thông tin Xe</title>
+ <title>Quản lí thông tin khu vực</title>
  <h:outputStylesheet library="css" name="main.css" />
  <h:outputScript library="js" name="tabview.js"/>
 <style>
@@ -45,22 +45,26 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}" widgetVar="xe" emptyMessage="Không tìm thấy xe nào">   
+	     <p:dataTable  var="ds" value="#{khuVucMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{khuVucMBean.filteredDanhSach}" widgetVar="khuVuc" emptyMessage="Không tìm thấy khu vực nào">   
 	      	<f:facet name="header">
-		      	 Danh sách Xe
+		      	 Danh sách khu vực
 		        <p:outputPanel style="text-align: right !important;">
 	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
-	                <p:inputText id="globalFilter" onkeyup="PF('xe').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	                <p:inputText id="globalFilter" onkeyup="PF('khuVuc').filter()" style="width:150px" placeholder="Nhập thông tin"/>
 	            </p:outputPanel>
        	 	</f:facet>
 	  
-	        <p:column headerText="Biển số xe" style="font-size:14px!important;"  filterBy="bienSo">  
-	            <h:outputText  value="#{ds.bienSo}"/>  
+	        <p:column headerText="Mã Khu vực" style="font-size:14px!important;"  filterBy="maKV">  
+	            <h:outputText  value="#{ds.maKV}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Tên Khu vực" style="font-size:14px!important;"  filterBy="tenKV">  
+	            <h:outputText  value="#{ds.tenKV}"/>  
 	        </p:column>  
 	       
 	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
-	  		<p:commandButton icon="ui-icon-close" action='#{xeMBean.xoaXe(ds)}'>
-	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá xe?" icon="ui-icon-alert" />
+	  		<p:commandButton icon="ui-icon-close" action='#{khuVucMBean.xoaKhuVuc(ds)}'>
+	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá khu vực?" icon="ui-icon-alert" />
 	  		</p:commandButton>
 	  		 
 	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
@@ -68,37 +72,31 @@
 		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
 	    	</p:confirmDialog>
 	  		
-	  		<p:commandButton icon="ui-icon-gear" action='#{xeMBean.capNhat(ds,ds.maLoaiXe)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
+	  		<p:commandButton icon="ui-icon-gear" action='#{khuVucMBean.capNhat(ds)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
 	  		</p:column>
 
 	        <f:facet name="footer">  
-	           Tổng cộng có #{fn:length(xeMBean.danhSach)} xe.
+	           Tổng cộng có #{fn:length(khuVucMBean.danhSach)} khu vực.
 	        </f:facet>  
 	  
     	 </p:dataTable>  
 		 <p:separator/>
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
-	        <p:tab id="tba1" title="Thêm mới xe">	     
+	        <p:tab id="tba1" title="Thêm mới khu vực">	     
 	            <h:panelGrid columns="2" >
-			       <h:outputLabel value='Biển số' />
-			       <p:inputText value='#{xeMBean.xe.bienSo}'/>
-			       <h:outputLabel value='Loại xe' />
-				   <p:selectOneMenu value="#{xeMBean.loaiXe.maLoaiXe}">
-				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
-				   	</p:selectOneMenu>
-			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{xeMBean.themXe}' update="tba1"/>
-				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{xeMBean.reset}' ajax='false'/>
+			       <h:outputLabel value='Tên khu vực' />
+			       <p:inputText value='#{khuVucMBean.khuVuc.tenKV}'/>
+			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{khuVucMBean.themKhuVuc}' update="tba1"/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{khuVucMBean.reset}' ajax='false'/>
 				   </h:panelGrid>  
 			</p:tab>
-			<p:tab id="tba2" title="Cập nhật xe" >  
+			<p:tab id="tba2" title="Cập nhật khuVuc" >  
 	           	 <h:panelGrid columns="2"  id="grid1">  
-	               <h:outputLabel value='Biển số' />
-			       <p:inputText value='#{xeMBean.selectedXe.bienSo}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
-			       <h:outputLabel value='Loại xe' />
-				   <p:selectOneMenu value="#{xeMBean.selectedLoaiXe.maLoaiXe}">
-				   		<f:selectItems value="#{loaiXeMBean.selectOneItemLX}" />
-				   	</p:selectOneMenu>
-				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{xeMBean.suaXe}'/>
+	               <h:outputLabel value='Mã khu vực' />
+			       <p:inputText value='#{khuVucMBean.selectedKhuVuc.maKV}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       <h:outputLabel value='Tên khu vực' />
+				   <p:inputText value='#{khuVucMBean.selectedKhuVuc.tenKV}'/>
+				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{khuVucMBean.suaKhuVuc}'/>
 	            </h:panelGrid>  
 	        </p:tab>  
     	</p:tabView>  

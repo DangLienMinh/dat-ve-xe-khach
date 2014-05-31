@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vanPhong" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="19211578-e072-4aa5-962f-56a2ab1e8002">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Times New Roman" fontSize="12"/>
+	<style name="title1" fontName="Times New Roman" fontSize="12"/>
+	<queryString>
+		<![CDATA[select * from VanPhong vp,KhuVuc kv where vp.makv=kv.makv order by tenkv,tenvp]]>
+	</queryString>
+	<field name="TENVP" class="java.lang.String"/>
+	<field name="DIACHI" class="java.lang.String"/>
+	<field name="DIENTHOAI" class="java.lang.String"/>
+	<field name="TENKV" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{TENKV}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="e2b51bcc-00c1-4117-a343-f3be440abdfd"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TENKV}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="480" y="-13" width="84" height="20" uuid="8bb23cc6-294c-4c79-ac0d-6d94519fed88"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="title1" x="95" y="33" width="335" height="15" uuid="319e73fe-8bfe-4094-8331-10b2227751a4"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ: 486 - 486A Lê Văn Lương, P. Tân Phong, Q 7, TP Hồ Chí Minh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="40" y="72" width="430" height="28" uuid="3f80db0a-1b33-40fc-add2-83634852fa9b"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Danh sách khu vực]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="96" y="-3" width="343" height="33" uuid="a25edea8-79fd-4fd3-84cb-5055f45af2b1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Công ty vận tải Phương Trang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="95" y="48" width="221" height="15" uuid="eef1d4b2-b243-40ac-9421-4f6bc2564df6"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Điện thoại: 0838 386 852- Fax: 0838 386 853]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="title1" x="445" y="-13" width="50" height="20" uuid="e2919e4c-0605-46fc-ad71-a8538e063850"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Ngày in:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="bfca96ec-f2c3-41f3-a01a-170c8919c4a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="10" width="160" height="24" uuid="d5e780c5-6d67-4476-9d51-bd67dfd8d798"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Tên văn phòng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="160" y="10" width="230" height="24" uuid="544e73be-2f8f-419f-9c78-7be45d9f963a"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="390" y="10" width="165" height="24" uuid="1b69376f-a091-4ff3-85a5-d3d655ecd138"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Điện thoại]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="c821b450-2096-4f2c-9334-4eb985920b8a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="160" height="15" uuid="5c44dd45-39d6-4952-b2b0-b6dc39ef4d01"/>
+				<textFieldExpression><![CDATA[$F{TENVP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="160" y="0" width="230" height="15" uuid="6beafad3-314b-40eb-9e56-9b07bb3680c4"/>
+				<textFieldExpression><![CDATA[$F{DIACHI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="390" y="0" width="165" height="15" uuid="185c890b-efdc-43c5-bf33-038efde1c29d"/>
+				<textFieldExpression><![CDATA[$F{DIENTHOAI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="05c01f56-7d8f-4e4c-a5d5-060dfbdbfd70"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="2bf9feee-a9e5-4e15-832f-d95ebb7f025e"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ec33f3ae-0dbb-45b4-9057-7437a2428575"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="db46c574-fb87-4c8e-a9f6-aacb6bf324b5"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

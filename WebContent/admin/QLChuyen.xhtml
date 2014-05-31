@@ -26,7 +26,7 @@
  <body>
      <div class="menuTrai">
      <h:form > 
-	    <p:tieredMenu style="width:200px">  
+	     <p:tieredMenu style="width:200px">  
 	     <p:menuitem value="Futabus Travel" style="font-weight:bold" icon="ui-icon-home"/>
 	        <p:submenu label="Quản lí tuyến-chuyến xe" icon="ui-icon-calendar">  
 	            <p:menuitem value="Quản lí tuyến xe" outcome="QLTuyen"/>  
@@ -37,8 +37,11 @@
 	        <p:menuitem value="Đăng tin" outcome="QLTinTuc_NVDH" icon="ui-icon-print"/>  
 	        <p:menuitem value="Báo cáo thống kê" outcome="hienThiReport_NVDH" icon="ui-icon-document"/>  
 	        <p:separator/>   
+	        <p:menuitem value="Quản lí khu vực" outcome="QLKhuVuc" icon="ui-icon-flag"/>  
+	        <p:menuitem value="Quản lí văn phòng" outcome="QLVanPhong" icon="ui-icon-mail-closed"/>  
+	        <p:separator/>   
 	        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NVDH" icon="ui-icon-info"/> 
-	    </p:tieredMenu>  
+	    </p:tieredMenu>    
      </h:form> 
      </div>
      <div class="noiDung">

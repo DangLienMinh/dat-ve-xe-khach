@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+'-//Hibernate/Hibernate Mapping DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+
+<hibernate-mapping>
+   <class name="model.VanPhong" table="VanPhong"  dynamic-update="true">
+      <id name="MaVP" column="MaVP">
+      <generator class="increment"></generator>
+      </id>
+      <property name="TenVP" column="TenVP"/>
+      <property name="DiaChi" column="DiaChi"/>
+      <property name="DienThoai" column="DienThoai"/>
+      <many-to-one name="MaKV" column="MaKV" 
+       class="model.KhuVuc" not-null="true"/>
+   </class>
+
+   <class name="model.KhuVuc" table="KhuVuc"  dynamic-update="true">
+      <id name="MaKV" column="MaKV">
+      <generator class="increment"/>
+      </id>
+      <property name="TenKV" column="TenKV"/>
+   </class>
+</hibernate-mapping>
