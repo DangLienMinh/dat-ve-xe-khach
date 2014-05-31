@@ -14,8 +14,8 @@
 	<parameter name="Thang" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select count(MaChuyen) as sove,MaChuyen,sum(TongTien) as doanhThu  
-    from HoaDon where to_char(NgayGD,'yyyy')=$P{Nam} and to_char(NgayGD,'mm')=$P{Thang}
-    group by (to_char(NgayGD,'mm')),MaChuyen]]>
+from HoaDon where to_char(NgayNhanVe,'yyyy')=$P{Nam} and to_char(NgayNhanVe,'mm')=$P{Thang}  
+group by (to_char(NgayNhanVe,'mm')),MaChuyen]]>
 	</queryString>
 	<field name="SOVE" class="java.math.BigDecimal"/>
 	<field name="MACHUYEN" class="java.lang.String"/>

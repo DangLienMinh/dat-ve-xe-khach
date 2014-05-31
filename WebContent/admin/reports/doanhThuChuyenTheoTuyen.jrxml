@@ -16,7 +16,7 @@
 		<parameter name="Tuyen" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[select sum(tongtien) as tongtien,hoadon.machuyen,chuyen.matuyen,tentuyen,to_char(giodi,'HH24:Mi') as giodi,to_char(gioden,'HH24:Mi') as gioden from hoadon,chuyen,tuyen 
-where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and chuyen.matuyen=$P{Tuyen} and chuyen.matuyen=tuyen.matuyen group by hoadon.machuyen,chuyen.matuyen,tentuyen,giodi,gioden]]>
+where hoadon.machuyen=chuyen.machuyen and  to_char(ngaynhanve,'yyyy')=$P{Nam} and chuyen.matuyen=$P{Tuyen} and chuyen.matuyen=tuyen.matuyen group by hoadon.machuyen,chuyen.matuyen,tentuyen,giodi,gioden]]>
 		</queryString>
 		<field name="TONGTIEN" class="java.math.BigDecimal"/>
 		<field name="TENTUYEN" class="java.lang.String"/>
@@ -26,7 +26,7 @@ where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and ch
 	<parameter name="Tuyen" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select sum(tongtien) as tongtien,hoadon.machuyen,chuyen.matuyen,tentuyen,to_char(giodi,'HH24:Mi') as giodi,to_char(gioden,'HH24:Mi') as gioden from hoadon,chuyen,tuyen 
-where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} and chuyen.matuyen=$P{Tuyen} and chuyen.matuyen=tuyen.matuyen group by hoadon.machuyen,chuyen.matuyen,tentuyen,giodi,gioden]]>
+where hoadon.machuyen=chuyen.machuyen and  to_char(ngaynhanve,'yyyy')=$P{Nam} and chuyen.matuyen=$P{Tuyen} and chuyen.matuyen=tuyen.matuyen group by hoadon.machuyen,chuyen.matuyen,tentuyen,giodi,gioden]]>
 	</queryString>
 	<field name="TONGTIEN" class="java.math.BigDecimal"/>
 	<field name="MACHUYEN" class="java.lang.String"/>
