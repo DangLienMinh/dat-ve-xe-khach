@@ -14,7 +14,7 @@
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 		<parameter name="Nam" class="java.lang.String"/>
 		<queryString>
-			<![CDATA[with T as(select sum(tongtien) as tongtien,hoadon.machuyen,matuyen from hoadon,chuyen where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam} group by hoadon.machuyen,matuyen)
+			<![CDATA[with T as(select sum(tongtien) as tongtien,hoadon.machuyen,matuyen from hoadon,chuyen where (hoadon.machuyen=chuyen.machuyen and  to_char(ngaynhanve,'yyyy')=$P{Nam}) group by hoadon.machuyen,matuyen)
 select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.matuyen   group by T.matuyen,TENTUYEN order by T.matuyen]]>
 		</queryString>
 		<field name="SUM(TONGTIEN)" class="java.math.BigDecimal"/>
@@ -23,12 +23,15 @@ select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.mat
 	</subDataset>
 	<parameter name="Nam" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[with T as(select sum(tongtien) as tongtien,hoadon.machuyen,matuyen from hoadon,chuyen where hoadon.machuyen=chuyen.machuyen and  to_char(ngaygd,'yyyy')=$P{Nam}  group by hoadon.machuyen,matuyen)
+		<![CDATA[with T as(select sum(tongtien) as tongtien,hoadon.machuyen,matuyen from hoadon,chuyen where (hoadon.machuyen=chuyen.machuyen and  to_char(ngaynhanve,'yyyy')=$P{Nam}) group by hoadon.machuyen,matuyen)
 select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.matuyen   group by T.matuyen,TENTUYEN order by T.matuyen]]>
 	</queryString>
 	<field name="SUM(TONGTIEN)" class="java.math.BigDecimal"/>
 	<field name="MATUYEN" class="java.lang.String"/>
 	<field name="TENTUYEN" class="java.lang.String"/>
+	<variable name="total" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(TONGTIEN)}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -189,6 +192,22 @@ select sum(tongtien),T.matuyen,TENTUYEN  from tuyen,T  where T.matuyen=tuyen.mat
 					<itemLabel/>
 				</piePlot>
 			</pieChart>
+			<staticText>
+				<reportElement style="title1" x="353" y="0" width="100" height="20" uuid="1e523dbd-4282-4900-a499-adfc2e15511d"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng doanh thu]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="453" y="0" width="100" height="20" uuid="653a524c-91f9-439a-bad9-07bdea46c071"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}+" VND"]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

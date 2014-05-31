@@ -15,7 +15,7 @@
 		<parameter name="Nam" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[select sum(tempSoChuyen) as SoChuyen ,Thang,sum(TongTienTemp) as TongTien  from 
-  (select count(distinct MaChuyen) as tempSoChuyen,to_char(NgayGD,'mm') as Thang,sum(TongTien) as TongTienTemp  from HoaDon where to_char(NgayGD,'yyyy')='2014' group by (NgayGD)) 
+  (select count(distinct MaChuyen) as tempSoChuyen,to_char(ngaynhanve,'mm') as Thang,sum(TongTien) as TongTienTemp  from HoaDon where to_char(ngaynhanve,'yyyy')=$P{Nam} group by (ngaynhanve)) 
   group by Thang]]>
 		</queryString>
 		<field name="SOCHUYEN" class="java.math.BigDecimal"/>
@@ -25,7 +25,7 @@
 	<parameter name="Nam" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select sum(tempSoChuyen) as SoChuyen ,Thang,sum(TongTienTemp) as TongTien  from 
-  (select count(distinct MaChuyen) as tempSoChuyen,to_char(NgayGD,'mm') as Thang,sum(TongTien) as TongTienTemp  from HoaDon where to_char(NgayGD,'yyyy')=$P{Nam} group by (NgayGD)) 
+  (select count(distinct MaChuyen) as tempSoChuyen,to_char(ngaynhanve,'mm') as Thang,sum(TongTien) as TongTienTemp  from HoaDon where to_char(ngaynhanve,'yyyy')=$P{Nam} group by (ngaynhanve)) 
   group by Thang]]>
 	</queryString>
 	<field name="SOCHUYEN" class="java.math.BigDecimal"/>
