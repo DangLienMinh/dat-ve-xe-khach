@@ -255,6 +255,33 @@ public class ReportManagedBean {
 		return "";
 	}
 	
+	public String reportVanPhong() throws ClassNotFoundException, SQLException, IOException,JRException
+	{
+		Connection connection;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse)
+		context.getExternalContext().getResponse();
+		InputStream reportStream = context.getExternalContext().getResourceAsStream("/admin/reports/vanPhong.jasper");
+		response.setContentType("application/pdf"); 
+		
+		ServletOutputStream servletOutputStream = 
+				response.getOutputStream();
+		connection=connectDatabase();
+		try {
+			
+			JasperRunManager.runReportToPdfStream(reportStream,
+			servletOutputStream, new HashMap(), connection);
+			FacesContext.getCurrentInstance().responseComplete();
+			connection.close();
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		return "";
+	}
+	
 	public String reportTaiXe() throws ClassNotFoundException, SQLException, IOException,JRException
 	{
 		Connection connection;
