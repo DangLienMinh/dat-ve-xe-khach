@@ -23,10 +23,9 @@
 		<field name="TONGTIEN" class="java.math.BigDecimal"/>
 	</subDataset>
 	<parameter name="Nam" class="java.lang.String"/>
-	<queryString>
-		<![CDATA[select sum(tempSoChuyen) as SoChuyen ,Thang,sum(TongTienTemp) as TongTien  from 
-  (select count(distinct MaChuyen) as tempSoChuyen,to_char(ngaynhanve,'mm') as Thang,sum(TongTien) as TongTienTemp  from HoaDon where to_char(ngaynhanve,'yyyy')=$P{Nam} group by (ngaynhanve)) 
-  group by Thang order by Thang]]>
+	<parameter name="ORACLE_REF_CURSOR" class="java.sql.ResultSet" isForPrompting="false"/>
+	<queryString language="plsql">
+		<![CDATA[{call REPORT_DOANHTHU($P{Nam},$P{ORACLE_REF_CURSOR})}]]>
 	</queryString>
 	<field name="SOCHUYEN" class="java.math.BigDecimal"/>
 	<field name="THANG" class="java.lang.String"/>
