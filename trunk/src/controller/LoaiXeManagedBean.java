@@ -44,6 +44,10 @@ public class LoaiXeManagedBean{
 		}
 		return selectOneItemLX;
 	}
+	
+	public String layTenLoaiXe(String bienSo){
+		return loaiXeDao.layTenLoaiXe(bienSo);
+	}
 
 	
 

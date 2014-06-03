@@ -3,6 +3,7 @@ package dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import hibernateUtil.HibernateUtil;
@@ -107,5 +108,26 @@ public class HoaDonDao {
  		else{
  			return (new HoaDon());
  		}
+ 	}
+ 	
+ 	public List<HoaDon> layHDTheoTTKH(Date ngayGD,String cmnd){
+ 		Session session = HibernateUtil.getSessionFactory().openSession();
+ 		String hql="";
+ 		List result=null;
+ 		if(cmnd!=""){
+ 			 hql = "from HoaDon  where NgayGD = :ngaygd and CMND= :cmnd";
+ 			 result = session.createQuery(hql)
+ 					.setDate("ngaygd", ngayGD).setString("cmnd", cmnd)
+ 					 .list();
+ 		}
+ 		else{
+ 			 hql = "from HoaDon  where NgayGD = :ngaygd";
+ 			 result = session.createQuery(hql)
+ 					.setDate("ngaygd", ngayGD)
+ 					 .list();
+ 		}
+
+		//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+	    return result;
  	}
 }

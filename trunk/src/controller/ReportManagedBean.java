@@ -14,7 +14,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dao.NhanVienDao;
+import model.NhanVien;
+import model.PhanQuyen;
 import model.Tuyen;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
@@ -439,6 +443,29 @@ public class ReportManagedBean {
 		default:
 			return "";
 		}
+	}
+	
+	//reset cac o input
+	public String reset(){
+		//tabIndex=0;
+		int kt= kiemTraquyenDN();
+		if(kt==1){
+			  return "hienThiReport_Admin?faces-redirect=true";
+		  }
+		else{
+			  return "hienThiReport_NVDH?faces-redirect=true";
+		  } 
+	}
+	
+	//kiem tra quyen dn de forward ve dung trang cho nguoi dung
+	public int kiemTraquyenDN(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		NhanVien x= new NhanVien();
+		x.setMaNV(session.getAttribute("manv").toString());
+		NhanVienDao nvDao=new NhanVienDao();
+		NhanVien nv=nvDao.layNhanVien(x);
+		PhanQuyen pq=nv.getMaPQ();
+		return pq.getMaPQ();
 	}
 
 	public Tuyen getTuyen() {

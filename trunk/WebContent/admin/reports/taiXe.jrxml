@@ -80,35 +80,65 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="5" y="10" width="110" height="24" uuid="c5563df3-9d2c-4265-b6f2-c9bfdf77d38f"/>
+				<reportElement style="Column header" x="0" y="10" width="120" height="24" uuid="c5563df3-9d2c-4265-b6f2-c9bfdf77d38f"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement>
 					<font size="16"/>
 				</textElement>
 				<text><![CDATA[Họ tên]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Transparent" x="115" y="11" width="60" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="9b823aaf-c925-4a5c-ba25-650439e81a36"/>
+				<reportElement style="Column header" mode="Transparent" x="120" y="10" width="70" height="25" forecolor="#666666" backcolor="#FFFFFF" uuid="9b823aaf-c925-4a5c-ba25-650439e81a36"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[CMND]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Transparent" x="175" y="10" width="70" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="737be367-dc7f-4482-8df7-dbab1669d392"/>
+				<reportElement style="Column header" mode="Transparent" x="190" y="10" width="90" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="737be367-dc7f-4482-8df7-dbab1669d392"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[Ngày sinh]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Transparent" x="245" y="10" width="180" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="3b019926-f10b-4227-98d2-646e02d578ec"/>
+				<reportElement style="Column header" mode="Transparent" x="280" y="10" width="200" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="3b019926-f10b-4227-98d2-646e02d578ec"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[Địa chỉ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" mode="Transparent" x="425" y="10" width="120" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="abf36619-9c4e-4556-9f2d-1f8f25f254a5"/>
+				<reportElement style="Column header" mode="Transparent" x="480" y="10" width="77" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="abf36619-9c4e-4556-9f2d-1f8f25f254a5"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 				</textElement>
@@ -117,7 +147,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="5" y="15" width="555" height="1" uuid="9d4a58d5-b935-4996-955a-3a4d5a3d95fd"/>
 				<graphicElement>
@@ -125,39 +155,35 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement style="Detail" x="5" y="0" width="110" height="15" uuid="0c1159c4-ce3f-4afe-ade5-41268c0696b7"/>
+				<reportElement style="Detail" x="0" y="0" width="120" height="15" uuid="0c1159c4-ce3f-4afe-ade5-41268c0696b7"/>
 				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="115" y="1" width="60" height="15" uuid="041e601b-1e79-4ac9-be6a-e9f36a4886b4"/>
+				<reportElement style="Detail" x="120" y="1" width="70" height="15" uuid="041e601b-1e79-4ac9-be6a-e9f36a4886b4"/>
 				<textFieldExpression><![CDATA[$F{CMND}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="175" y="0" width="70" height="15" uuid="2981e00a-33a1-40f8-94c8-0954c6c942ce"/>
+				<reportElement style="Detail" x="190" y="0" width="90" height="15" uuid="2981e00a-33a1-40f8-94c8-0954c6c942ce"/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYSINH})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="245" y="0" width="180" height="15" uuid="2c623305-dbdb-436a-bb10-765ebe0a84c3"/>
+				<reportElement style="Detail" x="280" y="0" width="200" height="15" uuid="2c623305-dbdb-436a-bb10-765ebe0a84c3"/>
 				<textFieldExpression><![CDATA[$F{DIACHI}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="425" y="0" width="120" height="15" uuid="c32c5e8d-f4ea-4272-a1fa-05c02be278d0"/>
+				<reportElement style="Detail" x="480" y="0" width="77" height="15" uuid="c32c5e8d-f4ea-4272-a1fa-05c02be278d0"/>
 				<textFieldExpression><![CDATA[$F{DIENTHOAI}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="47" splitType="Stretch">
+		<band height="59" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f86abe01-5065-40bf-b3c7-3a07e45aa5e2"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement style="title1" x="414" y="3" width="113" height="20" uuid="2bb7caf8-016d-4a93-8330-a60007495223"/>
-				<textFieldExpression><![CDATA["Tổng cộng có "+$V{REPORT_COUNT}+" tài xế"]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
@@ -167,7 +193,7 @@
 				<textElement textAlignment="Right">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Trang "+$V{PAGE_NUMBER}+" của"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ec0e17de-68d1-4a12-b69b-7deceb21ea23"/>
@@ -181,11 +207,19 @@
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement style="title1" x="414" y="3" width="139" height="20" uuid="2bb7caf8-016d-4a93-8330-a60007495223"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tổng cộng có "+$V{REPORT_COUNT}+" tài xế"]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

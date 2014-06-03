@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version last-->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="veChinhThuc" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="31460d09-b548-4c44-b851-6e6b34256469">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="veChinhThuc" pageWidth="842" pageHeight="400" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="31460d09-b548-4c44-b851-6e6b34256469">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<style name="Title" fontName="Times New Roman" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18"/>
@@ -31,7 +31,7 @@
 				<text><![CDATA[(Giao cho khách hàng)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="title1" x="72" y="24" width="289" height="32" forecolor="#09690D" uuid="ee832a41-c9c6-4f4a-850f-ddd69cf52495"/>
+				<reportElement style="title1" x="76" y="24" width="283" height="32" forecolor="#09690D" uuid="ee832a41-c9c6-4f4a-850f-ddd69cf52495"/>
 				<textElement textAlignment="Center">
 					<font size="11"/>
 				</textElement>
@@ -124,7 +124,7 @@
 					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Xuất bến: "+$F{GIOKHOIHANH}+" Ngày khởi hành "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYKHOIHANH})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Xuất bến: "+$F{GIOKHOIHANH}+"                     Ngày khởi hành: "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYKHOIHANH})]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="title1" x="40" y="304" width="120" height="20" forecolor="#09690D" uuid="d531ed84-40bb-4152-a5ef-511a08ab56c0"/>
@@ -168,7 +168,7 @@
 				<imageExpression><![CDATA["E:/eclipseProject/datVeXe/WebContent/resources/image/LogoFuta.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="title1" x="477" y="23" width="289" height="32" forecolor="#09690D" uuid="2f11fa77-84ba-4eba-b386-ed208aa41192"/>
+				<reportElement style="title1" x="479" y="23" width="283" height="32" forecolor="#09690D" uuid="2f11fa77-84ba-4eba-b386-ed208aa41192"/>
 				<textElement textAlignment="Center">
 					<font size="11"/>
 				</textElement>
@@ -211,7 +211,7 @@
 					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Xuất bến: "+$F{GIOKHOIHANH}+" Ngày khởi hành "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYKHOIHANH})]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Xuất bến: "+$F{GIOKHOIHANH}+"                    Ngày khởi hành: "+new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{NGAYKHOIHANH})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="title1" mode="Transparent" x="435" y="209" width="333" height="20" forecolor="#09690D" backcolor="#FFFFFF" uuid="0e34edf5-74fb-4c26-8609-a4288006716b"/>

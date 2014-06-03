@@ -5,7 +5,6 @@
      >
 
  <h:head>
- <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
 <style>
 .ui-widget, .ui-widget .ui-widget {
      font-size: 90% !important;
@@ -17,19 +16,19 @@
      <h:form>
      <p:panel header="Thông tin khách hàng">
      <h:panelGrid columns="2">
-     		<h:outputLabel value='Ma dat ve ' />
+     		<h:outputLabel value='Mã đặt vé ' />
 	      <h:outputLabel value="#{hoaDonMBean.hoaDon.maHD}"/> 
-     	  <h:outputLabel value='Ho ' />
+     	  <h:outputLabel value='Họ ' />
 	      <h:outputLabel value="#{hoaDonMBean.hoaDon.ho}"/> 
-	      <h:outputLabel value='Ten' />
+	      <h:outputLabel value='Tên' />
 	      <h:outputLabel  value="#{hoaDonMBean.hoaDon.ten}"/> 
-	      <h:outputLabel value='So dien thoai' />
+	      <h:outputLabel value='Số điện thoại' />
 	      <h:outputLabel  value="#{hoaDonMBean.hoaDon.dienThoai}"/>
 	      <h:outputLabel value='Email' />
 	      <h:outputLabel  value="#{hoaDonMBean.hoaDon.email}"/>
 	      <h:outputLabel value='CMND' />
 	      <h:outputLabel  value="#{hoaDonMBean.hoaDon.CMND}"/>
-	      <h:outputLabel value='Dia chi' />
+	      <h:outputLabel value='Địa chỉ' />
 	     	<h:outputLabel  value="#{hoaDonMBean.hoaDon.diaChi}"/>
      </h:panelGrid>
 	</p:panel>      
@@ -38,11 +37,12 @@
 	
 			<ol class="o_list style_none">
 				<li><span style="font-weight:bold;font-size:20px;">Bạn đã đặt vé thành công</span></li>
-				<li>Cảm ơn quý khách đã sử dụng dịch vụ đặt vé trực tuyến của Công ty Vận tải Hoàng Long.</li>
+				<li>Cảm ơn quý khách đã sử dụng dịch vụ đặt vé trực tuyến của Công ty Vận tải Phương Trang.</li>
 				<li>LƯU Ý QUAN TRỌNG: Trước 24h xe chạy đối với ngày bình thường và ngay sau khi đặt vé đối với những ngày lễ tết, bạn phải mang theo mã đặt vé tới văn phòng đại diện bất kỳ của chúng tôi để thanh toán và nhận vé chính thức. Nếu không, vé đặt này sẽ tự động bị hủy bởi hệ thống và không có giá trị sử dụng. Sau khi thanh toán, bạn vẫn có thể trả lại vé và nhận lại 90% giá trị vé, thời gian trả vé trước 24h xe xuất bến đối với ngày thường và không được hủy vé đối với các ngày lễ tết. Các thông tin khác được ghi rõ trên vé, chúng tôi khuyên bạn nên đọc kỹ trước khi sử dụng dịch vụ của chúng tôi.</li>
-				<li>ĐỊA CHỈ CÁC VĂN PHÒNG CỦA HOÀNG LONG TRÊN TOÀN QUỐC:</li>
+				<li>ĐỊA CHỈ CÁC VĂN PHÒNG CỦA PHƯƠNG TRANG TRÊN TOÀN QUỐC:</li>
 				</ol>
 	</p:panel>
+	
 </h:form>
 </body>
 </html>

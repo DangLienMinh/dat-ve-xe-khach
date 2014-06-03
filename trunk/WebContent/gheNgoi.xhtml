@@ -5,7 +5,6 @@
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
      >
  <h:head>
- <title>Quản lí danh sách chuyến</title>
  <h:outputStylesheet library="css" name="main.css" />
  <h:outputScript library="js" name="tabview.js"/>
 <style>
@@ -20,8 +19,9 @@
  </h:head>
      <body>
      <h:form>
-     	<h:panelGrid columns="2">
-     	 <p:panel style="text-align:center;">Sơ đồ ghế ngồi xe 45 chỗ</p:panel>
+     	<h:panelGrid columns="2" style="margin:0px auto!important;">
+     	
+     	 <p:panel style="text-align:center;" header="Sơ đồ ghế ngồi xe 45 chỗ">Vui lòng chọn vị trí bạn muốn</p:panel>
      	  <p:outputPanel>
                     <p:commandButton style="visibility:hidden!important;"></p:commandButton>
           </p:outputPanel>
@@ -399,7 +399,6 @@
                 </p:outputPanel>
                 
             </h:panelGrid>
-          
         </h:panelGroup>
      	
      	</h:panelGrid>

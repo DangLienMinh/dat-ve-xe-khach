@@ -45,7 +45,6 @@
 	         <f:facet name="header">
 	      	 Danh sách tin tức
 	        <p:outputPanel style="text-align: right !important;">
-	        	
                 <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
                 <p:inputText id="globalFilter" onkeyup="PF('tintuc').filter()" style="width:150px" placeholder="Nhập thông tin"/>
             </p:outputPanel>
@@ -55,7 +54,6 @@
 	            <h:outputText  value="#{ds.ngayDang}">
 	            	 <f:convertDateTime pattern="dd-MM-yyyy" />
 	            </h:outputText>
-	            
 	        </p:column>  
 	        
 	        <p:column headerText="Tiêu đề" style="font-size:14px!important;" filterBy="tieuDe">  
@@ -76,7 +74,6 @@
 		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
 		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
 	    	</p:confirmDialog>
-	    	
 	  		
 	  		<p:commandButton icon="ui-icon-gear" action='#{tinTucMBean.capNhat(ds,ds.maLTT)}' onclick="changeTab(1);" update=":form:tabView:grid1"></p:commandButton>
 	  		</p:column>
@@ -84,9 +81,10 @@
 	        <f:facet name="footer">  
 	           Tổng cộng có #{fn:length(tinTucMBean.danhSach)} tin tức trong hệ thống.  
 	        </f:facet>  
-	  
     	 </p:dataTable>  
+    	 
 		 <p:separator/>
+		 
 		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
 		  
 	        <p:tab id="tba1" title="Thêm mới tin tức">
@@ -109,9 +107,9 @@
 				<p:inputTextarea rows="3" cols="80" counter="counter" maxlength="500"     
 		    	counterTemplate="Còn lại {0} từ ." autoResize="false" value="#{tinTucMBean.tinTuc.tomTat}"/>
 				<h:outputText id="counter" />
-				
-				 <p:commandButton icon="ui-icon-plusthick" value="Lưu tin tức" action="#{tinTucMBean.themTinTuc}" ajax="false"/>
 			  </p:panelGrid>    
+			  <p:commandButton icon="ui-icon-plusthick" value="Lưu tin tức" action="#{tinTucMBean.themTinTuc}" ajax="false"/>
+			  <p:commandButton icon="ui-icon-arrowrefresh-1-s" value='Huỷ' action='#{tinTucMBean.reset}' immediate="true"/>
 	        </p:tab>  
 	  
 	         <p:tab id="tba2" title="Cập nhật tin tức" >  

@@ -80,6 +80,20 @@ public class HoaDonManagedBean {
 	
 	//luu dieu kien lay ve
 	private int dieuKienLayVe=-10;
+	
+	//kiem tra xe ghe ngoi hay giuong nam
+	private int dieuKienGhe=-10;
+	
+	//cmnd
+	private String CMND;
+	//dien thoai
+	//private String DienThoai;
+	//Thong tin khach hang dat ve
+	private Date NgayDat;
+	//private String Ten;
+	//Danh sach hoa don
+	private List<HoaDon> veKH;
+
 
 	//max date= thang hien tai+1
 	public Date getMaxDate() {
@@ -94,6 +108,8 @@ public class HoaDonManagedBean {
 		cal.add(Calendar.DATE, 1);
 	    return cal.getTime();
 	}
+	
+	
 	
 	public void hienThiChuyen(){
 		danhSach=chuyenDao.dsChonChuyen(tuyen);
@@ -137,7 +153,9 @@ public class HoaDonManagedBean {
 				ttNgoi[maghe-1]="true";
 			}
 			gheMB.setTtNgoi(ttNgoi);
-			return "gheNgoi";
+			dieuKienGhe=1;
+			return "datVe?faces-redirect=true";
+			//return "gheNgoi";
 		}
 		
 		//neu la xe giuong nam
@@ -150,7 +168,9 @@ public class HoaDonManagedBean {
 				ttNam[maghe-1]="true";
 			}
 			gheMB.setTtNam(ttNam);
-			return "giuongNam";
+			dieuKienGhe=2;
+			return "datVe?faces-redirect=true";
+			//return "giuongNam";
 		}	
 	}
 	
@@ -284,6 +304,23 @@ public class HoaDonManagedBean {
 		}
 	}
 	
+	//lay ve theo thong tin khach hang
+		public String layVeTheoTTKH(){
+			veKH=hoaDonDao.layHDTheoTTKH(NgayDat,CMND);
+			return "layVe?faces-redirect=true";
+		}
+	
+	public String reset(){
+		dieuKienGhe=10;
+		return "datVe?faces-redirect=true";
+	}
+	
+	public String resetLayVe(){
+		hoaDon.setMaHD("");
+		dieuKienLayVe=-10;
+		return "layVe?faces-redirect=true";
+	}
+	
 	public String inVe() throws ClassNotFoundException, SQLException, IOException,JRException{
 		return reportMB.inVe(hoaDon.getMaHD());
 	}
@@ -341,5 +378,53 @@ public class HoaDonManagedBean {
 	}
 	public void setReportMB(ReportManagedBean reportMB) {
 		this.reportMB = reportMB;
-	}	
+	}
+
+	public int getDieuKienGhe() {
+		return dieuKienGhe;
+	}
+
+	public void setDieuKienGhe(int dieuKienGhe) {
+		this.dieuKienGhe = dieuKienGhe;
+	}
+
+	public String getCMND() {
+		return CMND;
+	}
+
+	public void setCMND(String cMND) {
+		CMND = cMND;
+	}
+//
+//	public String getDienThoai() {
+//		return DienThoai;
+//	}
+//
+//	public void setDienThoai(String dienThoai) {
+//		DienThoai = dienThoai;
+//	}
+
+	public Date getNgayDat() {
+		return NgayDat;
+	}
+
+	public void setNgayDat(Date ngayDat) {
+		NgayDat = ngayDat;
+	}
+
+	public List<HoaDon> getVeKH() {
+		return veKH;
+	}
+
+	public void setVeKH(List<HoaDon> veKH) {
+		this.veKH = veKH;
+	}
+
+//	public String getTen() {
+//		return Ten;
+//	}
+//
+//	public void setTen(String ten) {
+//		Ten = ten;
+//	}	
 }

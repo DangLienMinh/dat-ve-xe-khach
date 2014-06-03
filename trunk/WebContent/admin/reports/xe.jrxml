@@ -21,7 +21,7 @@
 		<groupHeader>
 			<band height="40">
 				<textField>
-					<reportElement style="SubTitle" x="0" y="13" width="553" height="24" forecolor="#000000" uuid="6f843fe3-e58f-4f18-8bf5-f0ea245f68cb"/>
+					<reportElement style="SubTitle" x="3" y="13" width="553" height="24" forecolor="#000000" uuid="6f843fe3-e58f-4f18-8bf5-f0ea245f68cb"/>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
@@ -30,12 +30,17 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="6"/>
+			<band height="34">
+				<textField>
+					<reportElement style="title1" x="430" y="10" width="123" height="20" uuid="b6eb1661-8d46-44a5-a9b3-b3e673ceb5d1"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Có "+$V{Group1_COUNT}+" xe"]]></textFieldExpression>
+				</textField>
+			</band>
 		</groupFooter>
 	</group>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<title>
 		<band height="101" splitType="Stretch">
 			<staticText>
@@ -56,7 +61,7 @@
 			<staticText>
 				<reportElement style="title1" x="40" y="63" width="430" height="29" uuid="14575916-6e7f-48bb-b3dc-8f841528488c"/>
 				<textElement textAlignment="Center">
-					<font size="18" isBold="true"/>
+					<font size="22" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Danh sách xe]]></text>
 			</staticText>
@@ -93,17 +98,23 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="277" height="15" uuid="418ebcff-1f13-4b5e-9717-cb7937d374f5"/>
+				<reportElement style="Column header" x="0" y="10" width="290" height="24" uuid="418ebcff-1f13-4b5e-9717-cb7937d374f5"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
 				<text><![CDATA[Biển số]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="277" y="19" width="277" height="15" uuid="7988a0e0-a93c-4deb-a677-0d4bf86b3a7e"/>
+				<reportElement style="Column header" mode="Transparent" x="290" y="10" width="268" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="7988a0e0-a93c-4deb-a677-0d4bf86b3a7e"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="18" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Số ghế]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f01971c0-0eab-46df-b742-7b285a9439bd"/>
 				<graphicElement>
@@ -111,24 +122,23 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement style="Detail" x="0" y="0" width="277" height="15" uuid="5c25e57c-e2c7-472d-9ebf-b52c5d188f17"/>
+				<reportElement style="Detail" x="3" y="0" width="287" height="23" uuid="5c25e57c-e2c7-472d-9ebf-b52c5d188f17"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{BIENSO}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="277" y="0" width="277" height="15" uuid="6064a6d1-1baf-4a0e-a573-307ed8cf7435"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="290" y="0" width="268" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="6064a6d1-1baf-4a0e-a573-307ed8cf7435"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{SOGHE}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="216c0aba-bf09-4717-b6ab-2900dd6e8d5a"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
@@ -137,7 +147,7 @@
 				<textElement textAlignment="Right">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Trang "+$V{PAGE_NUMBER}+" của"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="e514bbf0-af51-4290-8bfc-ff1a11ae0d79"/>
@@ -151,11 +161,21 @@
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="41" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement style="title1" x="402" y="21" width="153" height="20" uuid="5a4d63bb-ae6c-49ac-bb5b-e6c826f730f1"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tổng cộng có "+$V{REPORT_COUNT}+" xe"]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

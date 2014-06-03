@@ -9,6 +9,7 @@ import model.KhuVuc;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 public class KhuVucDao {
 	//tra ve thong tin doi tuong khuVuc
@@ -78,7 +79,7 @@ public class KhuVucDao {
 		 		List<KhuVuc> x;
 		 		Session session = HibernateUtil.getSessionFactory().openSession();
 		 		session.beginTransaction();
-		 		Criteria cri=session.createCriteria(KhuVuc.class);
+		 		Criteria cri=session.createCriteria(KhuVuc.class).addOrder(Order.asc("TenKV"));
 		 		x=cri.list();
 		 		return x;
 		 	}
