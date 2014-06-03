@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p='http://primefaces.org/ui'
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<body>
+	<ui:composition>
+		<div id="shell" style="background: url('#{resource['image/Live-Background.jpg']}') 50% 0 no-repeat;">
+			<section id="main">  <!-- Page starts here -->    <!--   -->    
+    			<ul class="breadcrumb">
+      				<li><a href="/datVeXe/index.xhtml">Trang chủ</a></li>
+      				<li><a href="/datVeXe/news.xhtml">Tin tức</a></li>
+      				<li><a href="#"><p:outputLabel value="#{dangTinTucMBean.selectedTinTuc.tieuDe}" /></a></li>
+      			</ul>
+    
+    			<section class="page-content">
+        			<section class="page-main">
+						<div class="sub-content-header">
+							<ul class="slideshow">
+									<h:graphicImage value="#{dangTinTucMBean.selectedTinTuc.hinhAnh}" width="125" height="145" styleClass="hinhAnh"></h:graphicImage>
+							</ul>
+						</div>
+		    			<div class="controls"> </div>
+            			<article>
+							<div id="noiDungTT">
+							<h:outputText value="#{dangTinTucMBean.selectedTinTuc.noiDung}" styleClass="noiDung" escape="false"/>
+        				</div>
+						</article>
+        			</section>
+        			<aside>
+            			<div class="areas-of-interest">
+               				<header>
+                  				<h2>Tin cùng chuyên mục</h2>
+               				</header>
+			   				<ul>
+			   	            	<li class="page_item page-item-15">
+			   	            		<p:dataList value="#{dangTinTucMBean.danhSachLienQuan}" var="tt" styleClass="datalist-noborder">
+					    				<p:commandLink action="#{dangTinTucMBean.hienThiTin(tt)}" style="font-weight:bold;font-size:15px!important;">
+					    					<h:outputText value="#{tt.tieuDe}" />
+					    				</p:commandLink>
+									</p:dataList>
+								</li>
+              			  	</ul>
+            			</div>     
+            			<a href="#" class="ad"><h:graphicImage library="image" name="stay-in-nona.png"/></a>
+        			</aside>
+    			</section>
+ 			</section>  <!-- Page ends here -->
+ 			<ui:insert name="footer" >
+     			<ui:include src="/templates/footer.xhtml" />
+   			</ui:insert>
+		</div>
+	</ui:composition>
+</body>
+</html>
