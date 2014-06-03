@@ -90,10 +90,11 @@
 	        <f:facet name="footer">  
 	           Tổng cộng có #{fn:length(vanPhongMBean.danhSach)} văn phòng.
 	        </f:facet>  
-	  
     	 </p:dataTable>  
     	 </h:form>
+    	 
 		 <p:separator/>
+		 
 		 <p:tabView id="tv" dynamic="true" widgetVar="tabPanelWidget">  
 	        <p:tab  title="Thêm mới văn phòng">
 	        <h:form id="tabview1">	 
@@ -103,9 +104,7 @@
 			       <p:inputText value='#{vanPhongMBean.vanPhong.tenVP}' required="true" label="Tên văn phòng" requiredMessage="Vui lòng nhập tên"/>
 			       
 			       <h:outputLabel value='Điện thoại' />
-			       <p:inputText value='#{vanPhongMBean.vanPhong.dienThoai}' required="true" label="Điện thoại" requiredMessage="Vui lòng nhập điện thoại">
-			       
-			       </p:inputText>
+			       <p:inputText value='#{vanPhongMBean.vanPhong.dienThoai}' required="true" label="Điện thoại" requiredMessage="Vui lòng nhập điện thoại"></p:inputText>
 			    
 			       <h:outputLabel value='Địa chỉ' />
 			       <p:inputText value='#{vanPhongMBean.vanPhong.diaChi}' required="true" label="Địa chỉ" requiredMessage="Vui lòng nhập địa chỉ"/>
@@ -119,7 +118,6 @@
 				   	<p:button icon="ui-icon-plus" outcome='QLKhuVuc'></p:button>
 			       </p:panelGrid>
 			       
-				  
 			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{vanPhongMBean.themVanPhong}' update=":tv:tabview1"/>
 				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{vanPhongMBean.reset}' immediate="true"/>
 				   </h:panelGrid>  

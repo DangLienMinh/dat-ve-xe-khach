@@ -25,7 +25,7 @@
     <session-timeout>30</session-timeout>
   </session-config>
   <welcome-file-list>
-    <welcome-file>faces/default.xhtml</welcome-file>
+    <welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
   
   <servlet>
@@ -62,6 +62,7 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>redmond</param-value>
 	</context-param>
+	
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>

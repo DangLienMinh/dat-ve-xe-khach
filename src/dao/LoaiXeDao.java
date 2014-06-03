@@ -6,7 +6,9 @@ import java.util.List;
 
 import model.LoaiXe;
 import model.PhanQuyen;
+import model.TinTuc;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -44,5 +46,14 @@ public class LoaiXeDao {
 	    .list();
  		LoaiXe x=(LoaiXe) result.get(0);
  		return x;
+ 	}
+ 	
+ 	public String layTenLoaiXe(String bienSo){
+ 		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query query = session.createSQLQuery(
+				"select tenloaixe from loaixe,xe where xe.maloaixe=loaixe.maloaixe and bienSo= :bienso")
+				.setParameter("bienso", bienSo);
+		List result=query.list();
+	    return (String) result.get(0);
  	}
 }

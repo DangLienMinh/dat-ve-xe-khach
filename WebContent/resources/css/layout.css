@@ -14,61 +14,7 @@
   top: 0;
 }
 
-/* line 16, sass/layout.sass */
-#spinner {
-  top: 230px;
-  left: 283px;
-  z-index: 100;
-  position: absolute;
-  width: 390px;
-  height: 260px;
-}
-/* line 23, sass/layout.sass */
-#spinner #spin {
-  background: url("#{resource['image/compass-bg.png']}") no-repeat;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  margin-left: 145px;
-  margin-bottom: 10px;
-}
-/* line 30, sass/layout.sass */
-#spinner #spin img {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-}
-/* line 34, sass/layout.sass */
-#spinner p {
-  font-family: times, "Times New Roman", Georgia, Serif;
-  margin-bottom: 20px;
-  font-style: italic;
-  line-height: 1.5em;
-  margin: 0 auto;
-  text-align: center;
-  width: 295px;
-  font-size: 1.8em;
-  margin-top: 15px;
-}
-/* line 41, sass/layout.sass */
-#spinner p:first-child {
-  margin-top: 100px;
-  margin-bottom: 15px;
-}
-/* line 44, sass/layout.sass */
-#spinner a {
-  font-family: times, "Times New Roman", Georgia, Serif;
-  font-size: 1.5em;
-  color: #e94d37;
-  width: 250px;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 15px;
-}
-/* line 51, sass/layout.sass */
-#spinner a:hover {
-  color: #666666;
-}
+
 
 /* line 54, sass/layout.sass */
 #shell {

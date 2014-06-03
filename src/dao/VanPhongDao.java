@@ -10,6 +10,7 @@ import model.VanPhong;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 public class VanPhongDao {
 
@@ -86,7 +87,7 @@ public class VanPhongDao {
 	 		List<VanPhong> x;
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 	 		session.beginTransaction();
-	 		Criteria cri=session.createCriteria(VanPhong.class);
+	 		Criteria cri=session.createCriteria(VanPhong.class).addOrder(Order.asc("TenVP"));
 	 		x=cri.list();
 	 		return x;
 	 	}

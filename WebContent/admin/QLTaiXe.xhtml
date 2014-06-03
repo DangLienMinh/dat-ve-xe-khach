@@ -4,7 +4,6 @@
       xmlns:p='http://primefaces.org/ui'
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
      >
-
  <h:head>
  <title>Quản lí thông tin tài xế</title>
  <h:outputStylesheet library="css" name="main.css" />
@@ -138,8 +137,8 @@
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar maxdate="#{taiXeMBean.today}" navigator="true" value="#{taiXeMBean.taiXe.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />
 
-			       <p:commandButton icon="ui-icon-plusthick" id='Insert' value='Thêm' action='#{taiXeMBean.themTaiXe}'  update=":tv:tabview1"/>
-				   <p:commandButton icon="ui-icon-arrowrefresh-1-s" id='Reset' value='Đặt lại' action='#{taiXeMBean.reset}' immediate="true"/>
+			       <p:commandButton icon="ui-icon-plusthick" value='Thêm' action='#{taiXeMBean.themTaiXe}'  update=":tv:tabview1"/>
+				   <p:commandButton icon="ui-icon-arrowrefresh-1-s"  value='Đặt lại' action='#{taiXeMBean.reset}' immediate="true"/>
 	            </h:panelGrid>  
 	           </h:form>
 	        </p:tab>  
@@ -171,7 +170,7 @@
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar maxdate="#{taiXeMBean.today}" navigator="true" value="#{taiXeMBean.selectedTX.ngaySinh}" id="popupButtonCal1" showOn="button"  pattern="dd/MM/yyyy" />
 				  
-				   <p:commandButton icon="ui-icon-check" id='Update' value='Cập nhật' action='#{taiXeMBean.suaTaiXe}' ajax='false'/>
+				   <p:commandButton icon="ui-icon-check" value='Cập nhật' action='#{taiXeMBean.suaTaiXe}' ajax='false'/>
 	            </h:panelGrid>  
 	            </h:form>  
 	        </p:tab>  

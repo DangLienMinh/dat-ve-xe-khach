@@ -38,7 +38,7 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="6"/>
+			<band height="18"/>
 		</groupFooter>
 	</group>
 	<background>
@@ -101,82 +101,117 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="70" height="15" uuid="4dc36802-ae5d-466c-b595-2dff1b02c1ba"/>
+				<reportElement style="Column header" x="-10" y="10" width="80" height="24" uuid="4dc36802-ae5d-466c-b595-2dff1b02c1ba"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
 				<text><![CDATA[Mã chuyến]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="70" y="19" width="127" height="15" uuid="acf0866f-1edb-4600-b524-28b90fb520bb"/>
+				<reportElement style="Column header" mode="Transparent" x="70" y="10" width="127" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="acf0866f-1edb-4600-b524-28b90fb520bb"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Bến đầu - Bến cuối]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="197" y="19" width="83" height="15" uuid="7c5d0f3d-637a-44b6-a82c-77b5bffe6a83"/>
+				<reportElement style="Column header" mode="Transparent" x="197" y="10" width="83" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="7c5d0f3d-637a-44b6-a82c-77b5bffe6a83"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Tài xế]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="280" y="19" width="86" height="15" uuid="061d9bc4-0501-4fff-b9a6-b15f94bd32dd"/>
+				<reportElement style="Column header" mode="Transparent" x="280" y="10" width="86" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="061d9bc4-0501-4fff-b9a6-b15f94bd32dd"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Xe]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="366" y="19" width="61" height="15" uuid="0604acd2-2609-40a1-9542-aa692f558fe7"/>
+				<reportElement style="Column header" mode="Transparent" x="366" y="10" width="61" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="0604acd2-2609-40a1-9542-aa692f558fe7"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Giờ đi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="427" y="19" width="61" height="15" uuid="a41b6aec-0888-43ea-8ea3-c3ebe32ebaa9"/>
+				<reportElement style="Column header" mode="Transparent" x="427" y="10" width="61" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="a41b6aec-0888-43ea-8ea3-c3ebe32ebaa9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Giờ đến]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="488" y="19" width="76" height="15" uuid="01cbb6d3-a3a1-432b-8fd1-32961bd1e7d3"/>
+				<reportElement style="Column header" mode="Transparent" x="488" y="10" width="76" height="24" forecolor="#666666" backcolor="#FFFFFF" uuid="01cbb6d3-a3a1-432b-8fd1-32961bd1e7d3"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<text><![CDATA[Khuyến mãi]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="24" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="00f9ba45-31b1-406f-acb6-207869c49dd4"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="23" width="555" height="1" uuid="00f9ba45-31b1-406f-acb6-207869c49dd4"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement style="Detail" x="0" y="0" width="70" height="15" uuid="98268281-58b3-44ae-897e-85674490196e"/>
+				<reportElement style="Detail" x="-10" y="0" width="80" height="21" uuid="98268281-58b3-44ae-897e-85674490196e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{MACHUYEN}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="70" y="0" width="127" height="15" uuid="dc3ccd10-ee74-4d64-97e3-ab96bb03e780"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="70" y="0" width="127" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="dc3ccd10-ee74-4d64-97e3-ab96bb03e780"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{BENDAU}+"-"+$F{BENCUOI}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="197" y="0" width="83" height="15" uuid="67a9816a-7e80-4c9f-b6fd-a9d421de6a2d"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="197" y="0" width="83" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="67a9816a-7e80-4c9f-b6fd-a9d421de6a2d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{HO}+" "+$F{TEN}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="280" y="0" width="86" height="15" uuid="52c8a1f4-adae-476f-9766-c993e1357bd7"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="280" y="0" width="86" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="52c8a1f4-adae-476f-9766-c993e1357bd7"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{BIENSO}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="366" y="0" width="61" height="15" uuid="f54a5d5e-8de3-48a5-9b4d-afa6b867ae5a"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="366" y="0" width="61" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="f54a5d5e-8de3-48a5-9b4d-afa6b867ae5a"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{GIODI}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="427" y="0" width="61" height="15" uuid="036fc659-d07a-4743-993e-3a9b21fc56b8"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="427" y="0" width="61" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="036fc659-d07a-4743-993e-3a9b21fc56b8"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{GIODEN}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Detail" x="488" y="0" width="76" height="15" uuid="60611529-c55f-4246-aa1d-986ccd4902c1"/>
+			<textField isBlankWhenNull="false">
+				<reportElement style="Detail" mode="Transparent" x="488" y="0" width="76" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="60611529-c55f-4246-aa1d-986ccd4902c1"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{KHUYENMAI}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="19f5d8bc-b107-441b-adb2-be750ed5b465"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
@@ -185,7 +220,7 @@
 				<textElement textAlignment="Right">
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Trang "+$V{PAGE_NUMBER}+" của"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="1bf4a55c-3ec8-45a8-a315-14af26181118"/>
@@ -199,7 +234,7 @@
 				<textElement>
 					<font size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
