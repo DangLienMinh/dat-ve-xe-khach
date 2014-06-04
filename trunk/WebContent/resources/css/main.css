@@ -732,7 +732,14 @@ body {
   height: auto;
   margin: 0 0 0 30px;
   padding-bottom: 15px;
-  padding-bottom: 15px;
+}
+
+/* line 536, sass/main.sass */
+.areas-of-interest header {
+  width: 270px;
+  height: 60px;
+  margin-bottom: 10px;
+  background: url("#{resource['image/residential-sidebar.png']}") no-repeat;
 }
 
 /* line 542, sass/main.sass */
@@ -770,6 +777,19 @@ body {
 /* line 566, sass/main.sass */
 .areas-of-interest ul li.current a:after, .areas-of-interest ul li:hover a:after {
   display: none;
+}
+
+/* line 569, sass/main.sass */
+.areas-of-interest ul li.current:after, .areas-of-interest ul li:hover:after {
+  position: absolute;
+  display: block;
+  content: " ";
+  top: 0;
+  left: -15px;
+  width: 320px;
+  height: 40px;
+  background: url("#{resource['image/sidebar-hover.png']}") no-repeat;
+  z-index: 2;
 }
 
 /* line 580, sass/main.sass */
