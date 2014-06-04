@@ -7,6 +7,7 @@
     xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <body>
 	<ui:composition>
+	<h:form>
 		<div id="shell" style="background: url('#{resource['image/Live-Background.jpg']}') 50% 0 no-repeat;">
 			<section id="main">  <!-- Page starts here -->    <!--   -->    
     			<ul class="breadcrumb">
@@ -35,23 +36,23 @@
                   				<h2>Tin cùng chuyên mục</h2>
                				</header>
 			   				<ul>
-			   	            	<li class="page_item page-item-15">
-			   	            		<p:dataList value="#{dangTinTucMBean.danhSachLienQuan}" var="tt" styleClass="datalist-noborder">
+			   	            	<p:dataList value="#{dangTinTucMBean.danhSachLienQuan}" var="tt" styleClass="datalist-noborder">
+					    				
 					    				<p:commandLink action="#{dangTinTucMBean.hienThiTin(tt)}" style="font-weight:bold;font-size:15px!important;">
 					    					<h:outputText value="#{tt.tieuDe}" />
 					    				</p:commandLink>
-									</p:dataList>
-								</li>
+					    				
+									</p:dataList>	
               			  	</ul>
             			</div>     
             			<a href="#" class="ad"><h:graphicImage library="image" name="stay-in-nona.png"/></a>
+            			
         			</aside>
     			</section>
  			</section>  <!-- Page ends here -->
- 			<ui:insert name="footer" >
-     			<ui:include src="/templates/footer.xhtml" />
-   			</ui:insert>
+ 			
 		</div>
+		</h:form>
 	</ui:composition>
 </body>
 </html>
