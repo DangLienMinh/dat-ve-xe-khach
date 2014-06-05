@@ -81,6 +81,9 @@ public class HoaDonManagedBean {
 	//luu dieu kien lay ve
 	private int dieuKienLayVe=-10;
 	
+	//kt dat ve thanh cong hay khonh
+	private int dieuKienDatVe=-10;
+	
 	//kiem tra xe ghe ngoi hay giuong nam
 	private int dieuKienGhe=-10;
 	
@@ -190,8 +193,11 @@ public class HoaDonManagedBean {
 			else{
 				hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
 			}
-			
 			String mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+			if(mahd.equalsIgnoreCase("0")){
+				dieuKienDatVe=0;
+			}
+			else dieuKienDatVe=-10;
 			hoaDon.setMaHD(mahd);
 			return "kqDatVe.xhtml";
 		}else{//neu chon hinh thuc chuyen khoan
@@ -206,9 +212,15 @@ public class HoaDonManagedBean {
 			
 			hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
 			String mahd=hoaDonDao.themHoaDon(hoaDon, chuyen, gheMB.getSelectedGhe());
+			if(mahd.equalsIgnoreCase("0")){
+				dieuKienDatVe=0;
+			}
+			else dieuKienDatVe=-10;
 			hoaDon.setMaHD(mahd);
 			return "";
 		}
+		
+		
 		
 	}
 	
@@ -418,6 +430,14 @@ public class HoaDonManagedBean {
 
 	public void setVeKH(List<HoaDon> veKH) {
 		this.veKH = veKH;
+	}
+
+	public int getDieuKienDatVe() {
+		return dieuKienDatVe;
+	}
+
+	public void setDieuKienDatVe(int dieuKienDatVe) {
+		this.dieuKienDatVe = dieuKienDatVe;
 	}
 
 //	public String getTen() {

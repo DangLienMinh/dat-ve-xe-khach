@@ -69,6 +69,10 @@ public class HoaDonDao {
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
 		}
+	    if(ketQua==0){
+	    	return "0";
+	    }
+	    else
 	   return MaHD;
     }
 	
