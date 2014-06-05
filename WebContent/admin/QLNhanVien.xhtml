@@ -42,7 +42,7 @@
 	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
 	     
-	     <p:dataTable var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" 
+	     <p:dataTable paginatorPosition="bottom" var="ds" value="#{nhanVienMBean.danhSach}" paginator="true" rows="5" 
 	     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 	     filteredValue="#{nhanVienMBean.filteredDanhSach}"  widgetVar="nhanvien" emptyMessage="Không tìm thấy nhân viên nào" >   
 	     

@@ -17,6 +17,9 @@
  .ui-datatable, .ui-datatable-odd {
             background: #F2F5F9;
      }
+ .ui-icon{
+  	margin-right: 5px;
+}
 </style>
  </h:head>
  <body>
@@ -45,7 +48,7 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}" widgetVar="xe" emptyMessage="Không tìm thấy xe nào">   
+	     <p:dataTable paginatorPosition="bottom" var="ds" value="#{xeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{xeMBean.filteredDanhSach}" widgetVar="xe" emptyMessage="Không tìm thấy xe nào">   
 	      	<f:facet name="header">
 		      	 Danh sách Xe
 		        <p:outputPanel style="text-align: right !important;">
