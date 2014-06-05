@@ -49,7 +49,7 @@
 	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
 	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
 	     <p:separator/>
-	     <p:dataTable  var="ds" value="#{chuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{chuyenMBean.filteredDanhSach}" widgetVar="chuyen" emptyMessage="Không tìm thấy chuyến xe nào">   
+	     <p:dataTable  paginatorPosition="bottom" var="ds" value="#{chuyenMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{chuyenMBean.filteredDanhSach}" widgetVar="chuyen" emptyMessage="Không tìm thấy chuyến xe nào">   
 
 	       <f:facet name="header">
 		      	 Danh sách chuyến Xe

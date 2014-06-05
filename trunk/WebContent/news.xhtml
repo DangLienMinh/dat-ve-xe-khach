@@ -22,7 +22,7 @@
 	<!-- IE Conditional Statement -->
 	<h:outputStylesheet library="css" name="jquery.lightbox.css" />
 	<h:outputStylesheet library="css" name="styles.css" />
-	<h:outputScript library="script" name="l10n.js"/>
+	<h:outputScript library="js" name="l10n.js"/>
 	<style>
 	.datalist-noborder .ui-widget-content {
 		border: none;
@@ -30,6 +30,14 @@
 	.ui-widget, .ui-widget .ui-widget {
      font-size: 85% !important;
 	}
+	.ui-widget-header {
+    		background:none!important;
+    		color:black!important;
+    		border:none!important;
+    }
+    .ui-paginator .ui-paginator-next .ui-icon, .ui-paginator .ui-paginator-prev .ui-icon, .ui-paginator .ui-paginator-first .ui-icon, .ui-paginator .ui-paginator-last .ui-icon{
+    	height:15px!important;
+    }
 	
 	</style>
 </h:head>
