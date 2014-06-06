@@ -28,19 +28,21 @@
 	<h:outputScript library="script" name="l10n.js"/>
 </h:head>
 <h:body style="width: 419px; height: 690px;">
+<section class="page-main">
 	<h:form>
 	   	<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="6" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder"> 					
-	    	<article>
-	    		<p><span>
-	    			<h5><p:outputLabel value="#{ds.tieuDe}" style="color: #ee5d3e!important;font-size: 18px!important;"></p:outputLabel></h5>
+	    	<article style="border-bottom: 1px dotted #565656!important; margin-bottom: 30px!important;">
+	    		
+	    			<h5><p:outputLabel value="#{ds.tieuDe}" style="color: #ee5d3e!important;font-size: 17px!important;"></p:outputLabel></h5>
 	    			<p><p:outputLabel value="#{ds.tomTat}" style="font-size: 13px!important;"></p:outputLabel></p>
 	      			<span>Ngày đăng:  <p:outputLabel value="#{ds.ngayDang}">
 	      			<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
 	      			</p:outputLabel>
-	      			</span></span>
-	      		</p>
+	      			</span>
+	  
 	    	</article>
 		</p:dataList>   
  	</h:form>
+ </section>
 </h:body>
 </html>

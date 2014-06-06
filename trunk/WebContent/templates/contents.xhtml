@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p='http://primefaces.org/ui'
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
    <body>
       <ui:composition>
       <div id="shell" class="">
@@ -151,7 +153,7 @@
 						<ul style="width: 3760px; left: 0px;">
 							<li class="odd">
 								<time datetime="1997-08">
-									<span>October </span>2012
+									<span>Tuyến </span>2012
 								</time>
 								<p class="">
 									Nemours Children's Hospital opens its state-of-the-art hospital at Lake Nona.
@@ -160,166 +162,14 @@
 								
 							</li>
 							<li class="even">
-								<time datetime="1997-08">
-									<span>October </span>2011
-								</time>
-								<p>
-									Lake Nona opens its newest neighborhood, Laureate Park.
+							<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="6" paginatorPosition="bottom" value="#{tuyenMBean.danhSach}" var="ds" styleClass="datalist-noborder">
+									<span>Tuyến </span><p:outputLabel value="#{ds.tenTuyen}"></p:outputLabel>
+		                			<p>Bến đầu: <p:outputLabel value="#{ds.benDau}"></p:outputLabel></p>
+		                			<p>Bến cuối: <p:outputLabel value="#{ds.benCuoi}"></p:outputLabel></p>
+		                			<p>Giá: <p:outputLabel value="#{ds.gia}"></p:outputLabel></p>				    
 									<br/>
-								</p>
-								<h:graphicImage library="image" name="LP-timeline-image.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>August </span>2010
-								</time>
-								<p class="">
-									UCF opens its Medical Education Building and Burnett Biomedical Research Building at Lake Nona.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="UCF-Fire.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>May </span>2009
-								</time>
-								<p>
-									Sanford-Burnham Medical Research Institute opens at Lake Nona.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="4.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>January </span>2008
-								</time>
-								<p>
-									Nemours announces Lake Nona as the location for its new children’s hospital in Orlando.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="5.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>October </span>2007
-								</time>
-								<p>
-									Construction commences on both the UCF Health Sciences Campus and the Burnham Institute’s campus at Lake Nona.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="6.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>March </span>2006
-								</time>
-								<p>
-									The Department of Veterans Affairs announces Lake Nona as the location for its Orlando VA Medical Center.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="7.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>August </span>2006
-								</time>
-								<p>
-									Burnham Institute for Medical Research announces its decision to locate an east coast research facility at Lake Nona. The Tavistock Group donates $...
-								</p>
-								<h:graphicImage library="image" name="8.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>October </span>2005
-								</time>
-								<p>
-									UCF announces plans for a 50-acre Health Sciences Campus at Lake Nona which will include a College of Medicine.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="9.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>April </span>2004
-								</time>
-								<p>
-									Development begins at the VillageWalk and Waters Edge neighborhoods.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="10.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>March </span>2004
-								</time>
-								<p>
-									Lake Nona Golf &amp; Country Club hosts inaugural Tavistock Cup.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="11.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>March </span>2000
-								</time>
-								<p>
-									NLP Community School receives the Urban Land Institute’s Award of Excellence for public/private partnerships.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="12.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>August </span>1999
-								</time>
-								<p>
-									Northlake Park Community School and YMCA is complete.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="13.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>May </span>1998
-								</time>
-								<p>
-									Development begins for Lake Nona’s second neighborhood, NorthLake Park.
-									<br/>
-								</p>
-								<h:graphicImage library="image" name="14.jpg"/>
-								
-							</li>
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>September </span>1996
-								</time>
-								<p>
-									Tavistock Group purchases the Lake Nona Development.
-								</p>
-								<h:graphicImage library="image" name="15.jpg"/>
-								
-							</li>
-							<li class="even">
-								<time datetime="1997-08">
-									<span>January </span>1986
-								</time>
-								<p>
-									Lake Nona Golf &amp; Country Club opens.
-								</p>
-								<h:graphicImage library="image" name="16.jpg"/>
-								
+								<p:commandButton value="Đặt vé" style="font-size:1.5em!important;" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
+							</p:dataList>
 							</li>
 						</ul>
 					</div>
