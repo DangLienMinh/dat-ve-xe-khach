@@ -26,11 +26,24 @@
 	<h:outputStylesheet library="css" name="jquery.lightbox.css" />
 	<h:outputStylesheet library="css" name="styles.css" />
 	<h:outputScript library="script" name="l10n.js"/>
+	<style>
+		.ui-widget-header {
+    		background:none!important;
+    		color:black!important;
+    		border:none!important;
+    }
+	    .ui-paginator .ui-paginator-next .ui-icon, .ui-paginator .ui-paginator-prev .ui-icon, .ui-paginator .ui-paginator-first .ui-icon, .ui-paginator .ui-paginator-last .ui-icon{
+	    	height:15px!important;
+	    }
+	    .ui-datalist{background: white!important; 
+	    
+	    }
+	</style>
 </h:head>
 <h:body style="width: 419px; height: 690px;">
 <section class="page-main">
 	<h:form>
-	   	<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="6" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder"> 					
+	   	<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="8" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder"> 					
 	    	<article style="border-bottom: 1px dotted #565656!important; margin-bottom: 30px!important;">
 	    		
 	    			<h5><p:outputLabel value="#{ds.tieuDe}" style="color: #ee5d3e!important;font-size: 17px!important;"></p:outputLabel></h5>
