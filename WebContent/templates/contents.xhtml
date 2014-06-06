@@ -151,26 +151,16 @@
 					<h2 class="indent">Chỗ này là dòng timeline....</h2>
 					<div>
 						<ul style="width: 3760px; left: 0px;">
-							<li class="odd">
-								<time datetime="1997-08">
-									<span>Tuyến </span>2012
-								</time>
-								<p class="">
-									Nemours Children's Hospital opens its state-of-the-art hospital at Lake Nona.
-								</p>
-								<h:graphicImage library="image" name="nem-timeline.jpg"/>
-								
-							</li>
-							<li class="even">
 							<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="6" paginatorPosition="bottom" value="#{tuyenMBean.danhSach}" var="ds" styleClass="datalist-noborder">
+								<li class="odd">	
 									<span>Tuyến </span><p:outputLabel value="#{ds.tenTuyen}"></p:outputLabel>
-		                			<p>Bến đầu: <p:outputLabel value="#{ds.benDau}"></p:outputLabel></p>
-		                			<p>Bến cuối: <p:outputLabel value="#{ds.benCuoi}"></p:outputLabel></p>
-		                			<p>Giá: <p:outputLabel value="#{ds.gia}"></p:outputLabel></p>				    
+		                			<p>Bến đầu: </p><p:outputLabel value="#{ds.benDau}"></p:outputLabel>
+		                			<p>Bến cuối: </p><p:outputLabel value="#{ds.benCuoi}"></p:outputLabel>
+		                			<p>Giá: </p><p:outputLabel value="#{ds.gia}"></p:outputLabel>				    
 									<br/>
-								<p:commandButton value="Đặt vé" style="font-size:1.5em!important;" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
+									<p:commandButton value="Đặt vé" style="font-size:1.5em!important;" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
+								</li>
 							</p:dataList>
-							</li>
 						</ul>
 					</div>
 					<div id="timeline-controls">
