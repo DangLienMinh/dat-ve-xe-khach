@@ -78,7 +78,7 @@
 							<h:graphicImage library="image" name="fb-icon-home.png" />
 						</div>
 						<div class="fb-like-box fb_iframe_widget">
-							<span style="vertical-align: bottom; width: 419px; "> <iframe name="f1ccc2e034" width="419px" height="87%" scrolling="no"  src="/datVeXe/newiframe.xhtml" class="" style="border: none; visibility: visible;"></iframe> </span>
+							<span style="vertical-align: bottom; width: 419px; "> <iframe name="f1ccc2e034" width="419px" height="87%" scrolling="yes"  src="/datVeXe/newiframe.xhtml" class="" style="border: none; visibility: visible;"></iframe> </span>
 						</div>
 					</section>
 					<section class="right-side">
@@ -151,12 +151,15 @@
 					<h2 class="indent">Chỗ này là dòng timeline....</h2>
 					<div>
 						<ul style="width: 3760px; left: 0px;">
-							<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="6" paginatorPosition="bottom" value="#{tuyenMBean.danhSach}" var="ds" styleClass="datalist-noborder">
-								<li class="odd">	
+							<p:dataList  type="none" paginator="false" value="#{tuyenMBean.danhSach}" var="ds" styleClass="datalist-noborder">
+								<li class="odd" style="height: 300px!important;">	
 									<span>Tuyến </span><p:outputLabel value="#{ds.tenTuyen}"></p:outputLabel>
-		                			<p>Bến đầu: </p><p:outputLabel value="#{ds.benDau}"></p:outputLabel>
-		                			<p>Bến cuối: </p><p:outputLabel value="#{ds.benCuoi}"></p:outputLabel>
-		                			<p>Giá: </p><p:outputLabel value="#{ds.gia}"></p:outputLabel>				    
+									<br/>
+		                			Bến đầu: <span><p:outputLabel value="#{ds.benDau}"></p:outputLabel></span>
+		                			<br/>
+		                			Bến cuối: <span><p:outputLabel value="#{ds.benCuoi}"></p:outputLabel></span>
+		                			<br/>
+		                			Giá: <span><p:outputLabel value="#{ds.gia}"></p:outputLabel></span>    
 									<br/>
 									<p:commandButton value="Đặt vé" style="font-size:1.5em!important;" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
 								</li>
