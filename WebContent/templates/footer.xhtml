@@ -1,173 +1,265 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-	 <body>
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+         <body>
       <ui:composition> 
      
          <footer>
-				<article id="social-media" class="">
-					<ul class="">
-						<li>
-							<a href="https://www.facebook.com/kent.uit?ref=tn_tnmn" class="social-media" target="_target">Facebook</a>
-						</li>
-						<li>
-							<a href="#" class="social-media" target="_target">Twitter</a>
-						</li>
-						<li>
-							<a href="http://vimeo.com/user8853409" target="_target">Vimeo</a>
-						</li>
-						<li>
-							<a href="#" target="_target">Flickr</a>
-						</li>
-					</ul>
-					<h:form id="searchform">
+                                <article id="social-media" class="">
+                                        <ul class="">
+                                                <li>
+                                                        <a href="https://www.facebook.com/kent.uit?ref=tn_tnmn" class="social-media" target="_target">Facebook</a>
+                                                </li>
+                                                <li>
+                                                        <a href="#" class="social-media" target="_target">Twitter</a>
+                                                </li>
+                                                <li>
+                                                        <a href="http://vimeo.com/user8853409" target="_target">Vimeo</a>
+                                                </li>
+                                                <li>
+                                                        <a href="#" target="_target">Flickr</a>
+                                                </li>
+                                        </ul>
+                                        <h:form id="searchform">
 
-						<h:inputText pt:placeholder="Search"></h:inputText>
-						<button type="submit" value="search" id="searchsubmit" class="indent" name="submit" ></button>
-					</h:form>
+                                                <h:inputText pt:placeholder="Search"></h:inputText>
+                                                <button type="submit" value="search" id="searchsubmit" class="indent" name="submit" ></button>
+                                        </h:form>
 
-					<!-- <form method="get" id="searchform" action="http://learnlakenona.com/">
-					<label for="s" class="assistive-text">Search</label>
-					<input type="text" class="field" name="s" id="s" placeholder="Search" />
-					<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
-					</form> -->
-				</article>
-				<article>
-					<nav class="">
-						<ul>
-							<li>
-								<h4><a href="#">Chủ đề 1</a></h4>
-								<ul>
-									<li class="page_item page-item-18">
-										<a href="#" title="Education">Education</a>
-									</li>
-									<li class="page_item page-item-89">
-										<a href="#" title="Map">Map</a>
-									</li>
-									<li class="page_item page-item-259">
-										<a href="#" title="Parks and Amenities">Parks and Amenities</a>
-									</li>
-									<li class="page_item page-item-397">
-										<a href="#" title="Sustainability">Sustainability</a>
-									</li>
-									<li class="page_item page-item-400">
-										<a href="#" title="Healthy Living">Healthy Living</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<h4><a href="#">Chủ đề 2</a></h4>
-								<ul>
-									<li class="page_item page-item-15">
-										<a href="#" title="Waters Edge">Waters Edge</a>
-									</li>
-									<li class="page_item page-item-190">
-										<a href="#" title="Laureate Park">Laureate Park</a>
-									</li>
-									<li class="page_item page-item-198">
-										<a href="#" title="Village Walk">Village Walk</a>
-									</li>
-									<li class="page_item page-item-288">
-										<a href="#" title="Golf &amp; Country Club">Golf &amp; Country Club</a>
-									</li>
-									<li class="page_item page-item-585">
-										<a href="#" title="NorthLake Park">NorthLake Park</a>
-									</li>
-									<li class="page_item page-item-2721">
-										<a href="#" title="Lake Nona Water Mark">Lake Nona Water Mark</a>
-									</li>
-								</ul>
-							</li>
-							<li class="widerList">
-								<h4><a href="#" class="">Chủ đề 3</a></h4>
-								<ul>
-									<li class="page_item page-item-239">
-										<a href="#" title="Lake Nona Plaza">Lake Nona Plaza</a>
-									</li>
-									<li class="page_item page-item-243">
-										<a href="#" title="Office Space">Office Space</a>
-									</li>
-									<li class="page_item page-item-247">
-										<a href="#" title="Lake Nona Town Center">Lake Nona Town Center</a>
-									</li>
-									<li class="page_item page-item-251">
-										<a href="#" title="Lake Nona Village">Lake Nona Village</a>
-									</li>
-								</ul>
-								<h4><a href="#">Chủ đề 4</a></h4>
-								<ul>
-									<li>
-										<a href="#">Education at Lake Nona</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<h4><a href="#">Chủ đề 5</a></h4>
-								<ul>
-									<li class="page_item page-item-220">
-										<a href="#" title="UCF Health Sciences Campus">UCF Health Sciences Campus</a>
-									</li>
-									<li class="page_item page-item-224">
-										<a href="#" title="Sanford-Burnham">Sanford-Burnham</a>
-									</li>
-									<li class="page_item page-item-230">
-										<a href="#" title="Nemours">Nemours</a>
-									</li>
-									<li class="page_item page-item-235">
-										<a href="#" title="UF Research &amp; Academic Center">UF Research &amp; Academic Center</a>
-									</li>
-									<li class="page_item page-item-263">
-										<a href="#" title="VA Medical Center">VA Medical Center</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</article>
-				<article>
-					<ul id="menu-footer" class="menu">
-						<li id="menu-item-698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-698">
-							<a href="#">Trang chủ</a>
-						</li>
-						<li id="menu-item-696" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-696">
-							<a href="#">Tin tức</a>
-						</li>
-						<li id="menu-item-697" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-697">
-							<a href="#">Giới thiệu</a>
-						</li>
-						<li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692">
-							<a href="#">Tra cứu</a>
-						</li>
-						<li id="menu-item-695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695">
-							<a href="#">Tuyển dụng</a>
-						</li>
-						<li id="menu-item-693" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-693">
-							<a href="#">Đặt vé</a>
-						</li>
-						<li id="menu-item-694" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-694">
-							<a href="#">Phản hồi</a>
-						</li>
-					</ul>
-					<div>
-						<p>
-						Copyright  by Kent
-						</p>
-					</div>
-				</article>
-			</footer>
-			<h:outputScript library="js" name="ui.js"/>
-				
-				<h:outputScript library="js" name="utilities.js"/>
-				<h:outputScript library="js" name="init.js"/>
-			
-			<h:outputScript library="js" name="jq.js"/>
-		
-			
-		
-			
-      </ui:composition>	
+                                        <!-- <form method="get" id="searchform" action="http://learnlakenona.com/">
+                                        <label for="s" class="assistive-text">Search</label>
+                                        <input type="text" class="field" name="s" id="s" placeholder="Search" />
+                                        <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+                                        </form> -->
+                                </article>
+                                <article>
+                                        <nav class="">
+                                                <ul>
+                                                        <li>
+                                                                <h4><a href="#">Chủ đề 1</a></h4>
+                                                                <ul>
+                                                                        <li class="page_item page-item-18">
+                                                                                <a href="#" title="Education">Education</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-89">
+                                                                                <a href="#" title="Map">Map</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-259">
+                                                                                <a href="#" title="Parks and Amenities">Parks and Amenities</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-397">
+                                                                                <a href="#" title="Sustainability">Sustainability</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-400">
+                                                                                <a href="#" title="Healthy Living">Healthy Living</a>
+                                                                        </li>
+                                                                </ul>
+                                                        </li>
+                                                        <li>
+                                                                <h4><a href="#">Chủ đề 2</a></h4>
+                                                                <ul>
+                                                                        <li class="page_item page-item-15">
+                                                                                <a href="#" title="Waters Edge">Waters Edge</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-190">
+                                                                                <a href="#" title="Laureate Park">Laureate Park</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-198">
+                                                                                <a href="#" title="Village Walk">Village Walk</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-288">
+                                                                                <a href="#" title="Golf &amp; Country Club">Golf &amp; Country Club</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-585">
+                                                                                <a href="#" title="NorthLake Park">NorthLake Park</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-2721">
+                                                                                <a href="#" title="Lake Nona Water Mark">Lake Nona Water Mark</a>
+                                                                        </li>
+                                                                </ul>
+                                                        </li>
+                                                        <li class="widerList">
+                                                                <h4><a href="#" class="">Chủ đề 3</a></h4>
+                                                                <ul>
+                                                                        <li class="page_item page-item-239">
+                                                                                <a href="#" title="Lake Nona Plaza">Lake Nona Plaza</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-243">
+                                                                                <a href="#" title="Office Space">Office Space</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-247">
+                                                                                <a href="#" title="Lake Nona Town Center">Lake Nona Town Center</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-251">
+                                                                                <a href="#" title="Lake Nona Village">Lake Nona Village</a>
+                                                                        </li>
+                                                                </ul>
+                                                                <h4><a href="#">Chủ đề 4</a></h4>
+                                                                <ul>
+                                                                        <li>
+                                                                                <a href="#">Education at Lake Nona</a>
+                                                                        </li>
+                                                                </ul>
+                                                        </li>
+                                                        <li>
+                                                                <h4><a href="#">Chủ đề 5</a></h4>
+                                                                <ul>
+                                                                        <li class="page_item page-item-220">
+                                                                                <a href="#" title="UCF Health Sciences Campus">UCF Health Sciences Campus</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-224">
+                                                                                <a href="#" title="Sanford-Burnham">Sanford-Burnham</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-230">
+                                                                                <a href="#" title="Nemours">Nemours</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-235">
+                                                                                <a href="#" title="UF Research &amp; Academic Center">UF Research &amp; Academic Center</a>
+                                                                        </li>
+                                                                        <li class="page_item page-item-263">
+                                                                                <a href="#" title="VA Medical Center">VA Medical Center</a>
+                                                                        </li>
+                                                                </ul>
+                                                        </li>
+                                                </ul>
+                                        </nav>
+                                </article>
+                                <article>
+                                        <ul id="menu-footer" class="menu">
+                                                <li id="menu-item-698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-698">
+                                                        <a href="#">Trang chủ</a>
+                                                </li>
+                                                <li id="menu-item-696" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-696">
+                                                        <a href="#">Tin tức</a>
+                                                </li>
+                                                <li id="menu-item-697" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-697">
+                                                        <a href="#">Giới thiệu</a>
+                                                </li>
+                                                <li id="menu-item-692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-692">
+                                                        <a href="#">Tra cứu</a>
+                                                </li>
+                                                <li id="menu-item-695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-695">
+                                                        <a href="#">Tuyển dụng</a>
+                                                </li>
+                                                <li id="menu-item-693" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-693">
+                                                        <a href="#">Đặt vé</a>
+                                                </li>
+                                                <li id="menu-item-694" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-694">
+                                                        <a href="#">Phản hồi</a>
+                                                </li>
+                                        </ul>
+                                        <div>
+                                                <p>
+                                                Copyright  by Kent
+                                                </p>
+                                        </div>
+                                </article>
+                        </footer>
+                        <h:outputScript library="js" name="ui.js"/>
+                                
+                                <h:outputScript library="js" name="utilities.js"/>
+                                <h:outputScript library="js" name="init.js"/>
+                        <script type="text/javascript">
+                                var _gaq = _gaq || [];
+                                _gaq.push(['_setAccount', 'UA-2314484-1']);
+                                _gaq.push(['_trackPageview']);
+
+                                (function() {
+                                        var ga = document.createElement('script');
+                                        ga.type = 'text/javascript';
+                                        ga.async = true;
+                                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                                        var s = document.getElementsByTagName('script')[0];
+                                        s.parentNode.insertBefore(ga, s);
+                                })();
+                        </script>
+                        <h:outputScript library="js" name="jq.js"/>
+                <h:outputScript library="js" name="jquery.lightbox.min.js"/>
+                        <script type="text/javascript">
+                                jQuery(document).ready(function($) {
+
+                                        $.lightbox().overlay.options.style.opacity = 0.8;
+                                        $.extend($.lightbox().options, {
+                                                emergefrom : "top",
+                                                moveDuration : 1000,
+                                                resizeDuration : 1000
+                                        });
+                                        $(".lightbox").lightbox({
+                                                modal : 0,
+                                                autoresize : 1
+                                        });
+                                });
+                        </script>
+                        <script type="text/javascript">
+                                jQuery(document).ready(function($) {
+
+                                        var number = 3;
+                                        // Change this to whatever amount of posts per page you want to show
+                                        var offset = 0;
+                                        var ajaxurl = "http://learnlakenona.com/wp-admin/admin-ajax.php";
+                                        var page_number = 2;
+                                        var busy = false;
+
+                                        if (jQuery('.showmore').length) {// limited only loading when the page has this selector ".showmore"
+                                                jQuery('.showmore').live('click', function(e) {
+
+                                                        busy = true;
+                                                        jQuery('.showmore').html('SHOW MORE');
+
+                                                        jQuery.post(ajaxurl, {
+                                                                action : 'blog_loading',
+                                                                off : offset + number,
+                                                                paged : page_number,
+                                                                post_number : number,
+                                                                query_string : ''
+                                                        }, function(data) {
+                                                                if (data == "") {
+                                                                        jQuery('.showmore').html('No more posts!').delay(1000).fadeOut();
+                                                                        jQuery('#blog-main>section').css('margin-bottom', '275px');
+                                                                } else {
+                                                                        offset = offset + number;
+                                                                        jQuery('.empty-div').append(data);
+                                                                        busy = false;
+                                                                        page_number += 1;
+                                                                        //Cufon.replace('.myfont', { fontFamily: 'AvenirRomanBold', hover: true});
+
+                                                                }
+                                                        });
+                                                });
+                                        }
+
+                                });
+                </script>
+                <div id="1393056748640" class="jquery-lightbox-overlay" style="position: fixed; top: 0px; left: 0px; opacity: 0.6; display: none; z-index: 6999;"></div>
+                <div class="jquery-lightbox-move" style="position: absolute; z-index: 7000; top: -999px; left: -999px;">
+                        <div class="jquery-lightbox jquery-lightbox-mode-image">
+                                <div class="jquery-lightbox-border-top-left"></div>
+                                <div class="jquery-lightbox-border-top-middle"></div>
+                                <div class="jquery-lightbox-border-top-right"></div>
+                                <a class="jquery-lightbox-button-close" href="http://learnlakenona.com/#close"><span>Close</span></a>
+                                <div class="jquery-lightbox-navigator">
+                                        <a class="jquery-lightbox-button-left" href="http://learnlakenona.com/#"><span>Previous</span></a>
+                                        <a class="jquery-lightbox-button-right" href="http://learnlakenona.com/#"><span>Next</span></a>
+                                </div>
+                                <div class="jquery-lightbox-buttons">
+                                        <div class="jquery-lightbox-buttons-init"></div>
+                                        <a class="jquery-lightbox-button-left" href="http://learnlakenona.com/#"><span>Previous</span></a>
+                                        <a class="jquery-lightbox-button-max" href="http://learnlakenona.com/#"><span>Maximize</span></a>
+                                        <div class="jquery-lightbox-buttons-custom"></div>
+                                        <a class="jquery-lightbox-button-right" href="http://learnlakenona.com/#"><span>Next</span></a>
+                                        <div class="jquery-lightbox-buttons-end"></div>
+                                </div>
+                                <div class="jquery-lightbox-background"></div>
+                                <div class="jquery-lightbox-html"></div>
+                                <div class="jquery-lightbox-border-bottom-left"></div>
+                                <div class="jquery-lightbox-border-bottom-middle"></div>
+                                <div class="jquery-lightbox-border-bottom-right"></div>
+                        </div>
+                </div>
+                        
+      </ui:composition> 
   </body>
 </html>
