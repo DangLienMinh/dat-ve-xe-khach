@@ -153,17 +153,22 @@
 					<h:form>
 						<ul style="width: 3760px; left: 0px;">
 							<p:dataList  type="none" paginator="false" value="#{tuyenMBean.danhSach}" var="ds" styleClass="datalist-noborder">
-								<li style="height: 300px!important;">	
-									<span>Tuyến </span><p:outputLabel value="#{ds.tenTuyen}"></p:outputLabel>
-									<br/>
-		                			Bến đầu: <span><p:outputLabel value="#{ds.benDau}"></p:outputLabel></span>
+								<li class="odd" style="height: 300px!important;font-family: tahoma!important; font-style: italic!important;">	
+									<div style="height: 40px!important; border-bottom: 1px dotted #565656!important; font-style: normal!important;line-height: 40px!important;"><span>Tuyến </span>
+									<p:outputLabel value="#{ds.tenTuyen}" style="font-size: 18px!important;color: #F25334!important; font-weight: bold!important;"></p:outputLabel></div>
 		                			<br/>
-		                			Bến cuối: <span><p:outputLabel value="#{ds.benCuoi}"></p:outputLabel></span>
+		                			Bến đầu: <span style="font-size: 18px!important;color: #F25334!important;font-style: normal!important;"><p:outputLabel value="#{ds.benDau}"></p:outputLabel></span>
 		                			<br/>
-		                			Giá: <span><p:outputLabel value="#{ds.gia}"></p:outputLabel></span>    
+		                			<br/>
+		                			Bến cuối: <span style="font-size: 18px!important;color: #F25334!important;font-style: normal!important;"><p:outputLabel value="#{ds.benCuoi}"></p:outputLabel></span>
+		                			<br/>
+		                			<br/>
+		                			Giá vé: <span style="font-size: 18px!important;color: #F25334!important;font-style: normal!important;"><p:outputLabel value="#{ds.gia}"></p:outputLabel> VNĐ</span>    
 									<br/>
-									<p:commandButton value="Đặt vé" style="font-size:1.5em!important;" styleClass="learnmore" action="#{dangTinTucMBean.hienThiTin(ds)}"></p:commandButton>
+									<br/>
+									<p:commandButton value="Đặt vé" style="font-size: 18px!important;" styleClass="learnmore" ></p:commandButton>
 								</li>
+								<li></li>
 							</p:dataList>
 							<li></li>
 						</ul>
