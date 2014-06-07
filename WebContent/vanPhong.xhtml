@@ -1,0 +1,74 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Quản lí thông tin văn phòng</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+.ui-datatable .ui-column-filter{display: none;}
+ .ui-datatable, .ui-datatable-odd {
+            background: #F2F5F9;
+     }
+ .ui-panelgrid tr,
+.ui-panelgrid td {
+    border: none;
+}
+.ui-icon{
+  	margin-right: 5px;
+}
+</style>
+ </h:head>
+ <body>
+    
+     
+     <h:form id="form">
+	     <p:dataTable filteredValue="#{vanPhongMBean.filteredDanhSach}" paginatorPosition="bottom"  var="ds" value="#{vanPhongMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  widgetVar="vanPhong" emptyMessage="Không tìm thấy văn phòng nào">   
+	      	<f:facet name="header">
+		      	 Danh sách văn phòng
+		        <p:outputPanel>
+	                <h:outputText value="Lựa chọn:" /><p:spacer width="10" />
+	                <p:selectOneMenu value="#{vanPhongMBean.khuVuc.maKV}" onchange="PF('vanPhong').filter()">
+				   		<f:selectItems value="#{khuVucMBean.selectOneItemKV}" />
+				   	</p:selectOneMenu>
+				   	<p:inputText id="globalFilter" onkeyup="PF('vanPhong').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	               
+	            </p:outputPanel>
+       	 	</f:facet>
+	  
+	        <p:column headerText="Mã văn phòng" style="font-size:14px!important;">  
+	            <h:outputText  value="#{ds.maVP}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Tên văn phòng" style="font-size:14px!important;">  
+	            <h:outputText  value="#{ds.tenVP}"/>  
+	        </p:column> 
+	        
+	        <p:column headerText="Địa chỉ" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.diaChi}" />  
+	        </p:column>  
+	        
+	        <p:column headerText="Điện thoại" style="font-size:14px!important;">  
+	            <h:outputText value="#{ds.dienThoai}" />  
+	        </p:column>
+			
+			<p:column headerText="Khu v" style="font-size:14px!important;" filterBy="maKV">  
+	            <h:outputText value="#{ds.maKV}" />  
+	        </p:column>
+	        
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(vanPhongMBean.danhSach)} văn phòng.
+	        </f:facet>  
+    	 </p:dataTable>  
+    	 </h:form>
+    	 
+</body>
+</html>
+

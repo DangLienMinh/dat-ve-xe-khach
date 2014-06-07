@@ -2,9 +2,15 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+
+import org.primefaces.context.RequestContext;
+
 import model.KhuVuc;
+import model.Tuyen;
 import model.VanPhong;
 import dao.KhuVucDao;
 import dao.VanPhongDao;
@@ -20,6 +26,9 @@ public class VanPhongManagedBean {
 	//Tra ve danh sach vanPhong tren datatable
 	private List<VanPhong> DanhSach;
 	
+	//Tra ve danh sach tuyen tren map 
+	private List<VanPhong> DanhSachMap;
+	
 	//Tra ve danh sach vanPhong theo kieu loc thuoc tinh
 	private List<VanPhong> filteredDanhSach;  
 	
@@ -28,6 +37,9 @@ public class VanPhongManagedBean {
 	
 	//doi tuong loai vanPhong duoc chon de cap nhat thong tin
 	private KhuVuc selectedKhuVuc=new KhuVuc();
+	
+	private boolean showDialog;
+	
 
 	public VanPhongManagedBean(){
 		DanhSach = new ArrayList<VanPhong>();
@@ -125,5 +137,24 @@ public class VanPhongManagedBean {
 		selectedVanPhong=x;
 		int ma=Integer.parseInt(maLX);
 		setSelectedKhuVuc(khuVucDao.layKhuVucTheoMaKV(ma));
+	}
+
+	public List<VanPhong> getDanhSachMap() {
+		return DanhSachMap;
+	}
+
+	public void viewCars(int makv) {
+		KhuVuc x=khuVucDao.layKhuVucTheoMaKV(makv);
+		DanhSachMap=vanPhongDao.layVPTheoKV(x);
+		setShowDialog(true);
+       // RequestContext.getCurrentInstance().openDialog("thongTinTuyen");
+    }
+
+	public boolean isShowDialog() {
+		return showDialog;
+	}
+
+	public void setShowDialog(boolean showDialog) {
+		this.showDialog = showDialog;
 	}
 }

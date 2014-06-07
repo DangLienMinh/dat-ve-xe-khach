@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml"   
-   xmlns:h="http://java.sun.com/jsf/html"
-   xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
 <h:head>
-	
-	<title>Bản đồ tuyến xe</title>
-	
+        
+        <title>Bản đồ tuyến xe</title>
+        <h:outputStylesheet library="css" name="main.css" />
+         <h:outputStylesheet library="css" name="custom.css" />
 </h:head>
 <body>
-	<h:graphicImage library="image" name="map.jpg" style="width:100%;"></h:graphicImage>
+		
+<h:form id="form">
+ <section class="map-main">
+      <section class="container">
+        <h:graphicImage library="image" name="map.jpg" style="width:100%;"></h:graphicImage>
+        
+         <ul id="callouts">
+         
+         
+         <li class="hn"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(20)}" update=":form:dialog"/></li>
+         <li class="dn"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(12)}" update=":form:dialog"/></li>
+         <li class="qn"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(5)}" update=":form:dialog"/></li>
+         <li class="nt"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(6)}" update=":form:dialog"/></li>
+         <li class="ld"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(7)}" update=":form:dialog"/></li>
+         <li class="vt"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(3)}" update=":form:dialog"/></li>
+         <li class="dongnai"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(11)}" update=":form:dialog"/></li>
+         <li class="hcm"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(2)}" update=":form:dialog"/></li>
+         <li class="vl"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(4)}" update=":form:dialog"/></li>
+         <li class="ct"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(13)}" update=":form:dialog"/></li>
+         <li class="st"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(19)}" update=":form:dialog"/></li>
+         <li class="bl"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(18)}" update=":form:dialog"/></li>
+         <li class="cm"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(14)}" update=":form:dialog"/></li>
+         <li class="rg_kg"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(8)}" update=":form:dialog"/></li>
+         <li class="qn_bd"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(16)}" update=":form:dialog"/></li>
+         <li class="pt_mn"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(15)}" update=":form:dialog"/></li>
+         <li class="vt_hg"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(9)}" update=":form:dialog"/></li>
+         <li class="cl_dt"><p:commandLink  actionListener="#{vanPhongMBean.viewCars(10)}" update=":form:dialog"/></li>
+       </ul>
+       </section>
+       </section>
+	 <p:dialog header="Thông tin văn phòng" height="400" draggable="true"  id="dialog" widgetVar="w_dialog" visible="#{vanPhongMBean.showDialog}">
+	  <p:dataList paginator="false" type="none"  value="#{vanPhongMBean.danhSachMap}" var="ds" styleClass="datalist-noborder,ct_chuyen"> 					
+	    	<div style="border-bottom: 1px dotted #565656!important;">
+	    			<p><p:outputLabel value="Văn Phòng: #{ds.tenVP}" style="color: #ee5d3e!important;font-size: 18px!important;font-family: Tahoma, Verdana, Arial!important;"></p:outputLabel></p>
+	    			<p><p:outputLabel value="Địa chỉ: #{ds.diaChi}" style="font-size: 14px!important;font-family: Tahoma, Verdana, Arial!important;"></p:outputLabel></p>
+	      			<p><p:outputLabel value="Điện thoại: #{ds.dienThoai}" style="font-size: 14px!important;font-family: Tahoma, Verdana, Arial!important;"></p:outputLabel></p>
+	    	</div>
+		</p:dataList>   
+	</p:dialog>
+       </h:form>
 </body>
 </html>

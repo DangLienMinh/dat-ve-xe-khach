@@ -74,6 +74,18 @@ public class KhuVucDao {
 		 		return x; 
 		 	}
 		 	
+//		 	//Tra ve doi tuong khuVuc theo MaKV khuVuc
+//		 	public KhuVuc layKhuVucTheoTenKV(String tenKV){
+//			    Session session = HibernateUtil.getSessionFactory().openSession();
+//			    String hql = "from KhuVuc  where TenKV = :tenkv";
+//			    List result = session.createQuery(hql)
+//			    .setParameter("tenkv", tenKV)
+//			    .list();
+//		 		//tra ve 1 doi tuong khuVuc => lay phan tu dau tien cua result list
+//		 		KhuVuc x=(KhuVuc) result.get(0);
+//		 		return x; 
+//		 	}
+		 	
 		 	//tra ve tat ca cac khuVuc trong csdl
 		 	public List<KhuVuc> danhSachKhuVuc(){
 		 		List<KhuVuc> x;

@@ -5,6 +5,7 @@ import hibernateUtil.HibernateUtil;
 import java.util.List;
 
 import model.KhuVuc;
+import model.Tuyen;
 import model.VanPhong;
 
 import org.hibernate.Criteria;
@@ -81,6 +82,17 @@ public class VanPhongDao {
 	 		VanPhong x=(VanPhong) result.get(0);
 	 		return x; 
 	 	}
+	 	
+	 	//lay thong tin tuyen dua vao khu vuc
+ 	 	public List<VanPhong> layVPTheoKV(KhuVuc maKV){
+ 	 		Session session = HibernateUtil.getSessionFactory().openSession();
+ 		    String hql = "from VanPhong  where MaKV = :makv";
+ 		    List result = session.createQuery(hql)
+ 		    .setInteger("makv", maKV.getMaKV())
+ 		    .list();
+ 		  
+ 	 		return result;
+ 	 	}
 	 	
 	 	//tra ve tat ca cac vanPhong trong csdl
 	 	public List<VanPhong> danhSachVanPhong(){
