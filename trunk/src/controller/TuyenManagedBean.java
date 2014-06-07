@@ -7,6 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
+import org.primefaces.context.RequestContext;
+
 import model.Tuyen;
 import dao.TuyenDao;
 
@@ -19,6 +21,8 @@ public class TuyenManagedBean {
 	//danh sach tuyen dung de hien thi trong combobox
 	private List<SelectItem> selectOneItemTuyen;
 	
+	
+		
 	//Tra ve danh sach tuyen 
 	private List<Tuyen> DanhSach;
 	
@@ -107,4 +111,8 @@ public class TuyenManagedBean {
 	public String tenTuyen(String maTuyen){
 		return tuyenDao.tenTuyen(maTuyen);
 	}
+	
+	
+
+
 }

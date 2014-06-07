@@ -1183,26 +1183,14 @@ body {
   box-shadow: #afafaf 1px 1px 3px;
 }
 
-/* line 890, sass/main.sass */
-#map-page #main {
-  width: 100%;
-}
-
-/* line 893, sass/main.sass */
-#map-page #shell {
-  padding-top: 0;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
 
 
 /* line 903, sass/main.sass */
 .map-main .container {
-  width: 1080px;
-  height: 1265px;
-  padding-top: 110px;
   position: relative;
+ 
+  width: 100%;
+  height: 100%;
 }
 /* line 909, sass/main.sass */
 .map-main #callouts {
@@ -1219,7 +1207,7 @@ body {
 
 /* line 924, sass/main.sass */
 .map-main #callouts li:hover {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 /* line 927, sass/main.sass */
 .map-main #callouts li a {
@@ -1229,260 +1217,135 @@ body {
   overflow: hidden;
 }
 /* line 933, sass/main.sass */
-.map-main #callouts .ryland {
-  background-position: -109px -133px;
-  width: 77px;
-  height: 76px;
-  left: 408px;
-  top: 40px;
+.map-main #callouts .hn {
+ 
+  width: 70px;
+  height: 70px;
+  left: 620px;
+  top: 300px;
 }
 /* line 939, sass/main.sass */
-.map-main #callouts .waters-edge {
-  background-position: -200px -133px;
-  width: 77px;
-  height: 76px;
-  left: 494px;
-  top: 60px;
+.map-main #callouts .dn {
+  
+  width: 70px;
+  height: 70px;
+  left: 933px;
+  top: 900px;
 }
 /* line 945, sass/main.sass */
-.map-main #callouts .park-square {
-  background-position: 0 -133px;
+.map-main #callouts .qn {
+  
   width: 77px;
   height: 76px;
-  left: 378px;
-  top: 108px;
-}
-/* line 951, sass/main.sass */
-.map-main #callouts .nona-realty {
-  background-position: -198px 0;
-  width: 76px;
-  height: 77px;
-  left: 913px;
-  top: 40px;
-}
-/* line 957, sass/main.sass */
-.map-main #callouts .nona-golf {
-  background-position: -299px 0;
-  width: 76px;
-  height: 77px;
-  left: 908px;
-  top: 130px;
-}
-/* line 963, sass/main.sass */
-.map-main #callouts .proposed-golf {
-  background-position: -200px -232px;
-  width: 78px;
-  height: 78px;
-  left: 756px;
-  top: 467px;
-}
-/* line 969, sass/main.sass */
-.map-main #callouts .pulte-sales {
-  background-position: -109px -232px;
-  width: 78px;
-  height: 78px;
-  left: 480px;
-  top: 510px;
-}
-/* line 975, sass/main.sass */
-.map-main #callouts .village-walk {
-  background-position: -299px -232px;
-  width: 69px;
-  height: 69px;
-  left: 678px;
-  top: 570px;
-}
-/* line 981, sass/main.sass */
-.map-main #callouts .nona-water-mark {
-  background-position: -388px -232px;
-  width: 61px;
-  height: 61px;
-  left: 488px;
-  top: 720px;
-}
-/* line 987, sass/main.sass */
-.map-main #callouts .laureate {
-  background-position: -109px -359px;
-  width: 54px;
-  height: 54px;
-  left: 675px;
-  top: 870px;
-}
-/* line 993, sass/main.sass */
-.map-main #callouts .ashton-woods {
-  background-position: -549px -447px;
-  width: 80px;
-  height: 80px;
-  left: 748px;
-  top: 1020px;
-}
-/* line 999, sass/main.sass */
-.map-main #callouts .community-park {
-  background-position: -455px -133px;
-  width: 64px;
-  height: 64px;
-  left: 500px;
-  top: -10px;
-}
-/* line 1005, sass/main.sass */
-.map-main #callouts .waters-edge-park {
-  background-position: -387px -133px;
-  width: 59px;
-  height: 60px;
-  left: 423px;
-  top: 180px;
-}
-/* line 1011, sass/main.sass */
-.map-main #callouts .green-dock {
-  background-position: -299px -133px;
-  width: 59px;
-  height: 60px;
-  left: 398px;
-  top: 240px;
-}
-/* line 1017, sass/main.sass */
-.map-main #callouts .orlando-park {
-  background-position: -455px -447px;
-  width: 70px;
-  height: 70px;
-  left: 643px;
-  top: 1080px;
-}
-/* line 1023, sass/main.sass */
-.map-main #callouts .northlake {
-  background-position: -550px -133px;
-  width: 62px;
-  height: 62px;
-  left: 568px;
-  top: 20px;
-}
-/* line 1029, sass/main.sass */
-.map-main #callouts .valencia-college {
-  background-position: -455px -232px;
-  width: 69px;
-  height: 69px;
-  left: 833px;
-  top: 641px;
-}
-/* line 1035, sass/main.sass */
-.map-main #callouts .nona-hs {
-  background-position: -647px -232px;
-  width: 55px;
-  height: 55px;
-  left: 848px;
-  top: 730px;
-}
-/* line 1041, sass/main.sass */
-.map-main #callouts .primrose-school {
-  background-position: -550px -232px;
-  width: 55px;
-  height: 55px;
-  left: 978px;
-  top: 650px;
-}
-/* line 1047, sass/main.sass */
-.map-main #callouts .nona-middle {
-  background-position: -648px -447px;
-  width: 56px;
-  height: 56px;
-  left: 878px;
-  top: 980px;
-}
-/* line 1053, sass/main.sass */
-.map-main #callouts .uf-research {
-  background-position: 0 -447px;
-  width: 68px;
-  height: 68px;
-  left: 208px;
-  top: 1100px;
-}
-/* line 1059, sass/main.sass */
-.map-main #callouts .ucf-med {
-  background-position: -199px -447px;
-  width: 97px;
-  height: 97px;
-  left: 378px;
-  top: 1060px;
-}
-/* line 1065, sass/main.sass */
-.map-main #callouts .nemours {
-  background-position: 0 -359px;
-  width: 82px;
-  height: 82px;
-  left: 628px;
-  top: 760px;
-}
-/* line 1071, sass/main.sass */
-.map-main #callouts .medical-city {
-  background-position: -386px -359px;
-  width: 70px;
-  height: 70px;
-  left: 218px;
-  top: 950px;
-}
-/* line 1077, sass/main.sass */
-.map-main #callouts .sanford-burham {
-  background-position: -107px -447px;
-  width: 87px;
-  height: 87px;
-  left: 278px;
-  top: 1080px;
-}
-/* line 1083, sass/main.sass */
-.map-main #callouts .md-anderson {
-  background-position: -297px -447px;
-  width: 68px;
-  height: 68px;
-  left: 478px;
-  top: 1080px;
-}
-/* line 1089, sass/main.sass */
-.map-main #callouts .va-med {
-  background-position: -386px -447px;
-  width: 70px;
-  height: 70px;
-  left: 548px;
-  top: 1100px;
-}
-/* line 1095, sass/main.sass */
-.map-main #callouts .nona-village {
-  background-position: -111px 0;
-  width: 67px;
-  height: 66px;
-  left: 851px;
-  top: 10px;
-}
-/* line 1101, sass/main.sass */
-.map-main #callouts .nona-town {
-  background-position: -298px -359px;
-  width: 82px;
-  height: 82px;
-  left: 399px;
-  top: 880px;
-}
-/* line 1107, sass/main.sass */
-.map-main #callouts .nona-publix {
-  background-position: -712px -447px;
-  width: 69px;
-  height: 69px;
-  left: 968px;
+ left: 968px;
   top: 1003px;
 }
-/* line 1113, sass/main.sass */
-.map-main #callouts .nona-info {
-  background-position: 0 0;
-  width: 97px;
-  height: 97px;
-  left: 772px;
-  top: -63px;
+/* line 951, sass/main.sass */
+.map-main #callouts .nt {
+  
+  width: 76px;
+  height: 77px;
+  left: 1030px;
+  top: 1340px;
 }
-/* line 1119, sass/main.sass */
-.map-main #callouts .mco {
-  background-position: 0 -232px;
-  width: 110px;
-  height: 110px;
-  left: 158px;
-  top: 300px;
+/* line 957, sass/main.sass */
+.map-main #callouts .ld {
+
+width: 25;
+height: 25;
+left: 960;
+top: 1390;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .vt {
+width: 25;
+height: 25;
+left: 807;
+top: 1579;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .dongnai {
+width: 25;
+height: 25;
+left: 755;
+top: 1512;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .hcm {
+width: 25;
+height: 25;
+left: 719;
+top: 1538;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .vl {
+width: 25;
+height: 25;
+left: 653;
+top: 1624;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .ct {
+width: 25;
+height: 25;
+left: 605;
+top: 1633;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .st {
+width: 25;
+height: 25;
+left: 645;
+top: 1685;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .st {
+width: 25;
+height: 25;
+left: 607;
+top: 1727;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .cm {
+width: 25;
+height: 25;
+left: 514;
+top: 1737;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .rg_kg {
+width: 25;
+height: 25;
+left: 508;
+top: 1640;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .qn_bd {
+width: 50px;
+height: 50px;
+left: 1024px;
+top: 1141px;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .pt_mn {
+width: 75;
+height: 75;
+left: 873;
+top: 1489;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .vt_hg {
+width: 25;
+height: 25;
+left: 561;
+top: 1676;
+}
+/* line 957, sass/main.sass */
+.map-main #callouts .cl_dt {
+width: 50;
+height: 75;
+left: 587;
+top: 1538;
 }
 /* line 1126, sass/main.sass */
 .map-main #legend {
@@ -1608,6 +1471,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
+
 
 /* line 1214, sass/main.sass */
 .map-main .map:before {
