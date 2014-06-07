@@ -7,7 +7,6 @@
     xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<title>Tin tức</title>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
@@ -25,7 +24,7 @@
 	<!-- IE Conditional Statement -->
 	<h:outputStylesheet library="css" name="jquery.lightbox.css" />
 	<h:outputStylesheet library="css" name="styles.css" />
-	<h:outputScript library="script" name="l10n.js"/>
+	<h:outputScript library="js" name="l10n.js"/>
 	<style>
 		.ui-widget-header {
     		background:none!important;
@@ -40,10 +39,10 @@
 	    }
 	</style>
 </h:head>
-<h:body style="width: 419px; height: 690px;">
+<h:body style="width: 419px; height: 690px; background:white!important;">
 <section class="page-main">
 	<h:form>
-	   	<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="8" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder"> 					
+	   	<p:dataList paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}" type="none" paginator="true" rows="5" paginatorPosition="bottom" value="#{dangTinTucMBean.danhSach}" var="ds" styleClass="datalist-noborder"> 					
 	    	<article style="border-bottom: 1px dotted #565656!important; margin-bottom: 30px!important;">
 	    		
 	    			<h5><p:outputLabel value="#{ds.tieuDe}" style="color: #ee5d3e!important;font-size: 17px!important;"></p:outputLabel></h5>
