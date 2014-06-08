@@ -8,6 +8,8 @@ import model.Xe;
 import model.LoaiXe;
 
 import org.hibernate.Criteria;
+import org.hibernate.LockMode;
+import org.hibernate.LockOptions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -49,6 +51,8 @@ public class XeDao {
 			x=layThongTin(xe);  
 		    Transaction trns = null;
 		    Session session = HibernateUtil.getSessionFactory().openSession();
+		    //session.buildLockRequest(LockOptions.UPGRADE.setLockMode(LockMode.PESSIMISTIC_WRITE).setTimeOut(1000)).lock(this);
+		    System.out.print("locked");
 		    try {
 		        trns = session.beginTransaction();
 		        LoaiXe lx=(LoaiXe) session.load(LoaiXe.class, loaiXe.getMaLoaiXe());
