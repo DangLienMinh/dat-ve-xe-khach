@@ -166,7 +166,7 @@
 		                			Giá vé: <span style="font-size: 18px!important;color: #F25334!important;font-style: normal!important;"><p:outputLabel value="#{ds.gia}"></p:outputLabel> VNĐ</span>    
 									<br/>
 									<br/>
-									<p:commandButton value="Đặt vé" style="font-size: 18px!important;" styleClass="learnmore" ></p:commandButton>
+									<p:commandButton value="Đặt vé" action="#{hoaDonMBean.hienThiChuyen(ds.maTuyen)}" style="font-size: 18px!important;" styleClass="learnmore" ></p:commandButton>
 								</li>
 								<li></li>
 							</p:dataList>

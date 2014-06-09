@@ -118,6 +118,56 @@ public class HoaDonManagedBean {
 		danhSach=chuyenDao.dsChonChuyen(tuyen);
 		dsTuyen=tuyenDao.layTuyen(tuyen.getMaTuyen());		
 	}
+	
+	//dat tai trang index
+	public String hienThiChuyen(String maTuyen){
+		Tuyen x= tuyenDao.layTuyen(maTuyen);
+		danhSach=chuyenDao.dsChonChuyen(x);
+		return "datVeIndex?faces-redirect=true";
+		//dsTuyen=tuyenDao.layTuyen(tuyen.getMaTuyen());		
+	}
+	
+	//tinh trang ghe ngoi
+		public String chonGheIndex(Chuyen ds){
+			chuyen=ds;
+			Xe x=chuyen.getBienSo();
+			xe=xeDao.layXeTheoBienSo(x.getBienSo());
+			LoaiXe malx=xe.getMaLoaiXe();
+			loaiXe=loaiXeDao.layLX(malx.getMaLoaiXe());
+			
+			//neu la xe ghe ngoi
+			if(loaiXe.getMaLoaiXe()==1){
+				
+				//kiem tra tinh trang ghe dua vao machuyen+ngay giao dich
+				List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
+				String []ttNgoi=new String[45];
+				for(Ghe ghe:ttGhe){
+					int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
+					ttNgoi[maghe-1]="true";
+				}
+				gheMB.setTtNgoi(ttNgoi);
+				dieuKienGhe=1;
+				return "datVeIndex?faces-redirect=true";
+			}
+			
+			//neu la xe giuong nam
+			else{
+				//kiem tra tinh trang ghe dua vao machuyen+ngay giao dich
+				List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
+				String []ttNam=new String[40];
+				for(Ghe ghe:ttGhe){
+					int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
+					ttNam[maghe-1]="true";
+				}
+				gheMB.setTtNam(ttNam);
+				dieuKienGhe=2;
+				return "datVeIndex?faces-redirect=true";
+				//return "giuongNam";
+			}	
+		}
+		
+	
+	
 	public Tuyen getTuyen() {
 		return tuyen;
 	}
