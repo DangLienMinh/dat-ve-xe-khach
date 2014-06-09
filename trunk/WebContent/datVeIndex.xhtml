@@ -21,17 +21,13 @@ width:700px!important;
  </h:head>
  <body>
      <h:form>
-      <p:panel header="Tìm thông tin chuyến xe" >
+      <p:panel header="Vui lòng chọn ngày đi" >
       	<h:panelGrid columns="2" >
 	      	<h:panelGrid columns="1" width="230">
-	      		<h:outputLabel value='Tuyến xe' />
-				<p:selectOneMenu value="#{hoaDonMBean.tuyen.maTuyen}">
-					<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
-				</p:selectOneMenu>
 				<h:outputLabel value='Ngày đi' />
 				<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}" pattern="dd/MM/yyyy"></p:calendar>
-	  			<h:outputLabel >Lịch âm dương <p:commandLink style="margin-right:20px;" onclick="dlg2.show();" value="Nhấn vào đây"></p:commandLink></h:outputLabel>
-	       		<p:commandButton icon="ui-icon-search" id='submit' value='Tìm chuyến' action='#{hoaDonMBean.hienThiChuyen}' update="test"/>
+	  			<h:outputLabel >Lịch âm dương <p:commandLink style="margin-right:20px;" onclick="dlg2.show();"><h:outputText value="Nhấn vào đây" /></p:commandLink></h:outputLabel>
+	       		
 	      		<p:dialog  widgetVar="dlg2" >
 				   <IFRAME src="http://www.informatik.uni-leipzig.de/~duc/amlich/JavaScript/current_month.html"  name="CurentMonth" width="188" height="228" >
 					</IFRAME>
@@ -82,7 +78,7 @@ width:700px!important;
 	            </h:outputText>  
 	        </p:column>  
 	  		<p:column style="font-size:14px!important;">
-	  		<p:commandButton  value="Chọn chuyến" action='#{hoaDonMBean.chonGhe(ds)}'></p:commandButton>
+	  		<p:commandButton  value="Chọn chuyến" action='#{hoaDonMBean.chonGheIndex(ds)}'></p:commandButton>
 	  		</p:column>
     	 </p:dataTable>  
     	 <p:separator/>
