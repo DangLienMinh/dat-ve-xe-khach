@@ -46,7 +46,6 @@ public class HoaDonDao {
 	    ConnectionProvider connectionProvider = sessionFactoryImplementation.getConnectionProvider();
 	    int ketQua=-1;
 	    String MaHD="";
-	    
 	    try {
 	    	conn=connectionProvider.getConnection();
 	 	    CallableStatement st = conn.prepareCall("{ call DATVE(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
@@ -75,6 +74,42 @@ public class HoaDonDao {
 	    else
 	   return MaHD;
     }
+	
+	//them mot hoa don
+		public String banVe(HoaDon hoaDon,Chuyen chuyenTemp,String gheTemp) {
+			Connection conn;
+			SessionFactoryImplementor sessionFactoryImplementation = (SessionFactoryImplementor)  HibernateUtil.getSessionFactory();
+		    ConnectionProvider connectionProvider = sessionFactoryImplementation.getConnectionProvider();
+		    int ketQua=-1;
+		    String MaHD="";
+		    try {
+		    	conn=connectionProvider.getConnection();
+		 	    CallableStatement st = conn.prepareCall("{ call DATVE_NV(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+		 	    st.setString(1, chuyenTemp.getMaChuyen());
+		 	    st.setString(2, hoaDon.getHo());
+		 	    st.setString(3, hoaDon.getTen());
+		 	    st.setString(4, hoaDon.getCMND());
+		 	    st.setString(5, hoaDon.getDiaChi());
+		 	    st.setString(6, hoaDon.getDienThoai());
+		 	    st.setString(7, hoaDon.getEmail());
+		 	    st.setInt(8, hoaDon.getTongTien());
+		 	    st.setDate(9, new java.sql.Date(hoaDon.getNgayGD().getTime()));
+		 	   	st.setString(10, hoaDon.getHinhThucTT());
+		 	   	st.setString(11,gheTemp);
+		 	    st.registerOutParameter(13, OracleTypes.NUMBER);
+		 	    st.registerOutParameter(12,OracleTypes.VARCHAR);
+		 	    st.executeUpdate();
+		 	    ketQua = st.getInt(13);
+		 	    MaHD  = st.getString(12);
+			} catch (Exception e) {
+				System.out.print(e.getMessage());
+			}
+		    if(ketQua==0){
+		    	return "0";
+		    }
+		    else
+		   return MaHD;
+	    }
 	
 	//cap nhat ngay dat ve (qua trinh kahch hang lay  ve)
 	public int capNhatNgayNhanVe(HoaDon x){

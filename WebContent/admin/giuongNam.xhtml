@@ -1,0 +1,402 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+ <h:head>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+.ui-button{
+            width:74px;
+            height:26px;
+        }
+</style>
+ </h:head>
+     <body>
+     <h:form>
+     	<h:panelGrid columns="2" style="margin:0px auto!important;">
+     	 <p:panel style="text-align:center!important;"  header="-------------------------------TẦNG 1------------------------------------   --------------------------------TẦNG 2-----------------------------------">
+     	 Vui lòng chọn vị trí bạn muốn
+     	 </p:panel>
+     	  
+     	  <p:outputPanel>
+                    <p:commandButton style="visibility:hidden!important;"></p:commandButton>
+          </p:outputPanel>
+          
+     		<h:panelGroup>
+        	<h:panelGrid columns="5">
+        		<p:outputPanel style="margin-left:20px;font-weight:bold;">
+                    <p:outputLabel value="TÀI XẾ"></p:outputLabel>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                <p:outputPanel>
+                    <p:commandButton style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                <p:outputPanel>
+                    <p:commandButton style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                <p:outputPanel style="margin-left:30px;font-weight:bold;">
+                    <p:outputLabel value="CỬA LÊN"></p:outputLabel>
+                </p:outputPanel>
+               
+        	</h:panelGrid>
+        	
+            <h:panelGrid columns="10">
+                <p:outputPanel>
+                    <p:commandButton value="01" disabled="#{hoaDonMBean.gheMB.ttNam[0]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na1" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton  value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="15" disabled="#{hoaDonMBean.gheMB.ttNam[14]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na15" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+				<p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="27" disabled="#{hoaDonMBean.gheMB.ttNam[26]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na27" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                
+                 <p:outputPanel>
+                   <p:commandButton value="08" disabled="#{hoaDonMBean.gheMB.ttNam[7]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na8" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                 <p:outputPanel>
+                   <p:commandButton value="21" disabled="#{hoaDonMBean.gheMB.ttNam[20]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na21" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="33" disabled="#{hoaDonMBean.gheMB.ttNam[32]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na33" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+            </h:panelGrid>
+            
+            <h:panelGrid columns="10">
+                <p:outputPanel>
+                    <p:commandButton value="02" disabled="#{hoaDonMBean.gheMB.ttNam[1]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na2" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="16" disabled="#{hoaDonMBean.gheMB.ttNam[15]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na16" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+				<p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="28" disabled="#{hoaDonMBean.gheMB.ttNam[27]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na28" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                
+                 <p:outputPanel>
+                   <p:commandButton value="09" disabled="#{hoaDonMBean.gheMB.ttNam[8]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na9" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                 <p:outputPanel>
+                   <p:commandButton value="22" disabled="#{hoaDonMBean.gheMB.ttNam[21]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na22" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="34" disabled="#{hoaDonMBean.gheMB.ttNam[33]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na34" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+            </h:panelGrid>
+            
+            <h:panelGrid columns="10">
+                <p:outputPanel>
+                    <p:commandButton value="03" disabled="#{hoaDonMBean.gheMB.ttNam[2]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na3" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="17" disabled="#{hoaDonMBean.gheMB.ttNam[16]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na17" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+				<p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton disabled="true"  style="color:red;"  value="WC"></p:commandButton>
+                </p:outputPanel>
+                
+                
+                 <p:outputPanel>
+                   <p:commandButton value="10" disabled="#{hoaDonMBean.gheMB.ttNam[9]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na10" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                 <p:outputPanel>
+                   <p:commandButton value="23" disabled="#{hoaDonMBean.gheMB.ttNam[22]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na23" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="35" disabled="#{hoaDonMBean.gheMB.ttNam[34]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na35" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+            </h:panelGrid>
+            
+            <h:panelGrid columns="10">
+                <p:outputPanel>
+                    <p:commandButton value="04" disabled="#{hoaDonMBean.gheMB.ttNam[3]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na4" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="18" disabled="#{hoaDonMBean.gheMB.ttNam[17]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na18" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+				<p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="29" disabled="#{hoaDonMBean.gheMB.ttNam[28]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na29" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                
+                 <p:outputPanel>
+                   <p:commandButton value="11" disabled="#{hoaDonMBean.gheMB.ttNam[10]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na11" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                 <p:outputPanel>
+                   <p:commandButton value="24" disabled="#{hoaDonMBean.gheMB.ttNam[23]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na24" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="36" disabled="#{hoaDonMBean.gheMB.ttNam[35]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na36" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+            </h:panelGrid>
+
+           <h:panelGrid columns="10">
+                <p:outputPanel>
+                    <p:commandButton value="05" disabled="#{hoaDonMBean.gheMB.ttNam[4]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na5" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="19" disabled="#{hoaDonMBean.gheMB.ttNam[18]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na19" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+				<p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="30" disabled="#{hoaDonMBean.gheMB.ttNam[29]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na30" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                
+                 <p:outputPanel>
+                   <p:commandButton value="12" disabled="#{hoaDonMBean.gheMB.ttNam[11]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na12" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                 <p:outputPanel>
+                   <p:commandButton value="25" disabled="#{hoaDonMBean.gheMB.ttNam[24]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na25" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="" style="visibility:hidden!important;"></p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                   <p:commandButton value="37" disabled="#{hoaDonMBean.gheMB.ttNam[36]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+				   <f:attribute name="ngoi" value="Na37" ></f:attribute>
+				   </p:commandButton>
+                </p:outputPanel>
+                
+            </h:panelGrid>
+
+            <h:panelGrid columns="10">
+                <p:outputPanel>
+                    <p:commandButton value="06" disabled="#{hoaDonMBean.gheMB.ttNam[5]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na6" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="07" disabled="#{hoaDonMBean.gheMB.ttNam[6]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na7" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="20" disabled="#{hoaDonMBean.gheMB.ttNam[19]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na20" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="32" disabled="#{hoaDonMBean.gheMB.ttNam[31]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na32" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="31" disabled="#{hoaDonMBean.gheMB.ttNam[30]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na31" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                <p:outputPanel>
+                    <p:commandButton value="13" disabled="#{hoaDonMBean.gheMB.ttNam[12]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na13" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+                
+                <p:outputPanel>
+                    <p:commandButton value="14" disabled="#{hoaDonMBean.gheMB.ttNam[13]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na14" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="26" disabled="#{hoaDonMBean.gheMB.ttNam[25]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na26" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="39" disabled="#{hoaDonMBean.gheMB.ttNam[38]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na39" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+
+                <p:outputPanel>
+                    <p:commandButton value="38" disabled="#{hoaDonMBean.gheMB.ttNam[37]}" actionListener="#{hoaDonMBean.gheMB.giaTriButton}" ajax="false" action="thongTinDatVe_NV">
+					<f:attribute name="ngoi" value="Na38" ></f:attribute>
+					</p:commandButton>
+                </p:outputPanel>
+            </h:panelGrid>
+          
+        </h:panelGroup>
+     	
+     	</h:panelGrid>
+	</h:form>
+        
+
+     	
+     
+     </body>
+
+
+</html>
