@@ -127,7 +127,7 @@ public class HoaDonManagedBean {
 		//dsTuyen=tuyenDao.layTuyen(tuyen.getMaTuyen());		
 	}
 	
-	//tinh trang ghe ngoi
+		//tinh trang ghe ngoi
 		public String chonGheIndex(Chuyen ds){
 			chuyen=ds;
 			Xe x=chuyen.getBienSo();
@@ -166,7 +166,44 @@ public class HoaDonManagedBean {
 			}	
 		}
 		
-	
+		//tinh trang ghe ngoi
+				public String chonGheNV(Chuyen ds){
+					chuyen=ds;
+					Xe x=chuyen.getBienSo();
+					xe=xeDao.layXeTheoBienSo(x.getBienSo());
+					LoaiXe malx=xe.getMaLoaiXe();
+					loaiXe=loaiXeDao.layLX(malx.getMaLoaiXe());
+					
+					//neu la xe ghe ngoi
+					if(loaiXe.getMaLoaiXe()==1){
+						
+						//kiem tra tinh trang ghe dua vao machuyen+ngay giao dich
+						List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
+						String []ttNgoi=new String[45];
+						for(Ghe ghe:ttGhe){
+							int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
+							ttNgoi[maghe-1]="true";
+						}
+						gheMB.setTtNgoi(ttNgoi);
+						dieuKienGhe=1;
+						return "datVe_NV?faces-redirect=true";
+					}
+					
+					//neu la xe giuong nam
+					else{
+						//kiem tra tinh trang ghe dua vao machuyen+ngay giao dich
+						List<Ghe> ttGhe=gheDao.tinhTrangGhe(chuyen.getMaChuyen(),hoaDon.getNgayGD());
+						String []ttNam=new String[40];
+						for(Ghe ghe:ttGhe){
+							int maghe=Integer.parseInt(ghe.getMaGhe().substring(2));
+							ttNam[maghe-1]="true";
+						}
+						gheMB.setTtNam(ttNam);
+						dieuKienGhe=2;
+						return "datVe_NV?faces-redirect=true";
+						//return "giuongNam";
+					}	
+				}
 	
 	public Tuyen getTuyen() {
 		return tuyen;
@@ -269,10 +306,32 @@ public class HoaDonManagedBean {
 			hoaDon.setMaHD(mahd);
 			return "";
 		}
-		
-		
-		
 	}
+	
+	//qua trinh dat ve
+		public String banVe_NV(){
+			//neu chon hinh thuc thanh toan truc tiep
+				hoaDon.setHinhThucTT("Trực tiếp");
+				Tuyen tuyen=new Tuyen();
+				tuyen=chuyen.getMaTuyen();
+				int khuyenMai=chuyenDao.tienKhuyenMai(chuyen.getMaChuyen());
+				if(khuyenMai!=0){
+					int tienVe=tuyenDao.tienVe(tuyen.getMaTuyen());
+					int tienQuaKhuyenMai=tienVe-((tienVe*khuyenMai)/100);
+					hoaDon.setTongTien(tienQuaKhuyenMai);
+				}
+				else{
+					hoaDon.setTongTien(tuyenDao.tienVe(tuyen.getMaTuyen()));
+				}
+				String mahd=hoaDonDao.banVe(hoaDon, chuyen, gheMB.getSelectedGhe());
+				if(mahd.equalsIgnoreCase("0")){
+					dieuKienDatVe=0;
+				}
+				else dieuKienDatVe=-10;
+				hoaDon.setMaHD(mahd);
+				return "kqDatVe_NV.xhtml";
+			}
+		
 	
 	//ham thanh toan paypal 
 	public void thanhToanPaypal(double amount){
@@ -375,6 +434,11 @@ public class HoaDonManagedBean {
 	public String reset(){
 		dieuKienGhe=10;
 		return "datVe?faces-redirect=true";
+	}
+	
+	public String reset_NV(){
+		dieuKienGhe=10;
+		return "datVe_NV?faces-redirect=true";
 	}
 	
 	public String resetLayVe(){

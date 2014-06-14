@@ -1,0 +1,38 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p="http://primefaces.org/ui"
+     >
+
+ <h:head>
+ <title>Welcome to JSF_PrimeFaces_Hibernate Project</title>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 90% !important;
+}
+</style>
+ <h:outputStylesheet library="css" name="custom.css" />
+ </h:head>
+ <body>
+     <h:form>
+     <p:panel header="Thông tin khách hàng">
+     <h:panelGrid columns="2">
+     		<h:outputLabel value='Họ: ' />
+	      <p:inputText value="#{hoaDonMBean.hoaDon.ho}"/> 
+	      <h:outputLabel value='Tên:' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.ten}"/> 
+	      <h:outputLabel value='Số điện thoại' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.dienThoai}"/>
+	      <h:outputLabel value='Email' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.email}"/>
+	      <h:outputLabel value='CMND ' />
+	      <p:inputText  value="#{hoaDonMBean.hoaDon.CMND}"/>
+	      <h:outputLabel value='Địa chỉ' />
+	     	<p:inputText  value="#{hoaDonMBean.hoaDon.diaChi}"/>
+     </h:panelGrid>
+	</p:panel>      
+	<p:commandButton action="#{hoaDonMBean.banVe_NV}" value="Xác nhận đặt vé"></p:commandButton>
+	
+</h:form>
+</body>
+</html>
