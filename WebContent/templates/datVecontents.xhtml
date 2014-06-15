@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p='http://primefaces.org/ui'
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<body>
+	<ui:composition>
+        				 <h:form>
+						      <p:panel header="Tìm thông tin chuyến xe" >
+						      	<h:panelGrid columns="2" >
+							      	<h:panelGrid columns="1" width="230">
+							      		<h:outputLabel value='Tuyến xe' />
+										<p:selectOneMenu value="#{hoaDonMBean.tuyen.maTuyen}">
+											<f:selectItems value="#{tuyenMBean.selectOneItemTuyen}" />
+										</p:selectOneMenu>
+										<h:outputLabel value='Ngày đi' />
+										<p:calendar value="#{hoaDonMBean.hoaDon.ngayGD}" mindate="#{hoaDonMBean.currentDate}" maxdate="#{hoaDonMBean.maxDate}" pattern="dd/MM/yyyy"></p:calendar>
+							  			<h:outputLabel >Lịch âm dương <p:commandLink style="margin-right:20px;" onclick="dlg2.show();" value="Nhấn vào đây"></p:commandLink></h:outputLabel>
+							       		<p:commandButton icon="ui-icon-search" id='submit' value='Tìm chuyến' action='#{hoaDonMBean.hienThiChuyen}' update="test"/>
+							      		<p:dialog  widgetVar="dlg2" >
+										   <IFRAME src="http://www.informatik.uni-leipzig.de/~duc/amlich/JavaScript/current_month.html"  name="CurentMonth" width="188" height="228" >
+											</IFRAME>
+										</p:dialog>
+									</h:panelGrid>
+									<h:panelGrid>
+						      		<p:graphicImage width="500" height="200" library="image" name="hoanglong-bus.png" style="margin-left:400px;"></p:graphicImage>
+						      		</h:panelGrid>
+						      	</h:panelGrid>
+							   </p:panel>
+								 <p:dataTable  var="ds" value="#{hoaDonMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" id="test" emptyMessage="Hiện không có chuyến nào của tuyến xe trên">   
+							        <f:facet name="header">  
+							            Danh sách chuyến
+							        </f:facet>  
+							  
+							        <p:column headerText="Mã Chuyến" style="font-size:14px!important;">  
+							            <h:outputText  value="#{ds.maChuyen}"/>  
+							        </p:column>  
+							        
+							        <p:column headerText="Tuyến" style="font-size:14px!important;">  
+							            <h:outputText  value="#{tuyenMBean.tenTuyen(ds.maTuyen)}"/>  
+							        </p:column>  
+							        
+							        <p:column headerText="Giờ đi" style="font-size:14px!important;"> 
+							              
+							            <h:outputFormat value="{0, date, HH:mm}">
+									    	<f:param  value="#{ds.gioDi}" />
+										</h:outputFormat>
+							        </p:column>
+							        
+							        <p:column headerText="Giờ đến" style="font-size:14px!important;"> 
+							        	<h:outputFormat value="{0, date, HH:mm}">
+									    	<f:param value="#{ds.gioDen}" />
+										</h:outputFormat>
+							        </p:column>
+							        
+							        <p:column headerText="Khuyến mãi" style="font-size:14px!important;">  
+							            <h:outputText value="#{ds.khuyenMai}" />  
+							        </p:column>
+							        
+							        <p:column headerText="Loại xe" style="font-size:14px!important;">  
+							            <h:outputText value="#{loaiXeMBean.layTenLoaiXe(ds.bienSo)}" />  
+							        </p:column>    
+							        
+							        <p:column headerText="Giá vé" style="font-size:14px!important;">  
+							            <h:outputText value="#{hoaDonMBean.dsTuyen.gia}" >
+							            	<f:convertNumber groupingUsed="true"  />
+							            </h:outputText>  
+							        </p:column>  
+							  		<p:column style="font-size:14px!important;">
+							  		<p:commandButton  value="Chọn chuyến" action='#{hoaDonMBean.chonGhe(ds)}'></p:commandButton>
+							  		</p:column>
+						    	 </p:dataTable>  
+						    	 <p:separator/>
+									<c:set var="dk"  value="#{hoaDonMBean.dieuKienGhe}"/>
+									<c:if test="${dk == 1}">
+										<p:panel header="Nhập thông tin cần thiết" style="text-align:center">
+										  <iframe src="gheNgoi.xhtml" width="100%" height="77%">
+										  </iframe> 
+						       			</p:panel>
+						       			<p:commandButton action="#{hoaDonMBean.reset}" value="Trở về mục tìm chuyến"></p:commandButton>
+									</c:if>
+									<c:if test="${dk == 2}">
+										<p:panel header="Nhập thông tin cần thiết" style="text-align:center">
+										  <iframe src="giuongNam.xhtml" width="100%" height="53%">
+										  </iframe> 
+						       			</p:panel>
+						       			<p:commandButton action="#{hoaDonMBean.reset}" value="Trở về mục tìm chuyến"></p:commandButton>
+									</c:if>
+     						</h:form>
+
+			<section id="timeline">
+					<h2 class="indent">Chỗ này là dòng timeline....</h2>
+					<div>
+					<h:form>
+						<ul style="width: 3760px; left: 0px;">
+							<p:dataList  type="none" paginator="false" value="#{tuyenMBean.danhSach}" var="ds" styleClass="datalist-noborder">
+								<li class="odd" style="height: 300px!important;font-family: tahoma!important; font-style: italic!important;">	
+									<div style="height: 40px!important; border-bottom: 1px dotted #565656!important; font-style: normal!important;line-height: 40px!important; background-color: rgba(42, 166, 114, 0.1)!important;"><span>Tuyến </span>
+									<p:outputLabel value="#{ds.tenTuyen}" style="font-size: 18px!important;color: #2AA672!important; font-weight: bold!important;"></p:outputLabel></div>
+		                			<br/>
+		                			Bến đầu: <span style="font-size: 18px!important;color: #F25334!important;font-style: normal!important;"><p:outputLabel value="#{ds.benDau}"></p:outputLabel></span>
+		                			<br/>
+		                			<br/>
+		                			Bến cuối: <span style="font-size: 18px!important;color: #F25334!important;font-style: normal!important;"><p:outputLabel value="#{ds.benCuoi}"></p:outputLabel></span>
+		                			<br/>
+		                			<br/>
+		                			Giá vé: <span style="font-size: 18px!important;color: red!important;font-style: normal!important;"><p:outputLabel value="#{ds.gia}"></p:outputLabel> VNĐ</span>    
+									<br/>
+									<br/>
+									<p:commandButton value="Đặt vé" action="#{hoaDonMBean.hienThiChuyen(ds.maTuyen)}" style="font-size: 18px!important;" styleClass="learnmore" ></p:commandButton>
+								</li>
+								<li></li>
+							</p:dataList>
+							<li></li>
+						</ul>
+						</h:form>
+					</div>
+					<div id="timeline-controls">
+						<span>dot-1</span>
+						<span>dot-2</span>
+						<span class="">dot-3</span>
+						<a id="timeline-left" href="#" style="display: block;" class="">Move Left</a>
+						<a id="timeline-right" href="#">Move Right</a>
+					</div>
+				</section>
+	</ui:composition>
+</body>
+</html>

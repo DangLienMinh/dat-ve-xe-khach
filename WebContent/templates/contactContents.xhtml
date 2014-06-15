@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p='http://primefaces.org/ui'
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<body>
+	<ui:composition>
+		<div id="shell" style="background: url('#{resource['image/healthy_living1.jpg']}') 50% 0 no-repeat;">
+			<section id="main">  <!-- Page starts here --> 
+			    <ul class="breadcrumb">
+			      <li><a href="/datVeXe/index.xhtml">Home</a></li>
+				  <li><a href="/datVeXe/contact.xhtml">Liên hệ</a></li>
+				</ul>
+    
+    <section class="page-content">
+		<section class="sustainability healthyLiving">
+			<article>
+				<h:graphicImage library="image" name="map-small.png" />
+		    </article>
+			<aside>
+				<h3><span>FUTA</span>Travel</h3>
+				<h4>Ghi nhận những chia sẻ &amp; góp ý.</h4>
+				<h:form>
+					<h4 style="margin-left: -200px!important;">E-mail:</h4>
+					<p:inputTextarea rows="1" cols="33" style="margin-left: -55px!important;"/>
+					<br/>
+					<br/>
+					<br/>
+					<h4 style="margin-left: -165px!important;">Chia sẻ &amp; góp ý:</h4>
+    				<p:inputTextarea rows="10" cols="50" value='Tối đa 500 kí tự...' counter="display" maxlength="500" counterTemplate="{0} characters remaining." autoResize="false" style="margin-left: -55px!important;"/>
+    				<h:outputText id="display"/>
+    				<br/>
+    				<br/>
+    				<br/>
+    				<p:commandButton value="Gửi" id="nonAjax" actionListener="#{buttonView.buttonAction}" ajax="false" style="margin-left: -55px!important;"/>
+				</h:form>
+			</aside>
+       </section>                                 
+    </section> 
+ </section>  <!-- Page ends here -->
+		</div>
+	</ui:composition>
+</body>
+</html>
