@@ -2434,6 +2434,9 @@ div.hanging-video a.view-all-videos:hover {
   margin-right: 30px;
   border-right: 1px dotted #828282;
 }
+.sustainability.healthyLiving article a:hover {
+	opacity: 0.7;
+}
 .sustainability.healthyLiving aside:after {
   width: 512px;
   height: 358px;
