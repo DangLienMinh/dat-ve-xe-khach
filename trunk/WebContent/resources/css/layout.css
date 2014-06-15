@@ -428,7 +428,7 @@
 footer {
   width: 100%;
   margin-top: 50px!important;
-  background: #2d86a4 url("#{resource['image/footer-bg.jpg']}") repeat-x!important;
+  background: #2aa672 url("#{resource['image/footer-bg.jpg']}") repeat-x!important;
   height: auto;
   overflow: hidden;
   position: relative;
@@ -650,7 +650,7 @@ footer #searchform input {
   color: #6d6d6d;
   font-style: italic;
   font-size: 13px;
-  background: url("#{resource['image/footer-search.jpg']}") no-repeat 0 0;
+  background: url("#{resource['image/footer-search.png']}") no-repeat 0 0;
 }
 /* line 515, sass/layout.sass */
 footer #searchform button {
