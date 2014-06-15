@@ -2445,7 +2445,7 @@ div.hanging-video a.view-all-videos:hover {
   position: absolute;
   top: -540px;
   left: -200px;
-  background: url("#{resource['image/yoga-woman.png']}") no-repeat;
+  background: url("#{resource['image/mail-icon.png']}") no-repeat;
 }
 .sustainability.healthyLiving aside h3 {
   margin-top: -150px;

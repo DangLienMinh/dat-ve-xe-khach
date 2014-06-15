@@ -659,7 +659,7 @@ footer #searchform button {
   position: absolute;
   top: 0;
   left: 235px;
-  background: url("#{resource['image/footer-search.jpg']}") no-repeat -237px 0;
+  background: url("#{resource['image/footer-search.png']}") no-repeat -237px 0;
   border: 0 none;
 }
 /* line 523, sass/layout.sass */
