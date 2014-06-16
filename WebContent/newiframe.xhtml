@@ -38,6 +38,7 @@
 	    
 	    }
 	</style>
+	
 </h:head>
 <h:body style="width: 419px; height: 690px; background:white!important;">
 <section class="page-main">
@@ -46,7 +47,7 @@
 	    	<article style="border-bottom: 1px dotted #565656!important; margin-bottom: 30px!important;">
 	    	
 	    	<p:outputLabel value="#{ds.ngayDang}"><f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime></p:outputLabel>
-	    	<h5><p:commandLink action="#{dangTinTucMBean.hienThiTin(ds)}" value="#{ds.tieuDe}" style="color: #ee5d3e!important;font-size: 17px!important;margin-top:15px!important;"></p:commandLink></h5>		
+	    	<h5><p:commandLink oncomplete="window.top.location.href ='newdetail.xhtml';"  action="#{dangTinTucMBean.hienThiTin(ds)}" value="#{ds.tieuDe}" style="color: #ee5d3e!important;font-size: 17px!important;margin-top:15px!important;"></p:commandLink></h5>		
 	    	<p><p:outputLabel value="#{ds.tomTat}" style="font-size: 13px!important;"></p:outputLabel></p>
 	    	</article>
 		</p:dataList>   
