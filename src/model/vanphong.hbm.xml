@@ -21,4 +21,13 @@
       </id>
       <property name="TenKV" column="TenKV"/>
    </class>
+   <class name="model.LienHe" table="LienHe"  dynamic-update="true">
+      <id name="Id" column="Id">
+      <generator class="increment"/>
+      </id>
+      <property name="NoiDung" column="NoiDung"/>
+      <property name="NgayGui" column="NgayGui"/>
+      <property name="TinhTrang" column="TinhTrang"/>
+      <property name="Email" column="Email"/>
+   </class>
 </hibernate-mapping>
