@@ -24,17 +24,17 @@
 				<h4>Ghi nhận những chia sẻ &amp; góp ý.</h4>
 				<h:form>
 					<h4 style="margin-left: -200px!important;">E-mail:</h4>
-					<p:inputTextarea rows="1" cols="33" style="margin-left: -55px!important;"/>
+					<p:inputText  style="margin-left: -55px!important;" value='#{lienHeMBean.lienHe.email}'/>
 					<br/>
 					<br/>
 					<br/>
 					<h4 style="margin-left: -165px!important;">Chia sẻ &amp; góp ý:</h4>
-    				<p:inputTextarea rows="10" cols="50" value='Tối đa 500 kí tự...' counter="display" maxlength="500" counterTemplate="{0} characters remaining." autoResize="false" style="margin-left: -55px!important;"/>
+    				<p:inputTextarea value='#{lienHeMBean.lienHe.noiDung}' rows="10" cols="50" counter="display" maxlength="500" counterTemplate="{0} characters remaining." autoResize="false" style="margin-left: -55px!important;"/>
     				<h:outputText id="display"/>
     				<br/>
     				<br/>
     				<br/>
-    				<p:commandButton value="Gửi" id="nonAjax" actionListener="#{buttonView.buttonAction}" ajax="false" style="margin-left: -55px!important;"/>
+    				<p:commandButton value="Gửi" id="nonAjax" actionListener="#{lienHeMBean.themLienHe}" ajax="false" style="margin-left: -55px!important;"/>
 				</h:form>
 			</aside>
        </section>                                 

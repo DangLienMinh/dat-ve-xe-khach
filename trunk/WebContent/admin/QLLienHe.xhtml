@@ -1,0 +1,88 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+     xmlns:h='http://java.sun.com/jsf/html'
+      xmlns:f='http://java.sun.com/jsf/core'
+      xmlns:p='http://primefaces.org/ui'
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     >
+
+ <h:head>
+ <title>Liên hệ khách hàng</title>
+ <h:outputStylesheet library="css" name="main.css" />
+ <h:outputScript library="js" name="tabview.js"/>
+<style>
+.ui-widget, .ui-widget .ui-widget {
+     font-size: 85% !important;
+}
+.ui-datatable .ui-column-filter{display: none;}
+ .ui-datatable, .ui-datatable-odd {
+            background: #F2F5F9;
+     }
+  .ui-icon{
+  	margin-right: 5px;
+}
+</style>
+ </h:head>
+ <body>
+     <div class="menuTrai">
+     <h:form > 
+		    <p:tieredMenu style="width:200px">  
+		     <p:menuitem value="Futabus Travel" icon="ui-icon-home" style="font-weight:bold"/>
+		        <p:menuitem value="Lấy vé trực tiếp" outcome="layVe" icon="ui-icon-bookmark"/> 
+		        <p:menuitem value="Bán vé" url="datVe_NV.xhtml"  icon="ui-icon-cart"/>
+		        <p:menuitem value="Giúp đỡ" url="QLLienHe.xhtml"  icon="ui-icon-help"/>      
+		        <p:separator/>   
+		        <p:menuitem value="Thông tin tài khoản" outcome="QLTaiKhoan_NV" icon="ui-icon-info"/> 
+		    </p:tieredMenu>
+     </h:form> 
+     </div>
+     <div class="noiDung">
+     <h:form id="form">
+	     <p:outputLabel style="font-weight:bold;" value='Xin chào nhân viên, #{nhanVienMBean.hoTen}'></p:outputLabel><h:outputText value="&#160;" />  
+	     <p:commandButton icon="ui-icon-power" value="Đăng xuất" action="#{nhanVienMBean.dangXuat}"></p:commandButton>
+	     <p:separator/>
+	     <p:dataTable  paginatorPosition="bottom" var="ds" value="#{lienHeMBean.danhSach}" paginator="true" rows="5" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" filteredValue="#{lienHeMBean.filteredDanhSach}" widgetVar="khuVuc" emptyMessage="Không tìm thấy khu vực nào">   
+	      	<f:facet name="header">
+		      	 Danh sách thắc mắc khách hàng
+		        <p:outputPanel style="text-align: right !important;">
+	                <h:outputText value="Tìm kiếm:" /><p:spacer width="10" />
+	                <p:inputText id="globalFilter" onkeyup="PF('khuVuc').filter()" style="width:150px" placeholder="Nhập thông tin"/>
+	            </p:outputPanel>
+       	 	</f:facet>
+	  
+	        <p:column headerText="Ngày gửi" style="font-size:14px!important;"  filterBy="ngayGui">  
+	            <h:outputText  value="#{ds.ngayGui}"/>  
+	        </p:column>  
+	        
+	        <p:column headerText="Email" style="font-size:14px!important;"  filterBy="email">  
+	            <h:outputText  value="#{ds.email}"/>  
+	        </p:column>  
+	       
+	  		<p:column style="font-size:14px!important;" headerText="Thao tác">
+	  		<p:commandButton icon="ui-icon-gear" action='#{lienHeMBean.capNhat(ds)}'  update=":form:tabView:grid1"></p:commandButton>
+	  		</p:column>
+
+	        <f:facet name="footer">  
+	           Tổng cộng có #{fn:length(lienHeMBean.danhSach)} lời góp ý.
+	        </f:facet>  
+	  
+    	 </p:dataTable>  
+		 <p:separator/>
+		 <p:tabView id="tabView" dynamic="true" widgetVar="tabPanelWidget">  
+			<p:tab id="tba2" title="Trả lời thắc mắc" >  
+	           	 <h:panelGrid columns="2"  id="grid1">  
+	               <h:outputLabel value='Email' />
+			       <p:inputText value='#{lienHeMBean.selectedLienHe.email}' onmouseover ="this.readOnly=true;"  onfocus="window.focus();"/>
+			       <h:outputLabel value='Nội dung' />
+				   <p:inputTextarea value='#{lienHeMBean.selectedLienHe.noiDung}' rows="10" cols="50" onmouseover ="this.readOnly=true;"/>
+				   <p:separator/><p:separator/>
+				   <h:outputLabel value='Trả lời' />
+				   <p:inputTextarea value='#{lienHeMBean.noiDungTL}' rows="10" cols="50"/>
+				   <p:commandButton value="Gửi" action='#{lienHeMBean.guiMail}'></p:commandButton>
+	            </h:panelGrid>  
+	        </p:tab>  
+    	</p:tabView>  
+     </h:form> 
+     </div>
+</body>
+</html>
+
