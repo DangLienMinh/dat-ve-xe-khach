@@ -428,7 +428,7 @@
 footer {
   width: 100%;
   margin-top: 50px!important;
-  background: #2aa672 url("#{resource['image/footer-bg.jpg']}") repeat-x!important;
+  background: #2d86a4 url("#{resource['image/footer-bg.jpg']}") repeat-x!important;
   height: auto;
   overflow: hidden;
   position: relative;
