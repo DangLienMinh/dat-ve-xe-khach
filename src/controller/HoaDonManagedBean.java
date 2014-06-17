@@ -123,7 +123,7 @@ public class HoaDonManagedBean {
 	public String hienThiChuyen(String maTuyen){
 		Tuyen x= tuyenDao.layTuyen(maTuyen);
 		danhSach=chuyenDao.dsChonChuyen(x);
-		return "datVeIndex?faces-redirect=true";
+		return "datVe1?faces-redirect=true";
 		//dsTuyen=tuyenDao.layTuyen(tuyen.getMaTuyen());		
 	}
 	
@@ -147,7 +147,7 @@ public class HoaDonManagedBean {
 				}
 				gheMB.setTtNgoi(ttNgoi);
 				dieuKienGhe=1;
-				return "datVeIndex?faces-redirect=true";
+				return "datVe1?faces-redirect=true";
 			}
 			
 			//neu la xe giuong nam
@@ -161,7 +161,7 @@ public class HoaDonManagedBean {
 				}
 				gheMB.setTtNam(ttNam);
 				dieuKienGhe=2;
-				return "datVeIndex?faces-redirect=true";
+				return "datVe1?faces-redirect=true";
 				//return "giuongNam";
 			}	
 		}
@@ -244,7 +244,7 @@ public class HoaDonManagedBean {
 			}
 			gheMB.setTtNgoi(ttNgoi);
 			dieuKienGhe=1;
-			return "datVe?faces-redirect=true";
+			return "datVe1?faces-redirect=true";
 			//return "gheNgoi";
 		}
 		
@@ -259,7 +259,7 @@ public class HoaDonManagedBean {
 			}
 			gheMB.setTtNam(ttNam);
 			dieuKienGhe=2;
-			return "datVe?faces-redirect=true";
+			return "datVe1?faces-redirect=true";
 			//return "giuongNam";
 		}	
 	}
@@ -433,7 +433,7 @@ public class HoaDonManagedBean {
 	
 	public String reset(){
 		dieuKienGhe=10;
-		return "datVe?faces-redirect=true";
+		return "datVe1?faces-redirect=true";
 	}
 	
 	public String reset_NV(){
