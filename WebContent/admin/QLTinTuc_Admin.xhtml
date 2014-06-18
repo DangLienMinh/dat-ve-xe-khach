@@ -70,7 +70,7 @@
 	  		<p:commandButton  icon="ui-icon-close" action='#{tinTucMBean.xoaTinTuc(ds)}'>
 	  			<p:confirm header="Confirmation" message="Bạn có chắc chắn muốn xoá tin tức?" icon="ui-icon-alert" />
 	  		</p:commandButton>
-	  		 <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+	  		 <p:confirmDialog style="position:absolute!important;top:200px!important;" global="true" showEffect="fade" hideEffect="explode">
 		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
 		       	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
 	    	</p:confirmDialog>

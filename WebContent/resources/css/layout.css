@@ -771,8 +771,8 @@ footer #searchform button:hover {
 .page-content aside {
   width: 300px;
   height: auto;
-  margin-top: -490px;
+  margin-top: -486px;
   margin-left: 600px;
   float: left;
-  position: relative;
+  position: absolute;
 }
