@@ -99,6 +99,11 @@ width:700px!important;
 	            	<f:convertNumber groupingUsed="true"  />
 	            </h:outputText>  
 	        </p:column>  
+	        <p:column headerText="Chỗ trống" style="font-size:14px!important;">  
+				<h:outputText value="#{hoaDonMBean.soGheTrong(ds.maChuyen)}" style="color:red;">
+					<f:convertNumber groupingUsed="true"  />
+				</h:outputText>  
+			</p:column>  
 	  		<p:column style="font-size:14px!important;">
 	  		<p:commandButton  value="Chọn chuyến" action='#{hoaDonMBean.chonGheNV(ds)}'></p:commandButton>
 	  		</p:column>

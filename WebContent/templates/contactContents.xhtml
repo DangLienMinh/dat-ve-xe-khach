@@ -19,12 +19,18 @@
 			<article>
 				<a href="/datVeXe/map.xhtml"><h:graphicImage library="image" name="map-small.png" /></a>
 		    </article>
-			<aside>
+			<aside style="position:relative!important;">
 				<h3><span>FUTA</span>Travel</h3>
 				<h4>Ghi nhận những chia sẻ &amp; góp ý.</h4>
 				<h:form>
+					<p:message for="email" />
 					<h4 style="margin-left: -200px!important;">E-mail:</h4>
-					<p:inputText  style="margin-left: -55px!important;" value='#{lienHeMBean.lienHe.email}'/>
+					<p:inputText required="true" id="email" label="email" size="40"
+					requiredMessage="Xin vui lòng nhập email."
+					validatorMessage="Không phải email hợp lệ" style="margin-left: -55px!important;" value='#{lienHeMBean.lienHe.email}'>
+					 <f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</p:inputText>
 					<br/>
 					<br/>
 					<br/>

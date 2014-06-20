@@ -162,4 +162,24 @@ public class HoaDonDao {
 		//tra ve 1 doi tuong HoaDon => lay phan tu dau tien cua result list
 	    return result;
  	}
+ 	
+ 	public int demGheConTrong(String maChuyen,Date NgayGD){
+ 		int returnResult = -10;
+		Connection conn;
+		SessionFactoryImplementor sessionFactoryImplementation = (SessionFactoryImplementor)  HibernateUtil.getSessionFactory();
+	    ConnectionProvider connectionProvider = sessionFactoryImplementation.getConnectionProvider();
+	    try {
+	    	conn=connectionProvider.getConnection();
+	 	    CallableStatement st = conn.prepareCall("{ call demSoGheTrong(?, ?, ?) }");
+	 	    st.setString(1, maChuyen);
+	 	    st.setDate(2,  new java.sql.Date(NgayGD.getTime()));
+	 	   st.registerOutParameter(3, OracleTypes.NUMBER);
+
+	 	   st.executeUpdate();
+	 	   returnResult = st.getInt(3);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+	    return returnResult;
+ 	}
 }
