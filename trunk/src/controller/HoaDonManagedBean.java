@@ -440,6 +440,11 @@ public class HoaDonManagedBean {
 		return "layVe?faces-redirect=true";
 	}
 	
+	public String soGheTrong(String maChuyen){
+		int x=hoaDonDao.demGheConTrong(maChuyen, hoaDon.getNgayGD());
+		return Integer.toString(x);
+	}
+	
 	public String inVe() throws ClassNotFoundException, SQLException, IOException,JRException{
 		return reportMB.inVe(hoaDon.getMaHD());
 	}
