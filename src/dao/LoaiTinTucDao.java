@@ -46,7 +46,7 @@ public class LoaiTinTucDao implements Serializable{
 	    List result = session.createQuery(hql)
 	    .setParameter("maLoaiTinTuc", maLoaiTinTuc)
 	    .list();
-	//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+	    //tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
  		LoaiTinTuc x=(LoaiTinTuc) result.get(0);
  		return x; 
  	}

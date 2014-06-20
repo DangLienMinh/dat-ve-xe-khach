@@ -99,6 +99,8 @@ public class NhanVienManagedBean {
 	public void setFilteredDanhSach(List<NhanVien> filteredDanhSach) {
 		this.filteredDanhSach = filteredDanhSach;
 	}
+	
+	//lay ho ten nguoi dung dang nhap trong session
 	public String getHoTen() {
 		//lay thong tin ho ten dua vao session
 		 HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -148,17 +150,20 @@ public class NhanVienManagedBean {
 	      return "dangNhap?faces-redirect=true";
 	   }
 	
+	//them moi 1 nhan vien
 	public String themNhanVien(){
 		nhanVienDao.themNhanVien(nhanVien, phanQuyen);
 		return "QLNhanVien?faces-redirect=true";
 	}
 	
+	//sua nhan vien
 	public String suaNhanVien(){
 		//sua nhan vien dua vao doi tuong nhan vien duoc chon
 		nhanVienDao.suaNhanVien(selectedNV,selectedPhanQuyen);
 		return "QLNhanVien?faces-redirect=true";
 	}
 	
+	//xoa nhan vien
 	public String xoaNhanVien(NhanVien x){
 		nhanVienDao.xoaNhanVien(x);
 		return "QLNhanVien?faces-redirect=true";
@@ -170,13 +175,6 @@ public class NhanVienManagedBean {
 		//tabIndex=0;
 		return "QLNhanVien?faces-redirect=true";
 	}
-	
-	//Nhan nut back trong report thong tin nhan vien
-//		public String back(){
-//			nhanVienDao.reset(nhanVien);
-//			tabIndex=2;
-//			return "QLNhanVien?faces-redirect=true";
-//		}
 	
 	//ham khi bam vao icon rang cua se luu thong tin doi tuong nhan vien duoc chon
 	public void capNhat(NhanVien x,String maPQ){
@@ -191,7 +189,6 @@ public class NhanVienManagedBean {
 	
 	public String inTTNV() throws ClassNotFoundException, SQLException, IOException,JRException{
 		return reportMB.inTTNhanVien(selectedNV.getMaNV());
-		//return reportMB.inVe("V140500006");
 	}
 
 	public ReportManagedBean getReportMB() {

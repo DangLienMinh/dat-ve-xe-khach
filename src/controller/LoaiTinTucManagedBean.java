@@ -24,6 +24,7 @@ public class LoaiTinTucManagedBean implements Serializable{
 	//tra ve dnh sach loai tin tuc hien thi tren combobox
 	private List<SelectItem> selectOneItemLTT;
 	
+	//combobox loai tin tuc
 	public List<SelectItem> getSelectOneItemLTT() {
 		this.selectOneItemLTT=new ArrayList<SelectItem>();
 		List<LoaiTinTuc> loaiTTs=loaiTTDao.selectItems();
@@ -46,7 +47,7 @@ public class LoaiTinTucManagedBean implements Serializable{
 		this.loaiTTDao = loaiTTDao;
 	}
 	
-	//tra ve ten tuyen
+	//tra ve ten loai tin tuc
 	public String tenLoaiTT(String maLTT){
 		int ma=Integer.parseInt(maLTT);
 		return loaiTTDao.tenLoaiTT(ma);

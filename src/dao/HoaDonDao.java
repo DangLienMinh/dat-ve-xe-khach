@@ -2,20 +2,13 @@ package dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import hibernateUtil.HibernateUtil;
 import model.Chuyen;
-import model.Ghe;
 import model.HoaDon;
-import model.TinTuc;
 import oracle.jdbc.OracleTypes;
-
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 
@@ -39,7 +32,7 @@ public class HoaDonDao {
 		return hoaDon;
 	}
 	
-	//them mot hoa don
+	//Khach hang dat ve
 	public String themHoaDon(HoaDon hoaDon,Chuyen chuyenTemp,String gheTemp) {
 		Connection conn;
 		SessionFactoryImplementor sessionFactoryImplementation = (SessionFactoryImplementor)  HibernateUtil.getSessionFactory();
@@ -75,7 +68,7 @@ public class HoaDonDao {
 	   return MaHD;
     }
 	
-	//them mot hoa don
+		//Nhan vien dat ve
 		public String banVe(HoaDon hoaDon,Chuyen chuyenTemp,String gheTemp) {
 			Connection conn;
 			SessionFactoryImplementor sessionFactoryImplementation = (SessionFactoryImplementor)  HibernateUtil.getSessionFactory();
@@ -131,7 +124,7 @@ public class HoaDonDao {
 	    return returnResult;
  	}
 	
-	 //lay hoa don thweo MaHD
+	 //lay hoa don theo MaHD
  	public HoaDon layHD(String maHD){		
  		Session session = HibernateUtil.getSessionFactory().openSession();
  		HoaDon hd = (HoaDon)session.get(HoaDon.class,maHD); 
@@ -140,7 +133,7 @@ public class HoaDonDao {
 		    List result = session.createQuery(hql)
 		    .setParameter("maHD", maHD)
 		    .list();
-		//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+		//tra ve 1 doi tuong hoadon => lay phan tu dau tien cua result list
 		    HoaDon x=(HoaDon) result.get(0);
 	 		return x; 
  		}
@@ -149,6 +142,7 @@ public class HoaDonDao {
  		}
  	}
  	
+ 	//lay thong tin hoa don dua vao CMND va ngaygd
  	public List<HoaDon> layHDTheoTTKH(Date ngayGD,String cmnd){
  		Session session = HibernateUtil.getSessionFactory().openSession();
  		String hql="";
@@ -165,8 +159,7 @@ public class HoaDonDao {
  					.setDate("ngaygd", ngayGD)
  					 .list();
  		}
-
-		//tra ve 1 doi tuong loaitintuc => lay phan tu dau tien cua result list
+		//tra ve 1 doi tuong HoaDon => lay phan tu dau tien cua result list
 	    return result;
  	}
 }

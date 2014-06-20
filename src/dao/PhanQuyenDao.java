@@ -34,6 +34,7 @@ public class PhanQuyenDao {
 		return list;
 	}
 	
+	//lay phan quyen theo ma phan quyen
 	public PhanQuyen layPQ(int maPQ){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 	    String hql = "from PhanQuyen  where MaPQ = :mapq";

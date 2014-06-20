@@ -57,7 +57,6 @@ public class TaiKhoanManagedBean {
 		}else{
 			return "QLTaiKhoan_NVDH?faces-redirect=true";
 		}
-		
 	}
 	
 	public String suaMatKhau(){

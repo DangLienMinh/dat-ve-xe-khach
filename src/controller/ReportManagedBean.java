@@ -35,8 +35,7 @@ public class ReportManagedBean {
 	
 	//Dung cho doanh thu tuyen
 	private String Nam2;
-		
-		
+
 	private Date SelectedDate;
 	private Tuyen tuyen=new Tuyen();
 	

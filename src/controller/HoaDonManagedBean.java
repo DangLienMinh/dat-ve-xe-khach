@@ -89,14 +89,12 @@ public class HoaDonManagedBean {
 	
 	//cmnd
 	private String CMND;
-	//dien thoai
-	//private String DienThoai;
+
 	//Thong tin khach hang dat ve
 	private Date NgayDat;
-	//private String Ten;
+
 	//Danh sach hoa don
 	private List<HoaDon> veKH;
-
 
 	//max date= thang hien tai+1
 	public Date getMaxDate() {
@@ -111,24 +109,21 @@ public class HoaDonManagedBean {
 		cal.add(Calendar.DATE, 1);
 	    return cal.getTime();
 	}
-	
-	
-	
+		
 	public void hienThiChuyen(){
 		danhSach=chuyenDao.dsChonChuyen(tuyen);
 		dsTuyen=tuyenDao.layTuyen(tuyen.getMaTuyen());		
 	}
 	
-	//dat tai trang index
+	//dat ve tai trang index
 	public String hienThiChuyen(String maTuyen){
 		Tuyen x= tuyenDao.layTuyen(maTuyen);
 		danhSach=chuyenDao.dsChonChuyen(x);
-		return "datVe1?faces-redirect=true";
-		//dsTuyen=tuyenDao.layTuyen(tuyen.getMaTuyen());		
+		return "datVe1?faces-redirect=true";	
 	}
 	
-		//tinh trang ghe ngoi
-		public String chonGheIndex(Chuyen ds){
+	//tinh trang ghe ngoi tai trang index
+	public String chonGheIndex(Chuyen ds){
 			chuyen=ds;
 			Xe x=chuyen.getBienSo();
 			xe=xeDao.layXeTheoBienSo(x.getBienSo());
@@ -166,8 +161,8 @@ public class HoaDonManagedBean {
 			}	
 		}
 		
-		//tinh trang ghe ngoi
-				public String chonGheNV(Chuyen ds){
+		//tinh trang ghe ngoi cua nhan vien dat ve
+		public String chonGheNV(Chuyen ds){
 					chuyen=ds;
 					Xe x=chuyen.getBienSo();
 					xe=xeDao.layXeTheoBienSo(x.getBienSo());
@@ -203,7 +198,7 @@ public class HoaDonManagedBean {
 						return "datVe_NV?faces-redirect=true";
 						//return "giuongNam";
 					}	
-				}
+		}
 	
 	public Tuyen getTuyen() {
 		return tuyen;
@@ -224,7 +219,7 @@ public class HoaDonManagedBean {
 		this.dsTuyen = dsTuyen;
 	}
 	
-	//tinh trang ghe ngoi
+	//tinh trang ghe ngoi trang dat ve
 	public String chonGhe(Chuyen ds){
 		chuyen=ds;
 		Xe x=chuyen.getBienSo();
@@ -245,7 +240,6 @@ public class HoaDonManagedBean {
 			gheMB.setTtNgoi(ttNgoi);
 			dieuKienGhe=1;
 			return "datVe1?faces-redirect=true";
-			//return "gheNgoi";
 		}
 		
 		//neu la xe giuong nam
@@ -260,11 +254,10 @@ public class HoaDonManagedBean {
 			gheMB.setTtNam(ttNam);
 			dieuKienGhe=2;
 			return "datVe1?faces-redirect=true";
-			//return "giuongNam";
 		}	
 	}
 	
-	//qua trinh dat ve
+	//qua trinh dat ve public
 	public String datve(){
 		//neu chon hinh thuc thanh toan truc tiep
 		if(option.equalsIgnoreCase("1")){
@@ -308,7 +301,7 @@ public class HoaDonManagedBean {
 		}
 	}
 	
-	//qua trinh dat ve
+	//qua trinh dat ve nhan vien
 		public String banVe_NV(){
 			//neu chon hinh thuc thanh toan truc tiep
 				hoaDon.setHinhThucTT("Trực tiếp");
@@ -521,14 +514,6 @@ public class HoaDonManagedBean {
 	public void setCMND(String cMND) {
 		CMND = cMND;
 	}
-//
-//	public String getDienThoai() {
-//		return DienThoai;
-//	}
-//
-//	public void setDienThoai(String dienThoai) {
-//		DienThoai = dienThoai;
-//	}
 
 	public Date getNgayDat() {
 		return NgayDat;
@@ -553,12 +538,4 @@ public class HoaDonManagedBean {
 	public void setDieuKienDatVe(int dieuKienDatVe) {
 		this.dieuKienDatVe = dieuKienDatVe;
 	}
-
-//	public String getTen() {
-//		return Ten;
-//	}
-//
-//	public void setTen(String ten) {
-//		Ten = ten;
-//	}	
 }

@@ -71,6 +71,7 @@ public class DangTinTucManagedBean implements Serializable {
 		}
 
 
+		//hien thi tin chi tiet cua 1 tin tuc
 		public String hienThiTin(TinTuc x){
 			selectedTinTuc=x;
 			DanhSachLienQuan = new ArrayList<TinTuc>();

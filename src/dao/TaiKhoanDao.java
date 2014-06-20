@@ -1,11 +1,8 @@
 package dao;
 
 import hibernateUtil.HibernateUtil;
-
 import java.util.List;
-
 import model.NhanVien;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

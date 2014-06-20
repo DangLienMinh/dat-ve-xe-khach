@@ -1,13 +1,9 @@
 package dao;
 
 import hibernateUtil.HibernateUtil;
-
 import java.util.List;
-
 import model.KhuVuc;
-import model.Tuyen;
 import model.VanPhong;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -125,7 +121,7 @@ public class VanPhongDao {
 	    }
 
 	 
-	 	//reset cac thuoc tinh cua vanPhong
+	 //reset cac thuoc tinh cua vanPhong
 	 public void reset(VanPhong vanPhong) {
 		 vanPhong.setTenVP(" ");
 		 vanPhong.setDienThoai(" ");

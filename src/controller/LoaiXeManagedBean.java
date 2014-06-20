@@ -34,7 +34,7 @@ public class LoaiXeManagedBean{
 		this.loaiXeDao = loaiXeDao;
 	}
 
-	//tra ve danh sach loai xe
+	//tra ve combobox loai xe
 	public List<SelectItem> getSelectOneItemLX() {
 		this.selectOneItemLX=new ArrayList<SelectItem>();
 		List<LoaiXe> loaiXes=loaiXeDao.selectItems();
@@ -45,10 +45,8 @@ public class LoaiXeManagedBean{
 		return selectOneItemLX;
 	}
 	
+	//tra ve ten loai xe
 	public String layTenLoaiXe(String bienSo){
 		return loaiXeDao.layTenLoaiXe(bienSo);
 	}
-
-	
-
 }

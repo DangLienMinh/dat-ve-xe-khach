@@ -1,14 +1,9 @@
 package controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-
 import model.Chuyen;
 import model.TaiXe;
 import model.Tuyen;
@@ -131,17 +126,19 @@ public class ChuyenManagedBean {
 		this.selectedTaiXe = selectedTaiXe;
 	}	
 	
+	//them chuyen moi
 	public String themChuyen(){
 		chuyenDao.themChuyen(chuyen, taiXe, tuyen, xe);
 		return "QLChuyen?faces-redirect=true";
 	}
 	
+	//sua chuyen dua vao doi tuong chuyen duoc chon
 	public String suaChuyen(){
-		//sua chuyen dua vao doi tuong chuyen duoc chon
 		chuyenDao.suaChuyen(selectedChuyen, selectedTaiXe, selectedTuyen, selectedXe);
 		return "QLChuyen?faces-redirect=true";
 	}
 	
+	//xoa chuyen
 	public String xoaChuyen(Chuyen x){
 		chuyenDao.xoaChuyen(x);
 		return "QLChuyen?faces-redirect=true";

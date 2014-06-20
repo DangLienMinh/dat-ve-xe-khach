@@ -4,10 +4,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.util.Iterator;
 import java.util.List;
-
 import hibernateUtil.HibernateUtil;
 import oracle.jdbc.OracleTypes;
-
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,11 +13,8 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
-
 import model.NhanVien;
 import model.PhanQuyen;
-import model.TinTuc;
-
 
 public class NhanVienDao {
 
@@ -106,8 +101,8 @@ public class NhanVienDao {
 			} catch (Exception e) {
 				System.out.print("Không tìm thấy tên đăng nhập trên");
 			}
-		   
 		    
+		    //dang nhap thanh cong hay khong
 			if(returnResult==1){
 				return 1;
 			}
@@ -116,7 +111,7 @@ public class NhanVienDao {
 			}
 		}
 	 
-	 //lay he ten nhan vien
+	 	//lay he ten nhan vien
 	 	public String layHoTen(NhanVien nhanVien){
 	 		Session session = HibernateUtil.getSessionFactory().openSession();
 			Query query = session.createQuery("from NhanVien where MaNV = :tendn and MatKhau = :matkhau");
@@ -145,7 +140,7 @@ public class NhanVienDao {
 		    List result = session.createQuery(hql)
 		    .setParameter("tendn", nhanVien.getMaNV())
 		    .list();
-	 		//tra ve 1 doi tuong TinTuc => lay phan tu dau tien cua result list
+	 		//tra ve 1 doi tuong NhanVien => lay phan tu dau tien cua result list
 		    NhanVien x=(NhanVien)result.get(0);
 		    return x;
 	 	}

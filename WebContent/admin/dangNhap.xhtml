@@ -41,18 +41,19 @@ body {
 </style>
  </h:head>
  <body>
-     <h:form id='loginform'>
+     <h:form id='grid1'>
+     <p:growl id="messages" showDetail="true" sticky="true" /> 
      	<div id='logo'>
      		<h:graphicImage library="image" name="futalogo.png" />
      	</div>
 	     <div id='login'>
 	     	<div class='row'>
 		        <h:outputLabel for='name' value='Tài khoản: ' />
-		        <p:inputText id='name' value='#{nhanVienMBean.nhanVien.maNV}'/>
+		        <p:inputText id='name' value='#{nhanVienMBean.nhanVien.maNV}' required="true" label="Tên đăng nhập" requiredMessage="Vui lòng nhập tên đăng nhập"/>
 	       	</div>
 	       	<div class='row'>
 		        <h:outputLabel for='pass' value='Mật khẩu: ' />
-		        <p:password id='pass' value='#{nhanVienMBean.nhanVien.matKhau}' feedback='true'/>
+		        <p:password id='pass' value='#{nhanVienMBean.nhanVien.matKhau}' feedback='true' required="true" label="Mật khẩu" requiredMessage="Vui lòng nhập mật khẩu"/>
 		    </div>
 		    <div class='row'>
 		    	<p:commandLink id="ajax" style="margin-right:20px; text-decoration: none;">
@@ -65,7 +66,7 @@ body {
 		    	<h:outputText value="	Duy trì đăng nhập" />
 		    	</div>
 		    	<div>
-		    	<p:commandButton id='submit' value='Đăng nhập' action='#{nhanVienMBean.dangNhap}' ajax='false'/>
+		    	<p:commandButton id='submit' value='Đăng nhập' action='#{nhanVienMBean.dangNhap}' update="grid1"/>
 		    	</div>
 		    </div>
 	      </div> 

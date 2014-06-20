@@ -104,11 +104,13 @@ public class XeManagedBean {
 		this.selectedLoaiXe = selectedLoaiXe;
 	}	
 	
+	//them moi xe
 	public String themXe(){
 		xeDao.themXe(xe, loaiXe);
 		return "QLXe?faces-redirect=true";
 	}
 	
+	//sua 1 xe
 	public String suaXe(){
 		//sua xe dua vao doi tuong xe duoc chon
 		xeDao.suaXe(selectedXe,selectedLoaiXe);
@@ -133,7 +135,7 @@ public class XeManagedBean {
 		setSelectedLoaiXe(loaiXeDao.layLX(ma));
 	}
 	
-	//tra ve combobox danh  sach xe
+	//tra ve combobox danh sach xe
 	public List<SelectItem> getSelectOneItemXe() {
 		this.selectOneItemXe=new ArrayList<SelectItem>();
 		List<Xe> xes=xeDao.selectItems();

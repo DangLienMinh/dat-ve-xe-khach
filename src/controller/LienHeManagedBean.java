@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -14,9 +13,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import model.LienHe;
-import model.NhanVien;
 import dao.LienHeDao;
 
 @ManagedBean(name= "lienHeMBean")
@@ -48,8 +45,6 @@ public class LienHeManagedBean {
 		lienHeDao.reset(lienHe);
 		return "";
 	}
-	
-	
 	
 	//ham khi bam vao icon rang cua se luu thong tin doi tuong nhan vien duoc chon
 		public void capNhat(LienHe x){
@@ -111,6 +106,7 @@ public class LienHeManagedBean {
 			Session session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
+						//thong tin email dung de gui mail di noi khac
 						return new PasswordAuthentication("danglienminh@gmail.com","danglienminh");
 					}
 				});
@@ -123,12 +119,9 @@ public class LienHeManagedBean {
 						InternetAddress.parse(selectedLienHe.getEmail()));
 				message.setSubject("Trả lời thư");
 				message.setText(noiDungTL);
-	 
 				Transport.send(message);
-	 
 				System.out.println("Done");
 				return "QLLienHe?faces-redirect=true";
-	 
 			} catch (MessagingException e) {
 				throw new RuntimeException(e);
 			}
@@ -141,5 +134,4 @@ public class LienHeManagedBean {
 		public void setNoiDungTL(String noiDungTL) {
 			this.noiDungTL = noiDungTL;
 		}
-
 }

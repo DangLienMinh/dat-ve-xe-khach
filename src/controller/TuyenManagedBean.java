@@ -2,13 +2,9 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
-
-import org.primefaces.context.RequestContext;
-
 import model.Tuyen;
 import dao.TuyenDao;
 
@@ -20,9 +16,7 @@ public class TuyenManagedBean {
 	
 	//danh sach tuyen dung de hien thi trong combobox
 	private List<SelectItem> selectOneItemTuyen;
-	
-	
-		
+
 	//Tra ve danh sach tuyen 
 	private List<Tuyen> DanhSach;
 	
@@ -34,8 +28,7 @@ public class TuyenManagedBean {
 	
 	public TuyenManagedBean(){
 		DanhSach = new ArrayList<Tuyen>();
-		DanhSach = tuyenDao.danhSachTuyen();
-		
+		DanhSach = tuyenDao.danhSachTuyen();		
 	}
 	public Tuyen getTuyen() {
 		return tuyen;
@@ -69,17 +62,20 @@ public class TuyenManagedBean {
 		this.selectedTuyen = selectedTuyen;
 	}
 	
+	//them tuyen moi
 	public String themTuyen(){
 		tuyenDao.themTuyen(tuyen);
 		return "QLTuyen?faces-redirect=true";
 	}
 	
+	//sua tuyen
 	public String suaTuyen(){
 		//sua tuyen dua vao doi tuong tuyen duoc chon
 		tuyenDao.suaTuyen(selectedTuyen);
 		return "QLTuyen?faces-redirect=true";
 	}
 	
+	//xoa tuyen
 	public String xoaTuyen(Tuyen x){
 		tuyenDao.xoaTuyen(x);
 		return "QLTuyen?faces-redirect=true";
@@ -111,8 +107,4 @@ public class TuyenManagedBean {
 	public String tenTuyen(String maTuyen){
 		return tuyenDao.tenTuyen(maTuyen);
 	}
-	
-	
-
-
 }
