@@ -62,9 +62,6 @@ public class KhuVucManagedBean {
 		selectedKhuVuc=x;
 	}
 	
-	
-
-
 		public KhuVuc getKhuVuc() {
 			return khuVuc;
 		}
@@ -80,8 +77,6 @@ public class KhuVucManagedBean {
 		public void setKhuVucDao(KhuVucDao khuVucDao) {
 			this.khuVucDao = khuVucDao;
 		}
-
-		
 
 		public void setSelectOneItemKV(List<SelectItem> selectOneItemKV) {
 			this.selectOneItemKV = selectOneItemKV;
@@ -107,7 +102,7 @@ public class KhuVucManagedBean {
 			return selectedKhuVuc;
 		}
 
-
+		//combobox khu vuc
 		public List<SelectItem> getSelectOneItemKV() {
 			this.selectOneItemKV=new ArrayList<SelectItem>();
 			List<KhuVuc> khuVucs=khuVucDao.selectItems();
@@ -117,5 +112,4 @@ public class KhuVucManagedBean {
 			}
 			return selectOneItemKV;
 		}
-
 }

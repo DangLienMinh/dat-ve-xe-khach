@@ -121,13 +121,12 @@ public class ChuyenDao {
 		    .list();
 	 		return result; 
 	    }
-
-	 
+ 
 		 public void reset(Chuyen chuyen) {
 			 chuyen.setKhuyenMai(0);
 		 }
 		 
-		//lay thong tin tien ve dua vao matuyen
+		//lay thong tin tien khuyen mai dua vao matuyen
 		 	public int tienKhuyenMai(String maChuyen){
 		 		Session session = HibernateUtil.getSessionFactory().openSession();
 			    String hql = "from Chuyen  where MaChuyen = :machuyen";
@@ -138,5 +137,4 @@ public class ChuyenDao {
 			    Chuyen x=(Chuyen) result.get(0);
 		 		return x.getKhuyenMai(); 
 		 	}
-		 
 }

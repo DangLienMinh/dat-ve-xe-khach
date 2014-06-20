@@ -17,11 +17,13 @@
  <body>
  <f:view>
      <h:form>
+      
      	 <p:accordionPanel>
-			 <p:tab title="In phiếu thông tin nhân viên">			  
-				<h:panelGrid columns="2" cellpadding="10">
+			 <p:tab title="In phiếu thông tin nhân viên">	
+				<h:panelGrid columns="2" cellpadding="10" >
+				
 				  <h:outputText value="Mã nhân viên:" />
-				  <p:inputText value="#{nhanVienMBean.selectedNV.maNV}"></p:inputText>
+				  <p:inputText value="#{nhanVienMBean.selectedNV.maNV}" ></p:inputText>
 				  <p:commandButton value="Hiển thị" action="#{nhanVienMBean.inTTNV}" ajax="false"></p:commandButton>              
 				</h:panelGrid>
 	 </p:tab>	       	            

@@ -132,7 +132,7 @@
 			       <p:inputText value='#{taiXeMBean.taiXe.diaChi}' required="true" label="Địa chỉ" requiredMessage="Vui lòng nhập Địa chỉ"/>
 			    
 			       <h:outputLabel value='Email' />
-			   	   <p:inputText value='#{taiXeMBean.taiXe.email}'/>
+			   	   <p:inputText value='#{taiXeMBean.taiXe.email}' required="true" label="Email" requiredMessage="Vui lòng nhập Email"/>
 
 			       <h:outputLabel value="Ngày sinh: " />
 			       <p:calendar maxdate="#{taiXeMBean.today}" navigator="true" value="#{taiXeMBean.taiXe.ngaySinh}" id="popupButtonCal" showOn="button"  pattern="dd/MM/yyyy" />

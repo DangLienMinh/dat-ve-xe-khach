@@ -1,15 +1,10 @@
 package dao;
 
 import hibernateUtil.HibernateUtil;
-
 import java.util.List;
-
 import model.Xe;
 import model.LoaiXe;
-
 import org.hibernate.Criteria;
-import org.hibernate.LockMode;
-import org.hibernate.LockOptions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -113,7 +108,7 @@ public class XeDao {
 	    }
 
 	 
-	 	//reset cac thuoc tinh cua xe
+	 //reset cac thuoc tinh cua xe
 	 public void reset(Xe xe) {
 		 xe.setBienSo(" ");
 	 }

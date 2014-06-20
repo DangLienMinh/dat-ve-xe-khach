@@ -56,6 +56,7 @@ public class LienHeDao {
 		 		return x; 
 		 	}
 		 	
+		 	//Danh sach thac mac khach hang chua duoc giai quyet
 		 	public List<LienHe> danhSachLienHe(){
 		 		Session session = HibernateUtil.getSessionFactory().openSession();
 			    String hql = "from LienHe  where TinhTrang=0";
@@ -64,37 +65,7 @@ public class LienHeDao {
 			    return result;
 		 	}
 		 	
-		 	
-		 	//tra ve tat ca cac lienHe trong csdl
-//		 	public List<LienHe> danhSachLienHe(){
-//		 		List<LienHe> x;
-//		 		Session session = HibernateUtil.getSessionFactory().openSession();
-//		 		session.beginTransaction();
-//		 		Criteria cri=session.createCriteria(LienHe.class);
-//		 		x=cri.list();
-//		 		return x;
-//		 	}
-		 	
-		 	//xoa mot doi tuong lienHe
-//		 	public void xoaLienHe(LienHe lienHe) {
-//		        Transaction trns = null;
-//		        Session session = HibernateUtil.getSessionFactory().openSession();
-//		        try {
-//		            trns = session.beginTransaction();
-//		            LienHe x = (LienHe) session.load(LienHe.class, lienHe.getId());
-//		            session.delete(x);
-//		            session.getTransaction().commit();
-//		        } catch (RuntimeException e) {
-//		            if (trns != null) {
-//		                trns.rollback();
-//		            }
-//		            e.printStackTrace();
-//		        } finally {
-//		            session.flush();
-//		            session.close();
-//		        }
-//		    }
-		 	
+		 	//thac mac da duoc giai quyet
 		 	public void suaLienHe(LienHe lh) { 
 				 LienHe x = new LienHe();
 				 x=layThongTin(lh);
@@ -117,10 +88,9 @@ public class LienHeDao {
 			}
 
 		 
-		 	//reset cac thuoc tinh cua lienHe
+		 //reset cac thuoc tinh cua lienHe
 		 public void reset(LienHe lienHe) {
 			 lienHe.setEmail(" ");
 			 lienHe.setNoiDung(" ");
 		 }
-
 }

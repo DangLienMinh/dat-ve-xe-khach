@@ -14,7 +14,7 @@ import org.hibernate.Transaction;
 
 public class LoaiXeDao {
 
-	//danh sach loai xe
+	//Combobox loaixe
 	public List<LoaiXe> selectItems(){
 		List<LoaiXe> list=null;
 		Transaction trns = null;
@@ -48,6 +48,7 @@ public class LoaiXeDao {
  		return x;
  	}
  	
+ 	//lay ten loai xe theo  bien so
  	public String layTenLoaiXe(String bienSo){
  		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createSQLQuery(

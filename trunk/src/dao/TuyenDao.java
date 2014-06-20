@@ -156,8 +156,6 @@ public class TuyenDao {
  		return x;
  	}
  	
- 	
- 	
  	//lay thong tin tien ve dua vao matuyen
  	public int tienVe(String maTuyen){
  		Session session = HibernateUtil.getSessionFactory().openSession();
