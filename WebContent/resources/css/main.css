@@ -2455,3 +2455,172 @@ div.hanging-video a.view-all-videos:hover {
   margin-top: -150px;
   margin-left: -100px;
 }
+
+/* Bonus about page */
+/* line 743, sass/main.sass */
+.page-content .wide-main {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+/* line 747, sass/main.sass */
+.page-content .wide-main article {
+  margin: 0 0 40px 60px;
+  width: 575px;
+  height: 100%;
+  float: left;
+}
+/* line 753, sass/main.sass */
+.page-content .wide-main article p {
+  width: auto;
+  font-family: times, "Times New Roman", Georgia, Serif;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+}
+/* line 756, sass/main.sass */
+.page-content .wide-main article p:first-child:first-letter {
+  color: #f35334;
+  font-size: 8.4em;
+  float: left;
+  margin-top: 10px;
+  padding: 0 5px 5px 0;
+}
+/* line 758, sass/main.sass */
+.page-content .wide-main article img {
+  float: right;
+  width: 335px;
+  height: 335px;
+  margin: 0 0 15px 20px;
+  padding: 0;
+}
+/* line 765, sass/main.sass */
+.page-content .wide-main aside {
+  margin: 0 20px;
+  padding: 0;
+  width: 240px;
+  float: left;
+}
+/* line 770, sass/main.sass */
+.page-content .wide-main aside h2 {
+  font-family: times, "Times New Roman", Georgia, Serif;
+  font-style: italic;
+  color: #999999;
+  font-weight: 100;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  line-height: 1.3em;
+  border-bottom: 1px dotted #999999;
+}
+/* line 780, sass/main.sass */
+.page-content .wide-main aside p {
+  font-family: times, "Times New Roman", Georgia, Serif;
+  margin-bottom: 20px;
+  font-style: italic;
+  line-height: 1.5em;
+  padding-left: 20px;
+}
+/* line 783, sass/main.sass */
+.page-content .wide-main aside ul {
+  margin-left: 30px;
+  margin-top: -10px;
+}
+/* line 786, sass/main.sass */
+.page-content .wide-main aside ul li {
+  font-family: times, "Times New Roman", Georgia, Serif;
+  margin-bottom: 20px;
+  font-style: italic;
+  line-height: 1.5em;
+  margin-bottom: 5px;
+  list-style: disc;
+  list-style-position: inline;
+}
+/* line 792, sass/main.sass */
+.page-content .wide-insert {
+  width: 100%;
+  height: 265px;
+  position: relative;
+  top: -40px;
+}
+/* line 797, sass/main.sass */
+.page-content .wide-insert:before {
+  position: absolute;
+  content: "";
+  background: url("#{resource['image/lake-nona-schools.png']}") no-repeat;
+  width: 972px;
+  height: 265px;
+  display: block;
+  top: 0;
+  left: -25px;
+}
+/* line 807, sass/main.sass */
+.page-content .wide-insert > ul {
+  width: 940px;
+  height: 140px;
+  padding-top: 125px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+/* line 814, sass/main.sass */
+.page-content .wide-insert > ul > li {
+  float: left;
+  width: 20%;
+}
+/* line 817, sass/main.sass */
+.page-content .wide-insert > ul > li ul {
+  width: 80%;
+  height: auto;
+  overflow: hidden;
+  margin: 10px 15px 0;
+}
+/* line 822, sass/main.sass */
+.page-content .wide-insert > ul > li ul li {
+  border-bottom: 1px dotted #828282;
+  font-size: 1em;
+  padding: 3px 0;
+}
+/* line 826, sass/main.sass */
+.page-content .wide-insert > ul > li ul li a {
+  font-family: "AvenirRomanRegular", arial, helvetica, sans-serif;
+  color: #2d86a4;
+  text-transform: capitalize;
+  line-height: 1.3em;
+}
+/* line 831, sass/main.sass */
+.page-content .wide-insert > ul > li ul li a:hover {
+  color: #003366;
+}
+/* line 834, sass/main.sass */
+.page-content .wide-insert > ul > li ul li:first-child a {
+  color: #f35334;
+  line-height: 40px;
+  font-size: 1.3em;
+}
+/* line 838, sass/main.sass */
+.page-content .wide-insert > ul > li ul li:last-child {
+  border-bottom: 0 none;
+}
+
+/* line 720, sass/main.sass */
+.inner-masthead div:before {
+  width: 1004px;
+  height: 96px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 280px;
+  left: -83px;
+  background: url("#{resource['image/ruler.png']}") no-repeat;
+}
+/* line 729, sass/main.sass */
+.inner-masthead div:after {
+  width: 461px;
+  height: 393px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: -113px;
+  left: 436px;
+  background: url("#{resource['image/two-students.png']}") no-repeat;
+}
