@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets"> 
+   <h:head>
+   		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Giới thiệu</title>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+   		<h:outputStylesheet library="css" name="main.css" />
+		<h:outputStylesheet library="css" name="template.css" />
+		<h:outputStylesheet library="css" name="layout.css" />
+		<h:outputScript library="js" name="ga.js"/>		
+		<h:outputScript library="js" name="modernizr-1.7.min.js"/>
+		<h:outputScript library="js" name="detection.js"/>	
+		<h:outputScript library="js" name="jquery.min.js"/>
+		<!-- IE Conditional Statement -->
+		<h:outputStylesheet library="css" name="jquery.lightbox.css" />
+		<h:outputStylesheet library="css" name="styles.css" />
+		<h:outputScript library="js" name="l10n.js"/>
+   </h:head>
+   <h:body id="education-page" class="page page-id-18 page-child parent-pageid-285 page-template page-template-wide-php" cz-shortcut-listen="true"> 
+         <ui:insert name="header" >
+             <ui:include src="/templates/header.xhtml" />
+         </ui:insert> 
+      <br/>
+         <ui:insert name="about-content" >
+           <ui:include src="/templates/aboutContents.xhtml" />
+         </ui:insert>    
+      <br/>
+         <ui:insert name="footer" >
+           <ui:include src="/templates/footer.xhtml" />
+         </ui:insert>
+   </h:body>
+</html>
