@@ -22,6 +22,8 @@ import model.PhanQuyen;
 import model.Tuyen;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.engine.query.JRQueryExecuterFactory;
+import net.sf.jasperreports.engine.util.JRProperties;
 
 @ManagedBean(name= "reportMBean")
 @SessionScoped
@@ -59,6 +61,8 @@ public class ReportManagedBean {
 		ServletOutputStream servletOutputStream = 
 				response.getOutputStream();
 		connection=connectDatabase();
+		 JRProperties.setProperty( JRQueryExecuterFactory.QUERY_EXECUTER_FACTORY_PREFIX+"plsql"
+                 ,"com.jaspersoft.jrx.query.PlSqlQueryExecuterFactory");
 		HashMap map = new HashMap();
 		map.put("Nam", getNam());
 		try {
