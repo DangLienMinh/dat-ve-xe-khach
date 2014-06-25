@@ -1,16 +1,23 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
+
 import model.Tuyen;
 import dao.TuyenDao;
 
 @ManagedBean(name= "tuyenMBean")
 @ViewScoped
-public class TuyenManagedBean {
+public class TuyenManagedBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Tuyen tuyen=new Tuyen();
 	private TuyenDao tuyenDao=new TuyenDao();
 	

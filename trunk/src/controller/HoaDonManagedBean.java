@@ -119,6 +119,7 @@ public class HoaDonManagedBean {
 	public String hienThiChuyen(String maTuyen){
 		Tuyen x= tuyenDao.layTuyen(maTuyen);
 		danhSach=chuyenDao.dsChonChuyen(x);
+		dsTuyen=tuyenDao.layTuyen(x.getMaTuyen());
 		return "datVe1?faces-redirect=true";	
 	}
 	
